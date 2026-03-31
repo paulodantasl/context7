@@ -4,6 +4,159 @@ sidebarTitle: Análise de Negócio
 description: Template completo de pro forma para análise de projetos de construção do zero — SFR e multifamiliar de 2 a 4 unidades
 ---
 
+import { useState, useMemo } from 'react'
+
+export function CalculadoraDeal() {
+  const fmt = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })
+  const pct = (n) => (n * 100).toFixed(1) + '%'
+
+  const [v, setV] = useState({
+    landPrice: 75000,
+    constructionCost: 195000,
+    financingCost: 22000,
+    carryingCost: 6000,
+    arv: 385000,
+    sellCostPct: 6,
+    firpta: true,
+    dscrLtv: 70,
+    dscrRate: 8,
+    rent: 2200,
+    taxes: 350,
+    insurance: 150,
+    hoa: 0,
+  })
+
+  const set = (k) => (e) => setV((prev) => ({ ...prev, [k]: parseFloat(e.target.value) || 0 }))
+  const toggle = (k) => () => setV((prev) => ({ ...prev, [k]: !prev[k] }))
+
+  const c = useMemo(() => {
+    const total = v.landPrice + v.constructionCost + v.financingCost + v.carryingCost
+    const sellCosts = v.arv * (v.sellCostPct / 100)
+    const firptaAmt = v.firpta ? v.arv * 0.15 : 0
+    const netSale = v.arv - sellCosts - firptaAmt
+    const grossProfit = netSale - total
+    const grossMargin = v.arv > 0 ? grossProfit / v.arv : 0
+    const cashIn = total * 0.3
+    const roi = cashIn > 0 ? grossProfit / cashIn : 0
+
+    const dscrLoan = v.arv * (v.dscrLtv / 100)
+    const r = v.dscrRate / 100 / 12
+    const n = 360
+    const pi = r > 0 ? dscrLoan * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : 0
+    const pitia = pi + v.taxes + v.insurance + v.hoa
+    const dscr = pitia > 0 ? v.rent / pitia : 0
+    const mgmt = v.rent * 0.09
+    const repairs = v.rent * 0.05
+    const capex = v.rent * 0.05
+    const cashflow = v.rent - pitia - mgmt - repairs - capex
+
+    const maxLand = v.arv * (1 - v.sellCostPct / 100) - v.constructionCost - v.financingCost - v.carryingCost - v.arv * 0.20
+
+    return { total, grossProfit, grossMargin, roi, dscrLoan, pi, pitia, dscr, cashflow, maxLand, firptaAmt, netSale }
+  }, [v])
+
+  const ok = (cond) => ({ color: cond ? '#16a34a' : '#dc2626', fontWeight: 'bold' })
+  const labelStyle = { display: 'block', fontSize: '0.75rem', color: '#6b7280', marginBottom: '2px' }
+  const inputStyle = { width: '100%', padding: '6px 8px', border: '1px solid #d1d5db', borderRadius: '6px', fontSize: '0.875rem' }
+  const cardStyle = { background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '16px', marginBottom: '16px' }
+  const resultRow = { display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid #f3f4f6', fontSize: '0.875rem' }
+  const grid2 = { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }
+  const grid3 = { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }
+
+  return (
+    <div style={{ fontFamily: 'system-ui, sans-serif', maxWidth: '780px', margin: '0 auto' }}>
+      <div style={{ background: '#1e40af', color: 'white', padding: '16px', borderRadius: '8px', marginBottom: '16px' }}>
+        <div style={{ fontWeight: 'bold', fontSize: '1rem' }}>Calculadora de Análise de Negócio</div>
+        <div style={{ fontSize: '0.8rem', opacity: 0.85 }}>Construção do Zero — Para Investidores Brasileiros | Preencha os campos e os resultados atualizam automaticamente</div>
+      </div>
+
+      {/* INPUTS */}
+      <div style={cardStyle}>
+        <div style={{ fontWeight: '600', marginBottom: '12px', fontSize: '0.9rem' }}>📍 Custos do Projeto</div>
+        <div style={grid2}>
+          <div><label style={labelStyle}>Preço do Terreno (US$)</label><input style={inputStyle} type="number" value={v.landPrice} onChange={set('landPrice')} /></div>
+          <div><label style={labelStyle}>Custo de Construção (US$)</label><input style={inputStyle} type="number" value={v.constructionCost} onChange={set('constructionCost')} /></div>
+          <div><label style={labelStyle}>Custo de Financiamento (US$)</label><input style={inputStyle} type="number" value={v.financingCost} onChange={set('financingCost')} /></div>
+          <div><label style={labelStyle}>Custos de Carregamento (US$)</label><input style={inputStyle} type="number" value={v.carryingCost} onChange={set('carryingCost')} /></div>
+        </div>
+      </div>
+
+      <div style={cardStyle}>
+        <div style={{ fontWeight: '600', marginBottom: '12px', fontSize: '0.9rem' }}>🏠 Cenário de Venda</div>
+        <div style={grid3}>
+          <div><label style={labelStyle}>ARV — Valor Após Conclusão (US$)</label><input style={inputStyle} type="number" value={v.arv} onChange={set('arv')} /></div>
+          <div><label style={labelStyle}>Comissão + Custos de Venda (%)</label><input style={inputStyle} type="number" step="0.5" value={v.sellCostPct} onChange={set('sellCostPct')} /></div>
+          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
+            <label style={labelStyle}>Retenção FIRPTA (15%)?</label>
+            <button onClick={toggle('firpta')} style={{ padding: '6px 8px', borderRadius: '6px', border: '1px solid #d1d5db', background: v.firpta ? '#dbeafe' : '#f9fafb', cursor: 'pointer', fontSize: '0.875rem', color: v.firpta ? '#1e40af' : '#6b7280' }}>
+              {v.firpta ? '✓ FIRPTA ativado' : 'FIRPTA desativado'}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div style={cardStyle}>
+        <div style={{ fontWeight: '600', marginBottom: '12px', fontSize: '0.9rem' }}>🏦 Cenário DSCR (Refinanciar e Alugar)</div>
+        <div style={grid3}>
+          <div><label style={labelStyle}>LTV do Refi DSCR (%)</label><input style={inputStyle} type="number" step="1" value={v.dscrLtv} onChange={set('dscrLtv')} /></div>
+          <div><label style={labelStyle}>Taxa de Juros DSCR (% ao ano)</label><input style={inputStyle} type="number" step="0.25" value={v.dscrRate} onChange={set('dscrRate')} /></div>
+          <div><label style={labelStyle}>Aluguel Bruto Mensal (US$)</label><input style={inputStyle} type="number" value={v.rent} onChange={set('rent')} /></div>
+          <div><label style={labelStyle}>IPTU Mensal (US$)</label><input style={inputStyle} type="number" value={v.taxes} onChange={set('taxes')} /></div>
+          <div><label style={labelStyle}>Seguro Mensal (US$)</label><input style={inputStyle} type="number" value={v.insurance} onChange={set('insurance')} /></div>
+          <div><label style={labelStyle}>HOA Mensal (US$)</label><input style={inputStyle} type="number" value={v.hoa} onChange={set('hoa')} /></div>
+        </div>
+      </div>
+
+      {/* RESULTS */}
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+        <div style={{ ...cardStyle, borderLeft: '4px solid #1e40af' }}>
+          <div style={{ fontWeight: '600', marginBottom: '10px', fontSize: '0.9rem' }}>📊 Cenário: VENDER</div>
+          <div style={resultRow}><span>Custo Total do Projeto</span><span style={{ fontWeight: '600' }}>{fmt(c.total)}</span></div>
+          <div style={resultRow}><span>ARV</span><span>{fmt(v.arv)}</span></div>
+          {v.firpta && <div style={resultRow}><span>Retenção FIRPTA (15%)</span><span style={{ color: '#dc2626' }}>−{fmt(c.firptaAmt)}</span></div>}
+          <div style={resultRow}><span>Receita Líquida de Venda</span><span>{fmt(c.netSale)}</span></div>
+          <div style={resultRow}><span style={{ fontWeight: '600' }}>Lucro Bruto</span><span style={ok(c.grossProfit > 0)}>{fmt(c.grossProfit)}</span></div>
+          <div style={resultRow}><span>Margem Bruta</span><span style={ok(c.grossMargin >= 0.20)}>{pct(c.grossMargin)} {c.grossMargin >= 0.20 ? '✓' : '⚠ meta: 20%'}</span></div>
+          <div style={resultRow}><span>ROI sobre Caixa (~30% entrada)</span><span style={ok(c.roi >= 0.30)}>{pct(c.roi)} {c.roi >= 0.30 ? '✓' : '⚠ meta: 30%'}</span></div>
+          <div style={{ ...resultRow, borderBottom: 'none', paddingTop: '8px', marginTop: '4px', borderTop: '2px solid #e5e7eb' }}>
+            <span style={{ fontWeight: '600' }}>Preço Máximo do Terreno*</span>
+            <span style={{ fontWeight: 'bold', color: '#1e40af' }}>{fmt(Math.max(0, c.maxLand))}</span>
+          </div>
+          <div style={{ fontSize: '0.7rem', color: '#9ca3af', marginTop: '4px' }}>*com margem bruta de 20%</div>
+        </div>
+
+        <div style={{ ...cardStyle, borderLeft: '4px solid #16a34a' }}>
+          <div style={{ fontWeight: '600', marginBottom: '10px', fontSize: '0.9rem' }}>🏘 Cenário: REFINANCIAR + ALUGAR</div>
+          <div style={resultRow}><span>Valor do Empréstimo DSCR</span><span>{fmt(c.dscrLoan)}</span></div>
+          <div style={resultRow}><span>Parcela P&I Mensal</span><span>{fmt(c.pi)}</span></div>
+          <div style={resultRow}><span>PITIA Total Mensal</span><span>{fmt(c.pitia)}</span></div>
+          <div style={resultRow}><span>Aluguel Bruto Mensal</span><span>{fmt(v.rent)}</span></div>
+          <div style={resultRow}>
+            <span style={{ fontWeight: '600' }}>DSCR</span>
+            <span style={ok(c.dscr >= 1.25)}>{c.dscr.toFixed(2)} {c.dscr >= 1.25 ? '✓' : c.dscr >= 1.0 ? '⚠ abaixo de 1,25' : '✗ negativo'}</span>
+          </div>
+          <div style={resultRow}>
+            <span style={{ fontWeight: '600' }}>Fluxo de Caixa Mensal</span>
+            <span style={ok(c.cashflow >= 0)}>{fmt(c.cashflow)}/mês</span>
+          </div>
+          <div style={{ ...resultRow, borderBottom: 'none', paddingTop: '8px', marginTop: '4px', borderTop: '2px solid #e5e7eb' }}>
+            <span style={{ fontWeight: '600' }}>Fluxo de Caixa Anual</span>
+            <span style={{ fontWeight: 'bold', color: c.cashflow >= 0 ? '#16a34a' : '#dc2626' }}>{fmt(c.cashflow * 12)}/ano</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ fontSize: '0.72rem', color: '#9ca3af', marginTop: '8px', textAlign: 'center' }}>
+        Calculadora para fins educacionais. Consulte sempre um CPA e advogado imobiliário antes de tomar decisões de investimento.
+      </div>
+    </div>
+  )
+}
+
+<CalculadoraDeal />
+
+---
+
 # Anexo 4 — Análise de Negócio e Template de Pro Forma
 ## Construção do Zero | SFR e Multifamiliar de 2 a 4 Unidades
 
