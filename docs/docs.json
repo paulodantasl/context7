@@ -137,6 +137,8 @@
         "group": "Guia para Investidores Brasileiros",
         "pages": [
           "land-acquisition-guide/index",
+          "land-acquisition-guide/mercados-florida",
+          "land-acquisition-guide/tipos-de-projeto",
           "land-acquisition-guide/land-due-diligence",
           "land-acquisition-guide/financing",
           "land-acquisition-guide/construction-budget",
@@ -148,7 +150,8 @@
           "land-acquisition-guide/gestao-de-propriedade",
           "land-acquisition-guide/escalando-portfolio",
           "land-acquisition-guide/erros-comuns",
-          "land-acquisition-guide/templates-comunicacao"
+          "land-acquisition-guide/templates-comunicacao",
+          "land-acquisition-guide/tabelas-referencia"
         ]
       }
     ]
