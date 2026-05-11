@@ -142,16 +142,28 @@
   .input-grid { display: grid; gap: 12px; }
   .input-grid.cols2 { grid-template-columns: 1fr 1fr; }
   .input-grid.cols3 { grid-template-columns: 1fr 1fr 1fr; }
+  .input-grid.cols4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
   .field label { display: block; font-size: 11px; color: var(--gray-500); margin-bottom: 4px; font-weight: 600; }
-  .field input { width: 100%; padding: 7px 10px; border: 1px solid var(--gray-300); border-radius: 6px; font-size: 13px; font-family: inherit; color: var(--gray-900); }
-  .field input:focus { outline: none; border-color: var(--blue-mid); box-shadow: 0 0 0 2px rgba(59,130,246,.15); }
-  #firpta-btn { width: 100%; padding: 7px; border: 1px solid var(--gray-300); border-radius: 6px; font-size: 13px; cursor: pointer; font-family: inherit; font-weight: 600; transition: all .15s; }
-  #firpta-btn.on { background: var(--blue-light); border-color: var(--blue-mid); color: var(--blue); }
-  #firpta-btn.off { background: var(--gray-50); color: var(--gray-500); }
-  .results-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
-  .result-panel { border-radius: 8px; padding: 16px; border: 1px solid var(--gray-200); }
+  .field input, .field select { width: 100%; padding: 7px 10px; border: 1px solid var(--gray-300); border-radius: 6px; font-size: 13px; font-family: inherit; color: var(--gray-900); background: white; }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--blue-mid); box-shadow: 0 0 0 2px rgba(59,130,246,.15); }
+  .field .derived { background: var(--blue-light); color: var(--blue); font-weight: 700; padding: 7px 10px; border-radius: 6px; font-size: 13px; display: block; }
+  /* SCENARIO TABS */
+  .calc-tabs { display: flex; gap: 0; margin-bottom: 16px; border-radius: 8px; overflow: hidden; border: 1px solid var(--gray-200); }
+  .calc-tab { flex: 1; padding: 10px 8px; font-size: 12px; font-weight: 600; border: none; cursor: pointer; background: var(--gray-50); color: var(--gray-500); transition: all .15s; border-right: 1px solid var(--gray-200); font-family: inherit; line-height: 1.3; }
+  .calc-tab:last-child { border-right: none; }
+  .calc-tab.active { background: var(--blue); color: white; }
+  .calc-tab:hover:not(.active) { background: var(--gray-100); color: var(--gray-700); }
+  .scenario-panel { display: none; }
+  .scenario-panel.active { display: block; }
+  /* FIRPTA toggle */
+  .firpta-toggle { width: 100%; padding: 7px; border: 1px solid var(--gray-300); border-radius: 6px; font-size: 13px; cursor: pointer; font-family: inherit; font-weight: 600; transition: all .15s; }
+  .firpta-toggle.on { background: var(--red-light); border-color: var(--red); color: var(--red); }
+  .firpta-toggle.off { background: var(--green-light); border-color: var(--green); color: var(--green); }
+  /* RESULTS */
+  .result-panel { border-radius: 8px; padding: 16px; border: 1px solid var(--gray-200); margin-top: 16px; }
   .result-panel.sell { border-left: 4px solid var(--blue); }
-  .result-panel.refi { border-left: 4px solid var(--green); }
+  .result-panel.rent { border-left: 4px solid var(--green); }
+  .result-panel.refi { border-left: 4px solid #7c3aed; }
   .result-panel-title { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--gray-700); }
   .result-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--gray-100); font-size: 13px; }
   .result-row:last-child { border-bottom: none; }
@@ -215,7 +227,8 @@
     <a href="#" onclick="show('erros')" id="nav-erros">⚠️ Erros Comuns</a>
     <a href="#" onclick="show('templates')" id="nav-templates">✉️ Templates em Inglês</a>
 
-    <div class="section-label" style="margin-top:16px">Análise de Mercado</div>
+    <div class="section-label" style="margin-top:16px">Exemplos &amp; Análise</div>
+    <a href="#" onclick="show('exemplos')" id="nav-exemplos">📍 Exemplos Práticos</a>
     <a href="#" onclick="show('mercados-fl')" id="nav-mercados-fl">🌴 Mercados da Flórida 2026</a>
     <a href="#" onclick="show('tipos-projeto')" id="nav-tipos-projeto">🏠 Tipos de Projeto</a>
 
@@ -256,6 +269,7 @@
     <div class="card" onclick="show('portfolio')"><div class="card-icon">📈</div><div class="card-title">Escalando o Portfólio</div><div class="card-desc">BRRRR repetido — de 1 projeto a 10+ unidades em 5 anos</div></div>
     <div class="card" onclick="show('erros')"><div class="card-icon">⚠️</div><div class="card-title">Erros Comuns</div><div class="card-desc">Os 12 erros mais custosos do investidor brasileiro nos EUA</div></div>
     <div class="card" onclick="show('templates')"><div class="card-icon">✉️</div><div class="card-title">Templates em Inglês</div><div class="card-desc">10 modelos prontos de email para corretor, GC, credor e property manager</div></div>
+    <div class="card" onclick="show('exemplos')"><div class="card-icon">📍</div><div class="card-title">Exemplos Práticos</div><div class="card-desc">Citrus Springs e Orlando — projetos reais com números, cronograma e FIRPTA do início ao fim</div></div>
     <div class="card" onclick="show('mercados-fl')"><div class="card-icon">🌴</div><div class="card-title">Mercados da Flórida</div><div class="card-desc">Orlando vs Tampa vs Miami — análise de ciclo, margens reais e bairros para 2026</div></div>
     <div class="card" onclick="show('tipos-projeto')"><div class="card-icon">🏠</div><div class="card-title">Tipos de Projeto</div><div class="card-desc">SFR vs Duplex vs Fourplex — qual oferece melhor economia em 2026</div></div>
     <div class="card" onclick="show('tabelas')"><div class="card-icon">📊</div><div class="card-title">Tabelas de Referência</div><div class="card-desc">Custos/SF, ARVs, impact fees, prazos e glossário — consulta rápida em 12 tabelas</div></div>
@@ -408,6 +422,17 @@
     <tr><td><strong>Kiavi</strong></td><td>kiavi.com</td><td>1,0</td><td>75%</td><td>7,5%–9,5%</td><td>Plataforma digital, também constrói</td></tr>
   </table></div>
 
+  <h2>O que São "Pontos de Originação"?</h2>
+  <div class="callout info"><div class="icon">💡</div><div class="body"><strong>1 ponto = 1% do valor do empréstimo, pago uma única vez no fechamento.</strong> "2,5 pontos" num empréstimo de US$225.000 = US$5.625 pagos no dia do fechamento, independentemente de quanto tempo o empréstimo dura.</div></div>
+  <p>É a principal remuneração do credor hard money além dos juros mensais. Cobre os custos de underwriting, avaliação e estruturação — e compensa o risco de emprestar sem histórico de crédito americano.</p>
+  <div class="table-wrap"><table>
+    <tr><th>Tipo de Credor</th><th>Pontos Típicos</th><th>Por Que Essa Faixa</th></tr>
+    <tr><td><strong>Hard Money</strong></td><td>2–4 pontos</td><td>Fechamento rápido, sem score de crédito americano</td></tr>
+    <tr><td><strong>Programa para estrangeiros</strong></td><td>1–3 pontos</td><td>Mais documentação, risco percebido maior</td></tr>
+    <tr><td><strong>Banco comunitário</strong></td><td>0–1 ponto</td><td>Requer relacionamento prévio</td></tr>
+  </table></div>
+  <div class="callout success"><div class="icon">📐</div><div class="body"><strong>Dica prática — pontos vs. taxa de juros têm relação inversa.</strong><br>Mais pontos upfront → menor taxa mensal | Menos pontos → maior taxa mensal.<br>Se seu projeto tem prazo curto e previsível (10–12 meses), mais pontos upfront pode ser mais barato no total. Se houver risco de atraso, prefira menos pontos e mais juros.</div></div>
+
   <h2>Processo de Desembolso (Draw)</h2>
   <div class="table-wrap"><table>
     <tr><th>Desembolso</th><th>Etapa da Obra</th><th>% Típica</th></tr>
@@ -519,6 +544,15 @@
     <tr><td class="tag-green"><strong>TOTAL</strong></td><td class="tag-green"><strong>US$280K–US$450K</strong></td><td class="tag-green"><strong>US$480K–US$750K</strong></td></tr>
   </table></div>
 
+  <h2>O que Entra em Cada Categoria de Custo?</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Categoria</th><th>O que inclui</th></tr>
+    <tr><td><strong>Custos Indiretos (Soft Costs)</strong></td><td>Projeto arquitetônico, engenharia, taxas de alvará, taxas de impacto, topografia, ambiental (Fase I), honorários de CPA/advogado, aprovação de HOA</td></tr>
+    <tr><td><strong>Custo de Carregamento (Carrying Costs)</strong></td><td>Juros mensais do empréstimo de construção, pontos de originação, seguro do construtor (builder's risk), IPTU durante a obra, energia/água no canteiro, extensão do empréstimo se houver atraso</td></tr>
+    <tr><td><strong>Contingência</strong></td><td>Solo instável, aumento de preço de materiais, change orders, erros de projeto, troca de GC, atraso de alvará, danos por chuva ou vandalismo</td></tr>
+  </table></div>
+  <div class="callout warning"><div class="icon">⏱️</div><div class="body"><strong>O custo de carregamento aumenta com atrasos.</strong> Em empréstimo de US$300.000 a 12%/ano, cada semana de atraso = US$692 extras. 10 semanas = US$6.920 fora do orçamento original.<br><strong>Contingência deve estar em caixa líquido</strong> — não em estimativa, não em crédito. Se não tem o valor disponível antes de começar, adie o projeto.</div></div>
+
   <h2>Custo por m² por Mercado</h2>
   <div class="table-wrap"><table>
     <tr><th>Nível de Mercado</th><th>SFR (custo/m²)</th><th>Duplex (custo/m²)</th></tr>
@@ -566,85 +600,183 @@
     </div>
   </div>
 
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Os custos de referência são para projetos de acabamento intermediário padrão</strong> — plantas convencionais, materiais de qualidade média, especificações típicas do mercado. Para projetos com plantas customizadas, acabamentos premium ou lotes com condições especiais, obtenha orçamento completo com o empreiteiro antes de qualquer decisão.</div></div>
+
   <div id="calc-wrapper">
     <div id="calc-header">
-      <h2>Pro Forma Interativa</h2>
-      <p>Construção do Zero — Para Investidores Brasileiros | Os resultados atualizam automaticamente</p>
+      <h2>🧮 Pro Forma Interativa — 3 Cenários</h2>
+      <p>Construção do Zero | Selecione o cenário, insira os números, veja o retorno em tempo real</p>
     </div>
     <div id="calc-body">
-      <div class="calc-section">
-        <div class="calc-section-title">📍 Custos do Projeto</div>
-        <div class="input-grid cols2">
-          <div class="field"><label>Preço do Terreno (US$)</label><input type="number" id="c-land" value="75000" oninput="calc()"></div>
-          <div class="field"><label>Custo de Construção (US$)</label><input type="number" id="c-const" value="195000" oninput="calc()"></div>
-          <div class="field"><label>Custo de Financiamento (US$)</label><input type="number" id="c-fin" value="22000" oninput="calc()"></div>
-          <div class="field"><label>Custos de Carregamento (US$)</label><input type="number" id="c-carry" value="6000" oninput="calc()"></div>
-        </div>
+
+      <!-- SCENARIO TABS -->
+      <div class="calc-tabs">
+        <button class="calc-tab active" onclick="setScenario(1)" id="tab1">🏷️ 1. Construir + Vender</button>
+        <button class="calc-tab" onclick="setScenario(2)" id="tab2">🏠 2. Construir + Alugar</button>
+        <button class="calc-tab" onclick="setScenario(3)" id="tab3">🔄 3. Refinanciar + Alugar</button>
       </div>
+
+      <!-- ── SHARED INPUTS ── -->
       <div class="calc-section">
-        <div class="calc-section-title">🏠 Cenário de Venda</div>
-        <div class="input-grid cols3">
-          <div class="field"><label>ARV — Valor Após Conclusão (US$)</label><input type="number" id="c-arv" value="385000" oninput="calc()"></div>
-          <div class="field"><label>Comissão + Custos de Venda (%)</label><input type="number" id="c-sellpct" value="6" step="0.5" oninput="calc()"></div>
-          <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
-            <label>Retenção FIRPTA (15%)?</label>
-            <button id="firpta-btn" class="on" onclick="toggleFirpta()">✓ FIRPTA ativado</button>
+        <div class="calc-section-title">📍 Custos do Projeto (compartilhado entre os 3 cenários)</div>
+        <div class="input-grid cols2">
+          <div class="field"><label>Terreno (US$)</label><input type="number" id="c-land" value="25000" oninput="calcAll()"></div>
+          <div class="field">
+            <label>Soft Costs — indiretos (US$) <span style="font-weight:400;color:var(--gray-500)">alvará, projeto, taxas, etc.</span></label>
+            <input type="number" id="c-soft" value="15000" oninput="calcAll()">
+          </div>
+          <div class="field">
+            <label>Custo de Carregamento (US$) <span style="font-weight:400;color:var(--gray-500)">juros, seguro, IPTU durante obra</span></label>
+            <input type="number" id="c-carry" value="5000" oninput="calcAll()">
+          </div>
+          <div class="field">
+            <label>Contingência (US$) <span style="font-weight:400;color:var(--gray-500)">imprevistos: solo, materiais, atrasos</span></label>
+            <input type="number" id="c-cont" value="18500" oninput="calcAll()">
+          </div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px dashed var(--gray-200)">
+          <div class="calc-section-title" style="margin-bottom:10px">🔨 Construção — Tamanho × Custo/SF = Total automático</div>
+          <div class="input-grid cols3">
+            <div class="field">
+              <label>Tamanho da construção</label>
+              <div style="display:flex;gap:6px">
+                <input type="number" id="c-size" value="1500" oninput="calcAll()" style="flex:1">
+                <select id="c-unit" onchange="calcAll()" style="width:60px;padding:7px 4px;border:1px solid var(--gray-300);border-radius:6px;font-size:12px">
+                  <option value="sf">SF</option>
+                  <option value="m2">m²</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label>Custo por unidade (US$/<span id="unit-label">SF</span>)</label>
+              <input type="number" id="c-cpersf" value="123" oninput="calcAll()">
+            </div>
+            <div class="field">
+              <label>Custo total de construção (calculado)</label>
+              <span class="derived" id="d-const">US$ 0</span>
+            </div>
+          </div>
+          <div class="input-grid cols2" style="margin-top:10px">
+            <div class="field">
+              <label>Custo total do projeto (calculado)</label>
+              <span class="derived" id="d-total">US$ 0</span>
+            </div>
+            <div class="field">
+              <label style="color:var(--gray-400);font-size:10px">Ref. SF: Orlando mid ~US$192/SF | Tampa mid ~US$205/SF | Citrus Springs ~US$123/SF</label>
+            </div>
           </div>
         </div>
       </div>
-      <div class="calc-section">
-        <div class="calc-section-title">🏦 Cenário DSCR (Refinanciar e Alugar)</div>
-        <div class="input-grid cols3">
-          <div class="field"><label>LTV do Refi DSCR (%)</label><input type="number" id="c-ltv" value="70" step="1" oninput="calc()"></div>
-          <div class="field"><label>Taxa de Juros DSCR (% ao ano)</label><input type="number" id="c-rate" value="8" step="0.25" oninput="calc()"></div>
-          <div class="field"><label>Aluguel Bruto Mensal (US$)</label><input type="number" id="c-rent" value="2200" oninput="calc()"></div>
-          <div class="field"><label>IPTU Mensal (US$)</label><input type="number" id="c-tax" value="350" oninput="calc()"></div>
-          <div class="field"><label>Seguro Mensal (US$)</label><input type="number" id="c-ins" value="150" oninput="calc()"></div>
-          <div class="field"><label>HOA Mensal (US$)</label><input type="number" id="c-hoa" value="0" oninput="calc()"></div>
+
+      <!-- ══ SCENARIO 1: BUILD + SELL ══ -->
+      <div class="scenario-panel active" id="panel-1">
+        <div class="calc-section">
+          <div class="calc-section-title">🏷️ Cenário 1 — Construir e Vender (capital próprio)</div>
+          <div class="input-grid cols3">
+            <div class="field"><label>ARV — Valor de Venda Estimado (US$)</label><input type="number" id="s1-arv" value="260000" oninput="calcAll()"></div>
+            <div class="field"><label>Comissão + Custos de Venda (%)</label><input type="number" id="s1-comm" value="7" step="0.5" oninput="calcAll()"></div>
+            <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
+              <label>Retenção FIRPTA (15% do preço bruto)?</label>
+              <button class="firpta-toggle off" id="f1-btn" onclick="toggleF(1)">✓ Sem FIRPTA (estrutura correta ou preço ≤ US$300K)</button>
+            </div>
+          </div>
+        </div>
+        <div class="result-panel sell">
+          <div class="result-panel-title">📊 Resultado — Cenário 1: Construir + Vender</div>
+          <div class="result-row"><span class="label">Custo total do projeto</span><span class="val" id="s1-r-total">—</span></div>
+          <div class="result-row"><span class="label">Valor de venda (ARV)</span><span class="val" id="s1-r-arv">—</span></div>
+          <div class="result-row"><span class="label">Comissão + custos de venda</span><span class="val" id="s1-r-comm">—</span></div>
+          <div class="result-row" id="s1-firpta-row" style="display:none"><span class="label" style="color:var(--red)">Retenção FIRPTA (15%)</span><span class="val warn" id="s1-r-firpta">—</span></div>
+          <div class="result-row"><span class="label">Receita líquida</span><span class="val" id="s1-r-net">—</span></div>
+          <div class="result-row highlight"><span class="label">Lucro bruto</span><span class="val" id="s1-r-profit">—</span></div>
+          <div class="result-row highlight"><span class="label">Margem bruta (lucro ÷ ARV)</span><span class="val" id="s1-r-margin">—</span></div>
+          <div class="result-row highlight"><span class="label">ROI (lucro ÷ investimento)</span><span class="val" id="s1-r-roi">—</span></div>
+          <div class="result-row"><span class="label" style="font-size:11px">Preço máx. de terreno para margem 20%</span><span class="val info" id="s1-r-maxland">—</span></div>
+        </div>
+        <div class="calc-note">
+          FIRPTA = 0% quando: preço ≤ US$300K + comprador é ocupante-proprietário. Acima disso, protocole Form 8288-B com CPA com 3–6 meses de antecedência para reduzir a retenção.
         </div>
       </div>
 
-      <div class="results-grid">
-        <div class="result-panel sell">
-          <div class="result-panel-title">📊 Cenário: VENDER</div>
-          <div class="result-row"><span class="label">Custo Total do Projeto</span><span class="val" id="r-total"></span></div>
-          <div class="result-row"><span class="label">ARV</span><span class="val" id="r-arv"></span></div>
-          <div class="result-row" id="r-firpta-row"><span class="label">Retenção FIRPTA (15%)</span><span class="val" id="r-firpta" style="color:var(--red)"></span></div>
-          <div class="result-row"><span class="label">Receita Líquida de Venda</span><span class="val" id="r-net"></span></div>
-          <div class="result-row"><span class="label"><strong>Lucro Bruto</strong></span><span class="val" id="r-profit"></span></div>
-          <div class="result-row"><span class="label">Margem Bruta</span><span class="val" id="r-margin"></span></div>
-          <div class="result-row"><span class="label">ROI sobre Caixa (~30% entrada)</span><span class="val" id="r-roi"></span></div>
-          <div class="result-row highlight"><span class="label">Preço Máx. do Terreno*</span><span class="val info" id="r-maxland"></span></div>
-          <div style="font-size:10px;color:var(--gray-500);margin-top:4px">*para atingir margem bruta de 20%</div>
+      <!-- ══ SCENARIO 2: BUILD + RENT (own capital) ══ -->
+      <div class="scenario-panel" id="panel-2">
+        <div class="calc-section">
+          <div class="calc-section-title">🏠 Cenário 2 — Construir e Alugar (capital próprio, sem empréstimo)</div>
+          <div class="input-grid cols3">
+            <div class="field"><label>Aluguel Bruto Mensal (US$)</label><input type="number" id="s2-rent" value="1800" oninput="calcAll()"></div>
+            <div class="field"><label>IPTU Mensal (US$)</label><input type="number" id="s2-tax" value="200" oninput="calcAll()"></div>
+            <div class="field"><label>Seguro Mensal (US$)</label><input type="number" id="s2-ins" value="120" oninput="calcAll()"></div>
+            <div class="field"><label>HOA Mensal (US$)</label><input type="number" id="s2-hoa" value="0" oninput="calcAll()"></div>
+            <div class="field"><label>Gestão + Manutenção + Vacância (%)</label><input type="number" id="s2-exp" value="20" step="1" oninput="calcAll()"></div>
+            <div class="field"><label>ARV projetado para venda futura (US$)</label><input type="number" id="s2-arv" value="260000" oninput="calcAll()"></div>
+            <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
+              <label>FIRPTA em eventual venda futura?</label>
+              <button class="firpta-toggle off" id="f2-btn" onclick="toggleF(2)">✓ Sem FIRPTA projetado</button>
+            </div>
+          </div>
+        </div>
+        <div class="result-panel rent">
+          <div class="result-panel-title">📊 Resultado — Cenário 2: Construir + Alugar (capital próprio)</div>
+          <div class="result-row"><span class="label">Investimento total (capital imobilizado)</span><span class="val" id="s2-r-total">—</span></div>
+          <div class="result-row"><span class="label">Aluguel bruto mensal</span><span class="val" id="s2-r-rent">—</span></div>
+          <div class="result-row"><span class="label">Despesas mensais (IPTU + seguro + HOA + gestão)</span><span class="val" id="s2-r-exp">—</span></div>
+          <div class="result-row highlight"><span class="label">Fluxo de caixa líquido mensal</span><span class="val" id="s2-r-cf">—</span></div>
+          <div class="result-row highlight"><span class="label">Renda líquida anual</span><span class="val" id="s2-r-annual">—</span></div>
+          <div class="result-row highlight"><span class="label">Yield anual (renda ÷ investimento)</span><span class="val" id="s2-r-yield">—</span></div>
+          <div class="result-row" id="s2-firpta-row" style="display:none"><span class="label" style="color:var(--red)">Impacto FIRPTA na venda futura estimada</span><span class="val warn" id="s2-r-firpta">—</span></div>
+          <div class="result-row"><span class="label">Capital recuperável (se vender a ~ARV)</span><span class="val info" id="s2-r-equity">—</span></div>
+        </div>
+        <div class="calc-note">
+          Sem empréstimo = sem PITIA de dívida, sem risco de DSCR. O fluxo de caixa é inteiramente da renda de aluguel menos despesas operacionais. Yield alto = estratégia mais simples para quem tem capital disponível.
+        </div>
+      </div>
+
+      <!-- ══ SCENARIO 3: REFI + RENT ══ -->
+      <div class="scenario-panel" id="panel-3">
+        <div class="calc-section">
+          <div class="calc-section-title">🔄 Cenário 3 — Refinanciar + Alugar (DSCR refi após construção)</div>
+          <div class="input-grid cols3">
+            <div class="field"><label>ARV para cálculo do DSCR (US$)</label><input type="number" id="s3-arv" value="260000" oninput="calcAll()"></div>
+            <div class="field"><label>LTV do Refi DSCR (%)</label><input type="number" id="s3-ltv" value="70" step="1" oninput="calcAll()"></div>
+            <div class="field"><label>Taxa DSCR (% ao ano)</label><input type="number" id="s3-rate" value="8" step="0.25" oninput="calcAll()"></div>
+            <div class="field"><label>Aluguel Bruto Mensal (US$)</label><input type="number" id="s3-rent" value="1800" oninput="calcAll()"></div>
+            <div class="field"><label>IPTU Mensal (US$)</label><input type="number" id="s3-tax" value="200" oninput="calcAll()"></div>
+            <div class="field"><label>Seguro Mensal (US$)</label><input type="number" id="s3-ins" value="120" oninput="calcAll()"></div>
+            <div class="field"><label>HOA Mensal (US$)</label><input type="number" id="s3-hoa" value="0" oninput="calcAll()"></div>
+            <div class="field"><label>Gestão + Manutenção + Vacância (%)</label><input type="number" id="s3-exp" value="20" step="1" oninput="calcAll()"></div>
+            <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
+              <label>FIRPTA em eventual venda futura?</label>
+              <button class="firpta-toggle off" id="f3-btn" onclick="toggleF(3)">✓ Sem FIRPTA projetado</button>
+            </div>
+          </div>
         </div>
         <div class="result-panel refi">
-          <div class="result-panel-title">🏘️ Cenário: REFINANCIAR + ALUGAR</div>
-          <div class="result-row"><span class="label">Valor do Empréstimo DSCR</span><span class="val" id="r-loan"></span></div>
-          <div class="result-row"><span class="label">Parcela P&amp;I Mensal</span><span class="val" id="r-pi"></span></div>
-          <div class="result-row"><span class="label">PITIA Total Mensal</span><span class="val" id="r-pitia"></span></div>
-          <div class="result-row"><span class="label">Aluguel Bruto Mensal</span><span class="val" id="r-rent"></span></div>
-          <div class="result-row"><span class="label"><strong>DSCR</strong></span><span class="val" id="r-dscr"></span></div>
-          <div class="result-row"><span class="label"><strong>Fluxo de Caixa Mensal</strong></span><span class="val" id="r-cf"></span></div>
-          <div class="result-row highlight"><span class="label">Fluxo de Caixa Anual</span><span class="val" id="r-cfy"></span></div>
+          <div class="result-panel-title">📊 Resultado — Cenário 3: Refinanciar + Alugar (BRRRR)</div>
+          <div class="result-row"><span class="label">Custo total do projeto</span><span class="val" id="s3-r-total">—</span></div>
+          <div class="result-row"><span class="label">Empréstimo DSCR (LTV% × ARV)</span><span class="val" id="s3-r-loan">—</span></div>
+          <div class="result-row"><span class="label">Capital preso no imóvel (custo − empréstimo)</span><span class="val" id="s3-r-equity">—</span></div>
+          <div class="result-row"><span class="label">Parcela P&amp;I mensal (30 anos)</span><span class="val" id="s3-r-pi">—</span></div>
+          <div class="result-row"><span class="label">PITIA total mensal</span><span class="val" id="s3-r-pitia">—</span></div>
+          <div class="result-row"><span class="label">Aluguel bruto mensal</span><span class="val" id="s3-r-rent">—</span></div>
+          <div class="result-row highlight"><span class="label">DSCR</span><span class="val" id="s3-r-dscr">—</span></div>
+          <div class="result-row highlight"><span class="label">Fluxo de caixa mensal</span><span class="val" id="s3-r-cf">—</span></div>
+          <div class="result-row highlight"><span class="label">Fluxo de caixa anual</span><span class="val" id="s3-r-cfy">—</span></div>
+          <div class="result-row" id="s3-firpta-row" style="display:none"><span class="label" style="color:var(--red)">Impacto FIRPTA na venda futura estimada</span><span class="val warn" id="s3-r-firpta">—</span></div>
+        </div>
+        <div class="calc-note">
+          BRRRR: o empréstimo DSCR recupera parte do capital investido. Capital preso = o que sobra no imóvel (seu equity). DSCR ≥ 1,25 é o mínimo da maioria dos credores.
         </div>
       </div>
-      <div class="calc-note">Calculadora para fins educacionais. Consulte sempre um CPA e advogado imobiliário antes de decisões de investimento.</div>
-    </div>
-  </div>
 
-  <h2 style="margin-top:32px">Scorecard — Prosseguir ou Não?</h2>
-  <div class="table-wrap"><table>
-    <tr><th>Critério</th><th>Meta Mínima</th><th>Resultado</th><th>Status</th></tr>
-    <tr><td>Margem bruta (venda)</td><td>≥ 20% do ARV</td><td id="sc-margin">—</td><td id="sc-margin-s">—</td></tr>
-    <tr><td>DSCR (refinanciar)</td><td>≥ 1,25</td><td id="sc-dscr">—</td><td id="sc-dscr-s">—</td></tr>
-    <tr><td>Fluxo de caixa mensal</td><td>≥ US$0</td><td id="sc-cf">—</td><td id="sc-cf-s">—</td></tr>
-  </table></div>
+    </div><!-- /calc-body -->
+  </div><!-- /calc-wrapper -->
 
-  <h2>Regras de Bolso</h2>
+  <h2 style="margin-top:32px">Regras de Bolso</h2>
   <div class="table-wrap"><table>
     <tr><th>Regra</th><th>Fórmula</th><th>Para Que Serve</th></tr>
     <tr><td><strong>Regra dos 70%</strong></td><td>Custo Total ≤ ARV × 70%</td><td>Triagem rápida para saída por venda</td></tr>
     <tr><td><strong>Regra do 1%</strong></td><td>Aluguel Mensal ÷ Custo Total ≥ 1%</td><td>Triagem rápida para saída por aluguel</td></tr>
+    <tr><td><strong>FIRPTA = 0%</strong></td><td>Preço ≤ US$300K + comprador ocupante-proprietário</td><td>Eliminar retenção automaticamente</td></tr>
   </table></div>
 </section>
 
@@ -672,16 +804,36 @@
     <tr><td>Gestão contínua</td><td>Nenhuma após o fechamento</td><td>Administradora ou autogestão</td></tr>
   </table></div>
 
-  <h2>FIRPTA — Retenção na Venda por Estrangeiro</h2>
-  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>FIRPTA (Foreign Investment in Real Property Tax Act)</strong> — A seguradora de título retém 15% do preço bruto de venda. Não é o imposto final — é um adiantamento. Você pode recuperar parte com a declaração fiscal.</div></div>
+  <h2>FIRPTA — O que É, Como Funciona e Como Reduzir</h2>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>FIRPTA é uma retenção (adiantamento), não o imposto final.</strong> A seguradora retém 15% do preço bruto como garantia para o IRS. Você declara o imposto real no ano seguinte — se retiveram mais do que o imposto devido, você recebe a diferença de volta.</div></div>
+
+  <h3>Como funciona na prática</h3>
   <div class="table-wrap"><table>
-    <tr><th>Preço de Venda</th><th>Uso pelo Comprador</th><th>Retenção</th></tr>
-    <tr><td>≤ US$300.000</td><td>Comprador é ocupante-proprietário</td><td class="tag-green">0%</td></tr>
+    <tr><th>Passo</th><th>O que acontece</th><th>Exemplo (venda de US$300K)</th></tr>
+    <tr><td>1. Fechamento</td><td>Seguradora retém 15% do preço bruto</td><td>−US$45.000 retidos</td></tr>
+    <tr><td>2. Repasse ao IRS</td><td>Seguradora envia ao IRS em até 20 dias</td><td>IRS recebe US$45.000</td></tr>
+    <tr><td>3. Declaração anual</td><td>CPA calcula imposto real sobre o lucro</td><td>Lucro: US$50K → imposto: ~US$10K</td></tr>
+    <tr><td>4. Restituição</td><td>IRS devolve o excesso</td><td class="tag-green">US$35.000 de volta</td></tr>
+  </table></div>
+
+  <h3>Alíquotas de Retenção</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Preço de Venda</th><th>Condição</th><th>Retenção</th></tr>
+    <tr><td><strong>≤ US$300.000</strong></td><td><strong>Comprador é ocupante-proprietário</strong></td><td class="tag-green"><strong>0% ✅</strong></td></tr>
     <tr><td>US$300K–US$1M</td><td>Comprador é ocupante-proprietário</td><td class="tag-yellow">10%</td></tr>
     <tr><td>Qualquer valor</td><td>Investimento / aluguel</td><td class="tag-red">15%</td></tr>
-    <tr><td>Qualquer valor</td><td>Com Certificado de Retenção (Form 8288-B)</td><td class="tag-green">Reduzido</td></tr>
+    <tr><td>Qualquer valor</td><td>Com Certificado de Retenção aprovado (Form 8288-B)</td><td class="tag-green">Reduzido ao imposto estimado</td></tr>
   </table></div>
-  <div class="callout info"><div class="icon">💡</div><div class="body">Protocole o <strong>Formulário IRS 8288-B</strong> pelo menos 3–6 meses antes do fechamento para reduzir a retenção à sua obrigação fiscal real. Solicite ao seu CPA.</div></div>
+
+  <h3>3 Caminhos para Reduzir ou Eliminar o FIRPTA</h3>
+  <div class="table-wrap"><table>
+    <tr><th>#</th><th>Caminho</th><th>Como funciona</th><th>Prazo/Custo</th></tr>
+    <tr><td class="tag-green"><strong>1</strong></td><td><strong>Vender ≤ US$300K para ocupante</strong></td><td>Retenção = 0% automaticamente. Mercados de entrada (Citrus Springs, Jacksonville, San Antonio) naturalmente se enquadram.</td><td class="tag-green">Nenhuma ação necessária</td></tr>
+    <tr><td class="tag-yellow"><strong>2</strong></td><td><strong>Formulário 8288-B</strong></td><td>CPA solicita ao IRS que retenha apenas o imposto estimado real (ex: 3%–5% em vez de 15%). Precisa de aprovação prévia.</td><td>Protocolar 3–6 meses antes. Custo: US$500–US$1.500 CPA</td></tr>
+    <tr><td class="tag-green"><strong>3</strong></td><td><strong>Refinanciar + Alugar (BRRRR)</strong></td><td>Sem venda = sem FIRPTA. Diferimento total. Eventual saída via 1031 Exchange reinveste sem pagar imposto naquele momento.</td><td>Nenhum custo imediato</td></tr>
+  </table></div>
+
+  <div class="callout info"><div class="icon">🏗️</div><div class="body"><strong>Nota sobre LLC e FIRPTA:</strong> Uma LLC de sócio único estrangeiro é tratada pelo IRS como entidade transparente — o FIRPTA se aplica ao sócio estrangeiro da mesma forma. A LLC sozinha <strong>não elimina</strong> o FIRPTA. O que elimina é o preço de venda (≤ US$300K + ocupante-proprietário), o Form 8288-B aprovado, ou simplesmente não vender (BRRRR).</div></div>
 
   <h2>Guia de Decisão</h2>
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0">
@@ -1367,6 +1519,97 @@ Please confirm receipt.
   </table></div>
 </section>
 
+<!-- ══════════════════════════════════════ EXEMPLOS ══ -->
+<section class="section" id="sec-exemplos">
+  <div class="section-header">
+    <div class="icon">📍</div>
+    <div class="info">
+      <div class="hero-tag">Projetos Reais</div>
+      <h1>Exemplos Práticos — Do Terreno ao Recebimento Final</h1>
+      <div class="desc">Números reais, cronogramas reais, FIRPTA real — para você visualizar a operação completa antes de começar</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">💡</div><div class="body">Esses exemplos respondem as perguntas que mais surgem: Quanto de capital preciso? Quanto tempo meu dinheiro fica imobilizado? Qual o lucro real? Quando o FIRPTA me afeta?</div></div>
+
+  <h2>Exemplo 1 — Citrus Springs, FL (Mercado de Entrada)</h2>
+  <p><strong>Projeto:</strong> SFR 3/2 (~140 m²) | <strong>Estratégia:</strong> Construir e vender | <strong>Capital próprio</strong> (sem empréstimo de construção)</p>
+
+  <h3>Investimento</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Valor</th></tr>
+    <tr><td>Compra do terreno</td><td>US$25.000</td></tr>
+    <tr><td>Construção (acabamento intermediário padrão)</td><td>US$185.000</td></tr>
+    <tr><td class="tag-yellow"><strong>Investimento total</strong></td><td class="tag-yellow"><strong>US$210.000</strong></td></tr>
+  </table></div>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body">O valor de US$185.000 cobre hard costs, soft costs e contingência de ~10%. Para projetos com plantas customizadas ou acabamentos diferenciados, valide com orçamento completo do empreiteiro antes de comprar o terreno.</div></div>
+
+  <h3>Cronograma</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Fase</th><th>Duração</th><th>O que acontece</th></tr>
+    <tr><td>Compra do terreno</td><td>15–30 dias</td><td>Due diligence, contrato, fechamento</td></tr>
+    <tr><td>Aprovação de projeto + permits</td><td>60–120 dias</td><td>Plantas, submissão ao condado, alvará</td></tr>
+    <tr><td>Construção</td><td>6–8 meses</td><td>Fundação → estrutura → MEP → acabamentos → CO</td></tr>
+    <tr><td>Venda e fechamento</td><td>30–60 dias</td><td>MLS, oferta, contrato, fechamento</td></tr>
+    <tr class="highlight"><td><strong>Total estimado</strong></td><td><strong>10–14 meses</strong></td><td><strong>Do início ao recebimento na conta</strong></td></tr>
+  </table></div>
+
+  <h3>FIRPTA — Retenção = US$0 Neste Projeto</h3>
+  <div class="callout success"><div class="icon">✅</div><div class="body"><strong>Zero retenção FIRPTA</strong> porque duas condições se combinam:<br>① Preço de venda (US$260.000) ≤ US$300.000 — dentro do limite de isenção<br>② Comprador é ocupante-proprietário (família comprando para morar)<br><br>Quando essas duas condições existem juntas, a lei FIRPTA prevê 0% de retenção — sem nenhuma providência adicional do vendedor.</div></div>
+
+  <h3>Resultado</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Valor</th></tr>
+    <tr><td>Valor de venda estimado</td><td>US$260.000</td></tr>
+    <tr><td>Comissão imobiliária (6%)</td><td>−US$15.600</td></tr>
+    <tr><td>Custos de fechamento (1%)</td><td>−US$2.600</td></tr>
+    <tr><td>Investimento total</td><td>−US$210.000</td></tr>
+    <tr><td class="tag-green"><strong>Lucro bruto estimado</strong></td><td class="tag-green"><strong>US$31.800</strong></td></tr>
+    <tr><td class="tag-green"><strong>ROI estimado</strong></td><td class="tag-green"><strong>~15% em 10–14 meses</strong></td></tr>
+  </table></div>
+
+  <div class="callout success"><div class="icon">🎯</div><div class="body"><strong>Versão simplificada (sem dedução de comissões):</strong><br>US$260.000 − US$210.000 = <strong>US$50.000 lucro bruto | ROI: 23,8%</strong><br>Use essa versão como meta; a versão com comissões deduzidas (US$31.800) para planejamento conservador.</div></div>
+
+  <h3>Resumo Executivo — Citrus Springs</h3>
+  <div class="table-wrap"><table>
+    <tr><td><strong>Investimento total</strong></td><td><strong>US$210.000</strong></td></tr>
+    <tr><td>Valor de venda estimado</td><td>US$260.000</td></tr>
+    <tr><td>Lucro bruto estimado</td><td>US$31.800–US$50.000</td></tr>
+    <tr><td>ROI estimado</td><td class="tag-green">15%–24%</td></tr>
+    <tr><td>Prazo estimado</td><td>10–14 meses</td></tr>
+    <tr><td>Retenção FIRPTA</td><td class="tag-green">US$0 (preço ≤ US$300K + comprador ocupante)</td></tr>
+  </table></div>
+
+  <hr>
+
+  <h2>Exemplo 2 — Orlando (Ocoee), FL (Mercado Intermediário)</h2>
+  <p><strong>Projeto:</strong> SFR 2.400 SF | <strong>Estratégia:</strong> Construir e refinanciar — alugar (BRRRR) | <strong>Hard money + DSCR refi</strong></p>
+
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Valor</th></tr>
+    <tr><td>Terreno (Ocoee)</td><td>US$74.275</td></tr>
+    <tr><td>Hard costs + GC markup</td><td>US$407.905</td></tr>
+    <tr><td>Soft costs (projeto, alvarás, taxas)</td><td>US$75.400</td></tr>
+    <tr><td>Financiamento (hard money)</td><td>US$62.480</td></tr>
+    <tr><td class="tag-yellow"><strong>Custo total</strong></td><td class="tag-yellow"><strong>US$620.060</strong></td></tr>
+    <tr><td>FIRPTA</td><td class="tag-green">Diferido — sem venda, sem FIRPTA</td></tr>
+    <tr><td>Fluxo de caixa mensal</td><td class="tag-red">−US$2.032 (build de patrimônio LP)</td></tr>
+  </table></div>
+
+  <hr>
+
+  <h2>Comparação dos Dois Exemplos</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Fator</th><th>Citrus Springs</th><th>Orlando (Ocoee)</th></tr>
+    <tr><td>Investimento</td><td>US$210.000</td><td>US$620.000</td></tr>
+    <tr><td>Estratégia</td><td>Flip</td><td>BRRRR</td></tr>
+    <tr><td>Prazo</td><td>10–14 meses</td><td>14–18 meses</td></tr>
+    <tr><td>Retorno</td><td class="tag-green">US$31K–US$50K lucro</td><td>Patrimônio + CF negativo</td></tr>
+    <tr><td>FIRPTA</td><td class="tag-green">US$0 (isenção automática)</td><td class="tag-green">Diferido (sem venda)</td></tr>
+    <tr><td>Melhor para</td><td>Capital disponível, retorno rápido</td><td>Construção de patrimônio LP</td></tr>
+  </table></div>
+</section>
+
 <!-- ══════════════════════════════════════ MERCADOS FL ══ -->
 <section class="section" id="sec-mercados-fl">
   <div class="section-header">
@@ -1747,7 +1990,7 @@ Please confirm receipt.
 
 <script>
 // ─── NAV ───────────────────────────────────────────────────────
-const sections = ['overview','diligence','financing','budget','calculator','exits','legal','demolish','obra','propriedade','portfolio','erros','templates','mercados-fl','tipos-projeto','markets','tabelas','glossary'];
+const sections = ['overview','diligence','financing','budget','calculator','exits','legal','demolish','obra','propriedade','portfolio','erros','templates','exemplos','mercados-fl','tipos-projeto','markets','tabelas','glossary'];
 function show(id) {
   sections.forEach(s => {
     document.getElementById('sec-'+s).classList.toggle('active', s===id);
@@ -1838,87 +2081,145 @@ cl('cl-erros-prot', [
 ]);
 
 // ─── CALCULATOR ────────────────────────────────────────────────
-let firptaOn = true;
-
-function toggleFirpta() {
-  firptaOn = !firptaOn;
-  const btn = document.getElementById('firpta-btn');
-  btn.className = firptaOn ? 'on' : 'off';
-  btn.textContent = firptaOn ? '✓ FIRPTA ativado' : 'FIRPTA desativado';
-  calc();
-}
+const firptaState = { 1: false, 2: false, 3: false };
 
 function fmt(n) {
   return 'US$ ' + Math.round(n).toLocaleString('pt-BR');
 }
 function pct(n) {
-  return (n*100).toFixed(1) + '%';
+  return (n * 100).toFixed(1) + '%';
 }
 function setEl(id, val, cls) {
   const el = document.getElementById(id);
-  if(el) { el.textContent = val; el.className = 'val' + (cls ? ' '+cls : ''); }
+  if (el) { el.textContent = val; el.className = 'val' + (cls ? ' ' + cls : ''); }
 }
 
-function calc() {
-  const land   = parseFloat(document.getElementById('c-land').value)||0;
-  const cst    = parseFloat(document.getElementById('c-const').value)||0;
-  const fin    = parseFloat(document.getElementById('c-fin').value)||0;
-  const carry  = parseFloat(document.getElementById('c-carry').value)||0;
-  const arv    = parseFloat(document.getElementById('c-arv').value)||0;
-  const sellPct= parseFloat(document.getElementById('c-sellpct').value)||6;
-  const ltv    = parseFloat(document.getElementById('c-ltv').value)||70;
-  const rate   = parseFloat(document.getElementById('c-rate').value)||8;
-  const rent   = parseFloat(document.getElementById('c-rent').value)||0;
-  const tax    = parseFloat(document.getElementById('c-tax').value)||0;
-  const ins    = parseFloat(document.getElementById('c-ins').value)||0;
-  const hoa    = parseFloat(document.getElementById('c-hoa').value)||0;
+function setScenario(n) {
+  [1, 2, 3].forEach(i => {
+    document.getElementById('tab' + i).classList.toggle('active', i === n);
+    document.getElementById('panel-' + i).classList.toggle('active', i === n);
+  });
+  calcAll();
+}
 
-  const total      = land + cst + fin + carry;
-  const sellCosts  = arv * (sellPct/100);
-  const firptaAmt  = firptaOn ? arv * 0.15 : 0;
-  const netSale    = arv - sellCosts - firptaAmt;
-  const grossPro   = netSale - total;
-  const margin     = arv > 0 ? grossPro/arv : 0;
-  const cashIn     = total * 0.3;
-  const roi        = cashIn > 0 ? grossPro/cashIn : 0;
-  const maxLand    = arv*(1 - sellPct/100) - cst - fin - carry - arv*0.20;
+function toggleF(n) {
+  firptaState[n] = !firptaState[n];
+  const on = firptaState[n];
+  const btn = document.getElementById('f' + n + '-btn');
+  if (btn) {
+    btn.className = 'firpta-toggle ' + (on ? 'on' : 'off');
+    btn.textContent = on
+      ? '⚠ FIRPTA ativado (15% retenção)'
+      : '✓ Sem FIRPTA (estrutura correta ou preço ≤ US$300K)';
+  }
+  // show/hide FIRPTA rows for scenarios 2 and 3 (scenario 1 handled in calcAll)
+  const row = document.getElementById('s' + n + '-firpta-row');
+  if (row) row.style.display = on ? '' : 'none';
+  calcAll();
+}
 
-  const loan   = arv * (ltv/100);
-  const r      = rate/100/12;
-  const n      = 360;
-  const pi     = r>0 ? loan*(r*Math.pow(1+r,n))/(Math.pow(1+r,n)-1) : 0;
-  const pitia  = pi + tax + ins + hoa;
-  const dscr   = pitia > 0 ? rent/pitia : 0;
-  const mgmt   = rent*0.09;
-  const rep    = rent*0.05;
-  const capex  = rent*0.05;
-  const cf     = rent - pitia - mgmt - rep - capex;
+function calcAll() {
+  // ── shared inputs ──
+  const land  = parseFloat(document.getElementById('c-land').value)  || 0;
+  const soft  = parseFloat(document.getElementById('c-soft').value)  || 0;
+  const carry = parseFloat(document.getElementById('c-carry').value) || 0;
+  const cont  = parseFloat(document.getElementById('c-cont').value)  || 0;
+  const size  = parseFloat(document.getElementById('c-size').value)  || 0;
+  const unit  = document.getElementById('c-unit').value; // 'sf' or 'm2'
+  const cpersf = parseFloat(document.getElementById('c-cpersf').value) || 0;
 
-  // render
-  setEl('r-total', fmt(total));
-  setEl('r-arv', fmt(arv));
-  document.getElementById('r-firpta-row').style.display = firptaOn ? '' : 'none';
-  setEl('r-firpta', '−' + fmt(firptaAmt));
-  setEl('r-net', fmt(netSale));
-  setEl('r-profit', fmt(grossPro), grossPro > 0 ? 'ok' : 'warn');
-  setEl('r-margin', pct(margin) + (margin>=0.20 ? ' ✓' : ' ⚠ meta: 20%'), margin>=0.20 ? 'ok' : 'warn');
-  setEl('r-roi', pct(roi) + (roi>=0.30 ? ' ✓' : ' ⚠ meta: 30%'), roi>=0.30 ? 'ok' : 'warn');
-  setEl('r-maxland', fmt(Math.max(0,maxLand)), 'info');
-  setEl('r-loan', fmt(loan));
-  setEl('r-pi', fmt(pi) + '/mês');
-  setEl('r-pitia', fmt(pitia) + '/mês');
-  setEl('r-rent', fmt(rent) + '/mês');
-  setEl('r-dscr', dscr.toFixed(2) + (dscr>=1.25 ? ' ✓' : dscr>=1.0 ? ' ⚠ <1,25' : ' ✗'), dscr>=1.25 ? 'ok' : 'warn');
-  setEl('r-cf', fmt(cf) + '/mês', cf>=0 ? 'ok' : 'warn');
-  setEl('r-cfy', fmt(cf*12) + '/ano', cf>=0 ? 'ok' : 'warn');
+  // convert m² → SF if needed (1 m² = 10.7639 SF)
+  const sizeInSF = unit === 'm2' ? size * 10.7639 : size;
+  const construction = sizeInSF * cpersf;
+  const total = land + construction + soft + carry + cont;
 
-  // scorecard
-  document.getElementById('sc-margin').textContent = pct(margin);
-  document.getElementById('sc-margin-s').innerHTML = margin>=0.20 ? '<span class="tag-green">✓ Aprovado</span>' : '<span class="tag-red">✗ Abaixo</span>';
-  document.getElementById('sc-dscr').textContent = dscr.toFixed(2);
-  document.getElementById('sc-dscr-s').innerHTML = dscr>=1.25 ? '<span class="tag-green">✓ Aprovado</span>' : dscr>=1.0 ? '<span class="tag-yellow">⚠ Abaixo</span>' : '<span class="tag-red">✗ Negativo</span>';
-  document.getElementById('sc-cf').textContent = fmt(cf) + '/mês';
-  document.getElementById('sc-cf-s').innerHTML = cf>=0 ? '<span class="tag-green">✓ Positivo</span>' : '<span class="tag-red">✗ Negativo</span>';
+  // update derived display fields
+  const dConst = document.getElementById('d-const');
+  const dTotal = document.getElementById('d-total');
+  if (dConst) dConst.textContent = fmt(construction);
+  if (dTotal) dTotal.textContent = fmt(total);
+
+  // ── scenario 1: build + sell ──
+  const s1arv    = parseFloat(document.getElementById('s1-arv').value)  || 0;
+  const s1comm   = parseFloat(document.getElementById('s1-comm').value) || 0;
+  const f1on     = firptaState[1];
+
+  const s1sellCosts = s1arv * (s1comm / 100);
+  const s1firpta    = f1on ? s1arv * 0.15 : 0;
+  const s1net       = s1arv - s1sellCosts - s1firpta;
+  const s1profit    = s1net - total;
+  const s1margin    = s1arv > 0 ? s1profit / s1arv : 0;
+  const s1roi       = total > 0 ? s1profit / total : 0;
+  const s1maxLand   = s1arv * (1 - s1comm / 100) - construction - soft - carry - cont - s1arv * 0.20;
+
+  setEl('s1-r-total',   fmt(total));
+  setEl('s1-r-arv',     fmt(s1arv));
+  setEl('s1-r-comm',    '−' + fmt(s1sellCosts));
+  const s1fRow = document.getElementById('s1-firpta-row');
+  if (s1fRow) s1fRow.style.display = f1on ? '' : 'none';
+  setEl('s1-r-firpta',  '−' + fmt(s1firpta));
+  setEl('s1-r-net',     fmt(s1net));
+  setEl('s1-r-profit',  fmt(s1profit),  s1profit >= 0 ? 'ok' : 'warn');
+  setEl('s1-r-margin',  pct(s1margin)  + (s1margin  >= 0.20 ? ' ✓' : ' ⚠ meta: 20%'), s1margin  >= 0.20 ? 'ok' : 'warn');
+  setEl('s1-r-roi',     pct(s1roi)     + (s1roi     >= 0.20 ? ' ✓' : ' ⚠ meta: 20%'), s1roi     >= 0.20 ? 'ok' : 'warn');
+  setEl('s1-r-maxland', fmt(Math.max(0, s1maxLand)), 'info');
+
+  // ── scenario 2: build + rent (own capital) ──
+  const s2rent = parseFloat(document.getElementById('s2-rent').value) || 0;
+  const s2tax  = parseFloat(document.getElementById('s2-tax').value)  || 0;
+  const s2ins  = parseFloat(document.getElementById('s2-ins').value)  || 0;
+  const s2hoa  = parseFloat(document.getElementById('s2-hoa').value)  || 0;
+  const s2exp  = parseFloat(document.getElementById('s2-exp').value)  || 0;
+  const f2on   = firptaState[2];
+
+  const s2arv   = parseFloat(document.getElementById('s2-arv').value)  || 0;
+  const s2opExp = s2tax + s2ins + s2hoa + s2rent * (s2exp / 100);
+  const s2cf    = s2rent - s2opExp;
+  const s2annual = s2cf * 12;
+  const s2yield  = total > 0 ? s2annual / total : 0;
+  const s2firpta = f2on ? s2arv * 0.15 : 0;
+
+  setEl('s2-r-total',  fmt(total));
+  setEl('s2-r-rent',   fmt(s2rent) + '/mês');
+  setEl('s2-r-exp',    '−' + fmt(s2opExp) + '/mês');
+  setEl('s2-r-cf',     fmt(s2cf)    + '/mês', s2cf    >= 0 ? 'ok' : 'warn');
+  setEl('s2-r-annual', fmt(s2annual) + '/ano', s2annual >= 0 ? 'ok' : 'warn');
+  setEl('s2-r-yield',  pct(s2yield) + (s2yield >= 0.06 ? ' ✓' : ' ⚠ meta: 6%'), s2yield >= 0.06 ? 'ok' : 'warn');
+  setEl('s2-r-firpta', '⚠ ' + fmt(s2firpta) + ' retidos na venda futura');
+  setEl('s2-r-equity', fmt(s2arv > 0 ? s2arv : total));
+
+  // ── scenario 3: refi + rent (BRRRR / DSCR) ──
+  const s3arv  = parseFloat(document.getElementById('s3-arv').value)  || 0;
+  const s3ltv  = parseFloat(document.getElementById('s3-ltv').value)  || 70;
+  const s3rate = parseFloat(document.getElementById('s3-rate').value) || 8;
+  const s3rent = parseFloat(document.getElementById('s3-rent').value) || 0;
+  const s3tax  = parseFloat(document.getElementById('s3-tax').value)  || 0;
+  const s3ins  = parseFloat(document.getElementById('s3-ins').value)  || 0;
+  const s3hoa  = parseFloat(document.getElementById('s3-hoa').value)  || 0;
+  const s3exp  = parseFloat(document.getElementById('s3-exp').value)  || 0;
+  const f3on   = firptaState[3];
+
+  const s3loan   = s3arv * (s3ltv / 100);
+  const s3r      = s3rate / 100 / 12;
+  const s3n      = 360;
+  const s3pi     = s3r > 0 ? s3loan * (s3r * Math.pow(1 + s3r, s3n)) / (Math.pow(1 + s3r, s3n) - 1) : 0;
+  const s3pitia  = s3pi + s3tax + s3ins + s3hoa;
+  const s3opExp  = s3rent * (s3exp / 100);
+  const s3cf     = s3rent - s3pitia - s3opExp;
+  const s3dscr   = s3pitia > 0 ? s3rent / s3pitia : 0;
+  const s3equity = total - s3loan;
+  const s3firpta = f3on ? s3arv * 0.15 : 0;
+
+  setEl('s3-r-total',  fmt(total));
+  setEl('s3-r-loan',   fmt(s3loan));
+  setEl('s3-r-equity', fmt(s3equity), s3equity >= 0 ? '' : 'warn');
+  setEl('s3-r-pi',     fmt(s3pi)    + '/mês');
+  setEl('s3-r-pitia',  fmt(s3pitia) + '/mês');
+  setEl('s3-r-rent',   fmt(s3rent)  + '/mês');
+  setEl('s3-r-dscr',   s3dscr.toFixed(2) + (s3dscr >= 1.25 ? ' ✓' : s3dscr >= 1.0 ? ' ⚠ <1,25' : ' ✗'), s3dscr >= 1.25 ? 'ok' : 'warn');
+  setEl('s3-r-cf',     fmt(s3cf)    + '/mês', s3cf >= 0 ? 'ok' : 'warn');
+  setEl('s3-r-cfy',    fmt(s3cf * 12) + '/ano', s3cf >= 0 ? 'ok' : 'warn');
+  setEl('s3-r-firpta', '⚠ ' + fmt(s3firpta) + ' retidos na venda futura');
 }
 
 // ─── SCROLL PROGRESS ───────────────────────────────────────────
@@ -1934,7 +2235,7 @@ window.addEventListener('scroll', function() {
 });
 
 // init
-calc();
+calcAll();
 </script>
 </body>
 </html>
