@@ -208,6 +208,13 @@
     <a href="#" onclick="show('legal')" id="nav-legal">⚖️ Jurídico &amp; Fiscal</a>
     <a href="#" onclick="show('demolish')" id="nav-demolish">🏚️ Demolir &amp; Reconstruir</a>
 
+    <div class="section-label" style="margin-top:16px">Operações &amp; Escala</div>
+    <a href="#" onclick="show('obra')" id="nav-obra">🏗️ Gestão da Obra</a>
+    <a href="#" onclick="show('propriedade')" id="nav-propriedade">🏢 Gestão de Propriedade</a>
+    <a href="#" onclick="show('portfolio')" id="nav-portfolio">📈 Escalando o Portfólio</a>
+    <a href="#" onclick="show('erros')" id="nav-erros">⚠️ Erros Comuns</a>
+    <a href="#" onclick="show('templates')" id="nav-templates">✉️ Templates em Inglês</a>
+
     <div class="section-label" style="margin-top:16px">Referência</div>
     <a href="#" onclick="show('markets')" id="nav-markets">🗺️ Comparativo de Mercados</a>
     <a href="#" onclick="show('glossary')" id="nav-glossary">📖 Glossário</a>
@@ -239,6 +246,11 @@
     <div class="card" onclick="show('exits')"><div class="card-icon">🚪</div><div class="card-title">Estratégias de Saída</div><div class="card-desc">Vender vs. refinanciar e alugar — guia de decisão com FIRPTA</div></div>
     <div class="card" onclick="show('legal')"><div class="card-icon">⚖️</div><div class="card-title">Jurídico &amp; Fiscal</div><div class="card-desc">LLC, ITIN, FIRPTA e guia completo do CBE / Banco Central</div></div>
     <div class="card" onclick="show('demolish')"><div class="card-icon">🏚️</div><div class="card-title">Demolir &amp; Reconstruir</div><div class="card-desc">Comprar imóvel antigo, demolir e construir novo — múltiplos de 2x–3x</div></div>
+    <div class="card" onclick="show('obra')"><div class="card-icon">🏗️</div><div class="card-title">Gestão da Obra</div><div class="card-desc">Como gerenciar a construção remotamente do Brasil — processos, draws e red flags</div></div>
+    <div class="card" onclick="show('propriedade')"><div class="card-icon">🏢</div><div class="card-title">Gestão de Propriedade</div><div class="card-desc">Como encontrar e contratar um property manager para o imóvel nos EUA</div></div>
+    <div class="card" onclick="show('portfolio')"><div class="card-icon">📈</div><div class="card-title">Escalando o Portfólio</div><div class="card-desc">BRRRR repetido — de 1 projeto a 10+ unidades em 5 anos</div></div>
+    <div class="card" onclick="show('erros')"><div class="card-icon">⚠️</div><div class="card-title">Erros Comuns</div><div class="card-desc">Os 12 erros mais custosos do investidor brasileiro nos EUA</div></div>
+    <div class="card" onclick="show('templates')"><div class="card-icon">✉️</div><div class="card-title">Templates em Inglês</div><div class="card-desc">10 modelos prontos de email para corretor, GC, credor e property manager</div></div>
   </div>
 
   <h2>O Ciclo de Desenvolvimento do Zero</h2>
@@ -778,6 +790,514 @@ ARV nova construção ÷ (Compra + Demolição + Construção) ≥ 1,43
   </ol>
 </section>
 
+<!-- ══════════════════════════════════════ GESTÃO DA OBRA ══ -->
+<section class="section" id="sec-obra">
+  <div class="annex-tag">Módulo 9</div>
+  <div class="section-header">
+    <div class="icon">🏗️</div>
+    <div class="info">
+      <h1>Gestão da Obra Remotamente</h1>
+      <div class="desc">Como controlar sua construção nos EUA estando no Brasil — processos, ferramentas e red flags</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Gerenciar uma construção à distância é possível — mas exige <strong>sistemas, não confiança cega</strong>. Investidores bem-sucedidos combinam: GC certo, inspetor independente, cadência semanal e software de gestão.</div></div>
+
+  <h2>Estrutura de Equipe Recomendada</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Papel</th><th>Responsabilidade</th><th>Custo Típico</th></tr>
+    <tr><td><strong>Empreiteiro Geral (GC)</strong></td><td>Executa toda a obra, coordena subempreiteiros</td><td>15%–20% do custo de construção</td></tr>
+    <tr><td><strong>Inspetor Independente</strong></td><td>Valida cada draw antes do pagamento</td><td>US$150–US$350 por inspeção</td></tr>
+    <tr><td><strong>Gerente de Projeto Local</strong></td><td>Seus olhos no canteiro</td><td>US$2.000–US$5.000/mês ou 5%–8%</td></tr>
+    <tr><td><strong>Advogado Imobiliário</strong></td><td>Revisão de contratos e disputas</td><td>US$300–US$500/hora</td></tr>
+  </table></div>
+
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>O inspetor independente é não-negociável</strong> para investidores remotos. O credor de construção normalmente exige um também — então você já paga por isso de qualquer forma.</div></div>
+
+  <h2>Cláusulas Essenciais no Contrato com o GC</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Cláusula</th><th>O que exigir</th></tr>
+    <tr><td>Cronograma de draws</td><td>Por marco concluído — nunca por data</td></tr>
+    <tr><td>Retenção (retainage)</td><td>10% retido até CO emitido</td></tr>
+    <tr><td>Change orders</td><td>Todo change order por escrito e assinado antes da execução</td></tr>
+    <tr><td>Rescisão</td><td>Proprietário pode rescindir com 7 dias se atraso &gt; 30 dias</td></tr>
+    <tr><td>Seguro</td><td>General Liability US$1M + Workers' Comp obrigatórios</td></tr>
+    <tr><td>Lien releases</td><td>Exigido antes de cada pagamento</td></tr>
+  </table></div>
+
+  <h2>Cadência Semanal de Comunicação</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Frequência</th><th>Formato</th><th>Conteúdo</th></tr>
+    <tr><td><strong>Diário</strong></td><td>Foto via WhatsApp</td><td>Progresso do dia</td></tr>
+    <tr><td><strong>Semanal (sexta)</strong></td><td>Relatório escrito + fotos</td><td>% conclusão, próxima etapa, problemas abertos</td></tr>
+    <tr><td><strong>Por marco</strong></td><td>Videochamada</td><td>Review antes de aprovar draw</td></tr>
+    <tr><td><strong>Mensal</strong></td><td>Cronograma atualizado</td><td>Previsão vs. plano original</td></tr>
+  </table></div>
+
+  <h2>Etapas Críticas que Exigem Inspeção</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Etapa</th><th>Por Que é Crítica</th><th>Recomendação</th></tr>
+    <tr><td>Fundação (antes do concreto)</td><td class="tag-red">Irreversível após concreto</td><td>Inspetor independente obrigatório</td></tr>
+    <tr><td>Framing concluído</td><td class="tag-yellow">Define todo o layout</td><td>Videochamada + fotos 360°</td></tr>
+    <tr><td>Rough-in elétrica/hidráulica</td><td class="tag-red">Fica atrás das paredes para sempre</td><td>Inspetor antes de fechar drywall</td></tr>
+    <tr><td>Telhado</td><td class="tag-red">Vazamentos custam US$20K–US$50K</td><td>Inspetor externo + fotos do topo</td></tr>
+    <tr><td>Punch list final</td><td class="tag-yellow">Última chance antes de pagar retenção</td><td>Visita presencial ideal</td></tr>
+  </table></div>
+
+  <h2>Red Flags — Sinais de Alerta do GC</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Sinal</th><th>O Que Pode Significar</th><th>Ação</th></tr>
+    <tr><td class="tag-red">Pede &gt; 25% adiantado</td><td>Fluxo de caixa ruim ou golpista</td><td>Recuse — máximo 10% adiantado</td></tr>
+    <tr><td class="tag-red">Sem seguro Workers' Comp</td><td>Ilegal na maioria dos estados</td><td>Exija comprovante ou troque</td></tr>
+    <tr><td class="tag-red">Para a obra sem aviso</td><td>Possível abandono do projeto</td><td>Acione cláusula de rescisão</td></tr>
+    <tr><td class="tag-red">Não fornece relatórios</td><td>Falta de transparência</td><td>Escale para inspetor independente</td></tr>
+    <tr><td class="tag-red">Pede pagamento em espécie</td><td>Red flag de fraude</td><td>Recuse sempre</td></tr>
+  </table></div>
+
+  <h2>Ferramentas de Gestão Remota</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Ferramenta</th><th>Para Quê</th><th>Custo</th></tr>
+    <tr><td><strong>Buildertrend</strong></td><td>Plano, fotos, orçamento, comunicação, draws</td><td>US$199–US$499/mês</td></tr>
+    <tr><td><strong>CoConstruct</strong></td><td>Similar, ótimo para residencial</td><td>US$99–US$299/mês</td></tr>
+    <tr><td><strong>Google Drive + Fotos</strong></td><td>Gratuito, simples — solução mínima</td><td>Grátis</td></tr>
+    <tr><td><strong>Câmera IP (Wyze, Arlo)</strong></td><td>Monitoramento em tempo real do canteiro</td><td>US$35–US$150</td></tr>
+  </table></div>
+
+  <h2>Checklist — Gestão Remota</h2>
+  <h3>Contrato</h3>
+  <ul class="checklist" id="cl-obra-contrato"></ul>
+  <h3>Durante a Obra</h3>
+  <ul class="checklist" id="cl-obra-obra"></ul>
+  <h3>A Cada Draw</h3>
+  <ul class="checklist" id="cl-obra-draw"></ul>
+</section>
+
+<!-- ══════════════════════════════════════ GESTÃO DE PROPRIEDADE ══ -->
+<section class="section" id="sec-propriedade">
+  <div class="annex-tag">Módulo 10</div>
+  <div class="section-header">
+    <div class="icon">🏢</div>
+    <div class="info">
+      <h1>Gestão de Propriedade para Investidor Remoto</h1>
+      <div class="desc">Como encontrar, contratar e supervisionar um property manager para seu imóvel nos EUA</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Para investidor brasileiro morando no Brasil, <strong>autogestão não é viável</strong>. Property manager é uma despesa operacional obrigatória — inclua no pro forma desde o início.</div></div>
+
+  <h2>Estrutura de Taxas do Property Manager</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Taxa</th><th>Valor Típico</th><th>O Que Cobre</th></tr>
+    <tr><td>Gestão mensal</td><td class="tag-yellow">8%–12% do aluguel bruto</td><td>Coleta, manutenção, relatórios, atendimento</td></tr>
+    <tr><td>Taxa de locação</td><td>50%–100% do 1º mês</td><td>Encontrar e selecionar inquilino</td></tr>
+    <tr><td>Taxa de renovação</td><td>US$150–US$300</td><td>Renovar contrato com inquilino existente</td></tr>
+    <tr><td>Manutenção</td><td>Custo real + 10%–15% markup</td><td>Reparos executados pelo PM</td></tr>
+    <tr><td>Inspeção periódica</td><td>US$75–US$150</td><td>Inspeções semestrais do imóvel</td></tr>
+  </table></div>
+
+  <h2>Exemplo de Custo Real — Duplex US$2.400/mês</h2>
+  <div class="table-wrap"><table>
+    <tr><td>Taxa de gestão (10%)</td><td>US$240/mês</td></tr>
+    <tr><td>Taxa de locação (amortizada)</td><td>US$200/mês</td></tr>
+    <tr><td>Manutenção estimada (5%)</td><td>US$120/mês</td></tr>
+    <tr><td>Reserva de vacância (5%)</td><td>US$120/mês</td></tr>
+    <tr><td><strong>Total de custos</strong></td><td><strong>US$680/mês</strong></td></tr>
+    <tr><td class="tag-green"><strong>Aluguel líquido</strong></td><td class="tag-green"><strong>US$1.720/mês</strong></td></tr>
+  </table></div>
+
+  <h2>Perguntas para Entrevistar o PM</h2>
+  <ul class="checklist" id="cl-pm-interview"></ul>
+
+  <h2>PM de Qualidade vs. Problemático</h2>
+  <div class="table-wrap"><table>
+    <tr><th>PM de Qualidade</th><th>PM Problemático</th></tr>
+    <tr><td class="tag-green">Responde em &lt; 24h</td><td class="tag-red">Demora dias para responder</td></tr>
+    <tr><td class="tag-green">Software profissional (AppFolio, Buildium)</td><td class="tag-red">Relatórios em Excel ou papel</td></tr>
+    <tr><td class="tag-green">Processo de triagem documentado</td><td class="tag-red">Triagem informal ou subjetiva</td></tr>
+    <tr><td class="tag-green">Referências disponíveis prontamente</td><td class="tag-red">Hesita em fornecer referências</td></tr>
+    <tr><td class="tag-green">Contrato transparente</td><td class="tag-red">Taxas escondidas no contrato</td></tr>
+    <tr><td class="tag-green">Relatórios mensais padronizados</td><td class="tag-red">Relatórios esporádicos</td></tr>
+  </table></div>
+
+  <h2>Cláusulas Essenciais no Contrato de PM</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Cláusula</th><th>O Que Exigir</th></tr>
+    <tr><td>Autoridade de manutenção</td><td>PM aprova reparos até US$300–US$500 sem consultar; acima disso: aprovação sua</td></tr>
+    <tr><td>Repasse de fundos</td><td>Aluguel líquido até dia X de cada mês na conta LLC</td></tr>
+    <tr><td>Reserva operacional</td><td>US$500–US$1.500 na conta do imóvel para emergências</td></tr>
+    <tr><td>Rescisão</td><td>Aviso de 30 dias, sem multa rescisória</td></tr>
+    <tr><td>Relatórios fiscais</td><td>Form 1099-MISC anual para declaração de IR nos EUA</td></tr>
+  </table></div>
+
+  <h2>Taxas de Vacância por Mercado (2024–2025)</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Mercado</th><th>Taxa de Vacância</th><th>Prazo Médio para Locar</th></tr>
+    <tr><td>Jacksonville, FL</td><td class="tag-green">4%–6%</td><td>18–28 dias</td></tr>
+    <tr><td>San Antonio, TX</td><td class="tag-green">5%–7%</td><td>20–32 dias</td></tr>
+    <tr><td>Memphis, TN</td><td class="tag-yellow">6%–9%</td><td>22–35 dias</td></tr>
+    <tr><td>Tampa, FL</td><td class="tag-green">3%–5%</td><td>14–22 dias</td></tr>
+    <tr><td>Charlotte, NC</td><td class="tag-green">4%–6%</td><td>18–28 dias</td></tr>
+  </table></div>
+
+  <div class="callout info"><div class="icon">💡</div><div class="body">Para o pro forma, use <strong>vacância de 8%</strong> como premissa conservadora — equivale a ~1 mês vago por ano.</div></div>
+
+  <h2>Reserva de Manutenção</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Tipo de Imóvel</th><th>Reserva Mensal Recomendada</th></tr>
+    <tr><td>SFR novo (&lt; 5 anos)</td><td>0,5%–1% do valor do imóvel/ano</td></tr>
+    <tr><td>Duplex novo (&lt; 5 anos)</td><td>0,75%–1,5% do valor/ano</td></tr>
+    <tr><td>Imóvel existente (&gt; 10 anos)</td><td>1%–2% do valor/ano</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ ESCALANDO O PORTFÓLIO ══ -->
+<section class="section" id="sec-portfolio">
+  <div class="annex-tag">Módulo 11</div>
+  <div class="section-header">
+    <div class="icon">📈</div>
+    <div class="info">
+      <h1>Escalando o Portfólio com BRRRR</h1>
+      <div class="desc">De 1 imóvel a um portfólio rentável — BRRRR repetido em 5 anos</div>
+    </div>
+  </div>
+
+  <div class="callout success"><div class="icon">💡</div><div class="body">O poder do BRRRR está no <strong>refinanciamento</strong>: após construir e alugar, você faz um DSCR refi que extrai boa parte do capital investido — e usa esse capital para o próximo projeto.</div></div>
+
+  <h2>Ciclo BRRRR — Exemplo Duplex Jacksonville, FL</h2>
+  <div class="table-wrap"><table>
+    <tr><td>Terreno</td><td>US$80.000</td></tr>
+    <tr><td>Construção</td><td>US$260.000</td></tr>
+    <tr><td>Custos de fechamento + carry</td><td>US$35.000</td></tr>
+    <tr><td><strong>Total investido</strong></td><td><strong>US$375.000</strong></td></tr>
+    <tr><td>ARV após conclusão</td><td>US$480.000</td></tr>
+    <tr><td>DSCR Refi (75% LTV)</td><td>US$360.000</td></tr>
+    <tr><td class="tag-green"><strong>Capital recuperado</strong></td><td class="tag-green"><strong>US$360.000 (~96% do investido)</strong></td></tr>
+    <tr><td>Fluxo de caixa líquido</td><td>~US$280/mês = US$3.360/ano</td></tr>
+  </table></div>
+
+  <h2>Meta de 5 Anos: 5 Duplexes / 10 Unidades</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Ano</th><th>Imóvel</th><th>ARV</th><th>DSCR Loan</th><th>Capital Reciclado</th></tr>
+    <tr><td>1</td><td>Duplex #1 — Jacksonville</td><td>US$480K</td><td>US$360K</td><td>US$345K</td></tr>
+    <tr><td>2</td><td>Duplex #2 — Memphis</td><td>US$420K</td><td>US$315K</td><td>US$300K</td></tr>
+    <tr><td>3</td><td>Duplex #3 — San Antonio</td><td>US$440K</td><td>US$330K</td><td>US$315K</td></tr>
+    <tr><td>4</td><td>Duplex #4 — Jacksonville</td><td>US$500K</td><td>US$375K</td><td>US$360K</td></tr>
+    <tr><td>5</td><td>Duplex #5 — Tampa</td><td>US$550K</td><td>US$412K</td><td>US$395K</td></tr>
+    <tr><td class="tag-green"><strong>TOTAL</strong></td><td class="tag-green"><strong>5 duplexes / 10 unidades</strong></td><td class="tag-green"><strong>~US$2,4M</strong></td><td>~US$1,8M</td><td></td></tr>
+  </table></div>
+
+  <h2>Resultado ao Final do Ano 5</h2>
+  <div class="table-wrap"><table>
+    <tr><td>Valor Total do Portfólio</td><td class="tag-green">~US$2,4M</td></tr>
+    <tr><td>Dívida Total (DSCR)</td><td>~US$1,8M</td></tr>
+    <tr><td>Patrimônio Líquido (Equity)</td><td class="tag-green">~US$600K</td></tr>
+    <tr><td>Aluguel Bruto/mês</td><td class="tag-green">~US$16.000</td></tr>
+    <tr><td>Fluxo de Caixa Líquido/mês</td><td class="tag-green">~US$1.400–US$1.800</td></tr>
+    <tr><td>Capital original do Brasil</td><td>US$375K (apenas o 1º projeto)</td></tr>
+  </table></div>
+
+  <h2>Estrutura Societária por Fase</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Fase</th><th>Estrutura</th><th>Custo Anual</th></tr>
+    <tr><td>1–2 imóveis</td><td>LLC única no estado do imóvel</td><td>US$500–US$800/ano</td></tr>
+    <tr><td>3–5 imóveis</td><td>Holding LLC (Wyoming/Delaware) + LLCs operacionais por estado</td><td>US$1.500–US$3.000/ano</td></tr>
+    <tr><td>6+ imóveis</td><td>Holding + série de LLCs + LLC de gestão</td><td>US$3.000+/ano</td></tr>
+  </table></div>
+
+  <h2>Regras de Segurança no Portfólio</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Proteção</th><th>Parâmetro Recomendado</th></tr>
+    <tr><td>LTV máximo no refi</td><td>75% — não 80%+ mesmo se credor oferecer</td></tr>
+    <tr><td>Reserva de emergência</td><td>6 meses de P&amp;I de todas as propriedades</td></tr>
+    <tr><td>DSCR mínimo para novo empréstimo</td><td>1,30 (não 1,25 mínimo do credor)</td></tr>
+    <tr><td>Concentração por mercado</td><td>Máximo 40% do portfólio em 1 mercado</td></tr>
+    <tr><td>Cross-collateralization</td><td>Evitar vincular mais de 2 imóveis no mesmo empréstimo</td></tr>
+  </table></div>
+
+  <h2>Estratégias de Saída do Portfólio</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Opção</th><th>Como Funciona</th><th>Melhor Quando</th></tr>
+    <tr><td><strong>Manter e transferir</strong></td><td>Patrimônio familiar de longo prazo</td><td>Objetivo é renda passiva geracional</td></tr>
+    <tr><td><strong>Vender seletivamente</strong></td><td>Vender imóveis de menor performance</td><td>Quer reciclar capital para mercados melhores</td></tr>
+    <tr><td><strong>1031 Exchange</strong></td><td>Vender e reinvestir sem imposto imediato</td><td>Quer upgrade de ativo sem pagar imposto</td></tr>
+    <tr><td><strong>Venda de portfólio</strong></td><td>Vender tudo para investidor institucional</td><td>Quer saída rápida com múltiplos imóveis</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ ERROS COMUNS ══ -->
+<section class="section" id="sec-erros">
+  <div class="annex-tag">Módulo 12</div>
+  <div class="section-header">
+    <div class="icon">⚠️</div>
+    <div class="info">
+      <h1>Erros Comuns do Investidor Brasileiro nos EUA</h1>
+      <div class="desc">Os 12 erros mais custosos — e como evitar cada um deles</div>
+    </div>
+  </div>
+
+  <div class="callout danger"><div class="icon">🚨</div><div class="body">Conhecer esses erros antecipadamente pode poupar <strong>US$30.000–US$200.000+</strong> em prejuízo evitável. São baseados em padrões recorrentes de investidores estrangeiros nos EUA.</div></div>
+
+  <h2>Visão Geral dos 12 Erros</h2>
+  <div class="table-wrap"><table>
+    <tr><th>#</th><th>Erro</th><th>Custo Potencial</th><th>Frequência</th></tr>
+    <tr><td>1</td><td>Investir sem ITIN e LLC adequados</td><td>US$20K–US$100K</td><td class="tag-red">Muito comum</td></tr>
+    <tr><td>2</td><td>Subestimar o custo de construção</td><td>US$30K–US$80K</td><td class="tag-red">Muito comum</td></tr>
+    <tr><td>3</td><td>Não incluir contingência no orçamento</td><td>US$15K–US$50K</td><td class="tag-red">Muito comum</td></tr>
+    <tr><td>4</td><td>Escolher o GC errado</td><td>US$40K–US$150K</td><td class="tag-red">Muito comum</td></tr>
+    <tr><td>5</td><td>Ignorar FIRPTA até o fechamento</td><td>US$30K–US$90K</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>6</td><td>Não entender as obrigações do CBE</td><td>R$1.500–R$250K de multa</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>7</td><td>Risco cambial não gerenciado</td><td>15%–30% do capital</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>8</td><td>Comprar terreno sem due diligence</td><td>US$20K–US$100K</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>9</td><td>Escolher o mercado errado</td><td>US$30K–US$80K</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>10</td><td>Trabalhar com ARV otimista</td><td>US$20K–US$60K</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>11</td><td>Sem equipe local antes de comprar</td><td>US$10K–US$40K</td><td class="tag-green">Moderado</td></tr>
+    <tr><td>12</td><td>Over-leverage no portfólio</td><td class="tag-red">Perda do portfólio</td><td class="tag-green">Moderado</td></tr>
+  </table></div>
+
+  <h2>Os 5 Mais Críticos — Detalhado</h2>
+
+  <h3>Erro #1 — Sem ITIN e LLC</h3>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>O que acontece:</strong> Compra em nome pessoal, sem ITIN ativo. Resultado: sem conta bancária → projeto travado, responsabilidade pessoal ilimitada, credor não processa empréstimo.<br><br><strong>Custo:</strong> Reformular estrutura depois = US$3K–US$8K + 2–4 meses de atraso = US$15K–US$30K em carry adicional.</div></div>
+
+  <h3>Erro #4 — GC Errado</h3>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>O que acontece:</strong> GC abandona a obra no meio, vícios graves ou não paga subempreiteiros (mechanics liens no seu imóvel).<br><br><strong>Custo:</strong> Substituir GC no meio = +20%–30% sobre o restante. Processos de trabalhador sem Workers' Comp = US$50K–US$200K.</div></div>
+
+  <h3>Erro #5 — FIRPTA no Fechamento</h3>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Exemplo real:</strong> Venda por US$420.000 → FIRPTA retém US$63.000 na hora do fechamento. Investidor esperava receber US$420K e recebeu US$357K. Para recuperar o excedente: declaração de IR nos EUA + esperar reembolso do IRS (4–8 meses).<br><br><strong>Solução:</strong> Protocolar Form 8288-B com 3–6 meses de antecedência.</div></div>
+
+  <h3>Erro #7 — Risco Cambial</h3>
+  <div class="callout info"><div class="icon">💡</div><div class="body"><strong>Exemplo:</strong> Capital enviado a R$5,00/USD = US$400K investidos. Lucro de US$80K em USD. Na saída, câmbio a R$4,50/USD = retorno em BRL de apenas 8% em vez dos 20% em USD.<br><br><strong>Proteção:</strong> Manter capital em USD durante o projeto, usar corretoras de câmbio (Wise, Remessa Online, Husky) para remessas.</div></div>
+
+  <h3>Erro #12 — Over-Leverage</h3>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Cenário de risco:</strong> 4 duplexes com DSCR loans a 80% LTV. Vacância sobe para 15% por 3 meses. Todas as 4 propriedades ficam com fluxo negativo simultaneamente. Sem reserva → default → risco de perder o portfólio inteiro.<br><br><strong>Proteção:</strong> LTV máximo 75%, reserva de 6 meses de P&amp;I, DSCR mínimo 1,30.</div></div>
+
+  <h2>Os 5 Erros — Checklist de Proteção</h2>
+  <ul class="checklist" id="cl-erros-prot"></ul>
+</section>
+
+<!-- ══════════════════════════════════════ TEMPLATES ══ -->
+<section class="section" id="sec-templates">
+  <div class="annex-tag">Módulo 13</div>
+  <div class="section-header">
+    <div class="icon">✉️</div>
+    <div class="info">
+      <h1>Templates de Comunicação em Inglês</h1>
+      <div class="desc">10 modelos prontos de emails para o investidor brasileiro se comunicar com corretor, credor, GC e property manager nos EUA</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Use estes templates como ponto de partida — adapte com os dados do seu projeto. Escritos para soar profissional no padrão americano: <strong>direto ao ponto, objetivo, sem prólogos longos</strong>.</div></div>
+
+  <h2>Template 1 — Corretor Imobiliário (Primeiro Contato)</h2>
+  <pre>Subject: Land Investment Inquiry – [City, State]
+
+Hi [Agent Name],
+
+My name is [Your Name], and I'm a Brazilian real estate investor focused
+on ground-up construction in [City]. I'm looking for infill lots or
+tear-down opportunities for SFR or duplex.
+
+My criteria:
+- Budget: Up to US$[X] for land
+- Zoning: R-1, R-2, or equivalent (duplex-ready preferred)
+- ARV target: US$[X]–US$[X] after construction
+
+I close with an LLC and have construction financing in place.
+
+Available for a 15-minute call this week?
+
+Best regards,
+[Your Name] | [LLC Name] | [Phone]</pre>
+
+  <h2>Template 2 — Credor de Construção</h2>
+  <pre>Subject: Construction Loan Inquiry – Foreign National, Ground-Up SFR/Duplex
+
+Hello,
+
+I'm reaching out about your construction loan programs for foreign nationals.
+
+My profile:
+- Nationality: Brazilian (ITIN holder, no SSN)
+- Entity: [LLC Name], formed in [State]
+- Project: Ground-up [SFR / Duplex] in [City, State]
+- Total project cost: US$[X] | Projected ARV: US$[X]
+- LTC requested: [X]%
+
+Could you confirm ITIN borrower acceptance and share a rate sheet?
+
+Thank you,
+[Your Name] | [LLC Name] | [Phone] | [Email]</pre>
+
+  <h2>Template 3 — Solicitação de Cotação ao GC</h2>
+  <pre>Subject: Construction Bid Request – [Address or Project Name]
+
+Hi [GC Name],
+
+I'm requesting a bid for a ground-up construction at [address], [City, State].
+
+Scope:
+- Type: [SFR / Duplex] | Size: ~[X] sq ft
+- Bedrooms/Bathrooms: [X BD / X BA per unit]
+
+Please provide:
+1. Itemized cost breakdown by trade/category
+2. Proposed timeline (start to C.O.)
+3. Milestone-based draw schedule
+4. License number + insurance certificate
+
+Bid deadline: [Date]
+
+Best,
+[Your Name] | [LLC Name] | [Phone] | [Email]</pre>
+
+  <h2>Template 4 — Solicitação de Draw ao Credor</h2>
+  <pre>Subject: Draw Request #[X] – [Project Address] – [LLC Name]
+
+Hello,
+
+Requesting Draw #[X] for the project at [address].
+
+Loan number: [X]
+Draw amount: US$[X]
+Milestone completed: [Description]
+% construction complete: [X]%
+
+Attached:
+- Photos documenting milestone
+- Conditional lien release (GC signed)
+- Updated draw schedule
+
+Please coordinate inspector visit at your earliest convenience.
+
+[Your Name] | [LLC Name] | [Phone] | [Email]</pre>
+
+  <h2>Template 5 — Primeiro Contato com Property Manager</h2>
+  <pre>Subject: Property Management Inquiry – New Construction [SFR / Duplex]
+
+Hi [PM Name],
+
+I'm a Brazilian investor and recently completed construction of a
+[SFR / duplex] at [address].
+
+Questions before we schedule a call:
+1. Experience managing for international owners?
+2. How do you handle fund transfers to foreign-owned LLCs?
+3. Software used for owner reporting?
+4. Current vacancy rate across your portfolio?
+5. Fee structure (management, leasing, renewal)?
+
+Best regards,
+[Your Name] | [LLC Name] | [Phone] | [Email]</pre>
+
+  <h2>Template 6 — Aprovação de Change Order</h2>
+  <pre>Subject: Change Order #[X] – [Project Address] – APPROVED
+
+Hi [GC Name],
+
+Change Order #[X] dated [Date] is APPROVED as submitted.
+
+Amount: US$[X] | Timeline impact: [X] additional days
+
+Please sign and return the attached Change Order form.
+Do NOT proceed until I receive the signed copy.
+
+[Your Name]</pre>
+
+  <h2>Template 7 — Verificação de Referências do GC</h2>
+  <pre>Subject: Reference Check for [GC Company Name]
+
+Hi [Reference Name],
+
+I'm considering hiring [GC Company] for a ground-up project in [City].
+They listed you as a reference. 5 quick questions:
+
+1. What type of project did they build for you?
+2. Was it completed on time and on budget?
+3. How was their communication?
+4. Any major issues? How did they handle them?
+5. Would you hire them again?
+
+Thank you!
+[Your Name] | [Phone]</pre>
+
+  <h2>Template 8 — Wire Transfer (Instruções)</h2>
+  <pre>Subject: Wire Instructions – [LLC Name] – [Project Address]
+
+Please use the following wire instructions:
+
+BENEFICIARY NAME:    [LLC Name]
+BANK NAME:           [Bank Name]
+ACCOUNT NUMBER:      [XXXXXXXXXXXXXX]
+ROUTING NUMBER:      [XXXXXXXXX] (ABA)
+MEMO/REFERENCE:      [Project Address]
+
+Please confirm receipt and anticipated wire date.
+All funds to the LLC account only.
+
+[Your Name] | [LLC Name]</pre>
+
+  <h2>Template 9 — Notificação de Problema ao GC</h2>
+  <pre>Subject: Deficiency Notice #[X] – [Project Address] – Action Required
+
+Hi [GC Name],
+
+During [inspection / photo review] on [Date], the following was identified:
+
+ITEM: [Description]
+LOCATION: [Where in the property]
+
+Required action:
+- Remedy before requesting the next draw
+- Provide a written correction plan within [3 / 5] business days
+- Coordinate re-inspection after correction
+
+Please confirm receipt and your plan of action.
+
+[Your Name] | [LLC Name]</pre>
+
+  <h2>Template 10 — Rescisão de Contrato</h2>
+  <pre>Subject: Notice of Contract Termination – [Property Address]
+
+[GC / PM Name],
+
+This is formal notice of termination of our agreement dated [Date]
+for [address], effective [Date] (30 days from today) per Section [X].
+
+As of termination date:
+- All work to be completed to safe state
+- All materials on-site remain property of [LLC Name]
+- Final accounting of draws vs. work completed will be requested
+- All warranties and lien releases remain in effect
+
+Please confirm receipt.
+
+[Your Name] | [LLC Name] | [Phone]</pre>
+
+  <h2>Vocabulário Essencial — Inglês Imobiliário</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Inglês</th><th>Português</th></tr>
+    <tr><td><strong>Lot / Parcel</strong></td><td>Terreno / Lote</td></tr>
+    <tr><td><strong>Grading</strong></td><td>Terraplanagem</td></tr>
+    <tr><td><strong>Utilities hookup</strong></td><td>Ligação de utilidades</td></tr>
+    <tr><td><strong>Framing</strong></td><td>Estrutura / Esqueleto</td></tr>
+    <tr><td><strong>Rough-in</strong></td><td>Instalações brutas</td></tr>
+    <tr><td><strong>Drywall</strong></td><td>Gesso acartonado</td></tr>
+    <tr><td><strong>Certificate of Occupancy (C.O.)</strong></td><td>Habite-se</td></tr>
+    <tr><td><strong>Draw</strong></td><td>Desembolso do empréstimo</td></tr>
+    <tr><td><strong>Punch list</strong></td><td>Lista de pendências finais</td></tr>
+    <tr><td><strong>Change order</strong></td><td>Ordem de mudança no escopo</td></tr>
+    <tr><td><strong>Retainage</strong></td><td>Retenção (10% retido até o final)</td></tr>
+    <tr><td><strong>Lien / Lien release</strong></td><td>Gravame / Liberação de gravame</td></tr>
+    <tr><td><strong>Bid</strong></td><td>Proposta / Cotação</td></tr>
+    <tr><td><strong>ARV</strong></td><td>Valor pós-construção</td></tr>
+    <tr><td><strong>LTC / LTV</strong></td><td>Empréstimo/custo · Empréstimo/valor</td></tr>
+    <tr><td><strong>Closing costs</strong></td><td>Custos de fechamento</td></tr>
+    <tr><td><strong>Title insurance</strong></td><td>Seguro de título</td></tr>
+    <tr><td><strong>Appraisal</strong></td><td>Avaliação do imóvel</td></tr>
+    <tr><td><strong>Cap rate</strong></td><td>Taxa de capitalização</td></tr>
+  </table></div>
+</section>
+
 <!-- ══════════════════════════════════════ MARKETS ══ -->
 <section class="section" id="sec-markets">
   <div class="section-header">
@@ -853,7 +1373,7 @@ ARV nova construção ÷ (Compra + Demolição + Construção) ≥ 1,43
 
 <script>
 // ─── NAV ───────────────────────────────────────────────────────
-const sections = ['overview','diligence','financing','budget','calculator','exits','legal','demolish','markets','glossary'];
+const sections = ['overview','diligence','financing','budget','calculator','exits','legal','demolish','obra','propriedade','portfolio','erros','templates','markets','glossary'];
 function show(id) {
   sections.forEach(s => {
     document.getElementById('sec-'+s).classList.toggle('active', s===id);
@@ -887,6 +1407,50 @@ cl('cl-gc', ['Licenciado no estado onde vai construir','Seguro de Responsabilida
 cl('cl-llc', ['Escolher nome da LLC (verificar disponibilidade no Secretário de Estado)','Protocolar Articles of Organization junto ao Secretário de Estado','Redigir Operating Agreement — fundamental para crédito e conflitos','Obter EIN do IRS (Formulário SS-4, pode ser feito online)','Abrir conta bancária empresarial americana em nome da LLC']);
 cl('cl-cbe', ['Avaliação de mercado do(s) imóvel(is) em 31 de dezembro (em USD)','Saldo em conta(s) bancária(s) americana(s) em 31 de dezembro','Valor da participação na LLC americana (patrimônio líquido proporcional)','Comprovantes de remessas internacionais feitas no ano','Declarar no portal DCBE do Banco Central até 5 de abril']);
 cl('cl-demo', ['Confirmar que o zoneamento permite demolição e nova construção do tipo desejado','Verificar restrições de "historic preservation" (preservação histórica)','Pesquisa de fase I ambiental — tanques de combustível, uso industrial anterior','Teste de amianto (obrigatório em imóveis construídos antes de 1980)','Teste de tinta com chumbo (idem para imóveis pré-1978)','Localização e condição das conexões de água, esgoto e energia elétrica','Obter 2–3 orçamentos de empresas de demolição licenciadas']);
+
+// ─── NEW MODULE CHECKLISTS ──────────────────────────────────────
+cl('cl-obra-contrato', [
+  'Licença ativa verificada no site do estado',
+  'General Liability Insurance (US$1M mínimo) comprovado',
+  'Workers\' Compensation Insurance ativo',
+  'Cronograma de draws por marco (nunca por data)',
+  'Cláusula de retenção de 10% até CO emitido',
+  'Cláusula de rescisão por atraso superior a 30 dias',
+  'Change orders obrigatoriamente por escrito antes da execução',
+  'Lien release exigido antes de cada pagamento'
+]);
+cl('cl-obra-obra', [
+  'Foto diária do canteiro recebida e arquivada',
+  'Relatório semanal revisado toda sexta-feira',
+  'Inspeção independente agendada antes de cada draw',
+  'Change orders documentados e aprovados por escrito',
+  'Contingência atualizada após cada change order',
+  'Videochamada em etapas críticas (fundação, pré-drywall)'
+]);
+cl('cl-obra-draw', [
+  'Inspetor visitou o canteiro e aprovou o %',
+  'Lien release condicional assinado pelo GC',
+  'Valor aprovado pelo credor',
+  'Pagamento liberado somente após lien release em mãos'
+]);
+cl('cl-pm-interview', [
+  'Número de imóveis gerenciados atualmente? (100–500 unidades = ideal)',
+  'Taxa de ocupação média do portfólio? (meta: > 93%)',
+  'Como funciona o processo de triagem de inquilinos?',
+  'Resposta a manutenções emergenciais — linha 24/7?',
+  'Experiência com proprietários internacionais?',
+  'Envio de fundos para conta LLC americana — como funciona?',
+  'Software de relatórios utilizado? (AppFolio, Buildium, Propertyware?)',
+  'Pode fornecer 2–3 referências de proprietários atuais?',
+  'Rescisão de contrato — aviso de 30 dias sem multa?'
+]);
+cl('cl-erros-prot', [
+  '🔴 LLC + ITIN constituídos ANTES de qualquer oferta de compra',
+  '🔴 Due diligence completa (zoneamento, flood, utilidades, título) antes de fechar',
+  '🔴 GC verificado: licença, seguro, referências ligadas — nunca escolher só pelo preço',
+  '🟡 FIRPTA incluído no pro forma desde o dia 1 (15% do preço bruto)',
+  '🟡 Contingência de 10%–15% reservada em cash — não imaginária'
+]);
 
 // ─── CALCULATOR ────────────────────────────────────────────────
 let firptaOn = true;
