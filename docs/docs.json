@@ -132,6 +132,28 @@
           "resources/security",
           "resources/troubleshooting"
         ]
+      },
+      {
+        "group": "Guia para Investidores Brasileiros",
+        "pages": [
+          "land-acquisition-guide/index",
+          "land-acquisition-guide/exemplos-praticos",
+          "land-acquisition-guide/mercados-florida",
+          "land-acquisition-guide/tipos-de-projeto",
+          "land-acquisition-guide/land-due-diligence",
+          "land-acquisition-guide/financing",
+          "land-acquisition-guide/construction-budget",
+          "land-acquisition-guide/deal-analysis",
+          "land-acquisition-guide/exit-strategies",
+          "land-acquisition-guide/legal-tax",
+          "land-acquisition-guide/demolish-rebuild",
+          "land-acquisition-guide/gestao-da-obra",
+          "land-acquisition-guide/gestao-de-propriedade",
+          "land-acquisition-guide/escalando-portfolio",
+          "land-acquisition-guide/erros-comuns",
+          "land-acquisition-guide/templates-comunicacao",
+          "land-acquisition-guide/tabelas-referencia"
+        ]
       }
     ]
   },

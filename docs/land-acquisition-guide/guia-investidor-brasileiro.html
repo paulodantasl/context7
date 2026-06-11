@@ -1,0 +1,2436 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guia de Aquisição de Terrenos e Construção Nova — Investidores Brasileiros</title>
+<style>
+  :root {
+    --blue: #1e40af; --blue-light: #dbeafe; --blue-mid: #3b82f6;
+    --green: #16a34a; --green-light: #dcfce7;
+    --red: #dc2626; --red-light: #fee2e2;
+    --yellow: #d97706; --yellow-light: #fef3c7;
+    --gray-50: #f9fafb; --gray-100: #f3f4f6; --gray-200: #e5e7eb;
+    --gray-300: #d1d5db; --gray-500: #6b7280; --gray-700: #374151; --gray-900: #111827;
+    --sidebar-w: 260px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 15px; color: var(--gray-900); background: #fff; display: flex; min-height: 100vh; }
+
+  /* SIDEBAR */
+  #sidebar {
+    width: var(--sidebar-w); min-height: 100vh; background: var(--gray-50);
+    border-right: 1px solid var(--gray-200); position: fixed; top: 0; left: 0;
+    overflow-y: auto; z-index: 100; display: flex; flex-direction: column;
+  }
+  #sidebar .logo {
+    padding: 20px 16px 12px; border-bottom: 1px solid var(--gray-200);
+    background: var(--blue); color: white;
+  }
+  #sidebar .logo h1 { font-size: 13px; font-weight: 700; line-height: 1.3; }
+  #sidebar .logo p { font-size: 11px; opacity: 0.8; margin-top: 4px; }
+  #sidebar nav { padding: 12px 0; flex: 1; }
+  #sidebar nav a {
+    display: block; padding: 8px 16px; font-size: 13px; color: var(--gray-700);
+    text-decoration: none; border-left: 3px solid transparent; transition: all .15s;
+    line-height: 1.4;
+  }
+  #sidebar nav a:hover { background: var(--gray-100); color: var(--blue); }
+  #sidebar nav a.active { background: var(--blue-light); color: var(--blue); border-left-color: var(--blue); font-weight: 600; }
+  #sidebar nav .section-label { padding: 12px 16px 4px; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gray-500); }
+  #sidebar .badge { display: inline-block; background: var(--blue); color: white; font-size: 10px; padding: 1px 5px; border-radius: 3px; margin-left: 4px; vertical-align: middle; }
+
+  /* MAIN */
+  #main { margin-left: var(--sidebar-w); flex: 1; }
+  .section { display: none; max-width: 860px; margin: 0 auto; padding: 40px 32px 80px; }
+  .section.active { display: block; }
+
+  /* TYPOGRAPHY */
+  h1 { font-size: 26px; font-weight: 800; color: var(--gray-900); margin-bottom: 6px; line-height: 1.2; }
+  h2 { font-size: 19px; font-weight: 700; color: var(--gray-900); margin: 32px 0 12px; padding-bottom: 6px; border-bottom: 2px solid var(--gray-100); }
+  h3 { font-size: 15px; font-weight: 700; color: var(--gray-700); margin: 22px 0 10px; }
+  h4 { font-size: 13px; font-weight: 700; color: var(--gray-500); margin: 18px 0 8px; text-transform: uppercase; letter-spacing: .04em; }
+  p { line-height: 1.7; margin-bottom: 12px; color: var(--gray-700); }
+  strong { color: var(--gray-900); }
+  ul, ol { padding-left: 20px; margin-bottom: 12px; }
+  li { line-height: 1.7; margin-bottom: 4px; color: var(--gray-700); }
+  .subtitle { font-size: 14px; color: var(--gray-500); margin-bottom: 24px; }
+  .hero-tag { display: inline-block; background: var(--blue-light); color: var(--blue); font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 4px; margin-bottom: 12px; }
+
+  /* CALLOUTS */
+  .callout { border-radius: 8px; padding: 14px 16px; margin: 16px 0; font-size: 14px; display: flex; gap: 10px; }
+  .callout.info { background: var(--blue-light); border-left: 4px solid var(--blue-mid); }
+  .callout.warning { background: var(--yellow-light); border-left: 4px solid var(--yellow); }
+  .callout.success { background: var(--green-light); border-left: 4px solid var(--green); }
+  .callout.danger { background: var(--red-light); border-left: 4px solid var(--red); }
+  .callout .icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .callout .body { color: var(--gray-700); line-height: 1.6; }
+
+  /* TABLES */
+  .table-wrap { overflow-x: auto; margin: 16px 0; border-radius: 8px; border: 1px solid var(--gray-200); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { background: var(--gray-50); text-align: left; padding: 9px 12px; font-weight: 600; color: var(--gray-700); border-bottom: 1px solid var(--gray-200); white-space: nowrap; }
+  td { padding: 9px 12px; border-bottom: 1px solid var(--gray-100); color: var(--gray-700); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: var(--gray-50); }
+  .tag-green { color: var(--green); font-weight: 600; }
+  .tag-red { color: var(--red); font-weight: 600; }
+  .tag-yellow { color: var(--yellow); font-weight: 600; }
+
+  /* CHECKLIST */
+  .checklist { list-style: none; padding: 0; margin: 12px 0; }
+  .checklist li { display: flex; gap: 10px; align-items: flex-start; padding: 5px 0; border-bottom: 1px solid var(--gray-100); font-size: 14px; color: var(--gray-700); }
+  .checklist li:last-child { border-bottom: none; }
+  .checklist input[type=checkbox] { margin-top: 3px; flex-shrink: 0; width: 15px; height: 15px; cursor: pointer; accent-color: var(--blue); }
+  .checklist label { cursor: pointer; line-height: 1.5; }
+  .checklist input:checked + label { text-decoration: line-through; color: var(--gray-500); }
+
+  /* CODE BLOCKS */
+  pre { background: var(--gray-900); color: #e5e7eb; padding: 14px 16px; border-radius: 8px; font-size: 12.5px; overflow-x: auto; margin: 12px 0; line-height: 1.6; font-family: 'SF Mono', 'Fira Code', monospace; }
+  code { background: var(--gray-100); padding: 2px 5px; border-radius: 4px; font-size: 12.5px; font-family: 'SF Mono', 'Fira Code', monospace; color: var(--blue); }
+
+  /* CARDS */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin: 20px 0; }
+  .card { border: 1px solid var(--gray-200); border-radius: 10px; padding: 16px; cursor: pointer; transition: all .15s; }
+  .card:hover { border-color: var(--blue-mid); box-shadow: 0 2px 8px rgba(30,64,175,.1); transform: translateY(-1px); }
+  .card .card-icon { font-size: 22px; margin-bottom: 8px; }
+  .card .card-title { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+  .card .card-desc { font-size: 12px; color: var(--gray-500); line-height: 1.4; }
+
+  /* PHASE FLOW */
+  .phase-flow { display: flex; gap: 0; margin: 20px 0; overflow-x: auto; }
+  .phase { flex: 1; min-width: 120px; text-align: center; position: relative; }
+  .phase-box { background: var(--blue-light); border: 2px solid var(--blue-mid); border-radius: 8px; padding: 10px 8px; font-size: 12px; font-weight: 600; color: var(--blue); margin: 0 4px; }
+  .phase-sub { font-size: 10px; font-weight: 400; color: var(--gray-500); margin-top: 2px; }
+  .phase-arrow { position: absolute; right: -8px; top: 50%; transform: translateY(-50%); color: var(--blue-mid); font-size: 18px; z-index: 1; }
+
+  /* DIVIDER */
+  hr { border: none; border-top: 1px solid var(--gray-200); margin: 28px 0; }
+
+  /* SECTION HEADER */
+  .section-header { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; padding-bottom: 20px; border-bottom: 2px solid var(--gray-100); }
+  .section-header .icon { font-size: 36px; }
+  .section-header .info h1 { font-size: 24px; }
+  .section-header .info .desc { font-size: 13px; color: var(--gray-500); margin-top: 4px; line-height: 1.5; }
+  .annex-tag { display: inline-block; background: var(--gray-100); color: var(--gray-500); font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: .05em; }
+
+  /* STARS */
+  .stars { color: #f59e0b; font-size: 14px; }
+
+  /* LENDER CARDS */
+  .lender-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  .lender-card { border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px; }
+  .lender-card .name { font-weight: 700; font-size: 14px; color: var(--gray-900); }
+  .lender-card .site { font-size: 11px; color: var(--blue); margin: 2px 0 8px; }
+  .lender-card .pills { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .pill { font-size: 10px; padding: 2px 7px; border-radius: 10px; font-weight: 600; }
+  .pill.blue { background: var(--blue-light); color: var(--blue); }
+  .pill.green { background: var(--green-light); color: var(--green); }
+  .pill.gray { background: var(--gray-100); color: var(--gray-500); }
+  .lender-card .diff { font-size: 12px; color: var(--gray-600); margin-top: 6px; line-height: 1.4; }
+
+  /* ═══════════════════════════════════════════
+     CALCULATOR
+  ═══════════════════════════════════════════ */
+  #calc-wrapper { background: white; border-radius: 12px; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+  #calc-header { background: var(--blue); color: white; padding: 16px 20px; }
+  #calc-header h2 { font-size: 16px; margin: 0 0 2px; padding: 0; border: none; color: white; }
+  #calc-header p { font-size: 12px; opacity: .85; margin: 0; color: white; }
+  #calc-body { padding: 20px; }
+  .calc-section { margin-bottom: 16px; background: var(--gray-50); border: 1px solid var(--gray-200); border-radius: 8px; padding: 16px; }
+  .calc-section-title { font-size: 13px; font-weight: 700; color: var(--gray-700); margin-bottom: 14px; }
+  .input-grid { display: grid; gap: 12px; }
+  .input-grid.cols2 { grid-template-columns: 1fr 1fr; }
+  .input-grid.cols3 { grid-template-columns: 1fr 1fr 1fr; }
+  .input-grid.cols4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .field label { display: block; font-size: 11px; color: var(--gray-500); margin-bottom: 4px; font-weight: 600; }
+  .field input, .field select { width: 100%; padding: 7px 10px; border: 1px solid var(--gray-300); border-radius: 6px; font-size: 13px; font-family: inherit; color: var(--gray-900); background: white; }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--blue-mid); box-shadow: 0 0 0 2px rgba(59,130,246,.15); }
+  .field .derived { background: var(--blue-light); color: var(--blue); font-weight: 700; padding: 7px 10px; border-radius: 6px; font-size: 13px; display: block; }
+  /* SCENARIO TABS */
+  .calc-tabs { display: flex; gap: 0; margin-bottom: 16px; border-radius: 8px; overflow: hidden; border: 1px solid var(--gray-200); }
+  .calc-tab { flex: 1; padding: 10px 8px; font-size: 12px; font-weight: 600; border: none; cursor: pointer; background: var(--gray-50); color: var(--gray-500); transition: all .15s; border-right: 1px solid var(--gray-200); font-family: inherit; line-height: 1.3; }
+  .calc-tab:last-child { border-right: none; }
+  .calc-tab.active { background: var(--blue); color: white; }
+  .calc-tab:hover:not(.active) { background: var(--gray-100); color: var(--gray-700); }
+  .scenario-panel { display: none; }
+  .scenario-panel.active { display: block; }
+  /* FIRPTA toggle */
+  .firpta-toggle { width: 100%; padding: 7px; border: 1px solid var(--gray-300); border-radius: 6px; font-size: 13px; cursor: pointer; font-family: inherit; font-weight: 600; transition: all .15s; }
+  .firpta-toggle.on { background: var(--red-light); border-color: var(--red); color: var(--red); }
+  .firpta-toggle.off { background: var(--green-light); border-color: var(--green); color: var(--green); }
+  /* RESULTS */
+  .result-panel { border-radius: 8px; padding: 16px; border: 1px solid var(--gray-200); margin-top: 16px; }
+  .result-panel.sell { border-left: 4px solid var(--blue); }
+  .result-panel.rent { border-left: 4px solid var(--green); }
+  .result-panel.refi { border-left: 4px solid #7c3aed; }
+  .result-panel-title { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: var(--gray-700); }
+  .result-row { display: flex; justify-content: space-between; align-items: center; padding: 5px 0; border-bottom: 1px solid var(--gray-100); font-size: 13px; }
+  .result-row:last-child { border-bottom: none; }
+  .result-row .label { color: var(--gray-600); }
+  .result-row .val { font-weight: 600; }
+  .result-row.highlight { padding-top: 10px; margin-top: 6px; border-top: 2px solid var(--gray-200); border-bottom: none; }
+  .result-row.highlight .label { font-weight: 700; color: var(--gray-800); }
+  .val.ok { color: var(--green); }
+  .val.warn { color: var(--red); }
+  .val.info { color: var(--blue); }
+  .calc-note { font-size: 11px; color: var(--gray-400); text-align: center; margin-top: 12px; }
+
+  /* SCROLL PROGRESS */
+  #progress { position: fixed; top: 0; left: var(--sidebar-w); right: 0; height: 3px; background: var(--blue-light); z-index: 200; }
+  #progress-bar { height: 100%; background: var(--blue); width: 0%; transition: width .1s; }
+
+  /* MOBILE */
+  @media (max-width: 768px) {
+    #sidebar { width: 100%; min-height: auto; position: relative; }
+    #main { margin-left: 0; }
+    .results-grid, .input-grid.cols2, .input-grid.cols3, .lender-grid { grid-template-columns: 1fr; }
+    .section { padding: 20px 16px 60px; }
+  }
+
+  /* PRINT */
+  @media print {
+    #sidebar { display: none; }
+    #main { margin-left: 0; }
+    .section { display: block !important; page-break-after: always; }
+    #progress { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div id="progress"><div id="progress-bar"></div></div>
+
+<!-- SIDEBAR -->
+<aside id="sidebar">
+  <div class="logo">
+    <h1>🏗️ Guia de Aquisição &amp; Construção Nova</h1>
+    <p>Para Investidores Brasileiros nos EUA</p>
+  </div>
+  <nav>
+    <div class="section-label">Visão Geral</div>
+    <a href="#" onclick="show('overview')" id="nav-overview" class="active">🏠 Início &amp; Estratégia</a>
+
+    <div class="section-label">Módulos</div>
+    <a href="#" onclick="show('diligence')" id="nav-diligence">📋 Due Diligence do Terreno</a>
+    <a href="#" onclick="show('financing')" id="nav-financing">💰 Financiamento</a>
+    <a href="#" onclick="show('budget')" id="nav-budget">🔨 Orçamento &amp; Cronograma</a>
+    <a href="#" onclick="show('calculator')" id="nav-calculator">🧮 Calculadora <span class="badge">NOVO</span></a>
+    <a href="#" onclick="show('exits')" id="nav-exits">🚪 Estratégias de Saída</a>
+    <a href="#" onclick="show('legal')" id="nav-legal">⚖️ Jurídico &amp; Fiscal</a>
+    <a href="#" onclick="show('demolish')" id="nav-demolish">🏚️ Demolir &amp; Reconstruir</a>
+
+    <div class="section-label" style="margin-top:16px">Operações &amp; Escala</div>
+    <a href="#" onclick="show('obra')" id="nav-obra">🏗️ Gestão da Obra</a>
+    <a href="#" onclick="show('propriedade')" id="nav-propriedade">🏢 Gestão de Propriedade</a>
+    <a href="#" onclick="show('portfolio')" id="nav-portfolio">📈 Escalando o Portfólio</a>
+    <a href="#" onclick="show('erros')" id="nav-erros">⚠️ Erros Comuns</a>
+    <a href="#" onclick="show('templates')" id="nav-templates">✉️ Templates em Inglês</a>
+
+    <div class="section-label" style="margin-top:16px">Exemplos &amp; Análise</div>
+    <a href="#" onclick="show('exemplos')" id="nav-exemplos">📍 Exemplos Práticos</a>
+    <a href="#" onclick="show('mercados-fl')" id="nav-mercados-fl">🌴 Mercados da Flórida 2026</a>
+    <a href="#" onclick="show('tipos-projeto')" id="nav-tipos-projeto">🏠 Tipos de Projeto</a>
+
+    <div class="section-label" style="margin-top:16px">Referência</div>
+    <a href="#" onclick="show('markets')" id="nav-markets">🗺️ Comparativo de Mercados</a>
+    <a href="#" onclick="show('tabelas')" id="nav-tabelas">📊 Tabelas de Referência</a>
+    <a href="#" onclick="show('glossary')" id="nav-glossary">📖 Glossário</a>
+  </nav>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main id="main">
+
+<!-- ══════════════════════════════════════ OVERVIEW ══ -->
+<section class="section active" id="sec-overview">
+  <div class="section-header">
+    <div class="icon">🏗️</div>
+    <div class="info">
+      <div class="hero-tag">Estratégia: Comprar Terreno → Construir → Vender OU Refinanciar &amp; Alugar</div>
+      <h1>Ferramenta de Aquisição de Terrenos e Construção Nova</h1>
+      <div class="desc">Guia completo para investidores brasileiros — SFR &amp; Multifamiliar 2–4 unidades nos EUA</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Este guia cobre o ciclo completo de desenvolvimento do zero — desde a identificação do terreno, passando pela due diligence, captação de financiamento como estrangeiro, gestão da obra, até a execução da estratégia de saída.</div></div>
+
+  <h2>Módulos do Guia</h2>
+  <div class="card-grid">
+    <div class="card" onclick="show('diligence')"><div class="card-icon">📋</div><div class="card-title">Due Diligence do Terreno</div><div class="card-desc">Checklist completo em 3 fases: pré-oferta, sob contrato e fechamento</div></div>
+    <div class="card" onclick="show('financing')"><div class="card-icon">💰</div><div class="card-title">Financiamento</div><div class="card-desc">Empréstimos de construção e DSCR para estrangeiros + credores validados</div></div>
+    <div class="card" onclick="show('budget')"><div class="card-icon">🔨</div><div class="card-title">Orçamento &amp; Cronograma</div><div class="card-desc">Template linha a linha para SFR e Duplex com cronograma de obra</div></div>
+    <div class="card" onclick="show('calculator')"><div class="card-icon">🧮</div><div class="card-title">Calculadora Interativa</div><div class="card-desc">Pro forma em tempo real — insira os números e veja o retorno imediatamente</div></div>
+    <div class="card" onclick="show('exits')"><div class="card-icon">🚪</div><div class="card-title">Estratégias de Saída</div><div class="card-desc">Vender vs. refinanciar e alugar — guia de decisão com FIRPTA</div></div>
+    <div class="card" onclick="show('legal')"><div class="card-icon">⚖️</div><div class="card-title">Jurídico &amp; Fiscal</div><div class="card-desc">LLC, ITIN, FIRPTA e guia completo do CBE / Banco Central</div></div>
+    <div class="card" onclick="show('demolish')"><div class="card-icon">🏚️</div><div class="card-title">Demolir &amp; Reconstruir</div><div class="card-desc">Comprar imóvel antigo, demolir e construir novo — múltiplos de 2x–3x</div></div>
+    <div class="card" onclick="show('obra')"><div class="card-icon">🏗️</div><div class="card-title">Gestão da Obra</div><div class="card-desc">Como gerenciar a construção remotamente do Brasil — processos, draws e red flags</div></div>
+    <div class="card" onclick="show('propriedade')"><div class="card-icon">🏢</div><div class="card-title">Gestão de Propriedade</div><div class="card-desc">Como encontrar e contratar um property manager para o imóvel nos EUA</div></div>
+    <div class="card" onclick="show('portfolio')"><div class="card-icon">📈</div><div class="card-title">Escalando o Portfólio</div><div class="card-desc">BRRRR repetido — de 1 projeto a 10+ unidades em 5 anos</div></div>
+    <div class="card" onclick="show('erros')"><div class="card-icon">⚠️</div><div class="card-title">Erros Comuns</div><div class="card-desc">Os 12 erros mais custosos do investidor brasileiro nos EUA</div></div>
+    <div class="card" onclick="show('templates')"><div class="card-icon">✉️</div><div class="card-title">Templates em Inglês</div><div class="card-desc">10 modelos prontos de email para corretor, GC, credor e property manager</div></div>
+    <div class="card" onclick="show('exemplos')"><div class="card-icon">📍</div><div class="card-title">Exemplos Práticos</div><div class="card-desc">Citrus Springs e Orlando — projetos reais com números, cronograma e FIRPTA do início ao fim</div></div>
+    <div class="card" onclick="show('mercados-fl')"><div class="card-icon">🌴</div><div class="card-title">Mercados da Flórida</div><div class="card-desc">Orlando vs Tampa vs Miami — análise de ciclo, margens reais e bairros para 2026</div></div>
+    <div class="card" onclick="show('tipos-projeto')"><div class="card-icon">🏠</div><div class="card-title">Tipos de Projeto</div><div class="card-desc">SFR vs Duplex vs Fourplex — qual oferece melhor economia em 2026</div></div>
+    <div class="card" onclick="show('tabelas')"><div class="card-icon">📊</div><div class="card-title">Tabelas de Referência</div><div class="card-desc">Custos/SF, ARVs, impact fees, prazos e glossário — consulta rápida em 12 tabelas</div></div>
+  </div>
+
+  <h2>O Ciclo de Desenvolvimento do Zero</h2>
+  <div class="phase-flow">
+    <div class="phase"><div class="phase-box">1<br>Pesquisa<div class="phase-sub">de Mercado</div></div></div>
+    <div style="align-self:center;color:var(--blue-mid);font-size:20px;padding:0 2px">→</div>
+    <div class="phase"><div class="phase-box">2<br>Terreno<div class="phase-sub">Due Diligence</div></div></div>
+    <div style="align-self:center;color:var(--blue-mid);font-size:20px;padding:0 2px">→</div>
+    <div class="phase"><div class="phase-box">3<br>Financiamento<div class="phase-sub">&amp; Alvarás</div></div></div>
+    <div style="align-self:center;color:var(--blue-mid);font-size:20px;padding:0 2px">→</div>
+    <div class="phase"><div class="phase-box">4<br>Construção<div class="phase-sub">12–18 meses</div></div></div>
+    <div style="align-self:center;color:var(--blue-mid);font-size:20px;padding:0 2px">→</div>
+    <div class="phase"><div class="phase-box" style="border-color:var(--green);background:var(--green-light);color:var(--green)">5<br>Saída<div class="phase-sub">Vender / Refi</div></div></div>
+  </div>
+
+  <h2>SFR vs. 2–4 Unidades</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Fator</th><th>SFR (Unifamiliar)</th><th>Duplex / Triplex / Quad</th></tr>
+    <tr><td>Custo médio</td><td>US$150K–US$350K</td><td>US$250K–US$600K</td></tr>
+    <tr><td>Complexidade de alvará</td><td class="tag-green">Baixa</td><td class="tag-yellow">Média</td></tr>
+    <tr><td>Renda mensal de aluguel</td><td>US$1.200–US$2.500</td><td>US$2.400–US$6.000+</td></tr>
+    <tr><td>Viabilidade DSCR</td><td class="tag-yellow">Média</td><td class="tag-green">Alta</td></tr>
+    <tr><td>Melhor saída</td><td>Vender</td><td>Refinanciar e Alugar</td></tr>
+  </table></div>
+
+  <h2>Checklist de Início Rápido</h2>
+  <h3>Meses 1–2: Preparação</h3>
+  <ul class="checklist" id="cl-prep"></ul>
+  <h3>Meses 2–4: Aquisição do Terreno</h3>
+  <ul class="checklist" id="cl-land"></ul>
+  <h3>Meses 3–5: Pré-Construção</h3>
+  <ul class="checklist" id="cl-pre"></ul>
+  <h3>Meses 5–17: Construção</h3>
+  <ul class="checklist" id="cl-build"></ul>
+  <h3>Meses 17–20: Saída</h3>
+  <ul class="checklist" id="cl-exit"></ul>
+</section>
+
+<!-- ══════════════════════════════════════ DUE DILIGENCE ══ -->
+<section class="section" id="sec-diligence">
+  <div class="annex-tag">Anexo 1</div>
+  <div class="section-header">
+    <div class="icon">📋</div>
+    <div class="info">
+      <h1>Checklist de Due Diligence do Terreno</h1>
+      <div class="desc">Use antes de fazer uma oferta final e durante o período de inspeção (14–30 dias após assinar o contrato)</div>
+    </div>
+  </div>
+
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body">Não pule esta etapa. Identificar problemas antes do fechamento pode poupar dezenas de milhares de dólares ou evitar a compra de um terreno não edificável.</div></div>
+
+  <h2>Fase 1 — Antes de Fazer uma Proposta</h2>
+
+  <h3>1.1 Zoneamento e Uso Permitido</h3>
+  <ul class="checklist" id="cl-z"></ul>
+
+  <h3>1.2 Utilidades (Água, Esgoto, Energia)</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Utilidade</th><th>Status</th><th>Observações</th></tr>
+    <tr><td>Água municipal</td><td>Disponível / Na rua / Precisa estender</td><td></td></tr>
+    <tr><td>Esgoto municipal</td><td>Disponível / Na rua / Fossa séptica</td><td></td></tr>
+    <tr><td>Energia elétrica</td><td>Disponível / Precisa estender</td><td></td></tr>
+    <tr><td>Gás natural</td><td>Disponível / Somente elétrico</td><td></td></tr>
+  </table></div>
+  <ul class="checklist" id="cl-util"></ul>
+
+  <h3>1.3 Inundação e Meio Ambiente</h3>
+  <ul class="checklist" id="cl-flood"></ul>
+
+  <h3>1.4 Comparativos de Venda</h3>
+  <ul class="checklist" id="cl-comps"></ul>
+
+  <h2>Fase 2 — Sob Contrato</h2>
+
+  <h3>2.1 Análise de Título</h3>
+  <ul class="checklist" id="cl-title"></ul>
+
+  <h3>2.2 Solo e Condições do Terreno</h3>
+  <ul class="checklist" id="cl-soil"></ul>
+
+  <h3>2.3 Confirmação de Viabilidade de Alvará</h3>
+  <ul class="checklist" id="cl-permit"></ul>
+
+  <h2>Fase 3 — Checklist de Fechamento</h2>
+  <ul class="checklist" id="cl-closing"></ul>
+
+  <h2>Orçamento de Due Diligence</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Custo Estimado</th></tr>
+    <tr><td>Pesquisa de título / compromisso</td><td>US$200–US$500</td></tr>
+    <tr><td>Levantamento de limites</td><td>US$500–US$1.500</td></tr>
+    <tr><td>Fase I ESA (se necessário)</td><td>US$1.500–US$3.500</td></tr>
+    <tr><td>Relatório geotécnico / de solo</td><td>US$1.500–US$5.000</td></tr>
+    <tr><td>Teste de percolação</td><td>US$300–US$800</td></tr>
+    <tr><td>Honorários de advogado</td><td>US$500–US$1.500</td></tr>
+    <tr><td><strong>Total estimado</strong></td><td><strong>US$5.000–US$14.800</strong></td></tr>
+  </table></div>
+
+  <h2>Alertas Vermelhos — Desista Se:</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Problema</th><th>Por Que É um Problema</th></tr>
+    <tr><td class="tag-red">Zona de inundação AE/VE sem mitigação</td><td>Fundação elevada, seguro caro, dificuldade de financiamento</td></tr>
+    <tr><td class="tag-red">Esgoto indisponível, lote pequeno para fossa</td><td>Impossível construir</td></tr>
+    <tr><td class="tag-red">Título com ônus não resolvidos</td><td>Pode perder a propriedade</td></tr>
+    <tr><td class="tag-red">Zoneamento não permite uso por direito</td><td>Variância = tempo + risco + sem garantia</td></tr>
+    <tr><td class="tag-red">Comps não suportam o ARV</td><td>Os números não fecham</td></tr>
+    <tr><td class="tag-red">Prazo de alvará &gt; 12 meses</td><td>Capital imobilizado por tempo demais</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ FINANCING ══ -->
+<section class="section" id="sec-financing">
+  <div class="annex-tag">Anexo 2</div>
+  <div class="section-header">
+    <div class="icon">💰</div>
+    <div class="info">
+      <h1>Guia de Financiamento para Investidores Brasileiros</h1>
+      <div class="desc">Empréstimos de construção e DSCR para estrangeiros — sem SSN, sem crédito americano</div>
+    </div>
+  </div>
+
+  <div class="callout success"><div class="icon">✅</div><div class="body">Investidores brasileiros <strong>não precisam de SSN nem histórico de crédito americano</strong>. Credores especializados usam underwriting baseado em ativos e ITIN.</div></div>
+
+  <h2>As Duas Fases de Financiamento</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Fase 1 — Empréstimo de Construção</th><th>Fase 2 — Financiamento de Saída</th></tr>
+    <tr><td>Curto prazo: 12–18 meses<br>Juros apenas sobre desembolsos<br>Cobre: terreno + construção<br>Taxa: 9%–13% ao ano<br>LTC: 70%–80%</td><td><strong>Opção A: Vender</strong> → quitar empréstimo, receber lucro<br><strong>Opção B: DSCR Refi</strong> → hipoteca de longo prazo (30 anos) baseada na renda de aluguel</td></tr>
+  </table></div>
+
+  <h2>Credores Validados — Empréstimos de Construção</h2>
+  <div class="lender-grid">
+    <div class="lender-card"><div class="name">Kiavi</div><div class="site">kiavi.com</div><div class="pills"><span class="pill blue">ITIN ✓</span><span class="pill blue">LLC ✓</span><span class="pill green">10%–13%</span><span class="pill gray">LTC 75%</span></div><div class="diff">Plataforma digital, pré-aprovação online, fechamento em 2–3 semanas</div></div>
+    <div class="lender-card"><div class="name">Lima One Capital</div><div class="site">limaone.com</div><div class="pills"><span class="pill blue">ITIN ✓</span><span class="pill blue">LLC ✓</span><span class="pill green">10%–13%</span><span class="pill gray">LTC 75%</span></div><div class="diff">Forte em SFR e multifamiliar, equipe dedicada a estrangeiros</div></div>
+    <div class="lender-card"><div class="name">A&amp;D Mortgage</div><div class="site">admortgage.com</div><div class="pills"><span class="pill blue">ITIN ✓</span><span class="pill blue">LLC ✓</span><span class="pill green">9%–12%</span><span class="pill gray">LTC 75%</span></div><div class="diff">Aceita declarações fiscais brasileiras; um dos melhores programas para estrangeiros</div></div>
+    <div class="lender-card" style="border:2px solid var(--blue-mid)"><div class="name">Waltz 🇧🇷</div><div class="site">getwaltz.com</div><div class="pills"><span class="pill blue">ITIN ✓</span><span class="pill green">Abre LLC</span><span class="pill green">Português</span></div><div class="diff">Full-stack: LLC + conta bancária + hipoteca. Suporte em <strong>português</strong>. Foco em LatAm.</div></div>
+    <div class="lender-card" style="border:2px solid var(--blue-mid)"><div class="name">America Mortgages 🇧🇷</div><div class="site">americamortgages.com</div><div class="pills"><span class="pill blue">ITIN ✓</span><span class="pill blue">LLC ✓</span><span class="pill green">9%–13%</span></div><div class="diff">Especializado em não residentes. WhatsApp: +1 (916) 790-9951. Pré-aprovação em 48h.</div></div>
+    <div class="lender-card"><div class="name">RCN Capital</div><div class="site">rcncapital.com</div><div class="pills"><span class="pill blue">ITIN ✓</span><span class="pill blue">LLC ✓</span><span class="pill green">9,99%–13%</span><span class="pill gray">LTC 80%</span></div><div class="diff">Sem mínimo de score de crédito americano; programa específico para estrangeiros</div></div>
+  </div>
+
+  <h2>Credores DSCR para Estrangeiros</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Credor</th><th>Site</th><th>DSCR Mín.</th><th>LTV Máx.</th><th>Taxa</th><th>Destaque</th></tr>
+    <tr><td><strong>A&amp;D Mortgage</strong></td><td>admortgage.com</td><td>1,0</td><td>75%</td><td>7%–9,5%</td><td>Mais flexível para estrangeiros</td></tr>
+    <tr><td><strong>Visio Lending</strong></td><td>visiolending.com</td><td>1,0</td><td>75%</td><td>7,5%–10%</td><td>Especialista DSCR, aceita ITIN</td></tr>
+    <tr><td><strong>Waltz</strong></td><td>getwaltz.com</td><td>1,0</td><td>70%</td><td>Consultar</td><td>Suporte em português</td></tr>
+    <tr><td><strong>Angel Oak</strong></td><td>angeloakmortgage.com</td><td>1,0</td><td>75%</td><td>7%–9,5%</td><td>DSCR sem renda/emprego</td></tr>
+    <tr><td><strong>Kiavi</strong></td><td>kiavi.com</td><td>1,0</td><td>75%</td><td>7,5%–9,5%</td><td>Plataforma digital, também constrói</td></tr>
+  </table></div>
+
+  <h2>O que São "Pontos de Originação"?</h2>
+  <div class="callout info"><div class="icon">💡</div><div class="body"><strong>1 ponto = 1% do valor do empréstimo, pago uma única vez no fechamento.</strong> "2,5 pontos" num empréstimo de US$225.000 = US$5.625 pagos no dia do fechamento, independentemente de quanto tempo o empréstimo dura.</div></div>
+  <p>É a principal remuneração do credor hard money além dos juros mensais. Cobre os custos de underwriting, avaliação e estruturação — e compensa o risco de emprestar sem histórico de crédito americano.</p>
+  <div class="table-wrap"><table>
+    <tr><th>Tipo de Credor</th><th>Pontos Típicos</th><th>Por Que Essa Faixa</th></tr>
+    <tr><td><strong>Hard Money</strong></td><td>2–4 pontos</td><td>Fechamento rápido, sem score de crédito americano</td></tr>
+    <tr><td><strong>Programa para estrangeiros</strong></td><td>1–3 pontos</td><td>Mais documentação, risco percebido maior</td></tr>
+    <tr><td><strong>Banco comunitário</strong></td><td>0–1 ponto</td><td>Requer relacionamento prévio</td></tr>
+  </table></div>
+  <div class="callout success"><div class="icon">📐</div><div class="body"><strong>Dica prática — pontos vs. taxa de juros têm relação inversa.</strong><br>Mais pontos upfront → menor taxa mensal | Menos pontos → maior taxa mensal.<br>Se seu projeto tem prazo curto e previsível (10–12 meses), mais pontos upfront pode ser mais barato no total. Se houver risco de atraso, prefira menos pontos e mais juros.</div></div>
+
+  <h2>Processo de Desembolso (Draw)</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Desembolso</th><th>Etapa da Obra</th><th>% Típica</th></tr>
+    <tr><td>Draw 1</td><td>Fundação concluída</td><td>10%–15%</td></tr>
+    <tr><td>Draw 2</td><td>Estrutura concluída</td><td>15%–20%</td></tr>
+    <tr><td>Draw 3</td><td>MEP em bruto (hidráulica, elétrica, HVAC)</td><td>15%–20%</td></tr>
+    <tr><td>Draw 4</td><td>Isolamento, drywall, fachada</td><td>15%–20%</td></tr>
+    <tr><td>Draw 5</td><td>Acabamentos internos, piso, louças</td><td>15%–20%</td></tr>
+    <tr><td>Draw 6</td><td>Conclusão final + CO</td><td>10%–15%</td></tr>
+  </table></div>
+
+  <h2>Exemplo de Custo de Empréstimo</h2>
+  <div class="table-wrap"><table>
+    <tr><td>Compra do terreno</td><td>US$80.000</td></tr>
+    <tr><td>Custo de construção</td><td>US$220.000</td></tr>
+    <tr><td><strong>Custo total do projeto</strong></td><td><strong>US$300.000</strong></td></tr>
+    <tr><td>Empréstimo (75% LTC)</td><td>US$225.000</td></tr>
+    <tr><td>Caixa necessário (~25%)</td><td>~US$82.500</td></tr>
+    <tr><td>Juros estimados (11%, 14 meses)</td><td>~US$17.000–US$22.000</td></tr>
+    <tr><td>Originação (2,5 pontos)</td><td>US$5.625</td></tr>
+    <tr><td><strong>Custo total de financiamento</strong></td><td><strong>~US$27.000</strong></td></tr>
+  </table></div>
+
+  <hr>
+  <h2>Seasoning e Risco de Avaliação — Os 2 Detalhes que Quebram o BRRRR</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Tipo de refi</th><th>Seasoning típico (cash-out)</th><th>Observação</th></tr>
+    <tr><td class="tag-green"><strong>DSCR (caminho deste guia)</strong></td><td class="tag-green"><strong>3–6 meses</strong></td><td>Antes do prazo, o valor é limitado ao custo comprovado (guarde todas as notas da obra!)</td></tr>
+    <tr><td>Convencional (Fannie/Freddie)</td><td>12 meses</td><td>Regra endurecida em 2023</td></tr>
+    <tr><td>Refi saindo da construção do mesmo credor</td><td class="tag-green">Frequentemente zero</td><td>Pergunte isso ao escolher o credor da obra</td></tr>
+  </table></div>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Appraisal gap — o risco nº 1 do BRRRR:</strong> se a avaliação vier 10% abaixo do ARV projetado, o cash-out encolhe US$25K–US$30K num projeto típico. Proteções: ① ARV com comps reais ANTES de comprar o terreno; ② subscreva com ARV 5%–10% abaixo do que acredita; ③ conteste avaliações baixas com comps; ④ nunca dependa de recuperar 100% do capital — projete deixando US$30K–US$80K presos.</div></div>
+
+  <hr>
+  <h2>LTC vs LTV — A Diferença que Importa</h2>
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Confundir LTC com LTV pode representar <strong>US$20K–US$112K de diferença</strong> no capital disponível. Sempre pergunte ao credor: <em>"O índice de 70% é sobre custo ou sobre valor avaliado?"</em></div></div>
+
+  <div class="table-wrap"><table>
+    <tr><th>Métrica</th><th>Fórmula</th><th>Quando Se Aplica</th></tr>
+    <tr><td><strong>LTC</strong> (Loan-to-Cost)</td><td>Empréstimo ÷ Custo total do projeto</td><td>Empréstimos de <strong>construção</strong></td></tr>
+    <tr><td><strong>LTV</strong> (Loan-to-Value)</td><td>Empréstimo ÷ ARV avaliado</td><td>Empréstimos de <strong>refinanciamento</strong> (DSCR)</td></tr>
+  </table></div>
+
+  <h3>A mesma taxa de 70% gera valores muito diferentes</h3>
+  <div class="callout success"><div class="icon">💡</div><div class="body">Projeto: SFR 2.400 SF em Ocoee, Orlando<br>Custo total: <strong>US$500.000</strong> | ARV: <strong>US$660.000</strong><br><br>70% LTC = US$350.000 &nbsp;|&nbsp; 70% LTV = US$462.000<br><strong>Diferença: US$112.000 apenas por como o credor calcula o índice.</strong></div></div>
+
+  <hr>
+  <h2>3 Estruturas de Capital para o Investidor Brasileiro</h2>
+
+  <h3>Estrutura 1 — Hard Money + Entrada Própria (Controle Total)</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Valor (projeto US$500K)</th></tr>
+    <tr><td>Entrada (30%)</td><td>US$150.000</td></tr>
+    <tr><td>Empréstimo Hard Money (70% LTC)</td><td>US$350.000</td></tr>
+    <tr><td>Juros (12% × 14 meses)</td><td>US$49.000</td></tr>
+    <tr><td>Pontos de originação (2,5%)</td><td>US$8.750</td></tr>
+    <tr><td class="tag-yellow"><strong>Caixa total necessário</strong></td><td class="tag-yellow"><strong>~US$208.000</strong></td></tr>
+    <tr><td>Controle</td><td class="tag-green">100% seu</td></tr>
+    <tr><td>Lucro potencial (ARV US$660K)</td><td class="tag-green">~US$100K flip ou equity BRRRR</td></tr>
+  </table></div>
+  <p><strong>Melhor para:</strong> Investidor com capital suficiente que quer controle total das decisões.</p>
+
+  <h3>Estrutura 2 — Parceria com Builder 50/50 (Menor Capital)</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Hard Money Solo</th><th>Parceria com Builder</th></tr>
+    <tr><td>Hard Costs</td><td>US$322.000</td><td>US$280.000 (sem markup GC)</td></tr>
+    <tr><td>GC Fee (15%)</td><td>US$48.000</td><td class="tag-green">US$0</td></tr>
+    <tr><td>Juros HML</td><td>US$49.000</td><td>US$20.000 (entrada menor)</td></tr>
+    <tr><td><strong>Total custo</strong></td><td><strong>US$500.000</strong></td><td><strong>US$430.000</strong></td></tr>
+    <tr><td>ARV</td><td>US$660.000</td><td>US$660.000</td></tr>
+    <tr><td>Lucro bruto</td><td>US$160.000</td><td>US$230.000</td></tr>
+    <tr><td class="tag-green"><strong>Seu lucro (50% seu)</strong></td><td class="tag-green"><strong>US$80.000</strong></td><td class="tag-green"><strong>US$115.000</strong></td></tr>
+  </table></div>
+  <p><strong>Melhor para:</strong> Primeiro projeto ou capital limitado — elimina GC markup, reduz risco de overrun.</p>
+
+  <h3>Estrutura 3 — Owner-Occupant FHA (Menor Entrada Possível)</h3>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Regra mudou em 2025 (HUD ML 2025-09):</strong> desde 25/mai/2025, FHA é restrito a <strong>cidadãos americanos e portadores de green card</strong> — vistos de trabalho (H-1B, L-1, O-1, TN) e EAD não qualificam mais. FHA também sempre exigiu SSN (ITIN não é aceito) e <strong>intenção genuína de moradia</strong> (mínimo 12 meses; ocupar em até 60 dias). Fraude de ocupação é crime federal. Alternativa para quem tem visto de trabalho + SSN: empréstimo convencional (Fannie/Freddie), caso a caso.</div></div>
+  <div class="table-wrap"><table>
+    <tr><th>Estratégia</th><th>Entrada Necessária</th><th>Capital Poupado</th></tr>
+    <tr><td>Investidor padrão (25%)</td><td>US$165.000</td><td>—</td></tr>
+    <tr><td class="tag-green"><strong>Owner-Occupant FHA (3,5%)</strong></td><td class="tag-green"><strong>US$23.100</strong></td><td class="tag-green"><strong>US$118.000 disponível para próximo projeto</strong></td></tr>
+  </table></div>
+  <p><strong>Melhor para:</strong> Investidor que já obteve green card (ex.: via EB-5) ou cidadania. Duplex/Triplex/Fourplex: more em 1 unidade, alugue as outras.</p>
+
+  <h3>Comparação das 3 Estruturas</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Fator</th><th>Hard Money Solo</th><th>Parceria Builder</th><th>Owner-Occupant FHA</th></tr>
+    <tr><td>Capital necessário</td><td>US$200K+</td><td>US$100K–US$150K</td><td class="tag-green">US$47K–US$70K</td></tr>
+    <tr><td>Controle</td><td class="tag-green">Total</td><td class="tag-yellow">Compartilhado</td><td class="tag-green">Total</td></tr>
+    <tr><td>Lucro no flip</td><td>100% seu</td><td>50% seu</td><td>Menor (PMI + custos FHA)</td></tr>
+    <tr><td>Aceita ITIN sem SSN</td><td class="tag-green">Sim</td><td class="tag-green">Sim</td><td class="tag-red">Não (exige SSN + green card/cidadania)</td></tr>
+    <tr><td>Complexidade</td><td class="tag-yellow">Média</td><td class="tag-red">Alta (requer parceiro confiável)</td><td class="tag-red">Alta (requer green card)</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ BUDGET ══ -->
+<section class="section" id="sec-budget">
+  <div class="annex-tag">Anexo 3</div>
+  <div class="section-header">
+    <div class="icon">🔨</div>
+    <div class="info">
+      <h1>Template de Orçamento e Cronograma</h1>
+      <div class="desc">Orçamento linha a linha para SFR e Duplex — use com seu empreiteiro</div>
+    </div>
+  </div>
+
+  <h2>Resumo de Orçamento</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Categoria</th><th>SFR (3/2)</th><th>Duplex (2 unid.)</th></tr>
+    <tr><td>Pré-construção</td><td>US$81K–US$196K</td><td>US$111K–US$267K</td></tr>
+    <tr><td>Terraplenagem e fundação</td><td>US$23K–US$121K</td><td>US$35K–US$179K</td></tr>
+    <tr><td>Estrutura (framing)</td><td>US$41,5K–US$98,5K</td><td>US$71,5K–US$161,5K</td></tr>
+    <tr><td>Cobertura e fachada</td><td>US$31K–US$73K</td><td>US$53,5K–US$123K</td></tr>
+    <tr><td>MEP (hidráulica, elétrica, HVAC)</td><td>US$40K–US$93K</td><td>US$69K–US$157K</td></tr>
+    <tr><td>Acabamentos internos</td><td>US$50K–US$122K</td><td>US$85,3K–US$201K</td></tr>
+    <tr><td>Finalização externa</td><td>US$10,5K–US$31K</td><td>US$15K–US$46K</td></tr>
+    <tr><td>Custos indiretos e carregamento</td><td>US$27,5K–US$63K</td><td>US$45,3K–US$104K</td></tr>
+    <tr><td>Contingência (10–12%)</td><td>US$30K–US$90K</td><td>US$59K–US$173K</td></tr>
+    <tr><td class="tag-green"><strong>TOTAL</strong></td><td class="tag-green"><strong>US$280K–US$450K</strong></td><td class="tag-green"><strong>US$480K–US$750K</strong></td></tr>
+  </table></div>
+
+  <h2>O que Entra em Cada Categoria de Custo?</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Categoria</th><th>O que inclui</th></tr>
+    <tr><td><strong>Custos Indiretos (Soft Costs)</strong></td><td>Projeto arquitetônico, engenharia, taxas de alvará, taxas de impacto, topografia, ambiental (Fase I), honorários de CPA/advogado, aprovação de HOA</td></tr>
+    <tr><td><strong>Custo de Carregamento (Carrying Costs)</strong></td><td>Juros mensais do empréstimo de construção, pontos de originação, seguro do construtor (builder's risk), IPTU durante a obra, energia/água no canteiro, extensão do empréstimo se houver atraso</td></tr>
+    <tr><td><strong>Contingência</strong></td><td>Solo instável, aumento de preço de materiais, change orders, erros de projeto, troca de GC, atraso de alvará, danos por chuva ou vandalismo</td></tr>
+  </table></div>
+  <div class="callout warning"><div class="icon">⏱️</div><div class="body"><strong>O custo de carregamento aumenta com atrasos.</strong> Em empréstimo de US$300.000 a 12%/ano, cada semana de atraso = US$692 extras. 10 semanas = US$6.920 fora do orçamento original.<br><strong>Contingência deve estar em caixa líquido</strong> — não em estimativa, não em crédito. Se não tem o valor disponível antes de começar, adie o projeto.</div></div>
+
+  <h2>Custo por m² por Mercado</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Nível de Mercado</th><th>SFR (custo/m²)</th><th>Duplex (custo/m²)</th></tr>
+    <tr><td>Baixo custo (Memphis, Indianapolis)</td><td>US$1.100–US$1.430/m²</td><td>US$1.210–US$1.600/m²</td></tr>
+    <tr><td>Intermediário (Jacksonville, San Antonio)</td><td>US$1.320–US$1.760/m²</td><td>US$1.430–US$1.925/m²</td></tr>
+    <tr><td>Alto custo (Tampa, Charlotte, Nashville)</td><td>US$1.650–US$2.200/m²</td><td>US$1.815–US$2.420/m²</td></tr>
+  </table></div>
+
+  <h2>Cronograma — SFR (Estimado)</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Fase</th><th>Duração</th><th>Marco</th></tr>
+    <tr><td>Pesquisa de mercado + equipe</td><td>4–8 semanas</td><td>GC, credor e corretor identificados</td></tr>
+    <tr><td>Busca e due diligence do terreno</td><td>4–12 semanas</td><td>Lote sob contrato</td></tr>
+    <tr><td>Plantas arquitetônicas</td><td>4–8 semanas</td><td>Plantas concluídas</td></tr>
+    <tr><td class="tag-yellow"><strong>Aprovação do alvará</strong></td><td class="tag-yellow"><strong>4–24 semanas</strong></td><td class="tag-yellow"><strong>Maior variável!</strong></td></tr>
+    <tr><td>Terraplenagem + fundação</td><td>3–6 semanas</td><td>Draw 1</td></tr>
+    <tr><td>Estrutura</td><td>3–5 semanas</td><td>Draw 2</td></tr>
+    <tr><td>MEP em bruto</td><td>3–5 semanas</td><td>Draw 3</td></tr>
+    <tr><td>Isolamento + drywall</td><td>2–3 semanas</td><td>Draw 4</td></tr>
+    <tr><td>Acabamentos internos</td><td>4–8 semanas</td><td>Draw 5</td></tr>
+    <tr><td>Vistoria final + CO</td><td>2–4 semanas</td><td>Draw 6</td></tr>
+    <tr><td class="tag-green"><strong>Total da busca à saída</strong></td><td class="tag-green"><strong>~14–22 meses</strong></td><td></td></tr>
+  </table></div>
+
+  <h2>Seleção do Empreiteiro Geral (GC)</h2>
+  <ul class="checklist" id="cl-gc"></ul>
+
+  <h3>Alertas Vermelhos — GC</h3>
+  <ul>
+    <li>Exige pagamento total adiantado</li>
+    <li>Sem contrato escrito</li>
+    <li>Não consegue comprovar seguro</li>
+    <li>Sem licença local</li>
+    <li>Pressão para pular alvarás ou inspeções</li>
+  </ul>
+</section>
+
+<!-- ══════════════════════════════════════ CALCULATOR ══ -->
+<section class="section" id="sec-calculator">
+  <div class="section-header">
+    <div class="icon">🧮</div>
+    <div class="info">
+      <h1>Calculadora de Análise de Negócio</h1>
+      <div class="desc">Insira os números do seu projeto e veja o retorno em tempo real — cenários de venda e refinanciamento DSCR lado a lado</div>
+    </div>
+  </div>
+
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Os custos de referência são para projetos de acabamento intermediário padrão</strong> — plantas convencionais, materiais de qualidade média, especificações típicas do mercado. Para projetos com plantas customizadas, acabamentos premium ou lotes com condições especiais, obtenha orçamento completo com o empreiteiro antes de qualquer decisão.</div></div>
+
+  <div id="calc-wrapper">
+    <div id="calc-header">
+      <h2>🧮 Pro Forma Interativa — 3 Cenários</h2>
+      <p>Construção do Zero | Selecione o cenário, insira os números, veja o retorno em tempo real</p>
+    </div>
+    <div id="calc-body">
+
+      <!-- SCENARIO TABS -->
+      <div class="calc-tabs">
+        <button class="calc-tab active" onclick="setScenario(1)" id="tab1">🏷️ 1. Construir + Vender</button>
+        <button class="calc-tab" onclick="setScenario(2)" id="tab2">🏠 2. Construir + Alugar</button>
+        <button class="calc-tab" onclick="setScenario(3)" id="tab3">🔄 3. Refinanciar + Alugar</button>
+      </div>
+
+      <!-- ── SHARED INPUTS ── -->
+      <div class="calc-section">
+        <div class="calc-section-title">📍 Custos do Projeto (compartilhado entre os 3 cenários)</div>
+        <div class="input-grid cols2">
+          <div class="field"><label>Terreno (US$)</label><input type="number" id="c-land" value="25000" oninput="calcAll()"></div>
+          <div class="field">
+            <label>Soft Costs — indiretos (US$) <span style="font-weight:400;color:var(--gray-500)">alvará, projeto, taxas, etc.</span></label>
+            <input type="number" id="c-soft" value="15000" oninput="calcAll()">
+          </div>
+          <div class="field">
+            <label>Custo de Carregamento (US$) <span style="font-weight:400;color:var(--gray-500)">juros, seguro, IPTU durante obra</span></label>
+            <input type="number" id="c-carry" value="5000" oninput="calcAll()">
+          </div>
+          <div class="field">
+            <label>Contingência (US$) <span style="font-weight:400;color:var(--gray-500)">imprevistos: solo, materiais, atrasos</span></label>
+            <input type="number" id="c-cont" value="18500" oninput="calcAll()">
+          </div>
+        </div>
+        <div style="margin-top:14px;padding-top:14px;border-top:1px dashed var(--gray-200)">
+          <div class="calc-section-title" style="margin-bottom:10px">🔨 Construção — Tamanho × Custo/SF = Total automático</div>
+          <div class="input-grid cols3">
+            <div class="field">
+              <label>Tamanho da construção</label>
+              <div style="display:flex;gap:6px">
+                <input type="number" id="c-size" value="1500" oninput="calcAll()" style="flex:1">
+                <select id="c-unit" onchange="calcAll()" style="width:60px;padding:7px 4px;border:1px solid var(--gray-300);border-radius:6px;font-size:12px">
+                  <option value="sf">SF</option>
+                  <option value="m2">m²</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label>Custo por unidade (US$/<span id="unit-label">SF</span>)</label>
+              <input type="number" id="c-cpersf" value="123" oninput="calcAll()">
+            </div>
+            <div class="field">
+              <label>Custo total de construção (calculado)</label>
+              <span class="derived" id="d-const">US$ 0</span>
+            </div>
+          </div>
+          <div class="input-grid cols2" style="margin-top:10px">
+            <div class="field">
+              <label>Custo total do projeto (calculado)</label>
+              <span class="derived" id="d-total">US$ 0</span>
+            </div>
+            <div class="field">
+              <label style="color:var(--gray-400);font-size:10px">Ref. SF: Orlando mid ~US$192/SF | Tampa mid ~US$205/SF | Citrus Springs ~US$123/SF</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ══ SCENARIO 1: BUILD + SELL ══ -->
+      <div class="scenario-panel active" id="panel-1">
+        <div class="calc-section">
+          <div class="calc-section-title">🏷️ Cenário 1 — Construir e Vender (capital próprio)</div>
+          <div class="input-grid cols3">
+            <div class="field"><label>ARV — Valor de Venda Estimado (US$)</label><input type="number" id="s1-arv" value="260000" oninput="calcAll()"></div>
+            <div class="field"><label>Comissão + Custos de Venda (%)</label><input type="number" id="s1-comm" value="7" step="0.5" oninput="calcAll()"></div>
+            <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
+              <label>Retenção FIRPTA (15% do preço bruto)?</label>
+              <button class="firpta-toggle off" id="f1-btn" onclick="toggleF(1)">✓ Sem FIRPTA (preço ≤ US$300K + comprador ocupante)</button>
+            </div>
+          </div>
+        </div>
+        <div class="result-panel sell">
+          <div class="result-panel-title">📊 Resultado — Cenário 1: Construir + Vender</div>
+          <div class="result-row"><span class="label">Custo total do projeto</span><span class="val" id="s1-r-total">—</span></div>
+          <div class="result-row"><span class="label">Valor de venda (ARV)</span><span class="val" id="s1-r-arv">—</span></div>
+          <div class="result-row"><span class="label">Comissão + custos de venda</span><span class="val" id="s1-r-comm">—</span></div>
+          <div class="result-row" id="s1-firpta-row" style="display:none"><span class="label" style="color:var(--red)">Retenção FIRPTA (15%)</span><span class="val warn" id="s1-r-firpta">—</span></div>
+          <div class="result-row"><span class="label">Receita líquida</span><span class="val" id="s1-r-net">—</span></div>
+          <div class="result-row highlight"><span class="label">Lucro bruto</span><span class="val" id="s1-r-profit">—</span></div>
+          <div class="result-row highlight"><span class="label">Margem bruta (lucro ÷ ARV)</span><span class="val" id="s1-r-margin">—</span></div>
+          <div class="result-row highlight"><span class="label">ROI (lucro ÷ investimento)</span><span class="val" id="s1-r-roi">—</span></div>
+          <div class="result-row"><span class="label" style="font-size:11px">Preço máx. de terreno para margem 20%</span><span class="val info" id="s1-r-maxland">—</span></div>
+        </div>
+        <div class="calc-note">
+          FIRPTA = 0% quando: preço ≤ US$300K + comprador é ocupante-proprietário. Acima disso, protocole Form 8288-B com CPA com 3–6 meses de antecedência para reduzir a retenção.
+        </div>
+      </div>
+
+      <!-- ══ SCENARIO 2: BUILD + RENT (own capital) ══ -->
+      <div class="scenario-panel" id="panel-2">
+        <div class="calc-section">
+          <div class="calc-section-title">🏠 Cenário 2 — Construir e Alugar (capital próprio, sem empréstimo)</div>
+          <div class="input-grid cols3">
+            <div class="field"><label>Aluguel Bruto Mensal (US$)</label><input type="number" id="s2-rent" value="1800" oninput="calcAll()"></div>
+            <div class="field"><label>IPTU Mensal (US$)</label><input type="number" id="s2-tax" value="200" oninput="calcAll()"></div>
+            <div class="field"><label>Seguro Mensal (US$)</label><input type="number" id="s2-ins" value="120" oninput="calcAll()"></div>
+            <div class="field"><label>HOA Mensal (US$)</label><input type="number" id="s2-hoa" value="0" oninput="calcAll()"></div>
+            <div class="field"><label>Gestão + Manutenção + Vacância (%)</label><input type="number" id="s2-exp" value="20" step="1" oninput="calcAll()"></div>
+            <div class="field"><label>ARV projetado para venda futura (US$)</label><input type="number" id="s2-arv" value="260000" oninput="calcAll()"></div>
+            <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
+              <label>FIRPTA em eventual venda futura?</label>
+              <button class="firpta-toggle off" id="f2-btn" onclick="toggleF(2)">✓ Sem FIRPTA projetado</button>
+            </div>
+          </div>
+        </div>
+        <div class="result-panel rent">
+          <div class="result-panel-title">📊 Resultado — Cenário 2: Construir + Alugar (capital próprio)</div>
+          <div class="result-row"><span class="label">Investimento total (capital imobilizado)</span><span class="val" id="s2-r-total">—</span></div>
+          <div class="result-row"><span class="label">Aluguel bruto mensal</span><span class="val" id="s2-r-rent">—</span></div>
+          <div class="result-row"><span class="label">Despesas mensais (IPTU + seguro + HOA + gestão)</span><span class="val" id="s2-r-exp">—</span></div>
+          <div class="result-row highlight"><span class="label">Fluxo de caixa líquido mensal</span><span class="val" id="s2-r-cf">—</span></div>
+          <div class="result-row highlight"><span class="label">Renda líquida anual</span><span class="val" id="s2-r-annual">—</span></div>
+          <div class="result-row highlight"><span class="label">Yield anual (renda ÷ investimento)</span><span class="val" id="s2-r-yield">—</span></div>
+          <div class="result-row" id="s2-firpta-row" style="display:none"><span class="label" style="color:var(--red)">Impacto FIRPTA na venda futura estimada</span><span class="val warn" id="s2-r-firpta">—</span></div>
+          <div class="result-row"><span class="label">Capital recuperável (se vender a ~ARV)</span><span class="val info" id="s2-r-equity">—</span></div>
+        </div>
+        <div class="calc-note">
+          Sem empréstimo = sem PITIA de dívida, sem risco de DSCR. O fluxo de caixa é inteiramente da renda de aluguel menos despesas operacionais. Yield alto = estratégia mais simples para quem tem capital disponível.
+        </div>
+      </div>
+
+      <!-- ══ SCENARIO 3: REFI + RENT ══ -->
+      <div class="scenario-panel" id="panel-3">
+        <div class="calc-section">
+          <div class="calc-section-title">🔄 Cenário 3 — Refinanciar + Alugar (DSCR refi após construção)</div>
+          <div class="input-grid cols3">
+            <div class="field"><label>ARV para cálculo do DSCR (US$)</label><input type="number" id="s3-arv" value="260000" oninput="calcAll()"></div>
+            <div class="field"><label>LTV do Refi DSCR (%)</label><input type="number" id="s3-ltv" value="70" step="1" oninput="calcAll()"></div>
+            <div class="field"><label>Taxa DSCR (% ao ano)</label><input type="number" id="s3-rate" value="8" step="0.25" oninput="calcAll()"></div>
+            <div class="field"><label>Aluguel Bruto Mensal (US$)</label><input type="number" id="s3-rent" value="1800" oninput="calcAll()"></div>
+            <div class="field"><label>IPTU Mensal (US$)</label><input type="number" id="s3-tax" value="200" oninput="calcAll()"></div>
+            <div class="field"><label>Seguro Mensal (US$)</label><input type="number" id="s3-ins" value="120" oninput="calcAll()"></div>
+            <div class="field"><label>HOA Mensal (US$)</label><input type="number" id="s3-hoa" value="0" oninput="calcAll()"></div>
+            <div class="field"><label>Gestão + Manutenção + Vacância (%)</label><input type="number" id="s3-exp" value="20" step="1" oninput="calcAll()"></div>
+            <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
+              <label>FIRPTA em eventual venda futura?</label>
+              <button class="firpta-toggle off" id="f3-btn" onclick="toggleF(3)">✓ Sem FIRPTA projetado</button>
+            </div>
+          </div>
+        </div>
+        <div class="result-panel refi">
+          <div class="result-panel-title">📊 Resultado — Cenário 3: Refinanciar + Alugar (BRRRR)</div>
+          <div class="result-row"><span class="label">Custo total do projeto</span><span class="val" id="s3-r-total">—</span></div>
+          <div class="result-row"><span class="label">Empréstimo DSCR (LTV% × ARV)</span><span class="val" id="s3-r-loan">—</span></div>
+          <div class="result-row"><span class="label">Capital preso no imóvel (custo − empréstimo)</span><span class="val" id="s3-r-equity">—</span></div>
+          <div class="result-row"><span class="label">Parcela P&amp;I mensal (30 anos)</span><span class="val" id="s3-r-pi">—</span></div>
+          <div class="result-row"><span class="label">PITIA total mensal</span><span class="val" id="s3-r-pitia">—</span></div>
+          <div class="result-row"><span class="label">Aluguel bruto mensal</span><span class="val" id="s3-r-rent">—</span></div>
+          <div class="result-row highlight"><span class="label">DSCR</span><span class="val" id="s3-r-dscr">—</span></div>
+          <div class="result-row highlight"><span class="label">Fluxo de caixa mensal</span><span class="val" id="s3-r-cf">—</span></div>
+          <div class="result-row highlight"><span class="label">Fluxo de caixa anual</span><span class="val" id="s3-r-cfy">—</span></div>
+          <div class="result-row" id="s3-firpta-row" style="display:none"><span class="label" style="color:var(--red)">Impacto FIRPTA na venda futura estimada</span><span class="val warn" id="s3-r-firpta">—</span></div>
+        </div>
+        <div class="calc-note">
+          BRRRR: o empréstimo DSCR recupera parte do capital investido. Capital preso = o que sobra no imóvel (seu equity). DSCR ≥ 1,25 é o mínimo da maioria dos credores.
+        </div>
+      </div>
+
+    </div><!-- /calc-body -->
+  </div><!-- /calc-wrapper -->
+
+  <h2 style="margin-top:32px">Regras de Bolso</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Regra</th><th>Fórmula</th><th>Para Que Serve</th></tr>
+    <tr><td><strong>Regra dos 70%</strong></td><td>Custo Total ≤ ARV × 70%</td><td>Triagem rápida para saída por venda</td></tr>
+    <tr><td><strong>Regra do 1%</strong></td><td>Aluguel Mensal ÷ Custo Total ≥ 1%</td><td>Triagem rápida para saída por aluguel</td></tr>
+    <tr><td><strong>FIRPTA = 0%</strong></td><td>Preço ≤ US$300K + comprador ocupante-proprietário</td><td>Eliminar retenção automaticamente</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ EXITS ══ -->
+<section class="section" id="sec-exits">
+  <div class="annex-tag">Anexo 5</div>
+  <div class="section-header">
+    <div class="icon">🚪</div>
+    <div class="info">
+      <h1>Estratégias de Saída</h1>
+      <div class="desc">Vender vs. Refinanciar e Alugar — defina antes de comprar o terreno</div>
+    </div>
+  </div>
+
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body">Sua estratégia de saída deve ser definida <strong>antes de comprar o terreno</strong> — não depois. A saída determina seu financiamento, nível de acabamento e projeções de fluxo de caixa.</div></div>
+
+  <h2>Comparação das Duas Saídas</h2>
+  <div class="table-wrap"><table>
+    <tr><th></th><th>VENDER (Flip)</th><th>REFINANCIAR E ALUGAR (BRRRR)</th></tr>
+    <tr><td>Objetivo</td><td>Maximizar lucro na venda</td><td>Construir patrimônio + renda recorrente</td></tr>
+    <tr><td>Prazo total</td><td>12–20 meses</td><td>14–22 meses para estabilizar</td></tr>
+    <tr><td>Caixa recebido</td><td>Grande valor à vista</td><td>Parcial (equity) + renda mensal</td></tr>
+    <tr><td>Imposto sobre ganho</td><td>Devido imediatamente</td><td>Diferido (depreciação)</td></tr>
+    <tr><td>Impacto FIRPTA</td><td class="tag-red">15% retenção bruta</td><td class="tag-green">Nenhum até eventual venda</td></tr>
+    <tr><td>Gestão contínua</td><td>Nenhuma após o fechamento</td><td>Administradora ou autogestão</td></tr>
+  </table></div>
+
+  <h2>FIRPTA — O que É, Como Funciona e Como Reduzir</h2>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>FIRPTA é uma retenção (adiantamento), não o imposto final.</strong> A seguradora retém 15% do preço bruto como garantia para o IRS. Você declara o imposto real no ano seguinte — se retiveram mais do que o imposto devido, você recebe a diferença de volta.</div></div>
+
+  <h3>Como funciona na prática</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Passo</th><th>O que acontece</th><th>Exemplo (venda de US$300K)</th></tr>
+    <tr><td>1. Fechamento</td><td>Seguradora retém 15% do preço bruto</td><td>−US$45.000 retidos</td></tr>
+    <tr><td>2. Repasse ao IRS</td><td>Seguradora envia ao IRS em até 20 dias</td><td>IRS recebe US$45.000</td></tr>
+    <tr><td>3. Declaração anual</td><td>CPA calcula imposto real sobre o lucro</td><td>Lucro: US$50K → imposto: ~US$10K</td></tr>
+    <tr><td>4. Restituição</td><td>IRS devolve o excesso</td><td class="tag-green">US$35.000 de volta</td></tr>
+  </table></div>
+
+  <h3>Alíquotas de Retenção</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Preço de Venda</th><th>Condição</th><th>Retenção</th></tr>
+    <tr><td><strong>≤ US$300.000</strong></td><td><strong>Comprador é ocupante-proprietário</strong></td><td class="tag-green"><strong>0% ✅</strong></td></tr>
+    <tr><td>US$300K–US$1M</td><td>Comprador é ocupante-proprietário</td><td class="tag-yellow">10%</td></tr>
+    <tr><td>Qualquer valor</td><td>Investimento / aluguel</td><td class="tag-red">15%</td></tr>
+    <tr><td>Qualquer valor</td><td>Com Certificado de Retenção aprovado (Form 8288-B)</td><td class="tag-green">Reduzido ao imposto estimado</td></tr>
+  </table></div>
+
+  <h3>3 Caminhos para Reduzir ou Eliminar o FIRPTA</h3>
+  <div class="table-wrap"><table>
+    <tr><th>#</th><th>Caminho</th><th>Como funciona</th><th>Prazo/Custo</th></tr>
+    <tr><td class="tag-green"><strong>1</strong></td><td><strong>Vender ≤ US$300K para ocupante</strong></td><td>Retenção = 0% automaticamente. Mercados de entrada (Citrus Springs, Jacksonville, San Antonio) naturalmente se enquadram.</td><td class="tag-green">Nenhuma ação necessária</td></tr>
+    <tr><td class="tag-yellow"><strong>2</strong></td><td><strong>Formulário 8288-B</strong></td><td>CPA solicita ao IRS que retenha apenas o imposto estimado real (ex: 3%–5% em vez de 15%). Precisa de aprovação prévia.</td><td>Protocolar 3–6 meses antes. Custo: US$500–US$1.500 CPA</td></tr>
+    <tr><td class="tag-green"><strong>3</strong></td><td><strong>Refinanciar + Alugar (BRRRR)</strong></td><td>Sem venda = sem FIRPTA. Diferimento total. Eventual saída via 1031 Exchange reinveste sem pagar imposto naquele momento.</td><td>Nenhum custo imediato</td></tr>
+  </table></div>
+
+  <div class="callout info"><div class="icon">🏗️</div><div class="body"><strong>Nota sobre LLC e FIRPTA:</strong> Uma LLC de sócio único estrangeiro é tratada pelo IRS como entidade transparente — o FIRPTA se aplica ao sócio estrangeiro da mesma forma. A LLC sozinha <strong>não elimina</strong> o FIRPTA. O que elimina é o preço de venda (≤ US$300K + ocupante-proprietário), o Form 8288-B aprovado, ou simplesmente não vender (BRRRR).</div></div>
+
+  <h2>Guia de Decisão</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0">
+    <div class="callout info"><div class="icon">💰</div><div class="body"><strong>Escolha VENDER se:</strong><br>• DSCR &lt; 1,0<br>• Precisa reciclar capital rapidamente<br>• Mercado de aluguel fraco<br>• Margem bruta ≥ 25% na venda<br>• Quer evitar gestão de imóvel</div></div>
+    <div class="callout success"><div class="icon">🏘️</div><div class="body"><strong>Escolha REFINANCIAR se:</strong><br>• DSCR ≥ 1,25<br>• Fluxo de caixa positivo após despesas<br>• Demanda de aluguel forte<br>• Objetivo é patrimônio de longo prazo<br>• Planejamento de manter 5+ anos</div></div>
+  </div>
+
+  <h2>BRRRR em Escala (Meta de 10 Unidades)</h2>
+  <pre>Imóveis:            5 duplexes
+Valor Total:        ~US$2.500.000
+Dívida Total:       ~US$1.750.000 (70% LTV)
+Equity Total:       ~US$750.000
+Aluguel Mensal:     ~US$15.000
+Despesas Mensais:   ~US$13.500
+Fluxo de Caixa:     ~US$1.500–US$3.000/mês</pre>
+</section>
+
+<!-- ══════════════════════════════════════ LEGAL ══ -->
+<section class="section" id="sec-legal">
+  <div class="annex-tag">Anexo 6</div>
+  <div class="section-header">
+    <div class="icon">⚖️</div>
+    <div class="info">
+      <h1>Guia Jurídico e Fiscal</h1>
+      <div class="desc">LLC, ITIN, FIRPTA, depreciação e CBE / Banco Central do Brasil</div>
+    </div>
+  </div>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body">Este guia é educacional. Consulte sempre um advogado americano licenciado e um CPA especializado em estrangeiros antes de tomar decisões.</div></div>
+
+  <h2>Passo 1 — Obtenha um ITIN</h2>
+  <p>O <strong>ITIN</strong> é seu número fiscal nos EUA como estrangeiro sem SSN. Necessário para: abrir conta bancária, declarar impostos, solicitar empréstimos e figurar como sócio de LLC.</p>
+  <div class="table-wrap"><table>
+    <tr><td>Formulário</td><td>IRS W-7</td></tr>
+    <tr><td>Prazo</td><td>7–11 semanas</td></tr>
+    <tr><td>Como solicitar</td><td>IRS Austin Service Center, ou Agente Aceito pelo IRS (CAA) que pode autenticar documentos no Brasil</td></tr>
+    <tr><td>Recurso</td><td>irs.gov/itin</td></tr>
+  </table></div>
+
+  <h2>Passo 2 — Constituir uma LLC</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Estado</th><th>Vantagens</th><th>Desvantagens</th></tr>
+    <tr><td><strong>Estado de investimento</strong> (mais comum)</td><td>Simples, sem registro duplo</td><td>Varia por estado</td></tr>
+    <tr><td>Wyoming</td><td>Privacidade forte, sem imposto estadual</td><td>Registrar como LLC estrangeira no estado de investimento</td></tr>
+    <tr><td>Flórida / Texas</td><td>Sem imposto estadual de renda</td><td>Menos privacidade</td></tr>
+  </table></div>
+  <ul class="checklist" id="cl-llc"></ul>
+
+  <h2>Estruturas Societárias</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Estrutura</th><th>Para Quem</th><th>Custo</th></tr>
+    <tr><td>LLC única (sócio individual)</td><td>1–2 imóveis — ponto de partida recomendado</td><td>US$50–US$500/ano</td></tr>
+    <tr><td>LLC por imóvel + holding</td><td>3+ imóveis — proteção patrimonial total</td><td>US$200–US$600/ano por LLC</td></tr>
+    <tr><td>Holding brasileira → LLC</td><td>Capital significativo, planejamento sucessório</td><td>Requer advogados nos dois países</td></tr>
+  </table></div>
+
+  <h2>Impostos nos EUA — Visão Geral</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Imposto</th><th>Quando</th><th>Alíquota</th></tr>
+    <tr><td>Renda federal (aluguel)</td><td>Anualmente sobre renda líquida</td><td>10%–37%</td></tr>
+    <tr><td>Ganho de capital — longo prazo (&gt;1 ano)</td><td>Na venda</td><td>15%–20%</td></tr>
+    <tr><td>Ganho de capital — curto prazo (≤1 ano, típico em flip)</td><td>Na venda</td><td class="tag-yellow">10%–37% (alíquotas ordinárias)</td></tr>
+    <tr><td>FIRPTA (retenção, não imposto final)</td><td>No fechamento — venda por estrangeiro</td><td class="tag-red">0%–15% bruto (ver Saídas)</td></tr>
+    <tr><td>IPTU</td><td>Anualmente (local)</td><td>0,5%–2,5% do valor</td></tr>
+    <tr><td><strong>US Estate Tax (sucessório)</strong></td><td>No falecimento do dono estrangeiro</td><td class="tag-red">Até 40% acima de US$60.000</td></tr>
+  </table></div>
+
+  <h2>Aluguel: A Eleição §871(d) — Evite 30% Sobre o Bruto</h2>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Sem providência, o property manager é obrigado a reter 30% do seu aluguel BRUTO.</strong> A eleição §871(d) (feita pelo CPA no 1040-NR) + o formulário <strong>W-8ECI</strong> entregue ao PM mudam a tributação para a renda <strong>líquida</strong> (após despesas e depreciação) — frequentemente perto de zero nos primeiros anos. Resolva no primeiro mês de locação.</div></div>
+
+  <h2>US Estate Tax — O Risco Mais Subestimado</h2>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Estrangeiros têm isenção de apenas US$60.000 no imposto sucessório americano</strong> (vs. US$15 milhões para cidadãos) — e a LLC de sócio único NÃO protege. Em um imóvel de US$500K, a exposição é de ~US$135.000 (≈27%). O Brasil não tem tratado sucessório com os EUA.<br><br><strong>Mitigações:</strong> ① seguro de vida term (o capital não é ativo americano e paga o imposto — solução barata para 1º projeto) · ② dívida nonrecourse reduz a base · ③ corporação estrangeira "blocker" (para portfólios; piora o imposto de renda) · ④ trust irrevogável. Estruture <strong>antes</strong> de comprar — reorganizar depois dispara impostos de transferência.</div></div>
+
+  <h2>Lei 14.754/2023 — Como o Brasil Tributa Sua LLC</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Regime</th><th>Como funciona</th><th>Implicação</th></tr>
+    <tr><td><strong>Opaco (padrão)</strong></td><td>Lucro anual da LLC tributado em <strong>15% fixo</strong> no IRPF, mesmo sem distribuição</td><td>Exige balanço anual em BR GAAP; 15% sobre lucro líquido (com depreciação)</td></tr>
+    <tr><td><strong>Transparência</strong> (opção irrevogável)</td><td>Declara os bens como se fossem seus: aluguel via carnê-leão (até 27,5%), venda via GCAP (15%+)</td><td>Sem balanço; crédito limpo do imposto federal americano; base quase bruta no carnê-leão</td></tr>
+  </table></div>
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Em abril/2026 a Receita (SC COSIT 56/2026) confirmou que LLCs americanas transparentes de sócios não residentes nos EUA caem no regime anti-diferimento. <strong>A escolha opaco vs. transparente é irrevogável — decida com contador especializado antes da primeira DIRPF.</strong> Ignorar a lei = lucro da LLC tributável no Brasil anualmente mesmo sem trazer o dinheiro.</div></div>
+
+  <h2>IOF nas Remessas — A Classificação Vale Milhares</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Natureza da operação</th><th>IOF</th></tr>
+    <tr><td>Transferência para conta própria no exterior (disponibilidade)</td><td class="tag-red">3,5%</td></tr>
+    <tr><td class="tag-green"><strong>Remessa com finalidade de investimento (aporte na LLC)</strong></td><td class="tag-green"><strong>1,1%</strong></td></tr>
+    <tr><td>Cartão internacional / moeda em espécie</td><td>3,5%</td></tr>
+  </table></div>
+  <div class="callout info"><div class="icon">💡</div><div class="body">Em US$200K remetidos (~R$1,1M), a classificação como investimento direto economiza <strong>~R$26.000</strong>. O código de finalidade do contrato de câmbio decide — alinhe com a instituição de câmbio e o contador ANTES de remeter. Alíquotas mudam por decreto: confirme a vigente a cada remessa.</div></div>
+
+  <h2>CBE — Capitais Brasileiros no Exterior</h2>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Multas de R$1.500 a R$250.000</strong> por não cumprimento. Se você investe nos EUA, provavelmente tem obrigação de declarar ao Banco Central.</div></div>
+  <div class="table-wrap"><table>
+    <tr><th>Situação</th><th>Obrigação</th><th>Prazo</th></tr>
+    <tr><td>Ativos no exterior ≥ US$1.000.000</td><td class="tag-red">Declaração anual obrigatória</td><td>5 de abril</td></tr>
+    <tr><td>Ativos no exterior ≥ US$100.000.000</td><td class="tag-red">Declaração trimestral</td><td>Último dia útil do mês seguinte</td></tr>
+    <tr><td>Ativos no exterior &lt; US$1.000.000</td><td class="tag-green">Voluntária (recomendada)</td><td>—</td></tr>
+  </table></div>
+
+  <h3>CBE vs. DIRPF</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Aspecto</th><th>CBE (Banco Central)</th><th>DIRPF (Receita Federal)</th></tr>
+    <tr><td>Quem exige</td><td>Banco Central do Brasil</td><td>Receita Federal do Brasil</td></tr>
+    <tr><td>Limite</td><td>≥ US$1M para obrigatoriedade</td><td>Sem limite — todos os bens</td></tr>
+    <tr><td>Prazo</td><td>5 de abril</td><td>30 de abril</td></tr>
+    <tr><td>O que declarar</td><td>Saldo em 31/dez + variações</td><td>Custo de aquisição</td></tr>
+  </table></div>
+
+  <h3>Como Registrar Sua LLC no CBE</h3>
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Declare a <strong>participação no capital da LLC</strong>, não o imóvel diretamente. O valor é o patrimônio líquido proporcional à sua cota.<br><br>Exemplo: Imóvel US$400K − Empréstimo US$220K + Caixa US$15K = <strong>Patrimônio líquido US$195K</strong></div></div>
+
+  <h3>Checklist CBE Anual</h3>
+  <ul class="checklist" id="cl-cbe"></ul>
+
+  <h2>Depreciação — Sua Vantagem Fiscal</h2>
+  <pre>Valor do imóvel:              US$400.000
+Valor do terreno (20%):       US$80.000
+Valor da construção:          US$320.000
+Depreciação anual (27,5 anos): US$11.636/ano
+
+Renda líquida de aluguel:     US$10.000
+Dedução de depreciação:      (US$11.636)
+Renda tributável:             US$0</pre>
+
+  <h2>Erros Comuns a Evitar</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Erro</th><th>Consequência</th></tr>
+    <tr><td class="tag-red">Comprar imóvel em nome pessoal (sem LLC)</td><td>Responsabilidade pessoal, dificuldade de financiamento</td></tr>
+    <tr><td class="tag-red">Não ter ITIN antes de começar</td><td>Atrasa financiamento, fechamento, 8288-B e declarações fiscais</td></tr>
+    <tr><td class="tag-red">Ignorar FIRPTA até o fechamento</td><td>Surpresa de 15%; sem tempo para Form 8288-B</td></tr>
+    <tr><td class="tag-red">Esquecer o Formulário 5472 da LLC</td><td><strong>Multa de US$25.000/ano</strong> — obrigatório mesmo sem renda</td></tr>
+    <tr><td class="tag-red">Alugar sem a eleição §871(d) / W-8ECI</td><td>30% do aluguel BRUTO retido pelo property manager</td></tr>
+    <tr><td class="tag-red">Ignorar o US Estate Tax</td><td>Herdeiros perdem até 40% acima de US$60K de isenção</td></tr>
+    <tr><td class="tag-red">Não definir regime da LLC no Brasil (Lei 14.754)</td><td>Tributação anual de 15% pega de surpresa; opção errada é irrevogável</td></tr>
+    <tr><td class="tag-red">Não declarar bens no Brasil (DIRPF/CBE)</td><td>Multas da Receita Federal e do Banco Central</td></tr>
+    <tr><td class="tag-red">Transferências informais de câmbio</td><td>Não consegue comprovar origem dos recursos</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ DEMOLISH ══ -->
+<section class="section" id="sec-demolish">
+  <div class="annex-tag">Anexo 7</div>
+  <div class="section-header">
+    <div class="icon">🏚️</div>
+    <div class="info">
+      <h1>Ciclo Demolir e Reconstruir</h1>
+      <div class="desc">Comprar imóvel antigo → demolir → construir novo → vender com múltiplos de 2x–3x</div>
+    </div>
+  </div>
+
+  <div class="callout success"><div class="icon">💡</div><div class="body">Em vez de buscar terrenos vagos (cada vez mais escassos), você compra um imóvel antigo em localização consolidada, derruba e constrói novo. Infraestrutura já instalada = sem taxas de conexão.</div></div>
+
+  <h2>Exemplo Real Documentado — Orlando, FL</h2>
+  <div class="table-wrap"><table>
+    <tr><td>Compra do imóvel antigo (casa de 1963)</td><td>US$812.000</td></tr>
+    <tr><td>Demolição</td><td>US$18.000</td></tr>
+    <tr><td>Construção nova (350m², 4/3, médio-alto)</td><td>US$490.000</td></tr>
+    <tr><td>Financiamento + carregamento</td><td>US$95.000</td></tr>
+    <tr><td><strong>Custo Total do Projeto</strong></td><td><strong>US$1.415.000</strong></td></tr>
+    <tr><td class="tag-green"><strong>Venda da construção nova</strong></td><td class="tag-green"><strong>US$3.200.000</strong></td></tr>
+    <tr><td class="tag-green"><strong>Lucro Bruto</strong></td><td class="tag-green"><strong>US$1.785.000 (2,26x)</strong></td></tr>
+  </table></div>
+
+  <h2>Demolir vs. Comprar Lote Vago</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Critério</th><th>Lote Vago</th><th>Demolir e Reconstruir</th></tr>
+    <tr><td>Disponibilidade</td><td class="tag-red">Rara em localizações consolidadas</td><td class="tag-green">Abundante (casas antigas)</td></tr>
+    <tr><td>Infraestrutura</td><td class="tag-yellow">Pode exigir nova instalação</td><td class="tag-green">Já instalada</td></tr>
+    <tr><td>Custo de aquisição</td><td class="tag-green">Geralmente menor</td><td class="tag-red">Mais alto</td></tr>
+    <tr><td>Custo adicional</td><td>Terraplanagem, conexões</td><td>Demolição (US$8K–US$25K)</td></tr>
+    <tr><td>Surpresas geotécnicas</td><td class="tag-yellow">Possível</td><td class="tag-green">Menor risco (já foi construído)</td></tr>
+    <tr><td>Zoneamento</td><td class="tag-yellow">Risco de surpresa</td><td class="tag-green">Uso residencial comprovado</td></tr>
+  </table></div>
+
+  <h2>Fórmula de Decisão</h2>
+  <pre>Demolir vale a pena se:
+ARV nova construção ÷ (Compra + Demolição + Construção) ≥ 1,43
+(garante margem bruta ≥ 30%)</pre>
+
+  <div class="table-wrap"><table>
+    <tr><th>Mercado</th><th>Compra</th><th>Demolição</th><th>Construção</th><th>ARV</th><th>Múltiplo</th><th>Viável?</th></tr>
+    <tr><td>Orlando, FL</td><td>US$812K</td><td>US$18K</td><td>US$490K</td><td>US$3,2M</td><td>2,25x</td><td class="tag-green">✓</td></tr>
+    <tr><td>Tampa, FL</td><td>US$380K</td><td>US$18K</td><td>US$320K</td><td>US$1,1M</td><td>1,41x</td><td class="tag-green">✓</td></tr>
+    <tr><td>Charlotte, NC</td><td>US$320K</td><td>US$16K</td><td>US$295K</td><td>US$980K</td><td>1,44x</td><td class="tag-green">✓</td></tr>
+    <tr><td>Jacksonville, FL</td><td>US$150K</td><td>US$15K</td><td>US$210K</td><td>US$490K</td><td>1,26x</td><td class="tag-yellow">⚠ Margem baixa</td></tr>
+  </table></div>
+
+  <h2>Checklist de Due Diligence — Demolição</h2>
+  <ul class="checklist" id="cl-demo"></ul>
+
+  <h2>Custos de Demolição</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Tipo de Imóvel</th><th>Área</th><th>Custo (sem amianto)</th></tr>
+    <tr><td>SFR pequeno</td><td>&lt; 120m²</td><td>US$8.000–US$14.000</td></tr>
+    <tr><td>SFR médio</td><td>120–200m²</td><td>US$12.000–US$22.000</td></tr>
+    <tr><td>SFR grande</td><td>&gt; 200m²</td><td>US$18.000–US$30.000</td></tr>
+    <tr><td>Imóvel com amianto (pré-1980)</td><td>Qualquer</td><td class="tag-yellow">+ US$3.000–US$15.000</td></tr>
+  </table></div>
+
+  <h2>Por Que Funciona Especialmente para Brasileiros</h2>
+  <ol>
+    <li><strong>Capital em dólares:</strong> Orlando e Tampa têm forte demanda americana por construção nova</li>
+    <li><strong>Tolerância a ciclos longos:</strong> 18–24 meses sem pressão de liquidez imediata</li>
+    <li><strong>Localização consolidada:</strong> Acessa bairros estabelecidos que terrenos vagos não têm</li>
+  </ol>
+</section>
+
+<!-- ══════════════════════════════════════ GESTÃO DA OBRA ══ -->
+<section class="section" id="sec-obra">
+  <div class="annex-tag">Módulo 9</div>
+  <div class="section-header">
+    <div class="icon">🏗️</div>
+    <div class="info">
+      <h1>Gestão da Obra Remotamente</h1>
+      <div class="desc">Como controlar sua construção nos EUA estando no Brasil — processos, ferramentas e red flags</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Gerenciar uma construção à distância é possível — mas exige <strong>sistemas, não confiança cega</strong>. Investidores bem-sucedidos combinam: GC certo, inspetor independente, cadência semanal e software de gestão.</div></div>
+
+  <h2>Estrutura de Equipe Recomendada</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Papel</th><th>Responsabilidade</th><th>Custo Típico</th></tr>
+    <tr><td><strong>Empreiteiro Geral (GC)</strong></td><td>Executa toda a obra, coordena subempreiteiros</td><td>15%–20% do custo de construção</td></tr>
+    <tr><td><strong>Inspetor Independente</strong></td><td>Valida cada draw antes do pagamento</td><td>US$150–US$350 por inspeção</td></tr>
+    <tr><td><strong>Gerente de Projeto Local</strong></td><td>Seus olhos no canteiro</td><td>US$2.000–US$5.000/mês ou 5%–8%</td></tr>
+    <tr><td><strong>Advogado Imobiliário</strong></td><td>Revisão de contratos e disputas</td><td>US$300–US$500/hora</td></tr>
+  </table></div>
+
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>O inspetor independente é não-negociável</strong> para investidores remotos. O credor de construção normalmente exige um também — então você já paga por isso de qualquer forma.</div></div>
+
+  <h2>Cláusulas Essenciais no Contrato com o GC</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Cláusula</th><th>O que exigir</th></tr>
+    <tr><td>Cronograma de draws</td><td>Por marco concluído — nunca por data</td></tr>
+    <tr><td>Retenção (retainage)</td><td>10% retido até CO emitido</td></tr>
+    <tr><td>Change orders</td><td>Todo change order por escrito e assinado antes da execução</td></tr>
+    <tr><td>Rescisão</td><td>Proprietário pode rescindir com 7 dias se atraso &gt; 30 dias</td></tr>
+    <tr><td>Seguro</td><td>General Liability US$1M + Workers' Comp obrigatórios</td></tr>
+    <tr><td>Lien releases</td><td>Exigido antes de cada pagamento</td></tr>
+  </table></div>
+
+  <h2>Lei de Liens da Flórida (Cap. 713) — As 4 Peças</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Documento</th><th>O que é</th><th>Sua obrigação</th></tr>
+    <tr><td><strong>NOC</strong> (Notice of Commencement)</td><td>Registro público do início da obra</td><td>VOCÊ registra no condado <strong>antes de começar</strong> (contratos &gt; US$5.000); na prática a title company/credor prepara no fechamento — confirme. Validade: 1 ano</td></tr>
+    <tr><td><strong>NTO</strong> (Notice to Owner)</td><td>Aviso de subempreiteiros em até 45 dias</td><td class="tag-green">Receber é NORMAL — não é cobrança. Guarde todos: quem enviou precisa de lien release antes de você pagar</td></tr>
+    <tr><td><strong>Lien releases</strong></td><td>Renúncia ao direito de lien</td><td>Coletar a cada draw (condicional) e no final (incondicional)</td></tr>
+    <tr><td><strong>Final Payment Affidavit</strong></td><td>Declaração do GC listando quem falta pagar</td><td class="tag-red">NÃO libere o pagamento final sem ela</td></tr>
+  </table></div>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Risco de pagar duas vezes:</strong> se você paga o GC sem coletar lien releases de quem enviou NTO e o GC não repassa, a lei da Flórida considera "pagamento impróprio" — os subs podem registrar lien sobre o SEU imóvel (até 90 dias após o último fornecimento) e você paga de novo.</div></div>
+
+  <h2>Cadência Semanal de Comunicação</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Frequência</th><th>Formato</th><th>Conteúdo</th></tr>
+    <tr><td><strong>Diário</strong></td><td>Foto via WhatsApp</td><td>Progresso do dia</td></tr>
+    <tr><td><strong>Semanal (sexta)</strong></td><td>Relatório escrito + fotos</td><td>% conclusão, próxima etapa, problemas abertos</td></tr>
+    <tr><td><strong>Por marco</strong></td><td>Videochamada</td><td>Review antes de aprovar draw</td></tr>
+    <tr><td><strong>Mensal</strong></td><td>Cronograma atualizado</td><td>Previsão vs. plano original</td></tr>
+  </table></div>
+
+  <h2>Etapas Críticas que Exigem Inspeção</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Etapa</th><th>Por Que é Crítica</th><th>Recomendação</th></tr>
+    <tr><td>Fundação (antes do concreto)</td><td class="tag-red">Irreversível após concreto</td><td>Inspetor independente obrigatório</td></tr>
+    <tr><td>Framing concluído</td><td class="tag-yellow">Define todo o layout</td><td>Videochamada + fotos 360°</td></tr>
+    <tr><td>Rough-in elétrica/hidráulica</td><td class="tag-red">Fica atrás das paredes para sempre</td><td>Inspetor antes de fechar drywall</td></tr>
+    <tr><td>Telhado</td><td class="tag-red">Vazamentos custam US$20K–US$50K</td><td>Inspetor externo + fotos do topo</td></tr>
+    <tr><td>Punch list final</td><td class="tag-yellow">Última chance antes de pagar retenção</td><td>Visita presencial ideal</td></tr>
+  </table></div>
+
+  <h2>Red Flags — Sinais de Alerta do GC</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Sinal</th><th>O Que Pode Significar</th><th>Ação</th></tr>
+    <tr><td class="tag-red">Pede &gt; 25% adiantado</td><td>Fluxo de caixa ruim ou golpista</td><td>Recuse — máximo 10% adiantado</td></tr>
+    <tr><td class="tag-red">Sem seguro Workers' Comp</td><td>Ilegal na maioria dos estados</td><td>Exija comprovante ou troque</td></tr>
+    <tr><td class="tag-red">Para a obra sem aviso</td><td>Possível abandono do projeto</td><td>Acione cláusula de rescisão</td></tr>
+    <tr><td class="tag-red">Não fornece relatórios</td><td>Falta de transparência</td><td>Escale para inspetor independente</td></tr>
+    <tr><td class="tag-red">Pede pagamento em espécie</td><td>Red flag de fraude</td><td>Recuse sempre</td></tr>
+  </table></div>
+
+  <h2>Ferramentas de Gestão Remota</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Ferramenta</th><th>Para Quê</th><th>Custo</th></tr>
+    <tr><td><strong>Buildertrend</strong></td><td>Plano, fotos, orçamento, comunicação, draws</td><td>US$199–US$499/mês</td></tr>
+    <tr><td><strong>CoConstruct</strong></td><td>Similar, ótimo para residencial</td><td>US$99–US$299/mês</td></tr>
+    <tr><td><strong>Google Drive + Fotos</strong></td><td>Gratuito, simples — solução mínima</td><td>Grátis</td></tr>
+    <tr><td><strong>Câmera IP (Wyze, Arlo)</strong></td><td>Monitoramento em tempo real do canteiro</td><td>US$35–US$150</td></tr>
+  </table></div>
+
+  <h2>Checklist — Gestão Remota</h2>
+  <h3>Contrato</h3>
+  <ul class="checklist" id="cl-obra-contrato"></ul>
+  <h3>Durante a Obra</h3>
+  <ul class="checklist" id="cl-obra-obra"></ul>
+  <h3>A Cada Draw</h3>
+  <ul class="checklist" id="cl-obra-draw"></ul>
+</section>
+
+<!-- ══════════════════════════════════════ GESTÃO DE PROPRIEDADE ══ -->
+<section class="section" id="sec-propriedade">
+  <div class="annex-tag">Módulo 10</div>
+  <div class="section-header">
+    <div class="icon">🏢</div>
+    <div class="info">
+      <h1>Gestão de Propriedade para Investidor Remoto</h1>
+      <div class="desc">Como encontrar, contratar e supervisionar um property manager para seu imóvel nos EUA</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Para investidor brasileiro morando no Brasil, <strong>autogestão não é viável</strong>. Property manager é uma despesa operacional obrigatória — inclua no pro forma desde o início.</div></div>
+
+  <h2>Estrutura de Taxas do Property Manager</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Taxa</th><th>Valor Típico</th><th>O Que Cobre</th></tr>
+    <tr><td>Gestão mensal</td><td class="tag-yellow">8%–12% do aluguel bruto</td><td>Coleta, manutenção, relatórios, atendimento</td></tr>
+    <tr><td>Taxa de locação</td><td>50%–100% do 1º mês</td><td>Encontrar e selecionar inquilino</td></tr>
+    <tr><td>Taxa de renovação</td><td>US$150–US$300</td><td>Renovar contrato com inquilino existente</td></tr>
+    <tr><td>Manutenção</td><td>Custo real + 10%–15% markup</td><td>Reparos executados pelo PM</td></tr>
+    <tr><td>Inspeção periódica</td><td>US$75–US$150</td><td>Inspeções semestrais do imóvel</td></tr>
+  </table></div>
+
+  <h2>Exemplo de Custo Real — Duplex US$2.400/mês</h2>
+  <div class="table-wrap"><table>
+    <tr><td>Taxa de gestão (10%)</td><td>US$240/mês</td></tr>
+    <tr><td>Taxa de locação (amortizada)</td><td>US$200/mês</td></tr>
+    <tr><td>Manutenção estimada (5%)</td><td>US$120/mês</td></tr>
+    <tr><td>Reserva de vacância (5%)</td><td>US$120/mês</td></tr>
+    <tr><td><strong>Total de custos</strong></td><td><strong>US$680/mês</strong></td></tr>
+    <tr><td class="tag-green"><strong>Aluguel líquido</strong></td><td class="tag-green"><strong>US$1.720/mês</strong></td></tr>
+  </table></div>
+
+  <h2>Perguntas para Entrevistar o PM</h2>
+  <ul class="checklist" id="cl-pm-interview"></ul>
+
+  <h2>PM de Qualidade vs. Problemático</h2>
+  <div class="table-wrap"><table>
+    <tr><th>PM de Qualidade</th><th>PM Problemático</th></tr>
+    <tr><td class="tag-green">Responde em &lt; 24h</td><td class="tag-red">Demora dias para responder</td></tr>
+    <tr><td class="tag-green">Software profissional (AppFolio, Buildium)</td><td class="tag-red">Relatórios em Excel ou papel</td></tr>
+    <tr><td class="tag-green">Processo de triagem documentado</td><td class="tag-red">Triagem informal ou subjetiva</td></tr>
+    <tr><td class="tag-green">Referências disponíveis prontamente</td><td class="tag-red">Hesita em fornecer referências</td></tr>
+    <tr><td class="tag-green">Contrato transparente</td><td class="tag-red">Taxas escondidas no contrato</td></tr>
+    <tr><td class="tag-green">Relatórios mensais padronizados</td><td class="tag-red">Relatórios esporádicos</td></tr>
+  </table></div>
+
+  <h2>Cláusulas Essenciais no Contrato de PM</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Cláusula</th><th>O Que Exigir</th></tr>
+    <tr><td>Autoridade de manutenção</td><td>PM aprova reparos até US$300–US$500 sem consultar; acima disso: aprovação sua</td></tr>
+    <tr><td>Repasse de fundos</td><td>Aluguel líquido até dia X de cada mês na conta LLC</td></tr>
+    <tr><td>Reserva operacional</td><td>US$500–US$1.500 na conta do imóvel para emergências</td></tr>
+    <tr><td>Rescisão</td><td>Aviso de 30 dias, sem multa rescisória</td></tr>
+    <tr><td>Relatórios fiscais</td><td>Form 1099-MISC anual para declaração de IR nos EUA</td></tr>
+  </table></div>
+
+  <h2>Taxas de Vacância por Mercado (2024–2025)</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Mercado</th><th>Taxa de Vacância</th><th>Prazo Médio para Locar</th></tr>
+    <tr><td>Jacksonville, FL</td><td class="tag-green">4%–6%</td><td>18–28 dias</td></tr>
+    <tr><td>San Antonio, TX</td><td class="tag-green">5%–7%</td><td>20–32 dias</td></tr>
+    <tr><td>Memphis, TN</td><td class="tag-yellow">6%–9%</td><td>22–35 dias</td></tr>
+    <tr><td>Tampa, FL</td><td class="tag-green">3%–5%</td><td>14–22 dias</td></tr>
+    <tr><td>Charlotte, NC</td><td class="tag-green">4%–6%</td><td>18–28 dias</td></tr>
+  </table></div>
+
+  <div class="callout info"><div class="icon">💡</div><div class="body">Para o pro forma, use <strong>vacância de 8%</strong> como premissa conservadora — equivale a ~1 mês vago por ano.</div></div>
+
+  <h2>Reserva de Manutenção</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Tipo de Imóvel</th><th>Reserva Mensal Recomendada</th></tr>
+    <tr><td>SFR novo (&lt; 5 anos)</td><td>0,5%–1% do valor do imóvel/ano</td></tr>
+    <tr><td>Duplex novo (&lt; 5 anos)</td><td>0,75%–1,5% do valor/ano</td></tr>
+    <tr><td>Imóvel existente (&gt; 10 anos)</td><td>1%–2% do valor/ano</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ ESCALANDO O PORTFÓLIO ══ -->
+<section class="section" id="sec-portfolio">
+  <div class="annex-tag">Módulo 11</div>
+  <div class="section-header">
+    <div class="icon">📈</div>
+    <div class="info">
+      <h1>Escalando o Portfólio com BRRRR</h1>
+      <div class="desc">De 1 imóvel a um portfólio rentável — BRRRR repetido em 5 anos</div>
+    </div>
+  </div>
+
+  <div class="callout success"><div class="icon">💡</div><div class="body">O poder do BRRRR está no <strong>refinanciamento</strong>: após construir e alugar, você faz um DSCR refi que extrai boa parte do capital investido — e usa esse capital para o próximo projeto.</div></div>
+
+  <h2>Ciclo BRRRR — Exemplo Duplex Jacksonville, FL</h2>
+  <div class="table-wrap"><table>
+    <tr><td>Terreno</td><td>US$80.000</td></tr>
+    <tr><td>Construção</td><td>US$260.000</td></tr>
+    <tr><td>Custos de fechamento + carry</td><td>US$35.000</td></tr>
+    <tr><td><strong>Total investido</strong></td><td><strong>US$375.000</strong></td></tr>
+    <tr><td>ARV após conclusão</td><td>US$480.000</td></tr>
+    <tr><td>DSCR Refi (75% LTV)</td><td>US$360.000</td></tr>
+    <tr><td class="tag-green"><strong>Capital recuperado</strong></td><td class="tag-green"><strong>US$360.000 (~96% do investido)</strong></td></tr>
+    <tr><td>Fluxo de caixa líquido</td><td>~US$280/mês = US$3.360/ano</td></tr>
+  </table></div>
+
+  <h2>Meta de 5 Anos: 5 Duplexes / 10 Unidades</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Ano</th><th>Imóvel</th><th>ARV</th><th>DSCR Loan</th><th>Capital Reciclado</th></tr>
+    <tr><td>1</td><td>Duplex #1 — Jacksonville</td><td>US$480K</td><td>US$360K</td><td>US$345K</td></tr>
+    <tr><td>2</td><td>Duplex #2 — Memphis</td><td>US$420K</td><td>US$315K</td><td>US$300K</td></tr>
+    <tr><td>3</td><td>Duplex #3 — San Antonio</td><td>US$440K</td><td>US$330K</td><td>US$315K</td></tr>
+    <tr><td>4</td><td>Duplex #4 — Jacksonville</td><td>US$500K</td><td>US$375K</td><td>US$360K</td></tr>
+    <tr><td>5</td><td>Duplex #5 — Tampa</td><td>US$550K</td><td>US$412K</td><td>US$395K</td></tr>
+    <tr><td class="tag-green"><strong>TOTAL</strong></td><td class="tag-green"><strong>5 duplexes / 10 unidades</strong></td><td class="tag-green"><strong>~US$2,4M</strong></td><td>~US$1,8M</td><td></td></tr>
+  </table></div>
+
+  <h2>Resultado ao Final do Ano 5</h2>
+  <div class="table-wrap"><table>
+    <tr><td>Valor Total do Portfólio</td><td class="tag-green">~US$2,4M</td></tr>
+    <tr><td>Dívida Total (DSCR)</td><td>~US$1,8M</td></tr>
+    <tr><td>Patrimônio Líquido (Equity)</td><td class="tag-green">~US$600K</td></tr>
+    <tr><td>Aluguel Bruto/mês</td><td class="tag-green">~US$16.000</td></tr>
+    <tr><td>Fluxo de Caixa Líquido/mês</td><td class="tag-green">~US$1.400–US$1.800</td></tr>
+    <tr><td>Capital original do Brasil</td><td>US$375K (apenas o 1º projeto)</td></tr>
+  </table></div>
+
+  <h2>Estrutura Societária por Fase</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Fase</th><th>Estrutura</th><th>Custo Anual</th></tr>
+    <tr><td>1–2 imóveis</td><td>LLC única no estado do imóvel</td><td>US$500–US$800/ano</td></tr>
+    <tr><td>3–5 imóveis</td><td>Holding LLC (Wyoming/Delaware) + LLCs operacionais por estado</td><td>US$1.500–US$3.000/ano</td></tr>
+    <tr><td>6+ imóveis</td><td>Holding + série de LLCs + LLC de gestão</td><td>US$3.000+/ano</td></tr>
+  </table></div>
+
+  <h2>Regras de Segurança no Portfólio</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Proteção</th><th>Parâmetro Recomendado</th></tr>
+    <tr><td>LTV máximo no refi</td><td>75% — não 80%+ mesmo se credor oferecer</td></tr>
+    <tr><td>Reserva de emergência</td><td>6 meses de P&amp;I de todas as propriedades</td></tr>
+    <tr><td>DSCR mínimo para novo empréstimo</td><td>1,30 (não 1,25 mínimo do credor)</td></tr>
+    <tr><td>Concentração por mercado</td><td>Máximo 40% do portfólio em 1 mercado</td></tr>
+    <tr><td>Cross-collateralization</td><td>Evitar vincular mais de 2 imóveis no mesmo empréstimo</td></tr>
+  </table></div>
+
+  <h2>Estratégias de Saída do Portfólio</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Opção</th><th>Como Funciona</th><th>Melhor Quando</th></tr>
+    <tr><td><strong>Manter e transferir</strong></td><td>Patrimônio familiar de longo prazo</td><td>Objetivo é renda passiva geracional</td></tr>
+    <tr><td><strong>Vender seletivamente</strong></td><td>Vender imóveis de menor performance</td><td>Quer reciclar capital para mercados melhores</td></tr>
+    <tr><td><strong>1031 Exchange</strong></td><td>Vender e reinvestir sem imposto imediato</td><td>Quer upgrade de ativo sem pagar imposto</td></tr>
+    <tr><td><strong>Venda de portfólio</strong></td><td>Vender tudo para investidor institucional</td><td>Quer saída rápida com múltiplos imóveis</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ ERROS COMUNS ══ -->
+<section class="section" id="sec-erros">
+  <div class="annex-tag">Módulo 12</div>
+  <div class="section-header">
+    <div class="icon">⚠️</div>
+    <div class="info">
+      <h1>Erros Comuns do Investidor Brasileiro nos EUA</h1>
+      <div class="desc">Os 15 erros mais custosos — e como evitar cada um deles</div>
+    </div>
+  </div>
+
+  <div class="callout danger"><div class="icon">🚨</div><div class="body">Conhecer esses erros antecipadamente pode poupar <strong>US$30.000–US$200.000+</strong> em prejuízo evitável. São baseados em padrões recorrentes de investidores estrangeiros nos EUA.</div></div>
+
+  <h2>Visão Geral dos 15 Erros</h2>
+  <div class="table-wrap"><table>
+    <tr><th>#</th><th>Erro</th><th>Custo Potencial</th><th>Frequência</th></tr>
+    <tr><td>1</td><td>Investir sem ITIN e LLC adequados</td><td>US$20K–US$100K</td><td class="tag-red">Muito comum</td></tr>
+    <tr><td>2</td><td>Subestimar o custo de construção</td><td>US$30K–US$80K</td><td class="tag-red">Muito comum</td></tr>
+    <tr><td>3</td><td>Não incluir contingência no orçamento</td><td>US$15K–US$50K</td><td class="tag-red">Muito comum</td></tr>
+    <tr><td>4</td><td>Escolher o GC errado</td><td>US$40K–US$150K</td><td class="tag-red">Muito comum</td></tr>
+    <tr><td>5</td><td>Ignorar FIRPTA até o fechamento</td><td>US$30K–US$90K</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>6</td><td>Não entender as obrigações do CBE</td><td>R$1.500–R$250K de multa</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>7</td><td>Risco cambial não gerenciado</td><td>15%–30% do capital</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>8</td><td>Comprar terreno sem due diligence</td><td>US$20K–US$100K</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>9</td><td>Escolher o mercado errado</td><td>US$30K–US$80K</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>10</td><td>Trabalhar com ARV otimista</td><td>US$20K–US$60K</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>11</td><td>Sem equipe local antes de comprar</td><td>US$10K–US$40K</td><td class="tag-green">Moderado</td></tr>
+    <tr><td>12</td><td>Over-leverage no portfólio</td><td class="tag-red">Perda do portfólio</td><td class="tag-green">Moderado</td></tr>
+    <tr><td colspan="4" style="background:var(--blue-light);font-weight:700;color:var(--blue)">⚠️ Bônus — Armadilhas Fiscais (invisíveis até a conta chegar)</td></tr>
+    <tr><td>13</td><td>Ignorar o US Estate Tax (planejamento sucessório)</td><td class="tag-red">Até 40% do imóvel</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>14</td><td>Esquecer o Formulário 5472 da LLC</td><td class="tag-red">US$25K/ano de multa</td><td class="tag-yellow">Comum</td></tr>
+    <tr><td>15</td><td>Alugar sem a eleição §871(d) / W-8ECI</td><td class="tag-red">30% do aluguel BRUTO retido</td><td class="tag-yellow">Comum</td></tr>
+  </table></div>
+
+  <h2>Os 5 Mais Críticos — Detalhado</h2>
+
+  <h3>Erro #1 — Sem ITIN e LLC</h3>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>O que acontece:</strong> Compra em nome pessoal, sem ITIN ativo. Resultado: sem conta bancária → projeto travado, responsabilidade pessoal ilimitada, credor não processa empréstimo.<br><br><strong>Custo:</strong> Reformular estrutura depois = US$3K–US$8K + 2–4 meses de atraso = US$15K–US$30K em carry adicional.</div></div>
+
+  <h3>Erro #4 — GC Errado</h3>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>O que acontece:</strong> GC abandona a obra no meio, vícios graves ou não paga subempreiteiros (mechanics liens no seu imóvel).<br><br><strong>Custo:</strong> Substituir GC no meio = +20%–30% sobre o restante. Processos de trabalhador sem Workers' Comp = US$50K–US$200K.</div></div>
+
+  <h3>Erro #5 — FIRPTA no Fechamento</h3>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Exemplo real:</strong> Venda por US$420.000 → FIRPTA retém US$63.000 na hora do fechamento. Investidor esperava receber US$420K e recebeu US$357K. Para recuperar o excedente: declaração de IR nos EUA + esperar reembolso do IRS (4–8 meses).<br><br><strong>Solução:</strong> Protocolar Form 8288-B com 3–6 meses de antecedência.</div></div>
+
+  <h3>Erro #7 — Risco Cambial</h3>
+  <div class="callout info"><div class="icon">💡</div><div class="body"><strong>Exemplo:</strong> Capital enviado a R$5,00/USD = US$400K investidos. Lucro de US$80K em USD. Na saída, câmbio a R$4,50/USD = retorno em BRL de apenas 8% em vez dos 20% em USD.<br><br><strong>Proteção:</strong> Manter capital em USD durante o projeto, usar corretoras de câmbio (Wise, Remessa Online, Husky) para remessas.</div></div>
+
+  <h3>Erro #12 — Over-Leverage</h3>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Cenário de risco:</strong> 4 duplexes com DSCR loans a 80% LTV. Vacância sobe para 15% por 3 meses. Todas as 4 propriedades ficam com fluxo negativo simultaneamente. Sem reserva → default → risco de perder o portfólio inteiro.<br><br><strong>Proteção:</strong> LTV máximo 75%, reserva de 6 meses de P&amp;I, DSCR mínimo 1,30.</div></div>
+
+  <h2>Os 5 Erros — Checklist de Proteção</h2>
+  <ul class="checklist" id="cl-erros-prot"></ul>
+
+  <h2>Bônus: 3 Armadilhas Fiscais Que Quase Ninguém Conta</h2>
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Estes três erros não aparecem nas listas comuns porque são <strong>invisíveis até a conta chegar</strong>. Qualquer CPA generalista pode não alertar sobre eles — exige especialista em investidor estrangeiro.</div></div>
+
+  <h3>Erro #13 — Ignorar o US Estate Tax (planejamento sucessório)</h3>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Custo potencial: até 40% do valor do imóvel.</strong> Estrangeiros têm isenção de apenas <strong>US$60.000</strong> no imposto sucessório americano (vs. ~US$15 milhões para cidadãos em 2026). A LLC de sócio único <strong>não protege</strong> — o IRS tributa o valor proporcional do ativo. Em um imóvel de US$500K: exposição de ~US$135.000.<br><br><strong>Solução:</strong> Para o 1º projeto — seguro de vida term (barato). Para portfólios maiores — estrutura com especialista <em>antes</em> de comprar: seguro de vida, corporate blocker, trust irrevogável ou dívida sem recurso. Consulte attorney + CPA.</div></div>
+
+  <h3>Erro #14 — Esquecer o Formulário 5472 da LLC</h3>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Custo: US$25.000 de multa por ano esquecido.</strong> Toda LLC americana de sócio único estrangeiro deve protocolar o Form 5472 + 1120 pro forma anualmente junto à declaração federal — <strong>mesmo sem nenhuma renda, mesmo só com um terreno parado</strong>. É a obrigação mais esquecida por investidores estrangeiros. Confirme com seu CPA que está no calendário fiscal.</div></div>
+
+  <h3>Erro #15 — Alugar sem a eleição §871(d) / W-8ECI</h3>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Custo: 30% do aluguel BRUTO retido.</strong> Sem a eleição fiscal §871(d) e sem entregar o formulário W-8ECI ao property manager, ele é <em>obrigado por lei</em> a reter 30% de cada aluguel — sobre o valor bruto, sem deduzir nenhuma despesa. Com a eleição, você tributa a renda <strong>líquida</strong> (frequentemente perto de zero nos primeiros anos com a depreciação). Resolva no primeiro mês de locação — não espere o primeiro aluguel.</div></div>
+</section>
+
+<!-- ══════════════════════════════════════ TEMPLATES ══ -->
+<section class="section" id="sec-templates">
+  <div class="annex-tag">Módulo 13</div>
+  <div class="section-header">
+    <div class="icon">✉️</div>
+    <div class="info">
+      <h1>Templates de Comunicação em Inglês</h1>
+      <div class="desc">10 modelos prontos de emails para o investidor brasileiro se comunicar com corretor, credor, GC e property manager nos EUA</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Use estes templates como ponto de partida — adapte com os dados do seu projeto. Escritos para soar profissional no padrão americano: <strong>direto ao ponto, objetivo, sem prólogos longos</strong>.</div></div>
+
+  <h2>Template 1 — Corretor Imobiliário (Primeiro Contato)</h2>
+  <pre>Subject: Land Investment Inquiry – [City, State]
+
+Hi [Agent Name],
+
+My name is [Your Name], and I'm a Brazilian real estate investor focused
+on ground-up construction in [City]. I'm looking for infill lots or
+tear-down opportunities for SFR or duplex.
+
+My criteria:
+- Budget: Up to US$[X] for land
+- Zoning: R-1, R-2, or equivalent (duplex-ready preferred)
+- ARV target: US$[X]–US$[X] after construction
+
+I close with an LLC and have construction financing in place.
+
+Available for a 15-minute call this week?
+
+Best regards,
+[Your Name] | [LLC Name] | [Phone]</pre>
+
+  <h2>Template 2 — Credor de Construção</h2>
+  <pre>Subject: Construction Loan Inquiry – Foreign National, Ground-Up SFR/Duplex
+
+Hello,
+
+I'm reaching out about your construction loan programs for foreign nationals.
+
+My profile:
+- Nationality: Brazilian (ITIN holder, no SSN)
+- Entity: [LLC Name], formed in [State]
+- Project: Ground-up [SFR / Duplex] in [City, State]
+- Total project cost: US$[X] | Projected ARV: US$[X]
+- LTC requested: [X]%
+
+Could you confirm ITIN borrower acceptance and share a rate sheet?
+
+Thank you,
+[Your Name] | [LLC Name] | [Phone] | [Email]</pre>
+
+  <h2>Template 3 — Solicitação de Cotação ao GC</h2>
+  <pre>Subject: Construction Bid Request – [Address or Project Name]
+
+Hi [GC Name],
+
+I'm requesting a bid for a ground-up construction at [address], [City, State].
+
+Scope:
+- Type: [SFR / Duplex] | Size: ~[X] sq ft
+- Bedrooms/Bathrooms: [X BD / X BA per unit]
+
+Please provide:
+1. Itemized cost breakdown by trade/category
+2. Proposed timeline (start to C.O.)
+3. Milestone-based draw schedule
+4. License number + insurance certificate
+
+Bid deadline: [Date]
+
+Best,
+[Your Name] | [LLC Name] | [Phone] | [Email]</pre>
+
+  <h2>Template 4 — Solicitação de Draw ao Credor</h2>
+  <pre>Subject: Draw Request #[X] – [Project Address] – [LLC Name]
+
+Hello,
+
+Requesting Draw #[X] for the project at [address].
+
+Loan number: [X]
+Draw amount: US$[X]
+Milestone completed: [Description]
+% construction complete: [X]%
+
+Attached:
+- Photos documenting milestone
+- Conditional lien release (GC signed)
+- Updated draw schedule
+
+Please coordinate inspector visit at your earliest convenience.
+
+[Your Name] | [LLC Name] | [Phone] | [Email]</pre>
+
+  <h2>Template 5 — Primeiro Contato com Property Manager</h2>
+  <pre>Subject: Property Management Inquiry – New Construction [SFR / Duplex]
+
+Hi [PM Name],
+
+I'm a Brazilian investor and recently completed construction of a
+[SFR / duplex] at [address].
+
+Questions before we schedule a call:
+1. Experience managing for international owners?
+2. How do you handle fund transfers to foreign-owned LLCs?
+3. Software used for owner reporting?
+4. Current vacancy rate across your portfolio?
+5. Fee structure (management, leasing, renewal)?
+
+Best regards,
+[Your Name] | [LLC Name] | [Phone] | [Email]</pre>
+
+  <h2>Template 6 — Aprovação de Change Order</h2>
+  <pre>Subject: Change Order #[X] – [Project Address] – APPROVED
+
+Hi [GC Name],
+
+Change Order #[X] dated [Date] is APPROVED as submitted.
+
+Amount: US$[X] | Timeline impact: [X] additional days
+
+Please sign and return the attached Change Order form.
+Do NOT proceed until I receive the signed copy.
+
+[Your Name]</pre>
+
+  <h2>Template 7 — Verificação de Referências do GC</h2>
+  <pre>Subject: Reference Check for [GC Company Name]
+
+Hi [Reference Name],
+
+I'm considering hiring [GC Company] for a ground-up project in [City].
+They listed you as a reference. 5 quick questions:
+
+1. What type of project did they build for you?
+2. Was it completed on time and on budget?
+3. How was their communication?
+4. Any major issues? How did they handle them?
+5. Would you hire them again?
+
+Thank you!
+[Your Name] | [Phone]</pre>
+
+  <h2>Template 8 — Wire Transfer (Instruções)</h2>
+  <pre>Subject: Wire Instructions – [LLC Name] – [Project Address]
+
+Please use the following wire instructions:
+
+BENEFICIARY NAME:    [LLC Name]
+BANK NAME:           [Bank Name]
+ACCOUNT NUMBER:      [XXXXXXXXXXXXXX]
+ROUTING NUMBER:      [XXXXXXXXX] (ABA)
+MEMO/REFERENCE:      [Project Address]
+
+Please confirm receipt and anticipated wire date.
+All funds to the LLC account only.
+
+[Your Name] | [LLC Name]</pre>
+
+  <h2>Template 9 — Notificação de Problema ao GC</h2>
+  <pre>Subject: Deficiency Notice #[X] – [Project Address] – Action Required
+
+Hi [GC Name],
+
+During [inspection / photo review] on [Date], the following was identified:
+
+ITEM: [Description]
+LOCATION: [Where in the property]
+
+Required action:
+- Remedy before requesting the next draw
+- Provide a written correction plan within [3 / 5] business days
+- Coordinate re-inspection after correction
+
+Please confirm receipt and your plan of action.
+
+[Your Name] | [LLC Name]</pre>
+
+  <h2>Template 10 — Rescisão de Contrato</h2>
+  <pre>Subject: Notice of Contract Termination – [Property Address]
+
+[GC / PM Name],
+
+This is formal notice of termination of our agreement dated [Date]
+for [address], effective [Date] (30 days from today) per Section [X].
+
+As of termination date:
+- All work to be completed to safe state
+- All materials on-site remain property of [LLC Name]
+- Final accounting of draws vs. work completed will be requested
+- All warranties and lien releases remain in effect
+
+Please confirm receipt.
+
+[Your Name] | [LLC Name] | [Phone]</pre>
+
+  <h2>Vocabulário Essencial — Inglês Imobiliário</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Inglês</th><th>Português</th></tr>
+    <tr><td><strong>Lot / Parcel</strong></td><td>Terreno / Lote</td></tr>
+    <tr><td><strong>Grading</strong></td><td>Terraplanagem</td></tr>
+    <tr><td><strong>Utilities hookup</strong></td><td>Ligação de utilidades</td></tr>
+    <tr><td><strong>Framing</strong></td><td>Estrutura / Esqueleto</td></tr>
+    <tr><td><strong>Rough-in</strong></td><td>Instalações brutas</td></tr>
+    <tr><td><strong>Drywall</strong></td><td>Gesso acartonado</td></tr>
+    <tr><td><strong>Certificate of Occupancy (C.O.)</strong></td><td>Habite-se</td></tr>
+    <tr><td><strong>Draw</strong></td><td>Desembolso do empréstimo</td></tr>
+    <tr><td><strong>Punch list</strong></td><td>Lista de pendências finais</td></tr>
+    <tr><td><strong>Change order</strong></td><td>Ordem de mudança no escopo</td></tr>
+    <tr><td><strong>Retainage</strong></td><td>Retenção (10% retido até o final)</td></tr>
+    <tr><td><strong>Lien / Lien release</strong></td><td>Gravame / Liberação de gravame</td></tr>
+    <tr><td><strong>Bid</strong></td><td>Proposta / Cotação</td></tr>
+    <tr><td><strong>ARV</strong></td><td>Valor pós-construção</td></tr>
+    <tr><td><strong>LTC / LTV</strong></td><td>Empréstimo/custo · Empréstimo/valor</td></tr>
+    <tr><td><strong>Closing costs</strong></td><td>Custos de fechamento</td></tr>
+    <tr><td><strong>Title insurance</strong></td><td>Seguro de título</td></tr>
+    <tr><td><strong>Appraisal</strong></td><td>Avaliação do imóvel</td></tr>
+    <tr><td><strong>Cap rate</strong></td><td>Taxa de capitalização</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ EXEMPLOS ══ -->
+<section class="section" id="sec-exemplos">
+  <div class="section-header">
+    <div class="icon">📍</div>
+    <div class="info">
+      <div class="hero-tag">Projetos Reais</div>
+      <h1>Exemplos Práticos — Do Terreno ao Recebimento Final</h1>
+      <div class="desc">Números reais, cronogramas reais, FIRPTA real — para você visualizar a operação completa antes de começar</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">💡</div><div class="body">Esses exemplos respondem as perguntas que mais surgem: Quanto de capital preciso? Quanto tempo meu dinheiro fica imobilizado? Qual o lucro real? Quando o FIRPTA me afeta?</div></div>
+
+  <h2>Exemplo 1 — Citrus Springs, FL (Mercado de Entrada)</h2>
+  <p><strong>Projeto:</strong> SFR 3/2 (~140 m²) | <strong>Estratégia:</strong> Construir e vender | <strong>Capital próprio</strong> (sem empréstimo de construção)</p>
+
+  <h3>Investimento</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Valor</th></tr>
+    <tr><td>Compra do terreno</td><td>US$25.000</td></tr>
+    <tr><td>Construção (acabamento intermediário padrão)</td><td>US$185.000</td></tr>
+    <tr><td class="tag-yellow"><strong>Investimento total</strong></td><td class="tag-yellow"><strong>US$210.000</strong></td></tr>
+  </table></div>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body">O valor de US$185.000 cobre hard costs, soft costs e contingência de ~10%. Para projetos com plantas customizadas ou acabamentos diferenciados, valide com orçamento completo do empreiteiro antes de comprar o terreno.</div></div>
+
+  <h3>Cronograma</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Fase</th><th>Duração</th><th>O que acontece</th></tr>
+    <tr><td>Compra do terreno</td><td>15–30 dias</td><td>Due diligence, contrato, fechamento</td></tr>
+    <tr><td>Aprovação de projeto + permits</td><td>60–120 dias</td><td>Plantas, submissão ao condado, alvará</td></tr>
+    <tr><td>Construção</td><td>6–8 meses</td><td>Fundação → estrutura → MEP → acabamentos → CO</td></tr>
+    <tr><td>Venda e fechamento</td><td>30–60 dias</td><td>MLS, oferta, contrato, fechamento</td></tr>
+    <tr class="highlight"><td><strong>Total estimado</strong></td><td><strong>10–14 meses</strong></td><td><strong>Do início ao recebimento na conta</strong></td></tr>
+  </table></div>
+
+  <h3>FIRPTA — Retenção = US$0 Neste Projeto</h3>
+  <div class="callout success"><div class="icon">✅</div><div class="body"><strong>Zero retenção FIRPTA</strong> porque duas condições se combinam:<br>① Preço de venda (US$260.000) ≤ US$300.000 — dentro do limite de isenção<br>② Comprador é ocupante-proprietário (família comprando para morar)<br><br>Quando essas duas condições existem juntas, a lei FIRPTA prevê 0% de retenção — sem nenhuma providência adicional do vendedor.</div></div>
+
+  <h3>Resultado</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Valor</th></tr>
+    <tr><td>Valor de venda estimado</td><td>US$260.000</td></tr>
+    <tr><td>Comissão imobiliária (6%)</td><td>−US$15.600</td></tr>
+    <tr><td>Custos de fechamento (1%)</td><td>−US$2.600</td></tr>
+    <tr><td>Investimento total</td><td>−US$210.000</td></tr>
+    <tr><td class="tag-green"><strong>Lucro bruto estimado</strong></td><td class="tag-green"><strong>US$31.800</strong></td></tr>
+    <tr><td class="tag-green"><strong>ROI estimado</strong></td><td class="tag-green"><strong>~15% em 10–14 meses</strong></td></tr>
+  </table></div>
+
+  <div class="callout success"><div class="icon">🎯</div><div class="body"><strong>Versão simplificada (sem dedução de comissões):</strong><br>US$260.000 − US$210.000 = <strong>US$50.000 lucro bruto | ROI: 23,8%</strong><br>Use essa versão como meta; a versão com comissões deduzidas (US$31.800) para planejamento conservador.</div></div>
+
+  <h3>Resumo Executivo — Citrus Springs</h3>
+  <div class="table-wrap"><table>
+    <tr><td><strong>Investimento total</strong></td><td><strong>US$210.000</strong></td></tr>
+    <tr><td>Valor de venda estimado</td><td>US$260.000</td></tr>
+    <tr><td>Lucro bruto estimado</td><td>US$31.800–US$50.000</td></tr>
+    <tr><td>ROI estimado</td><td class="tag-green">15%–24%</td></tr>
+    <tr><td>Prazo estimado</td><td>10–14 meses</td></tr>
+    <tr><td>Retenção FIRPTA</td><td class="tag-green">US$0 (preço ≤ US$300K + comprador ocupante)</td></tr>
+  </table></div>
+
+  <hr>
+
+  <h2>Exemplo 2 — Orlando (Ocoee), FL (Mercado Intermediário)</h2>
+  <p><strong>Projeto:</strong> SFR 2.400 SF | <strong>Estratégia:</strong> Construir e refinanciar — alugar (BRRRR) | <strong>Hard money + DSCR refi</strong></p>
+
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Valor</th></tr>
+    <tr><td>Terreno (Ocoee)</td><td>US$74.275</td></tr>
+    <tr><td>Hard costs + GC markup</td><td>US$407.905</td></tr>
+    <tr><td>Soft costs (projeto, alvarás, taxas)</td><td>US$75.400</td></tr>
+    <tr><td>Financiamento (hard money)</td><td>US$62.480</td></tr>
+    <tr><td class="tag-yellow"><strong>Custo total</strong></td><td class="tag-yellow"><strong>US$620.060</strong></td></tr>
+    <tr><td>FIRPTA</td><td class="tag-green">Diferido — sem venda, sem FIRPTA</td></tr>
+    <tr><td>Fluxo de caixa mensal</td><td class="tag-red">−US$2.032 (build de patrimônio LP)</td></tr>
+  </table></div>
+
+  <hr>
+
+  <h2>Comparação dos Dois Exemplos</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Fator</th><th>Citrus Springs</th><th>Orlando (Ocoee)</th></tr>
+    <tr><td>Investimento</td><td>US$210.000</td><td>US$620.000</td></tr>
+    <tr><td>Estratégia</td><td>Flip</td><td>BRRRR</td></tr>
+    <tr><td>Prazo</td><td>10–14 meses</td><td>14–18 meses</td></tr>
+    <tr><td>Retorno</td><td class="tag-green">US$31K–US$50K lucro</td><td>Patrimônio + CF negativo</td></tr>
+    <tr><td>FIRPTA</td><td class="tag-green">US$0 (isenção automática)</td><td class="tag-green">Diferido (sem venda)</td></tr>
+    <tr><td>Melhor para</td><td>Capital disponível, retorno rápido</td><td>Construção de patrimônio LP</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ MERCADOS FL ══ -->
+<section class="section" id="sec-mercados-fl">
+  <div class="section-header">
+    <div class="icon">🌴</div>
+    <div class="info">
+      <div class="hero-tag">Análise 2026</div>
+      <h1>Mercados da Flórida — Orlando vs Tampa vs Miami</h1>
+      <div class="desc">Ciclo de mercado, margens reais, bairros recomendados e dados de referência para construção nova</div>
+    </div>
+  </div>
+
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>2026 não é 2020.</strong> Os anos de 2020–2022 ofereciam margens de 30%–50%+. Em 2026, com custos de construção, juros e preços de terreno todos altos, as margens são de <strong>5%–15%</strong> — exigindo execução precisa.</div></div>
+
+  <h2>Por Que Flórida?</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Vantagem</th><th>Detalhe</th></tr>
+    <tr><td>Imposto estadual de renda</td><td class="tag-green">0% (vs. Califórnia 13,3%, NY 10,9%)</td></tr>
+    <tr><td>Crescimento populacional</td><td>+1,9 milhão (2020–2025)</td></tr>
+    <tr><td>Comunidade brasileira</td><td>300.000+ — agentes, CPAs e advogados em português</td></tr>
+    <tr><td>Voos diretos do Brasil</td><td>10–15 voos/dia (GOL, LATAM, American, Delta, United)</td></tr>
+    <tr><td>Landlord-friendly</td><td>Despejo em 30–60 dias (vs. 2+ anos em NY)</td></tr>
+    <tr><td>Sem rent control</td><td>Aluguel pode ser ajustado livremente</td></tr>
+    <tr><td>Valorização histórica</td><td>+185% de 2000–2025 (vs. média EUA +160%)</td></tr>
+  </table></div>
+
+  <h2>Fases do Ciclo Imobiliário</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Fase</th><th>Características</th><th>Estratégia</th></tr>
+    <tr><td><strong>1. Recuperação</strong></td><td>Preços no fundo, vacância alta, pouca construção</td><td>Comprar para manter longo prazo</td></tr>
+    <tr><td><strong>2. Expansão</strong></td><td>Preços subindo, vacância caindo, construção acelerando</td><td>Desenvolvimento, flip</td></tr>
+    <tr><td><strong class="tag-yellow">3. Excesso de Oferta</strong></td><td>Preços no topo, nova construção excessiva, euforia</td><td class="tag-red">Vender — realizar lucros</td></tr>
+    <tr><td><strong>4. Recessão</strong></td><td>Preços caindo, vacância alta, execuções hipotecárias</td><td>Compradores à vista (distressed)</td></tr>
+  </table></div>
+
+  <h2>Onde Cada Mercado Está em 2026</h2>
+
+  <div class="table-wrap"><table>
+    <tr><th>Fator</th><th>Orlando</th><th>Tampa</th><th>Miami</th></tr>
+    <tr><td><strong>Fase do ciclo</strong></td><td class="tag-yellow">Final expansão</td><td class="tag-green">Meio expansão</td><td class="tag-red">Topo</td></tr>
+    <tr><td>Custo constr. SFR mid (US$/SF)</td><td>US$185–US$200</td><td>US$195–US$215</td><td>US$220–US$245</td></tr>
+    <tr><td>ARV SFR mid (US$/SF)</td><td>US$265–US$285</td><td>US$275–US$290</td><td>US$320–US$340</td></tr>
+    <tr><td>Impact fee (melhor jurisdição)</td><td class="tag-green">US$12.000</td><td>US$14.000</td><td class="tag-red">US$22.000</td></tr>
+    <tr><td>Prazo de alvará (melhor caso)</td><td class="tag-green">8–10 sem.</td><td>12–16 sem.</td><td class="tag-red">20–26 sem.</td></tr>
+    <tr><td>Vacância residencial</td><td class="tag-green">4,2%</td><td>5,8%</td><td class="tag-red">7,1% ⚠️</td></tr>
+    <tr><td>Comunidade brasileira</td><td>80.000</td><td>40.000</td><td>100.000</td></tr>
+    <tr><td><strong>Recomendação 2026</strong></td><td class="tag-yellow"><strong>⚠️ Seletivo</strong></td><td class="tag-green"><strong>✅ Bom</strong></td><td class="tag-red"><strong>❌ Evite</strong></td></tr>
+  </table></div>
+
+  <h2>Bairros Recomendados — Orlando</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Bairro</th><th>Tipo Ideal</th><th>ARV SFR (US$/SF)</th><th>ARV Fourplex (US$/SF)</th><th>Prazo Alvará</th></tr>
+    <tr><td><strong>Ocoee</strong></td><td>SFR / Duplex</td><td>US$265–US$280</td><td>US$245–US$255</td><td>8–10 sem.</td></tr>
+    <tr><td><strong>Winter Garden</strong></td><td>SFR</td><td>US$275–US$290</td><td>US$250–US$260</td><td>8–10 sem.</td></tr>
+    <tr><td><strong>Lake Nona</strong></td><td>SFR Premium</td><td>US$300–US$320</td><td>Raro</td><td>10–12 sem.</td></tr>
+    <tr><td><strong>Dr. Phillips</strong></td><td>SFR Alto padrão</td><td>US$290–US$320</td><td>Raro</td><td>10–12 sem.</td></tr>
+  </table></div>
+
+  <h2>Bairros Recomendados — Tampa</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Bairro</th><th>Tipo Ideal</th><th>ARV SFR (US$/SF)</th><th>ARV Fourplex (US$/SF)</th><th>Prazo Alvará</th></tr>
+    <tr><td><strong>Brandon</strong></td><td>SFR / Duplex</td><td>US$275–US$290</td><td>US$250–US$260</td><td>12–16 sem.</td></tr>
+    <tr><td><strong>Wesley Chapel</strong></td><td>SFR Premium</td><td>US$310–US$330</td><td>Raro</td><td>12–16 sem.</td></tr>
+    <tr><td><strong>Riverview</strong></td><td>SFR / Duplex</td><td>US$270–US$285</td><td>US$245–US$255</td><td>12–16 sem.</td></tr>
+  </table></div>
+
+  <h2>Impact Fees por Jurisdição</h2>
+  <p>Custo <strong>por unidade</strong> cobrado pela prefeitura/condado para aprovação de nova construção. Um fourplex em Orange County paga US$48K — o mesmo projeto em Miami paga US$96K.</p>
+  <div class="table-wrap"><table>
+    <tr><th>Jurisdição</th><th>Impact Fee/unidade</th><th>Fourplex (4 unid.)</th></tr>
+    <tr><td><strong>Orange County (uninc.)</strong></td><td class="tag-green">US$12.000</td><td class="tag-green">US$48.000</td></tr>
+    <tr><td>Pasco County</td><td>US$14.000</td><td>US$56.000</td></tr>
+    <tr><td>City of Orlando</td><td>US$15.000</td><td>US$60.000</td></tr>
+    <tr><td>Hillsborough County (uninc.)</td><td>US$18.000</td><td>US$72.000</td></tr>
+    <tr><td>City of Tampa</td><td class="tag-red">US$22.000</td><td class="tag-red">US$88.000</td></tr>
+    <tr><td>Miami-Dade County</td><td class="tag-red">US$22.000</td><td class="tag-red">US$88.000</td></tr>
+    <tr><td>City of Miami</td><td class="tag-red">US$24.000</td><td class="tag-red">US$96.000</td></tr>
+  </table></div>
+
+  <h2>Custo de Cada Semana de Atraso no Alvará</h2>
+  <div class="callout warning"><div class="icon">⏱️</div><div class="body">Empréstimo de construção US$500.000 a 12% ao ano = <strong>US$1.154/semana</strong> em juros.<br>10 semanas de atraso = US$11.540 | 20 semanas = US$23.080 em juros extras.</div></div>
+  <div class="table-wrap"><table>
+    <tr><th>Jurisdição</th><th>SFR</th><th>Fourplex</th></tr>
+    <tr><td>Orange County</td><td class="tag-green">8–10 sem.</td><td class="tag-green">12–14 sem.</td></tr>
+    <tr><td>City of Orlando</td><td>10–12 sem.</td><td>14–16 sem.</td></tr>
+    <tr><td>Hillsborough County</td><td>12–16 sem.</td><td>16–20 sem.</td></tr>
+    <tr><td>City of Tampa</td><td class="tag-yellow">14–18 sem.</td><td class="tag-yellow">18–24 sem.</td></tr>
+    <tr><td>Miami-Dade County</td><td class="tag-red">20–26 sem.</td><td class="tag-red">28–36 sem.</td></tr>
+  </table></div>
+
+  <h2>Ranking Final 2026</h2>
+  <pre>🥇 ORANGE COUNTY (Orlando / Ocoee / Winter Garden)
+   → Melhor impact fee (US$12K/unid.), prazo de alvará mais rápido (8–10 sem.)
+   → Margens apertadas mas viáveis com execução precisa
+   → Recomendado: Fourplex ou SFR com parceria com builder
+
+🥈 HILLSBOROUGH COUNTY (Tampa / Brandon / Riverview)
+   → Boas margens ainda, mercado menos saturado
+   → Cuidado com City of Tampa (impact fees US$22K/unid.)
+   → Recomendado: SFR 2.400 SF ou Duplex
+
+🚫 MIAMI-DADE (qualquer parte)
+   → Impact fees + prazo de alvará + custo de construção tornam
+     os números negativos ou marginalmente positivos
+   → Pule completamente em 2026</pre>
+</section>
+
+<!-- ══════════════════════════════════════ TIPOS PROJETO ══ -->
+<section class="section" id="sec-tipos-projeto">
+  <div class="section-header">
+    <div class="icon">🏠</div>
+    <div class="info">
+      <div class="hero-tag">Qual tipo escolher em 2026?</div>
+      <h1>Tipos de Projeto — SFR vs Duplex vs Fourplex</h1>
+      <div class="desc">Economia real de cada tipo, margens honestas de 2026 e qual perfil de investidor se encaixa em cada um</div>
+    </div>
+  </div>
+
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body">Este módulo mostra os números <strong>sem filtro</strong>. Margens de SFR flip são próximas de zero na maioria dos cenários de 2026. Entender isso é o que diferencia um investidor que executa de um que perde dinheiro.</div></div>
+
+  <h2>Comparação Direta</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Fator</th><th>SFR (Unifamiliar)</th><th>Duplex</th><th>Fourplex</th></tr>
+    <tr><td>Custo total (Orlando mid)</td><td>US$580K–US$650K</td><td>US$380K–US$430K/unid.</td><td>US$270K–US$310K/unid.</td></tr>
+    <tr><td>ARV típico</td><td>US$636K–US$672K</td><td>US$490K–US$560K</td><td>US$1.040K–US$1.100K</td></tr>
+    <tr><td>Complexidade alvará</td><td class="tag-green">Baixa</td><td class="tag-yellow">Média</td><td class="tag-yellow">Média-Alta</td></tr>
+    <tr><td>Financiamento</td><td class="tag-green">Fácil</td><td class="tag-green">Fácil</td><td class="tag-yellow">Mais exigente</td></tr>
+    <tr><td>Pool de compradores</td><td class="tag-green">Grande</td><td class="tag-yellow">Médio</td><td class="tag-red">Pequeno (investidores)</td></tr>
+    <tr><td>Fluxo de caixa mensal</td><td class="tag-red">−US$2.000/mês</td><td class="tag-yellow">+US$178/mês</td><td class="tag-green">+US$1.200/mês</td></tr>
+    <tr><td>Melhor estratégia</td><td>Hold 10+ anos</td><td>BRRRR ou hold</td><td class="tag-green">BRRRR</td></tr>
+  </table></div>
+
+  <h2>SFR — A Verdade dos Números em 2026</h2>
+  <div class="callout danger"><div class="icon">🔴</div><div class="body"><strong>Flip de SFR em 2026: margem praticamente zero na maioria dos cenários.</strong> O spread entre custo de construção e ARV é de apenas US$15–US$25/SF — que é inteiramente consumido por comissões imobiliárias (6%) e custos de fechamento.</div></div>
+
+  <h3>Orçamento Detalhado SFR 2.400 SF — Ocoee, Orlando</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Valor</th></tr>
+    <tr><td>Terreno (bairro médio)</td><td>US$74.275</td></tr>
+    <tr><td>Hard Costs c/ GC 15% markup</td><td>US$407.905</td></tr>
+    <tr><td>Soft Costs (projetos, alvarás, seguro)</td><td>US$75.400</td></tr>
+    <tr><td>Custos de financiamento (Hard Money 70% LTC)</td><td>US$62.480</td></tr>
+    <tr><td class="tag-yellow"><strong>TOTAL DO PROJETO</strong></td><td class="tag-yellow"><strong>US$620.060 (US$258/SF)</strong></td></tr>
+    <tr><td>ARV médio Ocoee (US$272/SF × 2.400 SF)</td><td>US$652.800</td></tr>
+    <tr><td>Comissão imobiliária (6%)</td><td>−US$39.168</td></tr>
+    <tr><td>Custos de fechamento (1%)</td><td>−US$6.528</td></tr>
+    <tr><td class="tag-red"><strong>Lucro bruto (flip)</strong></td><td class="tag-red"><strong>≈ US$0 → US$−13.000</strong></td></tr>
+  </table></div>
+
+  <h3>Hold SFR — Fluxo de Caixa</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Valor</th></tr>
+    <tr><td>Aluguel mensal bruto</td><td>US$2.600</td></tr>
+    <tr><td>PITIA mensal (DSCR refi 70% LTV a 8%)</td><td>−US$3.891</td></tr>
+    <tr><td>Gestão (9%) + manutenção (5%) + vacância (5%)</td><td>−US$742</td></tr>
+    <tr><td class="tag-red"><strong>Fluxo de caixa mensal</strong></td><td class="tag-red"><strong>−US$2.032/mês</strong></td></tr>
+    <tr><td>ROI 10 anos (valorização 4%/ano + equity)</td><td class="tag-yellow">~10,5%/ano (S&amp;P 500: ~12%)</td></tr>
+  </table></div>
+  <p><strong>Conclusão SFR:</strong> Flip não fecha. Hold funciona apenas para diversificação patrimonial com horizonte 10+ anos e tolerância ao fluxo de caixa negativo.</p>
+
+  <h2>Duplex — O Equilíbrio Prático</h2>
+  <div class="callout success"><div class="icon">✅</div><div class="body">Duplex é o "ponto ótimo" para a maioria dos investidores brasileiros em 2026: menor custo por unidade que o SFR, risco de vacância dividido, DSCR mais forte e fluxo de caixa levemente positivo.</div></div>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Duplex (2 unid. × 1.200 SF)</th></tr>
+    <tr><td>Custo total estimado (Orlando)</td><td>US$395.000</td></tr>
+    <tr><td>ARV estimado</td><td>US$510.000</td></tr>
+    <tr><td>Aluguel bruto (2 × US$1.700)</td><td>US$3.400/mês</td></tr>
+    <tr><td>PITIA (DSCR refi 70% LTV a 8%)</td><td>US$2.617/mês</td></tr>
+    <tr><td>Gestão + manutenção + vacância</td><td>US$605/mês</td></tr>
+    <tr><td class="tag-green"><strong>Fluxo de caixa mensal</strong></td><td class="tag-green"><strong>+US$178/mês</strong></td></tr>
+    <tr><td>DSCR</td><td class="tag-green">1,30 ✓ (aprovado)</td></tr>
+  </table></div>
+
+  <h2>Fourplex — O Melhor para BRRRR</h2>
+  <div class="callout info"><div class="icon">💡</div><div class="body">O fourplex tem as melhores economias de escala. Custo por unidade é ~35% menor que o SFR. O flip não funciona (custo supera ARV), mas o hold/BRRRR é excelente para geração de renda e reciclagem de capital.</div></div>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Fourplex (4 unid. × 1.100 SF)</th></tr>
+    <tr><td>Custo total estimado (Orlando)</td><td>US$1.137.000</td></tr>
+    <tr><td>ARV estimado</td><td>US$1.040.000</td></tr>
+    <tr><td>Flip — resultado</td><td class="tag-red">−US$97.000 (não funciona)</td></tr>
+    <tr><td>Aluguel bruto (4 × US$1.700)</td><td>US$6.800/mês</td></tr>
+    <tr><td>PITIA (DSCR refi 70% LTV a 8%)</td><td>US$5.348/mês</td></tr>
+    <tr><td>Gestão + manutenção + vacância</td><td>US$1.224/mês</td></tr>
+    <tr><td class="tag-green"><strong>Fluxo de caixa mensal</strong></td><td class="tag-green"><strong>+US$1.228/mês</strong></td></tr>
+    <tr><td>DSCR</td><td class="tag-green">1,27 ✓ (aprovado)</td></tr>
+  </table></div>
+
+  <h2>Qual Tipo Para Qual Perfil</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Perfil do Investidor</th><th>Tipo Recomendado</th><th>Por Quê</th></tr>
+    <tr><td>Primeiro projeto, aprendendo</td><td class="tag-green">Duplex</td><td>Menor risco, fluxo positivo, DSCR forte</td></tr>
+    <tr><td>Quer flip rápido</td><td class="tag-red">Nenhum (2026)</td><td>Margens são negativas ou zero em todos os tipos</td></tr>
+    <tr><td>Quer renda passiva máxima</td><td class="tag-green">Fourplex</td><td>Maior CF/unidade, melhor DSCR para refinanciamento</td></tr>
+    <tr><td>Quer escalar BRRRR</td><td class="tag-green">Fourplex</td><td>Economias de escala, refi mais capital, cresce portfólio</td></tr>
+    <tr><td>Capital limitado (&lt; US$150K)</td><td class="tag-yellow">Duplex via parceria builder</td><td>Elimina GC markup, entrada menor</td></tr>
+    <tr><td>Quer diversificação patrimonial</td><td>SFR</td><td>Maior pool de compradores na saída, liquidez maior</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ TABELAS ══ -->
+<section class="section" id="sec-tabelas">
+  <div class="section-header">
+    <div class="icon">📊</div>
+    <div class="info">
+      <h1>Tabelas de Referência Rápida</h1>
+      <div class="desc">14 tabelas para consulta rápida — custos, ARVs, impact fees, prazos, ROI, glossário e cheat sheet de siglas</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Use esta seção como referência rápida durante análise de projetos. Todos os dados são referência 2026 para os mercados de Orlando e Tampa (Flórida).</div></div>
+
+  <h2>R1 — Custo de Construção por Nível de Acabamento</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Mercado</th><th>Nível</th><th>SFR (US$/SF)</th><th>Fourplex (US$/SF)</th><th>Comprador-Alvo</th></tr>
+    <tr><td rowspan="3"><strong>Orlando</strong></td><td>Básico</td><td>US$155–US$165</td><td>US$145–US$155</td><td>Entrada</td></tr>
+    <tr><td><strong>Intermediário ✓</strong></td><td><strong>US$185–US$200</strong></td><td><strong>US$175–US$185</strong></td><td><strong>Famílias em ascensão</strong></td></tr>
+    <tr><td>Alto Padrão</td><td>US$225–US$260</td><td>N/A</td><td>Executivos</td></tr>
+    <tr><td rowspan="2"><strong>Tampa</strong></td><td><strong>Intermediário ✓</strong></td><td><strong>US$195–US$215</strong></td><td><strong>US$185–US$200</strong></td><td><strong>Famílias</strong></td></tr>
+    <tr><td>Alto Padrão</td><td>US$240–US$280</td><td>N/A</td><td>Alta renda</td></tr>
+  </table></div>
+
+  <h2>R2 — ARV por Bairro (2026)</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Bairro</th><th>SFR 2.400 SF (US$)</th><th>US$/SF</th><th>Fourplex US$/SF</th><th>Aluguel SFR/mês</th></tr>
+    <tr><td colspan="5" style="background:var(--blue-light);font-weight:700;color:var(--blue)">Orlando</td></tr>
+    <tr><td>Ocoee</td><td>US$636K–US$672K</td><td>US$265–US$280</td><td>US$245–US$255</td><td>US$2.600</td></tr>
+    <tr><td>Winter Garden</td><td>US$660K–US$696K</td><td>US$275–US$290</td><td>US$250–US$260</td><td>US$2.700</td></tr>
+    <tr><td>Lake Nona</td><td>US$720K–US$768K</td><td>US$300–US$320</td><td>Raro</td><td>US$3.150</td></tr>
+    <tr><td>Dr. Phillips</td><td>US$696K–US$768K</td><td>US$290–US$320</td><td>Raro</td><td>US$3.000</td></tr>
+    <tr><td colspan="5" style="background:var(--green-light);font-weight:700;color:var(--green)">Tampa</td></tr>
+    <tr><td>Brandon</td><td>US$660K–US$696K</td><td>US$275–US$290</td><td>US$250–US$260</td><td>US$2.700</td></tr>
+    <tr><td>Wesley Chapel</td><td>US$744K–US$792K</td><td>US$310–US$330</td><td>Raro</td><td>US$3.100</td></tr>
+    <tr><td>Riverview</td><td>US$648K–US$684K</td><td>US$270–US$285</td><td>US$245–US$255</td><td>US$2.650</td></tr>
+  </table></div>
+
+  <h2>R3 — Taxas de Aluguel por Tipo</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Mercado / Bairro</th><th>SFR 2.400 SF</th><th>Fourplex (por unidade)</th></tr>
+    <tr><td>Ocoee (Orlando)</td><td>US$2.600/mês</td><td>US$1.650–US$1.750/mês</td></tr>
+    <tr><td>Winter Garden (Orlando)</td><td>US$2.700/mês</td><td>US$1.700–US$1.800/mês</td></tr>
+    <tr><td>Lake Nona (Orlando)</td><td>US$3.150/mês</td><td>N/A</td></tr>
+    <tr><td>Brandon (Tampa)</td><td>US$2.700/mês</td><td>US$1.700–US$1.800/mês</td></tr>
+    <tr><td>Wesley Chapel (Tampa)</td><td>US$3.100/mês</td><td>Raro</td></tr>
+  </table></div>
+
+  <h2>R4 — Comparação de ROI vs Alternativas</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Investimento</th><th>Retorno Esperado</th><th>Liquidez</th><th>Controle</th></tr>
+    <tr><td>Duplex BRRRR (Orlando)</td><td class="tag-green">12%–18%/ano</td><td class="tag-red">Baixa</td><td class="tag-green">Total</td></tr>
+    <tr><td>SFR hold 10 anos</td><td class="tag-yellow">~10,5%/ano</td><td class="tag-red">Baixa</td><td class="tag-green">Total</td></tr>
+    <tr><td>S&amp;P 500 (histórico)</td><td class="tag-yellow">~12%/ano</td><td class="tag-green">Alta</td><td class="tag-red">Zero</td></tr>
+    <tr><td>Tesouro Direto IPCA+</td><td>~7%–9%/ano</td><td class="tag-green">Alta</td><td class="tag-red">Zero</td></tr>
+    <tr><td>Real estate crowdfunding</td><td>~8%–12%/ano</td><td class="tag-yellow">Média</td><td class="tag-red">Zero</td></tr>
+    <tr><td>Fourplex BRRRR</td><td class="tag-green">15%–22%/ano</td><td class="tag-red">Baixa</td><td class="tag-green">Total</td></tr>
+  </table></div>
+
+  <h2>R5 — Regra dos 70%</h2>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body">A Regra dos 70% diz: <strong>Custo total ≤ ARV × 70%</strong>. Se não fechar nessa conta, a margem de lucro é perigosamente estreita. <strong>A maioria dos SFRs de Orlando falha esta regra em 2026.</strong></div></div>
+  <div class="table-wrap"><table>
+    <tr><th>Cenário</th><th>ARV</th><th>70% do ARV (máx. custo)</th><th>Custo Real</th><th>Status</th></tr>
+    <tr><td>SFR Ocoee (mid)</td><td>US$654K</td><td>US$457.800</td><td class="tag-red">US$620.060</td><td class="tag-red">❌ Falha</td></tr>
+    <tr><td>Duplex Orlando (mid)</td><td>US$510K</td><td>US$357.000</td><td class="tag-yellow">US$395.000</td><td class="tag-yellow">⚠️ Marginal</td></tr>
+    <tr><td>Fourplex (hold/BRRRR)</td><td>US$1.040K</td><td>US$728.000</td><td class="tag-red">US$1.137.000</td><td class="tag-green">✓ Hold OK</td></tr>
+    <tr><td>SFR demolir+reconstruir</td><td>US$3.200K</td><td>US$2.240.000</td><td class="tag-green">US$1.415.000</td><td class="tag-green">✓ Excelente</td></tr>
+  </table></div>
+
+  <h2>R6 — Checklist de Viabilidade em 2 Minutos</h2>
+  <ul class="checklist" id="cl-viab"></ul>
+
+  <h2>R7 — Cronograma por Tipo de Projeto</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Fase</th><th>SFR</th><th>Duplex</th><th>Fourplex</th></tr>
+    <tr><td>Preparação (LLC, ITIN, equipe)</td><td>1–2 meses</td><td>1–2 meses</td><td>2–3 meses</td></tr>
+    <tr><td>Aquisição do terreno</td><td>1–3 meses</td><td>1–3 meses</td><td>2–4 meses</td></tr>
+    <tr><td>Projetos + alvará</td><td>2–4 meses</td><td>3–5 meses</td><td>4–7 meses</td></tr>
+    <tr><td>Construção</td><td>5–8 meses</td><td>7–10 meses</td><td>10–14 meses</td></tr>
+    <tr><td>Saída (venda ou refi)</td><td>1–3 meses</td><td>2–4 meses</td><td>2–4 meses</td></tr>
+    <tr><td class="tag-yellow"><strong>Total estimado</strong></td><td class="tag-yellow"><strong>10–20 meses</strong></td><td class="tag-yellow"><strong>14–24 meses</strong></td><td class="tag-yellow"><strong>20–32 meses</strong></td></tr>
+  </table></div>
+
+  <h2>R8 — Glossário Financeiro Completo</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Termo (EN)</th><th>Português</th><th>Definição</th></tr>
+    <tr><td><strong>ARV</strong></td><td>Valor Após Conclusão</td><td>Valor estimado do imóvel após a obra — base para calcular lucro e refinanciamento</td></tr>
+    <tr><td><strong>LTC</strong></td><td>Empréstimo/Custo</td><td>Empréstimo de construção ÷ custo total do projeto</td></tr>
+    <tr><td><strong>LTV</strong></td><td>Empréstimo/Valor</td><td>Empréstimo de refinanciamento ÷ ARV avaliado</td></tr>
+    <tr><td><strong>DSCR</strong></td><td>Cobertura do Serviço da Dívida</td><td>Aluguel bruto ÷ PITIA; ≥ 1,25 para a maioria dos credores DSCR</td></tr>
+    <tr><td><strong>PITIA</strong></td><td>Parcela Total</td><td>Principal + Juros + Impostos + Seguro + HOA (parcela mensal total)</td></tr>
+    <tr><td><strong>Hard Money</strong></td><td>Empréstimo de Ativo</td><td>Empréstimo de curto prazo baseado no ativo, taxa 10%–14%, fechamento em 2–4 semanas</td></tr>
+    <tr><td><strong>NOI</strong></td><td>Lucro Operacional Líquido</td><td>Aluguel bruto − despesas operacionais (sem dívida)</td></tr>
+    <tr><td><strong>Cap Rate</strong></td><td>Taxa de Capitalização</td><td>NOI anual ÷ valor do imóvel; mede retorno operacional</td></tr>
+    <tr><td><strong>GC</strong></td><td>Empreiteiro Geral</td><td>General Contractor — responsável por toda a obra, subcontrata especialistas</td></tr>
+    <tr><td><strong>Draw</strong></td><td>Desembolso</td><td>Liberação parcial do empréstimo de construção vinculada a etapa concluída</td></tr>
+    <tr><td><strong>Lien Release</strong></td><td>Liberação de Ônus</td><td>Documento que comprova pagamento ao GC/sub — elimina risco de hipoteca trabalhista</td></tr>
+    <tr><td><strong>Impact Fee</strong></td><td>Taxa de Impacto</td><td>Taxa cobrada pela prefeitura por nova construção; varia por jurisdição (US$12K–US$24K/unid.)</td></tr>
+    <tr><td><strong>CO</strong></td><td>Certificado de Ocupação</td><td>Certificate of Occupancy — autorização final para ocupar e refinanciar</td></tr>
+    <tr><td><strong>BRRRR</strong></td><td>Comprar/Construir, Alugar, Refinanciar, Repetir</td><td>Estratégia de reciclagem de capital via DSCR refinanciamento</td></tr>
+    <tr><td><strong>Non-QM</strong></td><td>Hipoteca Não Qualificada</td><td>Aceita documentação alternativa de renda — ideal para investidores estrangeiros</td></tr>
+    <tr><td><strong>FIRPTA</strong></td><td>Retenção do Estrangeiro</td><td>15% do preço bruto retido na venda por pessoa estrangeira</td></tr>
+    <tr><td><strong>ITIN</strong></td><td>Número de Contribuinte Individual</td><td>Individual Taxpayer ID — substitui SSN para investidores estrangeiros</td></tr>
+    <tr><td><strong>CBE</strong></td><td>Capitais Brasileiros no Exterior</td><td>Declaração obrigatória ao Banco Central para ativos ≥ US$1M</td></tr>
+    <tr><td><strong>1031 Exchange</strong></td><td>Troca 1031</td><td>Vender imóvel e reinvestir sem pagar ganho de capital imediatamente</td></tr>
+    <tr><td><strong>SFR</strong></td><td>Residência Unifamiliar</td><td>Single Family Residence — 1 unidade</td></tr>
+  </table></div>
+
+  <h2>R12 — Custos de Fechamento e Impostos de Cartório na Flórida</h2>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body">Custos frequentemente esquecidos no pro forma. Valores oficiais (tabelados por lei estadual). Sempre confirme com a title company antes do fechamento.</div></div>
+
+  <h3 style="margin-top:16px">Na compra do terreno / venda do imóvel (sobre o preço)</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Quanto</th><th>Quem costuma pagar</th></tr>
+    <tr><td><strong>Doc stamps na escritura (deed)</strong></td><td><strong>US$0,70/US$100</strong> (0,7%) — Miami-Dade: US$0,60 + sobretaxa de US$0,45 quando <em>não</em> é SFR (<strong>terreno vago paga a sobretaxa!</strong>)</td><td>Vendedor (costume local)</td></tr>
+    <tr><td><strong>Title insurance (apólice do proprietário)</strong></td><td>Tabelada por lei: <strong>US$5,75/US$1.000</strong> até US$100K + <strong>US$5,00/US$1.000</strong> de US$100K a US$1M</td><td>Vendedor na maioria dos condados; <strong>comprador em Miami-Dade, Broward, Sarasota e Collier</strong></td></tr>
+    <tr><td>Registro em cartório</td><td>~US$10 + ~US$8,50/página</td><td>Comprador</td></tr>
+  </table></div>
+
+  <h3 style="margin-top:16px">No financiamento (sobre o valor do empréstimo)</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Item</th><th>Quanto</th><th>Exemplo (empréstimo US$225K)</th></tr>
+    <tr><td><strong>Doc stamps na hipoteca</strong></td><td><strong>US$0,35/US$100</strong> (0,35%)</td><td>US$788</td></tr>
+    <tr><td><strong>Intangible tax</strong></td><td><strong>0,2%</strong> do valor da hipoteca</td><td>US$450</td></tr>
+    <tr><td>Title insurance (apólice do credor)</td><td>Tarifa reduzida quando emitida junto com a do proprietário</td><td>~US$25–US$300</td></tr>
+  </table></div>
+  <div class="callout info"><div class="icon">💡</div><div class="body"><strong>Regra de bolso:</strong> Orce ~0,55% do valor do empréstimo em impostos de hipoteca e ~0,7% do preço em doc stamps na venda. Em Miami-Dade, terrenos vagos e multifamiliares pagam <strong>US$1,05/US$100</strong> (50% a mais) — mais um custo que favorece Orlando, Tampa e Citrus.</div></div>
+
+  <h2>R13 — Glossário Completo de Termos e Siglas (Cheat Sheet)</h2>
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Referência bilíngue completa. Use como consulta rápida durante reuniões com corretores, credores e GCs americanos.</div></div>
+
+  <h3 style="margin-top:16px">Análise e Métricas</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Termo</th><th>Definição</th></tr>
+    <tr><td><strong>ARV</strong></td><td>After Repair/Build Value — valor do imóvel após construção concluída</td></tr>
+    <tr><td><strong>NOI</strong></td><td>Net Operating Income — aluguel menos despesas operacionais (sem contar a parcela do empréstimo)</td></tr>
+    <tr><td><strong>Cap Rate</strong></td><td>NOI ÷ valor do imóvel — retorno do ativo sem financiamento</td></tr>
+    <tr><td><strong>YoC</strong></td><td>Yield on Cost — NOI ÷ custo total do projeto (a "cap rate de quem constrói")</td></tr>
+    <tr><td><strong>Development Spread</strong></td><td>YoC − cap rate de mercado — o prêmio por assumir o risco de construir (meta: 1,5–2+ pontos)</td></tr>
+    <tr><td><strong>Cash-on-Cash (CoC)</strong></td><td>Fluxo de caixa anual ÷ capital investido do próprio bolso</td></tr>
+    <tr><td><strong>IRR</strong></td><td>Internal Rate of Return — taxa de retorno considerando o tempo de cada fluxo</td></tr>
+    <tr><td><strong>Equity Multiple (EMx)</strong></td><td>Total que volta ÷ total investido (ex.: 1,5x = você dobrou + 50% a mais)</td></tr>
+    <tr><td><strong>GRM</strong></td><td>Gross Rent Multiplier — preço ÷ aluguel anual (triagem rápida)</td></tr>
+    <tr><td><strong>CMA</strong></td><td>Comparative Market Analysis — análise de comparáveis feita pelo corretor</td></tr>
+    <tr><td><strong>Comps</strong></td><td>Vendas comparáveis usadas para estimar ARV e aluguel</td></tr>
+    <tr><td><strong>SFR</strong></td><td>Single Family Residence — casa unifamiliar</td></tr>
+  </table></div>
+
+  <h3 style="margin-top:16px">Financiamento</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Termo</th><th>Definição</th></tr>
+    <tr><td><strong>LTC</strong></td><td>Loan-to-Cost — empréstimo ÷ custo total do projeto (usado na construção)</td></tr>
+    <tr><td><strong>LTV</strong></td><td>Loan-to-Value — empréstimo ÷ valor avaliado/ARV (usado no refi)</td></tr>
+    <tr><td><strong>DSCR</strong></td><td>Debt Service Coverage Ratio — aluguel ÷ PITIA; mínimo 1,25 na maioria dos credores</td></tr>
+    <tr><td><strong>PITIA</strong></td><td>Principal + Interest + Taxes + Insurance + Association — a parcela mensal completa</td></tr>
+    <tr><td><strong>P&amp;I</strong></td><td>Principal + juros — a parcela sem impostos e seguro</td></tr>
+    <tr><td><strong>Points</strong></td><td>Pontos de originação: 1 ponto = 1% do empréstimo, pago no fechamento</td></tr>
+    <tr><td><strong>Draw</strong></td><td>Desembolso parcial do empréstimo de construção vinculado a etapa concluída</td></tr>
+    <tr><td><strong>Hard Money (HML)</strong></td><td>Empréstimo de curto prazo baseado no ativo — mais caro, mais rápido</td></tr>
+    <tr><td><strong>Non-QM</strong></td><td>Hipoteca fora do padrão — aceita documentação alternativa (caminho do estrangeiro)</td></tr>
+    <tr><td><strong>Seasoning</strong></td><td>Tempo mínimo de propriedade exigido antes de um refi cash-out (3–6 meses no DSCR)</td></tr>
+    <tr><td><strong>Appraisal</strong></td><td>Avaliação oficial do imóvel — o número que define o seu refi</td></tr>
+    <tr><td><strong>EMD</strong></td><td>Earnest Money Deposit — sinal de compra depositado em escrow</td></tr>
+    <tr><td><strong>Escrow</strong></td><td>Conta neutra (title company) que guarda valores até o fechamento</td></tr>
+  </table></div>
+
+  <h3 style="margin-top:16px">Construção</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Termo</th><th>Definição</th></tr>
+    <tr><td><strong>GC</strong></td><td>General Contractor — empreiteiro geral responsável pela obra</td></tr>
+    <tr><td><strong>Sub</strong></td><td>Subempreiteiro (elétrica, hidráulica, telhado etc.) contratado pelo GC</td></tr>
+    <tr><td><strong>Hard Costs</strong></td><td>Custos físicos de construção (materiais + mão de obra)</td></tr>
+    <tr><td><strong>Soft Costs</strong></td><td>Custos indiretos (projeto, alvarás, honorários, seguro)</td></tr>
+    <tr><td><strong>MEP</strong></td><td>Mechanical, Electrical, Plumbing — instalações prediais</td></tr>
+    <tr><td><strong>CO</strong></td><td>Certificate of Occupancy — o "Habite-se" americano</td></tr>
+    <tr><td><strong>NOC</strong></td><td>Notice of Commencement — registro público do início da obra (obrigação do dono na FL, Cap. 713)</td></tr>
+    <tr><td><strong>NTO</strong></td><td>Notice to Owner — aviso de subempreiteiro preservando direito de lien (receber é normal; guarde todos)</td></tr>
+    <tr><td><strong>Lien / Lien Waiver</strong></td><td>Gravame de construção sobre o imóvel / renúncia a esse direito (colete a cada draw)</td></tr>
+    <tr><td><strong>Retainage</strong></td><td>5%–10% retido de cada pagamento até a conclusão total</td></tr>
+    <tr><td><strong>Change Order</strong></td><td>Alteração de escopo do contrato — sempre por escrito</td></tr>
+    <tr><td><strong>Punch List</strong></td><td>Lista final de pendências antes da entrega</td></tr>
+    <tr><td><strong>Impact Fee</strong></td><td>Taxa por unidade cobrada pelo condado para nova construção</td></tr>
+    <tr><td><strong>Survey</strong></td><td>Levantamento topográfico do lote</td></tr>
+    <tr><td><strong>Phase I ESA</strong></td><td>Avaliação ambiental do terreno (Environmental Site Assessment)</td></tr>
+    <tr><td><strong>SFHA</strong></td><td>Special Flood Hazard Area — zona de inundação FEMA (zonas A/AE/V) que obriga seguro flood</td></tr>
+  </table></div>
+
+  <h3 style="margin-top:16px">Jurídico e Fiscal — EUA</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Termo</th><th>Definição</th></tr>
+    <tr><td><strong>ITIN</strong></td><td>Número fiscal individual americano para quem não tem SSN (Formulário W-7)</td></tr>
+    <tr><td><strong>EIN</strong></td><td>Employer Identification Number — o "CNPJ" da LLC (Formulário SS-4)</td></tr>
+    <tr><td><strong>LLC / SMLLC</strong></td><td>Limited Liability Company / LLC de sócio único (transparente para o IRS)</td></tr>
+    <tr><td><strong>Operating Agreement</strong></td><td>Acordo operacional da LLC — exigido por credores</td></tr>
+    <tr><td><strong>FIRPTA</strong></td><td>Retenção de 0%–15% do preço bruto na venda por estrangeiro (adiantamento recuperável, não imposto final)</td></tr>
+    <tr><td><strong>Form 8288-B</strong></td><td>Pedido de certificado para reduzir a retenção FIRPTA (protocolar 3–6 meses antes; exige TIN)</td></tr>
+    <tr><td><strong>Form 1040-NR</strong></td><td>Declaração de imposto de renda do estrangeiro não residente</td></tr>
+    <tr><td><strong>Form 5472</strong></td><td>Declaração anual obrigatória da LLC de dono estrangeiro — multa de US$25.000 se esquecer, mesmo sem renda</td></tr>
+    <tr><td><strong>§871(d) / W-8ECI</strong></td><td>Eleição que evita a retenção de 30% sobre o aluguel BRUTO + formulário entregue ao property manager</td></tr>
+    <tr><td><strong>W-8BEN</strong></td><td>Formulário que declara seu status de estrangeiro a bancos e pagadores</td></tr>
+    <tr><td><strong>Form 706-NA</strong></td><td>Declaração de espólio do estrangeiro — US Estate Tax (isenção de apenas US$60K vs. ~US$15M para cidadãos)</td></tr>
+    <tr><td><strong>1031 Exchange</strong></td><td>Troca de imóvel de investimento com imposto diferido (prazos de 45/180 dias)</td></tr>
+    <tr><td><strong>Schedule E</strong></td><td>Anexo do 1040-NR onde se declara renda de aluguel</td></tr>
+    <tr><td><strong>Depreciation</strong></td><td>Depreciação — dedução do custo da construção em 27,5 anos</td></tr>
+    <tr><td><strong>Cost Segregation</strong></td><td>Estudo que acelera a depreciação de componentes do imóvel</td></tr>
+    <tr><td><strong>Title Company</strong></td><td>Empresa que conduz o fechamento e emite o seguro de título</td></tr>
+    <tr><td><strong>HOA</strong></td><td>Homeowners Association — associação de moradores (taxas + regras)</td></tr>
+    <tr><td><strong>Doc Stamps</strong></td><td>Imposto de cartório da Flórida sobre escrituras e hipotecas (ver R12)</td></tr>
+  </table></div>
+
+  <h3 style="margin-top:16px">Obrigações no Brasil</h3>
+  <div class="table-wrap"><table>
+    <tr><th>Termo</th><th>Definição</th></tr>
+    <tr><td><strong>CBE / DCBE</strong></td><td>Declaração de Capitais Brasileiros no Exterior (Banco Central) — obrigatória se ativos ≥ US$1M; janela 15/fev–5/abr</td></tr>
+    <tr><td><strong>DIRPF</strong></td><td>Declaração anual do IR — todo bem no exterior entra em "Bens e Direitos"</td></tr>
+    <tr><td><strong>Carnê-leão</strong></td><td>Recolhimento mensal do IR sobre renda do exterior recebida por pessoa física (até 27,5%)</td></tr>
+    <tr><td><strong>GCAP</strong></td><td>Programa da Receita para apurar ganho de capital (15%–22,5%); DARF até o fim do mês seguinte</td></tr>
+    <tr><td><strong>DARF</strong></td><td>Guia de recolhimento de tributos federais</td></tr>
+    <tr><td><strong>Lei 14.754/2023</strong></td><td>"Lei das Offshores" — tributação anual de 15% sobre lucros de entidades controladas no exterior (inclui sua LLC); opção opaco vs. transparente é irrevogável</td></tr>
+    <tr><td><strong>IOF</strong></td><td>Imposto sobre a remessa de câmbio — 1,1% (investimento) a 3,5% (disponibilidade) — Decreto 12.499/2025</td></tr>
+    <tr><td><strong>ITCMD</strong></td><td>Imposto estadual sobre herança e doação (até 8%)</td></tr>
+    <tr><td><strong>Reciprocidade</strong></td><td>Mecanismo que permite compensar o imposto <em>federal</em> americano no IR brasileiro (não há tratado Brasil–EUA; impostos estaduais não compensam)</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ MARKETS ══ -->
+<section class="section" id="sec-markets">
+  <div class="section-header">
+    <div class="icon">🗺️</div>
+    <div class="info">
+      <h1>Comparativo de Mercados</h1>
+      <div class="desc">Viabilidade de construção por cidade — custo, alvará, prêmio de nova construção</div>
+    </div>
+  </div>
+
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Esta tabela usa critérios de <strong>construção nova</strong>, não de compra de aluguel. Prêmio de nova construção = quanto compradores pagam a mais por imóvel novo vs. existente no mesmo mercado.</div></div>
+
+  <h2>Pontuação de Viabilidade</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Mercado</th><th>Estado</th><th>Custo Const. (US$/m²)</th><th>Prazo Alvará</th><th>Prêmio Nova Constr.</th><th>Pontuação</th></tr>
+    <tr><td><strong>Jacksonville</strong></td><td>FL</td><td>US$1.500–US$1.900</td><td>6–10 semanas</td><td>12%–18%</td><td class="stars">⭐⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>San Antonio</strong></td><td>TX</td><td>US$1.300–US$1.700</td><td>4–8 semanas</td><td>10%–16%</td><td class="stars">⭐⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Memphis</strong></td><td>TN</td><td>US$1.200–US$1.600</td><td>6–10 semanas</td><td>8%–14%</td><td class="stars">⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Indianapolis</strong></td><td>IN</td><td>US$1.300–US$1.700</td><td>6–12 semanas</td><td>10%–15%</td><td class="stars">⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Columbus</strong></td><td>OH</td><td>US$1.400–US$1.800</td><td>8–14 semanas</td><td>9%–14%</td><td class="stars">⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Tampa / St. Pete</strong></td><td>FL</td><td>US$1.700–US$2.200</td><td>10–16 semanas</td><td>15%–22%</td><td class="stars">⭐⭐⭐⭐</td></tr>
+    <tr><td><strong>Charlotte</strong></td><td>NC</td><td>US$1.600–US$2.000</td><td>8–14 semanas</td><td>14%–20%</td><td class="stars">⭐⭐⭐⭐</td></tr>
+    <tr><td>Subúrbios de Austin</td><td>TX</td><td>US$1.800–US$2.400</td><td>8–16 semanas</td><td>18%–25%</td><td class="stars">⭐⭐⭐</td></tr>
+    <tr><td>Subúrbios de Nashville</td><td>TN</td><td>US$1.700–US$2.200</td><td>10–18 semanas</td><td>16%–22%</td><td class="stars">⭐⭐⭐</td></tr>
+    <tr><td>Miami</td><td>FL</td><td>US$2.200–US$3.000</td><td>16–30 semanas</td><td>20%–30%</td><td class="stars">⭐⭐</td></tr>
+    <tr><td>Los Angeles</td><td>CA</td><td>US$3.500–US$5.000</td><td>52–104 semanas</td><td>25%–40%</td><td class="stars">⭐</td></tr>
+  </table></div>
+
+  <h2>Spread ARV vs. Custo Total</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Mercado</th><th>Terreno Típico (SFR)</th><th>ARV Típico (3/2)</th><th>Spread Potencial</th><th>Observação</th></tr>
+    <tr><td>Jacksonville, FL</td><td>US$50K–US$90K</td><td>US$320K–US$420K</td><td class="tag-green">US$70K–US$130K</td><td>Sem imposto estadual de renda</td></tr>
+    <tr><td>San Antonio, TX</td><td>US$40K–US$80K</td><td>US$280K–US$380K</td><td class="tag-green">US$70K–US$120K</td><td>Mão de obra abundante</td></tr>
+    <tr><td>Memphis, TN</td><td>US$20K–US$50K</td><td>US$180K–US$260K</td><td class="tag-green">US$50K–US$100K</td><td>Melhor relação aluguel/valor</td></tr>
+    <tr><td>Tampa, FL</td><td>US$80K–US$160K</td><td>US$400K–US$550K</td><td class="tag-green">US$80K–US$150K</td><td>Alta demanda nova construção</td></tr>
+    <tr><td>Charlotte, NC</td><td>US$70K–US$130K</td><td>US$380K–US$500K</td><td class="tag-green">US$80K–US$140K</td><td>Crescimento acelerado</td></tr>
+  </table></div>
+</section>
+
+<!-- ══════════════════════════════════════ GLOSSARY ══ -->
+<section class="section" id="sec-glossary">
+  <div class="section-header">
+    <div class="icon">📖</div>
+    <div class="info">
+      <h1>Glossário</h1>
+      <div class="desc">Termos técnicos e siglas usados no guia</div>
+    </div>
+  </div>
+  <div class="table-wrap"><table>
+    <tr><th>Termo</th><th>Definição</th></tr>
+    <tr><td><strong>ARV</strong></td><td>After Repair/Build Value — valor estimado do imóvel após a conclusão da obra</td></tr>
+    <tr><td><strong>BRRRR</strong></td><td>Buy, Rehab/Build, Rent, Refinance, Repeat — estratégia de reciclagem de capital</td></tr>
+    <tr><td><strong>Carnê-leão</strong></td><td>Recolhimento mensal do IR brasileiro sobre renda do exterior recebida por pessoa física (até 27,5%)</td></tr>
+    <tr><td><strong>CBE</strong></td><td>Capitais Brasileiros no Exterior — declaração obrigatória ao Banco Central para ativos ≥ US$1M (janela 15/fev–5/abr)</td></tr>
+    <tr><td><strong>CO</strong></td><td>Certificate of Occupancy — Certificado de Ocupação, emitido após conclusão e aprovação da obra</td></tr>
+    <tr><td><strong>Development Spread</strong></td><td>Yield on Cost − cap rate de mercado — o prêmio por assumir o risco de construir (meta: 1,5–2+ pontos)</td></tr>
+    <tr><td><strong>DSCR</strong></td><td>Debt Service Coverage Ratio — aluguel ÷ parcela PITIA; deve ser ≥ 1,25 para a maioria dos credores</td></tr>
+    <tr><td><strong>Draw / Desembolso</strong></td><td>Liberação parcial do empréstimo de construção vinculada a uma etapa concluída</td></tr>
+    <tr><td><strong>FIRPTA</strong></td><td>Retenção de 0%–15% do preço bruto na venda por estrangeiro — adiantamento recuperável, não imposto final</td></tr>
+    <tr><td><strong>Form 5472</strong></td><td>Declaração anual obrigatória da LLC de dono estrangeiro — multa de US$25.000 se esquecer, mesmo sem renda</td></tr>
+    <tr><td><strong>Form 706-NA</strong></td><td>Declaração de espólio do estrangeiro — US Estate Tax (isenção de apenas US$60K)</td></tr>
+    <tr><td><strong>Form 8288-B</strong></td><td>Pedido de certificado para reduzir a retenção FIRPTA (protocolar 3–6 meses antes da venda)</td></tr>
+    <tr><td><strong>GCAP</strong></td><td>Programa da Receita Federal para apurar ganho de capital no exterior (15%–22,5%)</td></tr>
+    <tr><td><strong>Hard Money</strong></td><td>Empréstimo de curto prazo baseado no ativo (não na renda), com taxas mais altas e fechamento rápido</td></tr>
+    <tr><td><strong>HOA</strong></td><td>Homeowners Association — associação de moradores com taxas e regras para o condomínio/bairro</td></tr>
+    <tr><td><strong>IOF</strong></td><td>Imposto brasileiro sobre a remessa de câmbio — 1,1% (investimento) a 3,5% (disponibilidade)</td></tr>
+    <tr><td><strong>ITIN</strong></td><td>Individual Taxpayer Identification Number — número fiscal americano para estrangeiros sem SSN</td></tr>
+    <tr><td><strong>Lei 14.754/2023</strong></td><td>"Lei das Offshores" — tributação anual de 15% sobre lucros de entidades controladas no exterior (inclui sua LLC)</td></tr>
+    <tr><td><strong>Lien / Lien Waiver</strong></td><td>Gravame de construção sobre o imóvel / renúncia a esse direito — colete a cada draw</td></tr>
+    <tr><td><strong>LTC</strong></td><td>Loan-to-Cost — valor do empréstimo ÷ custo total do projeto (terreno + construção)</td></tr>
+    <tr><td><strong>LTV</strong></td><td>Loan-to-Value — valor do empréstimo ÷ valor de mercado avaliado do imóvel</td></tr>
+    <tr><td><strong>MEP</strong></td><td>Mecânica, Elétrica e Hidráulica (Mechanical, Electrical, Plumbing)</td></tr>
+    <tr><td><strong>NOC</strong></td><td>Notice of Commencement — registro público do início da obra na Flórida (obrigação do dono; validade 1 ano)</td></tr>
+    <tr><td><strong>Non-QM</strong></td><td>Non-Qualified Mortgage — hipoteca não qualificada; aceita documentação alternativa de renda</td></tr>
+    <tr><td><strong>NTO</strong></td><td>Notice to Owner — aviso de subempreiteiro preservando direito de lien (receber é normal; guarde todos)</td></tr>
+    <tr><td><strong>PITIA</strong></td><td>Principal + Interest + Taxes + Insurance + HOA — parcela total mensal do imóvel</td></tr>
+    <tr><td><strong>Pontos</strong></td><td>Taxa de originação do empréstimo; 1 ponto = 1% do valor do empréstimo</td></tr>
+    <tr><td><strong>Seasoning</strong></td><td>Tempo mínimo de propriedade antes do refi cash-out — 3–6 meses no DSCR; 12 meses no convencional</td></tr>
+    <tr><td><strong>SFR</strong></td><td>Single Family Residence — residência unifamiliar (1 unidade)</td></tr>
+    <tr><td><strong>SSN</strong></td><td>Social Security Number — número de seguro social americano (estrangeiros usam ITIN)</td></tr>
+    <tr><td><strong>W-8ECI / §871(d)</strong></td><td>Formulário + eleição fiscal que evitam a retenção de 30% sobre o aluguel BRUTO — entregue ao property manager no 1º mês</td></tr>
+    <tr><td><strong>YoC (Yield on Cost)</strong></td><td>NOI anual ÷ custo total do projeto — a "cap rate de quem constrói"</td></tr>
+  </table></div>
+</section>
+
+</main>
+
+<script>
+// ─── NAV ───────────────────────────────────────────────────────
+const sections = ['overview','diligence','financing','budget','calculator','exits','legal','demolish','obra','propriedade','portfolio','erros','templates','exemplos','mercados-fl','tipos-projeto','markets','tabelas','glossary'];
+function show(id) {
+  sections.forEach(s => {
+    document.getElementById('sec-'+s).classList.toggle('active', s===id);
+    document.getElementById('nav-'+s).classList.toggle('active', s===id);
+  });
+  window.scrollTo(0,0);
+  return false;
+}
+
+// ─── CHECKLISTS ────────────────────────────────────────────────
+function cl(id, items) {
+  const el = document.getElementById(id);
+  if(!el) return;
+  el.innerHTML = items.map((t,i) => `<li><input type="checkbox" id="${id}-${i}"><label for="${id}-${i}">${t}</label></li>`).join('');
+}
+
+cl('cl-prep', ['Constituir LLC no estado-alvo','Solicitar ITIN (aguardar 7–11 semanas)','Abrir conta bancária nos EUA','Identificar 2–3 mercados-alvo','Conectar-se com corretor imobiliário local (especialista em terrenos)','Conectar-se com credor para construção (programas para estrangeiros)','Entrevistar 2–3 empreiteiros gerais no mercado-alvo']);
+cl('cl-land', ['Analisar comparativos e viabilidade do terreno','Enviar proposta de compra','Concluir due diligence completa','Fechar a compra do terreno']);
+cl('cl-pre', ['Contratar arquiteto / desenhista','Submeter projetos para obtenção de alvará','Aprovar empréstimo para construção','Finalizar contrato com empreiteiro']);
+cl('cl-build', ['Iniciar a obra','Visitas semanais ao canteiro ou relatórios de inspeção','Gestão do cronograma de desembolsos (draws)','Certificado de Ocupação (CO)']);
+cl('cl-exit', ['Colocar à venda OU solicitar refinanciamento DSCR','Fechar e distribuir os recursos','Declarar impostos nos EUA (retenção FIRPTA se vender)']);
+cl('cl-z', ['Confirmar zoneamento atual (R-1, R-2, MF, etc.)','Verificar se SFR ou 2–4 unidades é permitido por direito (sem variância)','Verificar tamanho mínimo de lote, recuos, altura máxima, cobertura máxima (%)','Verificar se o lote está em Distrito Histórico ou Zona de Sobreposição','Verificar restrições de escritura ou covenants (HOA, CC&Rs)']);
+cl('cl-util', ['Confirmar que o hidrômetro pode ser obtido (algumas áreas têm moratórias)','Confirmar disponibilidade de conexão de esgoto — fossa séptica acrescenta US$8K–US$20K+','Obter carta de disponibilidade de cada fornecedor de utilidades','Verificar taxas de impacto para novas conexões (podem ser US$5K–US$30K+)']);
+cl('cl-flood', ['Verificar FEMA Flood Map — identificar zona (Zona X = ideal, Zona AE/VE = evitar)','Verificar se o lote está em área úmida / wetland','Verificar contaminação ambiental (EPA EnviroMapper ou Fase I ESA)','Verificar proximidade com áreas industriais, postos de gasolina (risco de contaminação)','Verificar problemas de inclinação/nível do terreno']);
+cl('cl-comps', ['Levantar comps de terreno — vendas recentes em raio de 1 milha','Levantar comps de construção nova — SFR ou multifamiliar recém-vendidos na região','Calcular ARV-alvo e confirmar que o mercado suporta seu preço de saída','Verificar dias no mercado para construção nova — há demanda?','Verificar taxa de absorção — quantas construções novas são vendidas por mês?']);
+cl('cl-title', ['Solicitar relatório preliminar de título junto à seguradora','Verificar ônus sobre a propriedade (fiscais, empreiteiro, HOA)','Verificar servidões registradas no título','Confirmar cadeia de titularidade limpa','Confirmar disponibilidade de seguro de título']);
+cl('cl-soil', ['Realizar teste de percolação (perc test) se fossa séptica for necessária','Considerar sondagem / relatório geotécnico se houver material de aterro, zona de inundação, ou inclinação','Verificar dolinas (sinkholes) — importante na Flórida','Estimar custos de preparação do terreno: limpeza, terraplanagem, aterro']);
+cl('cl-permit', ['Agendar reunião de pré-solicitação com o Departamento de Obras local','Confirmar que o projeto pretendido é aprovável neste lote','Obter prazo estimado para alvará (3 meses? 9 meses? 18 meses?)','Confirmar taxas de impacto e quando são devidas','Verificar se há necessidade de variâncias ou licenças especiais']);
+cl('cl-closing', ['Compromisso de título recebido e revisado','Levantamento topográfico concluído e revisado','Todas as contingências satisfeitas ou dispensadas conscientemente','Seguro do construtor (builder\'s risk) obtido','LLC e Operating Agreement prontos (se assumindo o título pela LLC)','Instruções de transferência bancária verificadas por telefone (prevenção de fraude)','ITIN fornecido à seguradora de título para fins fiscais']);
+cl('cl-gc', ['Licenciado no estado onde vai construir','Seguro de Responsabilidade Civil Geral (mínimo US$1M por ocorrência)','Seguro de Acidentes de Trabalho (Workers\' Compensation)','Histórico comprovado em construção nova de SFR ou multifamiliar','Referências de clientes recentes verificadas','Solidez financeira — capacidade de adiantar custos entre desembolsos','Comunicação clara (importante para gestão remota do Brasil)']);
+cl('cl-llc', ['Escolher nome da LLC (verificar disponibilidade no Secretário de Estado)','Protocolar Articles of Organization junto ao Secretário de Estado','Redigir Operating Agreement — fundamental para crédito e conflitos','Obter EIN do IRS (Formulário SS-4, pode ser feito online)','Abrir conta bancária empresarial americana em nome da LLC']);
+cl('cl-cbe', ['Avaliação de mercado do(s) imóvel(is) em 31 de dezembro (em USD)','Saldo em conta(s) bancária(s) americana(s) em 31 de dezembro','Valor da participação na LLC americana (patrimônio líquido proporcional)','Comprovantes de remessas internacionais feitas no ano','Declarar no portal DCBE do Banco Central até 5 de abril']);
+cl('cl-demo', ['Confirmar que o zoneamento permite demolição e nova construção do tipo desejado','Verificar restrições de "historic preservation" (preservação histórica)','Pesquisa de fase I ambiental — tanques de combustível, uso industrial anterior','Teste de amianto (obrigatório em imóveis construídos antes de 1980)','Teste de tinta com chumbo (idem para imóveis pré-1978)','Localização e condição das conexões de água, esgoto e energia elétrica','Obter 2–3 orçamentos de empresas de demolição licenciadas']);
+
+// ─── NEW MODULE CHECKLISTS ──────────────────────────────────────
+cl('cl-obra-contrato', [
+  'Licença ativa verificada no site do estado',
+  'General Liability Insurance (US$1M mínimo) comprovado',
+  'Workers\' Compensation Insurance ativo',
+  'Cronograma de draws por marco (nunca por data)',
+  'Cláusula de retenção de 10% até CO emitido',
+  'Cláusula de rescisão por atraso superior a 30 dias',
+  'Change orders obrigatoriamente por escrito antes da execução',
+  'Lien release exigido antes de cada pagamento'
+]);
+cl('cl-obra-obra', [
+  'Foto diária do canteiro recebida e arquivada',
+  'Relatório semanal revisado toda sexta-feira',
+  'Inspeção independente agendada antes de cada draw',
+  'Change orders documentados e aprovados por escrito',
+  'Contingência atualizada após cada change order',
+  'Videochamada em etapas críticas (fundação, pré-drywall)'
+]);
+cl('cl-obra-draw', [
+  'Inspetor visitou o canteiro e aprovou o %',
+  'Lien release condicional assinado pelo GC',
+  'Valor aprovado pelo credor',
+  'Pagamento liberado somente após lien release em mãos'
+]);
+cl('cl-pm-interview', [
+  'Número de imóveis gerenciados atualmente? (100–500 unidades = ideal)',
+  'Taxa de ocupação média do portfólio? (meta: > 93%)',
+  'Como funciona o processo de triagem de inquilinos?',
+  'Resposta a manutenções emergenciais — linha 24/7?',
+  'Experiência com proprietários internacionais?',
+  'Envio de fundos para conta LLC americana — como funciona?',
+  'Software de relatórios utilizado? (AppFolio, Buildium, Propertyware?)',
+  'Pode fornecer 2–3 referências de proprietários atuais?',
+  'Rescisão de contrato — aviso de 30 dias sem multa?'
+]);
+cl('cl-viab', [
+  'ARV confirmado com comps reais de imóveis novos vendidos nos últimos 6 meses na mesma rua/bairro',
+  'Custo de construção orçado por GC licenciado (não estimado)',
+  'Impact fee verificado com o condado/prefeitura (não estimado)',
+  'Prazo de alvará confirmado com o departamento de obras local',
+  'Custo total ≤ ARV × 70% (Regra dos 70%)',
+  'DSCR ≥ 1,25 calculado com aluguel conservador (−10% do mercado)',
+  'Reserva de contingência de 10%–15% em caixa (não estimada)',
+  'LLC + ITIN prontos antes de assinar qualquer contrato',
+  'GC verificado: licença, seguro, referências contactadas'
+]);
+cl('cl-erros-prot', [
+  '🔴 LLC + ITIN constituídos ANTES de qualquer oferta de compra',
+  '🔴 Due diligence completa (zoneamento, flood, utilidades, título) antes de fechar',
+  '🔴 GC verificado: licença, seguro, referências ligadas — nunca escolher só pelo preço',
+  '🟡 FIRPTA incluído no pro forma desde o dia 1 (15% do preço bruto)',
+  '🟡 Contingência de 10%–15% reservada em cash — não imaginária'
+]);
+
+// ─── CALCULATOR ────────────────────────────────────────────────
+const firptaState = { 1: false, 2: false, 3: false };
+
+function fmt(n) {
+  return 'US$ ' + Math.round(n).toLocaleString('pt-BR');
+}
+function pct(n) {
+  return (n * 100).toFixed(1) + '%';
+}
+function setEl(id, val, cls) {
+  const el = document.getElementById(id);
+  if (el) { el.textContent = val; el.className = 'val' + (cls ? ' ' + cls : ''); }
+}
+
+function setScenario(n) {
+  [1, 2, 3].forEach(i => {
+    document.getElementById('tab' + i).classList.toggle('active', i === n);
+    document.getElementById('panel-' + i).classList.toggle('active', i === n);
+  });
+  calcAll();
+}
+
+function toggleF(n) {
+  firptaState[n] = !firptaState[n];
+  const on = firptaState[n];
+  const btn = document.getElementById('f' + n + '-btn');
+  if (btn) {
+    btn.className = 'firpta-toggle ' + (on ? 'on' : 'off');
+    btn.textContent = on
+      ? '⚠ FIRPTA ativado (15% retenção)'
+      : '✓ Sem FIRPTA (preço ≤ US$300K + comprador ocupante)';
+  }
+  // show/hide FIRPTA rows for scenarios 2 and 3 (scenario 1 handled in calcAll)
+  const row = document.getElementById('s' + n + '-firpta-row');
+  if (row) row.style.display = on ? '' : 'none';
+  calcAll();
+}
+
+function calcAll() {
+  // ── shared inputs ──
+  const land  = parseFloat(document.getElementById('c-land').value)  || 0;
+  const soft  = parseFloat(document.getElementById('c-soft').value)  || 0;
+  const carry = parseFloat(document.getElementById('c-carry').value) || 0;
+  const cont  = parseFloat(document.getElementById('c-cont').value)  || 0;
+  const size  = parseFloat(document.getElementById('c-size').value)  || 0;
+  const unit  = document.getElementById('c-unit').value; // 'sf' or 'm2'
+  const cpersf = parseFloat(document.getElementById('c-cpersf').value) || 0;
+
+  // convert m² → SF if needed (1 m² = 10.7639 SF)
+  const sizeInSF = unit === 'm2' ? size * 10.7639 : size;
+  const construction = sizeInSF * cpersf;
+  const total = land + construction + soft + carry + cont;
+
+  // update derived display fields
+  const dConst = document.getElementById('d-const');
+  const dTotal = document.getElementById('d-total');
+  if (dConst) dConst.textContent = fmt(construction);
+  if (dTotal) dTotal.textContent = fmt(total);
+
+  // ── scenario 1: build + sell ──
+  const s1arv    = parseFloat(document.getElementById('s1-arv').value)  || 0;
+  const s1comm   = parseFloat(document.getElementById('s1-comm').value) || 0;
+  const f1on     = firptaState[1];
+
+  const s1sellCosts = s1arv * (s1comm / 100);
+  const s1firpta    = f1on ? s1arv * 0.15 : 0;
+  const s1net       = s1arv - s1sellCosts - s1firpta;
+  const s1profit    = s1net - total;
+  const s1margin    = s1arv > 0 ? s1profit / s1arv : 0;
+  const s1roi       = total > 0 ? s1profit / total : 0;
+  const s1maxLand   = s1arv * (1 - s1comm / 100) - construction - soft - carry - cont - s1arv * 0.20;
+
+  setEl('s1-r-total',   fmt(total));
+  setEl('s1-r-arv',     fmt(s1arv));
+  setEl('s1-r-comm',    '−' + fmt(s1sellCosts));
+  const s1fRow = document.getElementById('s1-firpta-row');
+  if (s1fRow) s1fRow.style.display = f1on ? '' : 'none';
+  setEl('s1-r-firpta',  '−' + fmt(s1firpta));
+  setEl('s1-r-net',     fmt(s1net));
+  setEl('s1-r-profit',  fmt(s1profit),  s1profit >= 0 ? 'ok' : 'warn');
+  setEl('s1-r-margin',  pct(s1margin)  + (s1margin  >= 0.20 ? ' ✓' : ' ⚠ meta: 20%'), s1margin  >= 0.20 ? 'ok' : 'warn');
+  setEl('s1-r-roi',     pct(s1roi)     + (s1roi     >= 0.20 ? ' ✓' : ' ⚠ meta: 20%'), s1roi     >= 0.20 ? 'ok' : 'warn');
+  setEl('s1-r-maxland', fmt(Math.max(0, s1maxLand)), 'info');
+
+  // ── scenario 2: build + rent (own capital) ──
+  const s2rent = parseFloat(document.getElementById('s2-rent').value) || 0;
+  const s2tax  = parseFloat(document.getElementById('s2-tax').value)  || 0;
+  const s2ins  = parseFloat(document.getElementById('s2-ins').value)  || 0;
+  const s2hoa  = parseFloat(document.getElementById('s2-hoa').value)  || 0;
+  const s2exp  = parseFloat(document.getElementById('s2-exp').value)  || 0;
+  const f2on   = firptaState[2];
+
+  const s2arv   = parseFloat(document.getElementById('s2-arv').value)  || 0;
+  const s2opExp = s2tax + s2ins + s2hoa + s2rent * (s2exp / 100);
+  const s2cf    = s2rent - s2opExp;
+  const s2annual = s2cf * 12;
+  const s2yield  = total > 0 ? s2annual / total : 0;
+  const s2firpta = f2on ? s2arv * 0.15 : 0;
+
+  setEl('s2-r-total',  fmt(total));
+  setEl('s2-r-rent',   fmt(s2rent) + '/mês');
+  setEl('s2-r-exp',    '−' + fmt(s2opExp) + '/mês');
+  setEl('s2-r-cf',     fmt(s2cf)    + '/mês', s2cf    >= 0 ? 'ok' : 'warn');
+  setEl('s2-r-annual', fmt(s2annual) + '/ano', s2annual >= 0 ? 'ok' : 'warn');
+  setEl('s2-r-yield',  pct(s2yield) + (s2yield >= 0.06 ? ' ✓' : ' ⚠ meta: 6%'), s2yield >= 0.06 ? 'ok' : 'warn');
+  setEl('s2-r-firpta', '⚠ ' + fmt(s2firpta) + ' retidos na venda futura');
+  setEl('s2-r-equity', fmt(s2arv > 0 ? s2arv : total));
+
+  // ── scenario 3: refi + rent (BRRRR / DSCR) ──
+  const s3arv  = parseFloat(document.getElementById('s3-arv').value)  || 0;
+  const s3ltv  = parseFloat(document.getElementById('s3-ltv').value)  || 70;
+  const s3rate = parseFloat(document.getElementById('s3-rate').value) || 8;
+  const s3rent = parseFloat(document.getElementById('s3-rent').value) || 0;
+  const s3tax  = parseFloat(document.getElementById('s3-tax').value)  || 0;
+  const s3ins  = parseFloat(document.getElementById('s3-ins').value)  || 0;
+  const s3hoa  = parseFloat(document.getElementById('s3-hoa').value)  || 0;
+  const s3exp  = parseFloat(document.getElementById('s3-exp').value)  || 0;
+  const f3on   = firptaState[3];
+
+  const s3loan   = s3arv * (s3ltv / 100);
+  const s3r      = s3rate / 100 / 12;
+  const s3n      = 360;
+  const s3pi     = s3r > 0 ? s3loan * (s3r * Math.pow(1 + s3r, s3n)) / (Math.pow(1 + s3r, s3n) - 1) : 0;
+  const s3pitia  = s3pi + s3tax + s3ins + s3hoa;
+  const s3opExp  = s3rent * (s3exp / 100);
+  const s3cf     = s3rent - s3pitia - s3opExp;
+  const s3dscr   = s3pitia > 0 ? s3rent / s3pitia : 0;
+  const s3equity = total - s3loan;
+  const s3firpta = f3on ? s3arv * 0.15 : 0;
+
+  setEl('s3-r-total',  fmt(total));
+  setEl('s3-r-loan',   fmt(s3loan));
+  setEl('s3-r-equity', fmt(s3equity), s3equity >= 0 ? '' : 'warn');
+  setEl('s3-r-pi',     fmt(s3pi)    + '/mês');
+  setEl('s3-r-pitia',  fmt(s3pitia) + '/mês');
+  setEl('s3-r-rent',   fmt(s3rent)  + '/mês');
+  setEl('s3-r-dscr',   s3dscr.toFixed(2) + (s3dscr >= 1.25 ? ' ✓' : s3dscr >= 1.0 ? ' ⚠ <1,25' : ' ✗'), s3dscr >= 1.25 ? 'ok' : 'warn');
+  setEl('s3-r-cf',     fmt(s3cf)    + '/mês', s3cf >= 0 ? 'ok' : 'warn');
+  setEl('s3-r-cfy',    fmt(s3cf * 12) + '/ano', s3cf >= 0 ? 'ok' : 'warn');
+  setEl('s3-r-firpta', '⚠ ' + fmt(s3firpta) + ' retidos na venda futura');
+}
+
+// ─── SCROLL PROGRESS ───────────────────────────────────────────
+document.getElementById('main').addEventListener('scroll', function() {
+  const el = this;
+  const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+window.addEventListener('scroll', function() {
+  const el = document.documentElement;
+  const pct = (el.scrollTop / (el.scrollHeight - el.clientHeight)) * 100;
+  document.getElementById('progress-bar').style.width = pct + '%';
+});
+
+// init
+calcAll();
+</script>
+</body>
+</html>

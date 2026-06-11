@@ -1,0 +1,597 @@
+---
+title: Análise de Negócio e Template de Pro Forma
+sidebarTitle: Análise de Negócio
+description: Template completo de pro forma para análise de projetos de construção do zero — SFR e multifamiliar de 2 a 4 unidades
+---
+
+import { useState, useMemo } from 'react'
+
+export function CalculadoraDeal() {
+  const fmt = (n) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n)
+  const pct = (n) => (n * 100).toFixed(1) + '%'
+
+  const [tab, setTab] = useState(1)
+  const [v, setV] = useState({
+    land: 25000, soft: 15000, carry: 5000, cont: 18500,
+    size: 1500, unit: 'sf', cpersf: 123,
+    s1arv: 260000, s1comm: 7, s1firpta: false,
+    s2rent: 1800, s2tax: 200, s2ins: 120, s2hoa: 0, s2exp: 20, s2arv: 260000, s2firpta: false,
+    s3arv: 260000, s3ltv: 70, s3rate: 8, s3rent: 1800, s3tax: 200, s3ins: 120, s3hoa: 0, s3exp: 20, s3firpta: false,
+  })
+
+  const set = (k) => (e) => setV((p) => ({ ...p, [k]: parseFloat(e.target.value) || 0 }))
+  const setStr = (k) => (e) => setV((p) => ({ ...p, [k]: e.target.value }))
+  const tog = (k) => () => setV((p) => ({ ...p, [k]: !p[k] }))
+
+  const c = useMemo(() => {
+    const sizeInSF = v.unit === 'm2' ? v.size * 10.7639 : v.size
+    const construction = sizeInSF * v.cpersf
+    const total = v.land + construction + v.soft + v.carry + v.cont
+
+    const s1sellCosts = v.s1arv * (v.s1comm / 100)
+    const s1firptaAmt = v.s1firpta ? v.s1arv * 0.15 : 0
+    const s1net = v.s1arv - s1sellCosts - s1firptaAmt
+    const s1profit = s1net - total
+    const s1margin = v.s1arv > 0 ? s1profit / v.s1arv : 0
+    const s1roi = total > 0 ? s1profit / total : 0
+    const s1maxLand = v.s1arv * (1 - v.s1comm / 100) - construction - v.soft - v.carry - v.cont - v.s1arv * 0.20
+
+    const s2opExp = v.s2tax + v.s2ins + v.s2hoa + v.s2rent * (v.s2exp / 100)
+    const s2cf = v.s2rent - s2opExp
+    const s2yield = total > 0 ? (s2cf * 12) / total : 0
+    const s2firptaAmt = v.s2firpta ? v.s2arv * 0.15 : 0
+
+    const s3loan = v.s3arv * (v.s3ltv / 100)
+    const r3 = v.s3rate / 100 / 12
+    const s3pi = r3 > 0 ? s3loan * (r3 * Math.pow(1 + r3, 360)) / (Math.pow(1 + r3, 360) - 1) : 0
+    const s3pitia = s3pi + v.s3tax + v.s3ins + v.s3hoa
+    const s3cf = v.s3rent - s3pitia - v.s3rent * (v.s3exp / 100)
+    const s3dscr = s3pitia > 0 ? v.s3rent / s3pitia : 0
+    const s3equity = total - s3loan
+    const s3firptaAmt = v.s3firpta ? v.s3arv * 0.15 : 0
+
+    return { construction, total, s1sellCosts, s1firptaAmt, s1net, s1profit, s1margin, s1roi, s1maxLand, s2opExp, s2cf, s2yield, s2firptaAmt, s3loan, s3pi, s3pitia, s3cf, s3dscr, s3equity, s3firptaAmt }
+  }, [v])
+
+  const ok = (cond) => ({ color: cond ? '#16a34a' : '#dc2626', fontWeight: 'bold' })
+  const lbl = { display: 'block', fontSize: '0.72rem', color: '#6b7280', marginBottom: '2px' }
+  const inp = { width: '100%', padding: '6px 8px', border: '1px solid #d1d5db', borderRadius: '6px', fontSize: '0.83rem', boxSizing: 'border-box' }
+  const row = { display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid #f3f4f6', fontSize: '0.83rem' }
+  const rowLast = { ...row, borderBottom: 'none' }
+  const card = { background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '14px', marginTop: '12px' }
+  const g3 = { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }
+  const tabBtn = (active) => ({ flex: 1, padding: '10px 4px', fontSize: '0.78rem', fontWeight: '600', border: 'none', cursor: 'pointer', background: active ? '#1e40af' : '#f3f4f6', color: active ? 'white' : '#6b7280', borderRight: '1px solid #e5e7eb', fontFamily: 'inherit', lineHeight: 1.3 })
+  const firptaBtn = (on) => ({ padding: '6px 10px', borderRadius: '6px', border: `1px solid ${on ? '#dc2626' : '#d1d5db'}`, background: on ? '#fee2e2' : '#f9fafb', cursor: 'pointer', fontSize: '0.78rem', color: on ? '#dc2626' : '#6b7280', fontFamily: 'inherit', width: '100%' })
+
+  return (
+    <div style={{ fontFamily: 'system-ui, sans-serif', maxWidth: '800px', margin: '0 auto' }}>
+
+      {/* Header */}
+      <div style={{ background: '#1e40af', color: 'white', padding: '14px 16px', borderRadius: '8px 8px 0 0' }}>
+        <div style={{ fontWeight: 'bold', fontSize: '0.95rem' }}>Calculadora de Análise de Negócio — 3 Cenários</div>
+        <div style={{ fontSize: '0.75rem', opacity: 0.85, marginTop: '2px' }}>Para investidores brasileiros | Construção do zero nos EUA | Resultados atualizam automaticamente</div>
+      </div>
+
+      {/* Tabs */}
+      <div style={{ display: 'flex', border: '1px solid #e5e7eb', borderTop: 'none' }}>
+        <button style={tabBtn(tab === 1)} onClick={() => setTab(1)}>🏷️ 1. Construir + Vender</button>
+        <button style={tabBtn(tab === 2)} onClick={() => setTab(2)}>🏠 2. Construir + Alugar</button>
+        <button style={{ ...tabBtn(tab === 3), borderRight: 'none' }} onClick={() => setTab(3)}>🔄 3. Refinanciar + Alugar</button>
+      </div>
+
+      {/* Shared inputs */}
+      <div style={{ border: '1px solid #e5e7eb', borderTop: 'none', padding: '14px', background: '#fafafa' }}>
+        <div style={{ fontWeight: '600', fontSize: '0.83rem', marginBottom: '10px', color: '#374151' }}>Custos do Projeto — compartilhados pelos 3 cenários</div>
+        <div style={g3}>
+          <div><label style={lbl}>Terreno (US$)</label><input style={inp} type="number" value={v.land} onChange={set('land')} /></div>
+          <div><label style={lbl}>Custos Indiretos / Soft Costs (US$)</label><input style={inp} type="number" value={v.soft} onChange={set('soft')} /></div>
+          <div><label style={lbl}>Custo de Carregamento (US$)</label><input style={inp} type="number" value={v.carry} onChange={set('carry')} /></div>
+          <div><label style={lbl}>Contingência (US$)</label><input style={inp} type="number" value={v.cont} onChange={set('cont')} /></div>
+          <div>
+            <label style={lbl}>Tamanho</label>
+            <div style={{ display: 'flex', gap: '4px' }}>
+              <input style={{ ...inp, flex: 1 }} type="number" value={v.size} onChange={set('size')} />
+              <select style={{ padding: '6px 4px', border: '1px solid #d1d5db', borderRadius: '6px', fontSize: '0.78rem' }} value={v.unit} onChange={setStr('unit')}>
+                <option value="sf">SF</option>
+                <option value="m2">m²</option>
+              </select>
+            </div>
+          </div>
+          <div><label style={lbl}>Custo por SF (US$)</label><input style={inp} type="number" value={v.cpersf} onChange={set('cpersf')} /></div>
+        </div>
+        <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginTop: '10px', padding: '8px 12px', background: '#eff6ff', borderRadius: '6px', fontSize: '0.8rem' }}>
+          <span><strong>Construção:</strong> {fmt(c.construction)}</span>
+          <span><strong>Custo Total do Projeto:</strong> {fmt(c.total)}</span>
+          <span style={{ color: '#6b7280', fontSize: '0.72rem' }}>Ref: Citrus Springs ~US$123/SF · Orlando ~US$192/SF · Tampa ~US$205/SF</span>
+        </div>
+      </div>
+
+      {/* ── SCENARIO 1 ── */}
+      {tab === 1 && (
+        <div style={{ border: '1px solid #e5e7eb', borderTop: 'none', borderRadius: '0 0 8px 8px', padding: '14px' }}>
+          <div style={g3}>
+            <div><label style={lbl}>ARV — Valor de Venda Estimado (US$)</label><input style={inp} type="number" value={v.s1arv} onChange={set('s1arv')} /></div>
+            <div><label style={lbl}>Comissão + Custos de Venda (%)</label><input style={inp} type="number" step="0.5" value={v.s1comm} onChange={set('s1comm')} /></div>
+            <div><label style={lbl}>Retenção FIRPTA (15% do preço bruto)?</label><button style={firptaBtn(v.s1firpta)} onClick={tog('s1firpta')}>{v.s1firpta ? '⚠ FIRPTA ativado (15%)' : '✓ Sem FIRPTA (≤US$300K + ocupante)'}</button></div>
+          </div>
+          <div style={{ ...card, borderLeft: '4px solid #1e40af' }}>
+            <div style={{ fontWeight: '600', fontSize: '0.85rem', marginBottom: '8px' }}>📊 Resultado — Cenário 1: Construir + Vender</div>
+            <div style={row}><span>Custo total do projeto</span><span style={{ fontWeight: '600' }}>{fmt(c.total)}</span></div>
+            <div style={row}><span>Valor de venda (ARV)</span><span>{fmt(v.s1arv)}</span></div>
+            <div style={row}><span>Comissão + custos de venda</span><span>−{fmt(c.s1sellCosts)}</span></div>
+            {v.s1firpta && <div style={row}><span style={{ color: '#dc2626' }}>Retenção FIRPTA (15%)</span><span style={ok(false)}>−{fmt(c.s1firptaAmt)}</span></div>}
+            <div style={row}><span>Receita líquida</span><span>{fmt(c.s1net)}</span></div>
+            <div style={{ ...row, paddingTop: '8px', borderTop: '2px solid #e5e7eb' }}><span style={{ fontWeight: '600' }}>Lucro bruto</span><span style={ok(c.s1profit >= 0)}>{fmt(c.s1profit)}</span></div>
+            <div style={row}><span>Margem bruta (lucro ÷ ARV)</span><span style={ok(c.s1margin >= 0.20)}>{pct(c.s1margin)} {c.s1margin >= 0.20 ? '✓' : '⚠ meta: 20%'}</span></div>
+            <div style={row}><span>ROI (lucro ÷ custo total)</span><span style={ok(c.s1roi >= 0.20)}>{pct(c.s1roi)} {c.s1roi >= 0.20 ? '✓' : '⚠ meta: 20%'}</span></div>
+            <div style={rowLast}><span style={{ fontSize: '0.78rem', color: '#6b7280' }}>Preço máx. de terreno para margem 20%</span><span style={{ color: '#1e40af', fontWeight: 'bold' }}>{fmt(Math.max(0, c.s1maxLand))}</span></div>
+          </div>
+          <div style={{ fontSize: '0.72rem', color: '#6b7280', marginTop: '6px' }}>FIRPTA = 0% quando: preço ≤ US$300K + comprador é ocupante-proprietário. Acima disso, protocole Form 8288-B com 3–6 meses de antecedência.</div>
+        </div>
+      )}
+
+      {/* ── SCENARIO 2 ── */}
+      {tab === 2 && (
+        <div style={{ border: '1px solid #e5e7eb', borderTop: 'none', borderRadius: '0 0 8px 8px', padding: '14px' }}>
+          <div style={g3}>
+            <div><label style={lbl}>Aluguel Bruto Mensal (US$)</label><input style={inp} type="number" value={v.s2rent} onChange={set('s2rent')} /></div>
+            <div><label style={lbl}>IPTU Mensal (US$)</label><input style={inp} type="number" value={v.s2tax} onChange={set('s2tax')} /></div>
+            <div><label style={lbl}>Seguro Mensal (US$)</label><input style={inp} type="number" value={v.s2ins} onChange={set('s2ins')} /></div>
+            <div><label style={lbl}>HOA Mensal (US$)</label><input style={inp} type="number" value={v.s2hoa} onChange={set('s2hoa')} /></div>
+            <div><label style={lbl}>Gestão + Manutenção + Vacância (%)</label><input style={inp} type="number" step="1" value={v.s2exp} onChange={set('s2exp')} /></div>
+            <div><label style={lbl}>ARV projetado para venda futura (US$)</label><input style={inp} type="number" value={v.s2arv} onChange={set('s2arv')} /></div>
+          </div>
+          <div style={{ marginTop: '10px' }}>
+            <label style={lbl}>FIRPTA em eventual venda futura?</label>
+            <button style={{ ...firptaBtn(v.s2firpta), width: 'auto' }} onClick={tog('s2firpta')}>
+              {v.s2firpta ? `⚠ FIRPTA projetado: −${fmt(c.s2firptaAmt)} na venda` : '✓ Sem FIRPTA projetado (BRRRR + 1031 Exchange)'}
+            </button>
+          </div>
+          <div style={{ ...card, borderLeft: '4px solid #16a34a' }}>
+            <div style={{ fontWeight: '600', fontSize: '0.85rem', marginBottom: '8px' }}>📊 Resultado — Cenário 2: Construir + Alugar (capital próprio)</div>
+            <div style={row}><span>Investimento total (capital imobilizado)</span><span style={{ fontWeight: '600' }}>{fmt(c.total)}</span></div>
+            <div style={row}><span>Aluguel bruto mensal</span><span>{fmt(v.s2rent)}/mês</span></div>
+            <div style={row}><span>Despesas mensais (IPTU + seguro + HOA + gestão)</span><span>−{fmt(c.s2opExp)}/mês</span></div>
+            <div style={{ ...row, paddingTop: '8px', borderTop: '2px solid #e5e7eb' }}><span style={{ fontWeight: '600' }}>Fluxo de caixa líquido</span><span style={ok(c.s2cf >= 0)}>{fmt(c.s2cf)}/mês</span></div>
+            <div style={row}><span>Renda líquida anual</span><span style={ok(c.s2cf >= 0)}>{fmt(c.s2cf * 12)}/ano</span></div>
+            <div style={rowLast}><span>Yield anual (renda ÷ investimento)</span><span style={ok(c.s2yield >= 0.06)}>{pct(c.s2yield)} {c.s2yield >= 0.06 ? '✓' : '⚠ meta: 6%'}</span></div>
+          </div>
+          <div style={{ fontSize: '0.72rem', color: '#6b7280', marginTop: '6px' }}>Sem empréstimo = sem P&I, sem risco de DSCR. O yield é a métrica central — quanto da renda anual retorna sobre o capital investido.</div>
+        </div>
+      )}
+
+      {/* ── SCENARIO 3 ── */}
+      {tab === 3 && (
+        <div style={{ border: '1px solid #e5e7eb', borderTop: 'none', borderRadius: '0 0 8px 8px', padding: '14px' }}>
+          <div style={g3}>
+            <div><label style={lbl}>ARV para cálculo do DSCR (US$)</label><input style={inp} type="number" value={v.s3arv} onChange={set('s3arv')} /></div>
+            <div><label style={lbl}>LTV do Refi DSCR (%)</label><input style={inp} type="number" step="1" value={v.s3ltv} onChange={set('s3ltv')} /></div>
+            <div><label style={lbl}>Taxa DSCR (% ao ano)</label><input style={inp} type="number" step="0.25" value={v.s3rate} onChange={set('s3rate')} /></div>
+            <div><label style={lbl}>Aluguel Bruto Mensal (US$)</label><input style={inp} type="number" value={v.s3rent} onChange={set('s3rent')} /></div>
+            <div><label style={lbl}>IPTU Mensal (US$)</label><input style={inp} type="number" value={v.s3tax} onChange={set('s3tax')} /></div>
+            <div><label style={lbl}>Seguro Mensal (US$)</label><input style={inp} type="number" value={v.s3ins} onChange={set('s3ins')} /></div>
+            <div><label style={lbl}>HOA Mensal (US$)</label><input style={inp} type="number" value={v.s3hoa} onChange={set('s3hoa')} /></div>
+            <div><label style={lbl}>Gestão + Manutenção + Vacância (%)</label><input style={inp} type="number" step="1" value={v.s3exp} onChange={set('s3exp')} /></div>
+            <div><label style={lbl}>FIRPTA em eventual venda futura?</label><button style={firptaBtn(v.s3firpta)} onClick={tog('s3firpta')}>{v.s3firpta ? `⚠ FIRPTA: −${fmt(c.s3firptaAmt)} na venda futura` : '✓ Sem FIRPTA (diferido via BRRRR + 1031)'}</button></div>
+          </div>
+          <div style={{ ...card, borderLeft: '4px solid #7c3aed' }}>
+            <div style={{ fontWeight: '600', fontSize: '0.85rem', marginBottom: '8px' }}>📊 Resultado — Cenário 3: Refinanciar + Alugar (BRRRR / DSCR)</div>
+            <div style={row}><span>Custo total do projeto</span><span style={{ fontWeight: '600' }}>{fmt(c.total)}</span></div>
+            <div style={row}><span>Empréstimo DSCR (LTV% × ARV)</span><span>{fmt(c.s3loan)}</span></div>
+            <div style={row}><span>Capital preso no imóvel (custo − empréstimo)</span><span style={ok(c.s3equity >= 0)}>{fmt(c.s3equity)}</span></div>
+            <div style={{ ...row, paddingTop: '6px', borderTop: '2px solid #e5e7eb' }}><span>Parcela P&I mensal (30 anos)</span><span>{fmt(c.s3pi)}/mês</span></div>
+            <div style={row}><span>PITIA total mensal</span><span>{fmt(c.s3pitia)}/mês</span></div>
+            <div style={row}><span>Aluguel bruto mensal</span><span>{fmt(v.s3rent)}/mês</span></div>
+            <div style={row}><span style={{ fontWeight: '600' }}>DSCR</span><span style={ok(c.s3dscr >= 1.25)}>{c.s3dscr.toFixed(2)} {c.s3dscr >= 1.25 ? '✓' : c.s3dscr >= 1.0 ? '⚠ <1,25' : '✗ negativo'}</span></div>
+            <div style={row}><span style={{ fontWeight: '600' }}>Fluxo de caixa mensal</span><span style={ok(c.s3cf >= 0)}>{fmt(c.s3cf)}/mês</span></div>
+            <div style={rowLast}><span style={{ fontWeight: '600' }}>Fluxo de caixa anual</span><span style={ok(c.s3cf >= 0)}>{fmt(c.s3cf * 12)}/ano</span></div>
+          </div>
+          <div style={{ fontSize: '0.72rem', color: '#6b7280', marginTop: '6px' }}>BRRRR: o empréstimo DSCR recupera parte do capital investido. DSCR ≥ 1,25 é o mínimo da maioria dos credores. FIRPTA é diferido — sem venda = sem evento FIRPTA.</div>
+        </div>
+      )}
+
+      <div style={{ fontSize: '0.7rem', color: '#9ca3af', marginTop: '8px', textAlign: 'center' }}>
+        Calculadora para fins educacionais. Consulte sempre um CPA e advogado imobiliário antes de tomar decisões de investimento.
+      </div>
+    </div>
+  )
+}
+
+<CalculadoraDeal />
+
+---
+
+# Anexo 4 — Análise de Negócio e Template de Pro Forma
+## Construção do Zero | SFR e Multifamiliar de 2 a 4 Unidades
+
+> Rode esta análise **ANTES** de fazer uma oferta no terreno. Se os números não fecharem no preço pedido, negocie para baixo ou desista. A pro forma indica o valor máximo que você pode pagar pelo terreno e ainda atingir sua meta de retorno.
+
+---
+
+## Como Usar Este Template
+
+1. Preencha os **custos do projeto** (terreno, construção, soft costs, contingência) — esses dados alimentam os 3 cenários simultaneamente
+2. Use **tamanho × custo/SF** para calcular o custo de construção automaticamente, ou insira o valor direto
+3. Alterne entre os **3 cenários** (Vender / Alugar capital próprio / Refinanciar + Alugar) para ver o retorno em cada estratégia
+4. Use o **"Preço Máximo do Terreno"** (Cenário 1) para definir o teto da sua oferta — se o terreno pedir mais do que isso, negocie ou desista
+5. Use o **DSCR** (Cenário 3) para confirmar que o empréstimo pós-construção é viável antes de fechar o terreno
+
+---
+
+## MÓDULO 1: CUSTOS DE AQUISIÇÃO
+
+| Item | Entrada | Observações |
+|------|---------|-------------|
+| **Preço de Compra do Terreno** | US$_______ | Valor da sua oferta / contrato |
+| Custos de Fechamento do Terreno | US$_______ | ~1,5%–2,5% do preço |
+| Levantamento Topográfico | US$_______ | US$500–US$1.500 |
+| Due Diligence (inspeções, laudos) | US$_______ | US$2.000–US$8.000 |
+| **Total de Custos de Aquisição** | **US$_______** | Soma dos itens acima |
+
+---
+
+## MÓDULO 2: CUSTOS DE CONSTRUÇÃO E PRÉ-CONSTRUÇÃO
+
+| Item | Entrada | Observações |
+|------|---------|-------------|
+| Projetos Arquitetônicos / Engenharia | US$_______ | US$5K–US$20K típico |
+| Taxas de Alvará | US$_______ | US$3K–US$25K varia por cidade |
+| Taxas de Impacto (conexões água/esgoto) | US$_______ | US$5K–US$30K |
+| Terraplenagem e Fundação | US$_______ | Ver Template de Orçamento |
+| Estrutura (Framing) | US$_______ | |
+| Cobertura e Fachada | US$_______ | |
+| MEP (Hidráulica, Elétrica, HVAC) | US$_______ | |
+| Acabamentos Internos | US$_______ | |
+| Finalização Externa | US$_______ | |
+| Contingência (10%–15%) | US$_______ | |
+| **Total Construção (Direto + Indireto)** | **US$_______** | |
+
+---
+
+## MÓDULO 3: CUSTOS DE FINANCIAMENTO
+
+| Item | Entrada | Fórmula / Observações |
+|------|---------|----------------------|
+| Valor do Empréstimo de Construção | US$_______ | Custo total do projeto × LTC% |
+| Loan-to-Cost (LTC) | _______ % | Tipicamente 70%–75% |
+| Taxa de Juros | _______ % | Tipicamente 10%–13% ao ano |
+| Prazo do Empréstimo (meses) | _______ | Tipicamente 12–18 meses |
+| Saldo Médio Desembolsado | US$_______ | ~60% do valor do empréstimo (média) |
+| **Custo Estimado de Juros** | **US$_______** | Saldo médio × taxa ÷ 12 × meses |
+| Pontos de Originação | _______ | Tipicamente 2–3 pontos |
+| **Taxa de Originação** | **US$_______** | Valor do empréstimo × pontos% |
+| Outras Taxas do Credor | US$_______ | Avaliação, processamento, etc. |
+| **Total de Custos de Financiamento** | **US$_______** | Juros + originação + taxas |
+
+**Fórmula de Estimativa de Juros:**
+```
+Juros Mensais = Valor do Empréstimo × 0,60 × (Taxa Anual ÷ 12)
+Total de Juros = Juros Mensais × Prazo do Empréstimo em Meses
+```
+
+*O fator 0,60 considera que os desembolsos são liberados gradualmente, não todos de uma vez.*
+
+---
+
+## MÓDULO 4: CUSTOS DE CARREGAMENTO
+
+| Item | Entrada | Observações |
+|------|---------|-------------|
+| Seguro do Construtor (Builder's Risk) | US$_______ | US$1.500–US$5.000/ano |
+| IPTU durante a Construção | US$_______ | IPTU anual ÷ 12 × meses |
+| Utilidades (energia, água durante a obra) | US$_______ | US$500–US$2.000 total |
+| Gestão de Projeto / Supervisão | US$_______ | Se contratar gestor; 0 se autogerenciar |
+| **Total de Custos de Carregamento** | **US$_______** | |
+
+---
+
+## MÓDULO 5: RESUMO DO CUSTO TOTAL DO PROJETO
+
+| Categoria | Valor |
+|-----------|-------|
+| Total de Custos de Aquisição | US$_______ |
+| Total de Custos de Construção | US$_______ |
+| Total de Custos de Financiamento | US$_______ |
+| Total de Custos de Carregamento | US$_______ |
+| **CUSTO TOTAL DO PROJETO (All-In)** | **US$_______** |
+
+---
+
+## MÓDULO 6A: CENÁRIO DE SAÍDA — VENDER
+
+### Receita de Venda
+
+| Item | Entrada | Observações |
+|------|---------|-------------|
+| **Valor Após Conclusão (ARV)** | US$_______ | Suportado pelos comps |
+| Comissão do Corretor Imobiliário | US$_______ | Tipicamente 5%–6% do preço de venda |
+| Custos de Fechamento do Vendedor | US$_______ | ~1%–2% do preço de venda |
+| Staging / Fotografia | US$_______ | US$1.000–US$3.000 |
+| **Retenção FIRPTA** | US$_______ | 15% do preço bruto de venda (vendedor estrangeiro) |
+| **Total de Custos de Venda** | **US$_______** | |
+| **Receita Líquida da Venda** | **US$_______** | ARV − Total de Custos de Venda |
+
+### Análise de Lucro — Venda
+
+| Item | Cálculo | Valor |
+|------|---------|-------|
+| Receita Líquida da Venda | | US$_______ |
+| Custo Total do Projeto | | US$_______ |
+| **Lucro Bruto (antes de impostos)** | Receita − Custo Total | **US$_______** |
+| Imposto estimado sobre ganho de capital | ~15%–20% do lucro (consulte CPA) | US$_______ |
+| **Lucro Líquido (após impostos, est.)** | | **US$_______** |
+
+### Retorno sobre Investimento (Cenário de Venda)
+
+| Métrica | Fórmula | Seu Resultado |
+|---------|---------|---------------|
+| Margem Bruta % | Lucro Bruto ÷ ARV | _______ % |
+| ROI sobre Caixa Investido | Lucro Líquido ÷ Caixa Próprio | _______ % |
+| ROI Anualizado | ROI ÷ Duração do Projeto (meses) × 12 | _______ % |
+
+**Metas Mínimas (recomendadas):**
+- Margem Bruta ≥ 20% do ARV
+- ROI sobre Caixa ≥ 30%
+- ROI Anualizado ≥ 20%
+
+---
+
+## MÓDULO 6B: CENÁRIO DE SAÍDA — REFINANCIAR E ALUGAR (DSCR)
+
+### Análise do Empréstimo DSCR
+
+| Item | Entrada | Observações |
+|------|---------|-------------|
+| Valor Concluído do Imóvel (ARV) | US$_______ | Igual ao cenário de venda |
+| LTV do Empréstimo DSCR | _______ % | Tipicamente 70%–75% |
+| **Valor do Empréstimo DSCR** | **US$_______** | ARV × LTV% |
+| Taxa de Juros DSCR | _______ % | Tipicamente 7%–10% ao ano |
+| Prazo do Empréstimo | 30 anos | Padrão |
+| Parcela Mensal (Principal + Juros) | US$_______ | Usar calculadora de amortização |
+
+**Calculadora de P&I:**
+```
+P&I = Valor × [r(1+r)^n] ÷ [(1+r)^n − 1]
+onde r = taxa mensal (taxa anual ÷ 12), n = 360 meses
+```
+
+### Análise da Renda de Aluguel
+
+| Item | Entrada | Observações |
+|------|---------|-------------|
+| Aluguel Bruto Mensal | US$_______ | Baseado em comps de aluguel |
+| Desconto por Vacância (8%–10%) | US$_______ | Aluguel bruto × 8% |
+| **Renda Bruta Efetiva (RBE)** | **US$_______** | Aluguel bruto − vacância |
+
+### Despesas Mensais de Operação (Aluguel)
+
+| Item | Entrada | Observações |
+|------|---------|-------------|
+| P&I Mensal (empréstimo DSCR) | US$_______ | Do cálculo acima |
+| IPTU (mensal) | US$_______ | IPTU anual ÷ 12 |
+| Seguro (homeowners) | US$_______ | Anual ÷ 12 |
+| HOA (se aplicável) | US$_______ | |
+| Administração do imóvel (8%–10%) | US$_______ | RBE × 9% |
+| Reparos e Manutenção (5%) | US$_______ | RBE × 5% |
+| Reserva para CapEx (5%) | US$_______ | RBE × 5% |
+| **Total de Despesas Mensais** | **US$_______** | |
+
+### Análise de Fluxo de Caixa
+
+| Item | Valor |
+|------|-------|
+| Renda Bruta Efetiva (RBE) | US$_______ |
+| Total de Despesas Mensais | US$_______ |
+| **Fluxo de Caixa Mensal** | **US$_______** |
+| **Fluxo de Caixa Anual** | **US$_______** |
+
+### Cálculo do DSCR
+
+```
+DSCR = Aluguel Bruto Mensal ÷ PITIA Mensal
+PITIA = P&I + IPTU + Seguro + HOA
+
+Seu DSCR = _______ ÷ _______ = _______
+
+Meta: DSCR ≥ 1,25 (maioria dos credores)
+```
+
+### Análise BRRRR (Equity e Caixa Devolvido)
+
+| Item | Cálculo | Valor |
+|------|---------|-------|
+| Total de Caixa Investido | Do Módulo 5 | US$_______ |
+| Valor do Empréstimo DSCR | Do cálculo acima | US$_______ |
+| Quitação do Empréstimo de Construção | Saldo do empréstimo original | US$_______ |
+| **Caixa Devolvido no Refi** | DSCR − Empréstimo de Construção | **US$_______** |
+| **Caixa Remanescente no Negócio** | Total Investido − Caixa Devolvido | **US$_______** |
+| **Equity no Refi** | ARV − Empréstimo DSCR | **US$_______** |
+| **Retorno sobre Caixa (Cash-on-Cash)** | Fluxo de Caixa Anual ÷ Caixa no Negócio | _______ % |
+
+---
+
+## MÓDULO 7: SCORECARD — PROSSEGUIR OU NÃO
+
+| Critério | Meta Mínima | Seu Negócio | Passou/Reprovou |
+|----------|------------|-------------|-----------------|
+| Margem Bruta (venda) | ≥ 20% do ARV | _______ % | |
+| ROI (venda) | ≥ 30% sobre caixa | _______ % | |
+| DSCR (refinanciar) | ≥ 1,25 | _______ | |
+| Fluxo de Caixa Mensal (refinanciar) | ≥ US$0 (equilíbrio) | US$_______ | |
+| Retorno sobre Caixa (refinanciar) | ≥ 8% | _______ % | |
+| ARV suportado pelos comps | Sim / Não | | |
+| Custo de construção confirmado pelo empreiteiro | Sim / Não | | |
+| Prazo de alvará < 9 meses | Sim / Não | | |
+| Financiamento confirmado disponível | Sim / Não | | |
+
+**Decisão:** ☐ PROSSEGUIR ☐ NÃO PROSSEGUIR ☐ RENEGOCIAR PREÇO DO TERRENO
+
+---
+
+## MÓDULO 8: CALCULADORA DE PREÇO MÁXIMO DO TERRENO
+
+Trabalhe de trás para frente a partir da sua meta de lucro para encontrar o valor máximo a pagar pelo terreno.
+
+### Para Saída via Venda:
+
+```
+Preço Máximo do Terreno = ARV × Margem% − Custo de Construção − Custo de Financiamento − Custo de Carregamento − Custos de Venda
+```
+
+**Exemplo:**
+```
+ARV:                          US$400.000
+Margem Bruta Alvo:            × 20%     = US$80.000 de lucro mínimo
+ARV − Lucro:                               US$320.000
+Custo de Construção:                      −US$210.000
+Custo de Financiamento:                   −US$22.000
+Custo de Carregamento:                    −US$8.000
+Custos de Venda (6%):                     −US$24.000
+────────────────────────────────────────────────────
+Preço Máximo do Terreno:                   US$56.000
+```
+
+### Para Saída via Refinanciamento DSCR:
+
+O preço do terreno é limitado por:
+1. Seu requisito de caixa total (terreno + 25%–30% do empréstimo de construção)
+2. O empréstimo DSCR deve gerar fluxo de caixa positivo no refinanciamento
+
+---
+
+## MÓDULO 9: COMPARAÇÃO DE NEGÓCIOS (Lado a Lado)
+
+Use quando avaliar múltiplas oportunidades de terreno simultaneamente.
+
+| Métrica | Negócio A | Negócio B | Negócio C |
+|---------|-----------|-----------|-----------|
+| Endereço | | | |
+| Preço do terreno | | | |
+| Custo de construção | | | |
+| Custo total do projeto | | | |
+| ARV | | | |
+| Lucro bruto (venda) | | | |
+| Margem bruta % | | | |
+| Fluxo de caixa mensal (refinanciar) | | | |
+| DSCR | | | |
+| Retorno sobre caixa | | | |
+| Prazo de alvará | | | |
+| **Classificação** | | | |
+
+---
+
+## MÓDULO 10: ANÁLISE DE SENSIBILIDADE — O Teste de Estresse
+
+Plataformas profissionais de análise (como os modelos de desenvolvimento da A.CRE) nunca aprovam um projeto com um único cenário. Antes de comprar o terreno, teste o que acontece com a sua margem quando as duas variáveis mais incertas se movem: **ARV** (o mercado pode cair) e **custo de construção** (a obra pode estourar).
+
+### Matriz de Sensibilidade — Margem Bruta (Lucro ÷ ARV)
+
+Exemplo com o projeto Citrus Springs (custo base US$210K, ARV base US$260K, custos de venda 7%):
+
+| | ARV −10% (US$234K) | ARV base (US$260K) | ARV +5% (US$273K) |
+|---|---|---|---|
+| **Custo −5% (US$199,5K)** | 7,5% ⚠️ | 14,9% ⚠️ | 18,7% ⚠️ |
+| **Custo base (US$210K)** | 3,0% ✗ | 10,8% ⚠️ | 14,8% ⚠️ |
+| **Custo +10% (US$231K)** | −6,0% ✗ | 2,7% ✗ | 7,1% ✗ |
+| **Custo +15% (US$241,5K)** | −10,4% ✗ | −1,3% ✗ | 3,3% ✗ |
+
+### Como Ler e Usar
+
+1. **Monte a sua matriz** com os números do seu projeto (a calculadora acima facilita: mude ARV e custo e anote a margem)
+2. **O teste que importa:** o projeto sobrevive a **ARV −10% E custo +10% ao mesmo tempo**? Se a margem fica negativa nesse cenário (como acima), o negócio depende de tudo dar certo — você não tem margem de segurança, tem torcida
+3. **Use a matriz para negociar o terreno:** cada US$10K a menos no terreno desloca a matriz inteira ~4 pontos de margem para cima no exemplo
+
+> **Regra dos profissionais:** o cenário-base deve passar com folga (margem ≥ 20%) e o cenário de estresse (ARV −10%, custo +10%) deve no mínimo empatar. Se o base já está apertado, o estresse vai te quebrar.
+
+---
+
+## MÓDULO 11: MÉTRICAS DE DESENVOLVEDOR PROFISSIONAL
+
+Quatro métricas usadas por desenvolvedores institucionais (padrão A.CRE) que elevam a sua análise — e a sua credibilidade ao conversar com credores e parceiros:
+
+### 1. Yield on Cost (YoC) — para a estratégia de alugar
+
+```
+YoC = NOI anual estabilizado ÷ Custo total do projeto
+
+NOI = aluguel anual − despesas operacionais (sem contar a parcela do empréstimo)
+```
+
+**Exemplo:** Duplex custo total US$560K, aluguel US$3.600/mês, despesas operacionais US$1.100/mês
+NOI = (3.600 − 1.100) × 12 = US$30.000/ano → **YoC = 30.000 ÷ 560.000 = 5,4%**
+
+### 2. Development Spread — a razão de construir em vez de comprar pronto
+
+```
+Development Spread = YoC − Cap Rate de mercado
+```
+
+Se imóveis prontos equivalentes são negociados a cap rate de 5,4% e o seu YoC construindo é 5,4%, o spread é **zero** — você correu todo o risco da obra para obter o mesmo retorno de quem comprou pronto. **Desenvolvedores profissionais buscam spread de 1,5–2+ pontos percentuais** (ex.: construir a YoC 7% num mercado de cap 5%) — esse é o "prêmio" por assumir risco de construção.
+
+> Se o spread do seu projeto é < 1 ponto, compare seriamente com a alternativa de comprar um imóvel pronto: mesmo retorno, uma fração do risco e 12 meses do seu tempo de volta.
+
+### 3. ROI vs. ROI Anualizado — compare projetos de prazos diferentes
+
+```
+ROI anualizado ≈ ROI total ÷ meses do projeto × 12
+```
+
+| Projeto | ROI total | Prazo | ROI anualizado |
+|---------|-----------|-------|----------------|
+| Citrus Springs flip | 15%–24% | 12 meses | **15%–24%/ano** |
+| Flip que "rende mais" | 30% | 24 meses | **15%/ano** |
+
+O segundo projeto parece melhor no ROI total — mas é igual ou pior por ano de capital imobilizado.
+
+### 4. Equity Multiple — a visão de ciclo completo
+
+```
+Equity Multiple = Total que volta para você ÷ Total que você investiu
+```
+
+Um flip que devolve US$260K sobre US$210K investidos = **1,24x** em ~1 ano. Um BRRRR que devolve US$69K no refi + US$400/mês + equity de US$126K tem múltiplo menor no ano 1, mas continua compondo. Use o múltiplo junto com o ROI anualizado para comparar estratégias de prazos diferentes.
+
+<Info>
+**Conexão com o Módulo 8:** o "Preço Máximo do Terreno" que você calculou ali é a versão simplificada do que desenvolvedores chamam de **Residual Land Value** — o valor do terreno é o que sobra depois de garantir o seu lucro-alvo. Negocie o terreno a partir dessa conta, não a partir do preço pedido.
+</Info>
+
+---
+
+## Referência Rápida: Verificações de Regra de Bolso
+
+### Regra dos 70% (Saída por Venda)
+```
+Custo Total Máximo ≤ ARV × 70%
+```
+Se o custo total do projeto ultrapassar 70% do ARV, o negócio provavelmente não vinga para um flip.
+
+### Regra do 1% (Saída por Refinanciamento/Aluguel)
+```
+Aluguel Mensal ÷ Custo Total do Projeto ≥ 1%
+```
+Exemplo: US$2.500 aluguel ÷ US$300.000 custo = 0,83% — ligeiramente abaixo de 1% (aceitável em mercados de baixo cap rate)
+
+*Nota: A regra do 1% é uma triagem rápida, não uma análise completa. Sempre calcule os números completos do DSCR.*
+
+---
+
+## Exemplo de Análise — Jacksonville, FL (SFR)
+
+| Item | Valor |
+|------|-------|
+| Preço do terreno | US$75.000 |
+| Custo de construção (completo) | US$195.000 |
+| Custo de financiamento | US$22.000 |
+| Custo de carregamento | US$6.000 |
+| **Custo Total do Projeto** | **US$298.000** |
+| **ARV** | **US$385.000** |
+| Custos de venda (6%) | US$23.100 |
+| **Receita Líquida** | **US$361.900** |
+| **Lucro Bruto** | **US$63.900** |
+| **Margem Bruta** | **16,6%** ⚠️ (abaixo dos 20% alvo) |
+| **Revisado: Negociar terreno para US$60.000** | |
+| Novo Custo Total | US$283.000 |
+| Novo Lucro Bruto | US$78.900 |
+| **Nova Margem Bruta** | **20,5%** ✓ |
+
+*Este exemplo mostra como usar a pro forma para definir o preço da sua oferta pelo terreno.*
