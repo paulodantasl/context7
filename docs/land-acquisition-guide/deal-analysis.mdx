@@ -7,146 +7,190 @@ description: Template completo de pro forma para análise de projetos de constru
 import { useState, useMemo } from 'react'
 
 export function CalculadoraDeal() {
-  const fmt = (n) => n.toLocaleString('pt-BR', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })
+  const fmt = (n) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 }).format(n)
   const pct = (n) => (n * 100).toFixed(1) + '%'
 
+  const [tab, setTab] = useState(1)
   const [v, setV] = useState({
-    landPrice: 75000,
-    constructionCost: 195000,
-    financingCost: 22000,
-    carryingCost: 6000,
-    arv: 385000,
-    sellCostPct: 6,
-    firpta: true,
-    dscrLtv: 70,
-    dscrRate: 8,
-    rent: 2200,
-    taxes: 350,
-    insurance: 150,
-    hoa: 0,
+    land: 25000, soft: 15000, carry: 5000, cont: 18500,
+    size: 1500, unit: 'sf', cpersf: 123,
+    s1arv: 260000, s1comm: 7, s1firpta: false,
+    s2rent: 1800, s2tax: 200, s2ins: 120, s2hoa: 0, s2exp: 20, s2arv: 260000, s2firpta: false,
+    s3arv: 260000, s3ltv: 70, s3rate: 8, s3rent: 1800, s3tax: 200, s3ins: 120, s3hoa: 0, s3exp: 20, s3firpta: false,
   })
 
-  const set = (k) => (e) => setV((prev) => ({ ...prev, [k]: parseFloat(e.target.value) || 0 }))
-  const toggle = (k) => () => setV((prev) => ({ ...prev, [k]: !prev[k] }))
+  const set = (k) => (e) => setV((p) => ({ ...p, [k]: parseFloat(e.target.value) || 0 }))
+  const setStr = (k) => (e) => setV((p) => ({ ...p, [k]: e.target.value }))
+  const tog = (k) => () => setV((p) => ({ ...p, [k]: !p[k] }))
 
   const c = useMemo(() => {
-    const total = v.landPrice + v.constructionCost + v.financingCost + v.carryingCost
-    const sellCosts = v.arv * (v.sellCostPct / 100)
-    const firptaAmt = v.firpta ? v.arv * 0.15 : 0
-    const netSale = v.arv - sellCosts - firptaAmt
-    const grossProfit = netSale - total
-    const grossMargin = v.arv > 0 ? grossProfit / v.arv : 0
-    const cashIn = total * 0.3
-    const roi = cashIn > 0 ? grossProfit / cashIn : 0
+    const sizeInSF = v.unit === 'm2' ? v.size * 10.7639 : v.size
+    const construction = sizeInSF * v.cpersf
+    const total = v.land + construction + v.soft + v.carry + v.cont
 
-    const dscrLoan = v.arv * (v.dscrLtv / 100)
-    const r = v.dscrRate / 100 / 12
-    const n = 360
-    const pi = r > 0 ? dscrLoan * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1) : 0
-    const pitia = pi + v.taxes + v.insurance + v.hoa
-    const dscr = pitia > 0 ? v.rent / pitia : 0
-    const mgmt = v.rent * 0.09
-    const repairs = v.rent * 0.05
-    const capex = v.rent * 0.05
-    const cashflow = v.rent - pitia - mgmt - repairs - capex
+    const s1sellCosts = v.s1arv * (v.s1comm / 100)
+    const s1firptaAmt = v.s1firpta ? v.s1arv * 0.15 : 0
+    const s1net = v.s1arv - s1sellCosts - s1firptaAmt
+    const s1profit = s1net - total
+    const s1margin = v.s1arv > 0 ? s1profit / v.s1arv : 0
+    const s1roi = total > 0 ? s1profit / total : 0
+    const s1maxLand = v.s1arv * (1 - v.s1comm / 100) - construction - v.soft - v.carry - v.cont - v.s1arv * 0.20
 
-    const maxLand = v.arv * (1 - v.sellCostPct / 100) - v.constructionCost - v.financingCost - v.carryingCost - v.arv * 0.20
+    const s2opExp = v.s2tax + v.s2ins + v.s2hoa + v.s2rent * (v.s2exp / 100)
+    const s2cf = v.s2rent - s2opExp
+    const s2yield = total > 0 ? (s2cf * 12) / total : 0
+    const s2firptaAmt = v.s2firpta ? v.s2arv * 0.15 : 0
 
-    return { total, grossProfit, grossMargin, roi, dscrLoan, pi, pitia, dscr, cashflow, maxLand, firptaAmt, netSale }
+    const s3loan = v.s3arv * (v.s3ltv / 100)
+    const r3 = v.s3rate / 100 / 12
+    const s3pi = r3 > 0 ? s3loan * (r3 * Math.pow(1 + r3, 360)) / (Math.pow(1 + r3, 360) - 1) : 0
+    const s3pitia = s3pi + v.s3tax + v.s3ins + v.s3hoa
+    const s3cf = v.s3rent - s3pitia - v.s3rent * (v.s3exp / 100)
+    const s3dscr = s3pitia > 0 ? v.s3rent / s3pitia : 0
+    const s3equity = total - s3loan
+    const s3firptaAmt = v.s3firpta ? v.s3arv * 0.15 : 0
+
+    return { construction, total, s1sellCosts, s1firptaAmt, s1net, s1profit, s1margin, s1roi, s1maxLand, s2opExp, s2cf, s2yield, s2firptaAmt, s3loan, s3pi, s3pitia, s3cf, s3dscr, s3equity, s3firptaAmt }
   }, [v])
 
   const ok = (cond) => ({ color: cond ? '#16a34a' : '#dc2626', fontWeight: 'bold' })
-  const labelStyle = { display: 'block', fontSize: '0.75rem', color: '#6b7280', marginBottom: '2px' }
-  const inputStyle = { width: '100%', padding: '6px 8px', border: '1px solid #d1d5db', borderRadius: '6px', fontSize: '0.875rem' }
-  const cardStyle = { background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '16px', marginBottom: '16px' }
-  const resultRow = { display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid #f3f4f6', fontSize: '0.875rem' }
-  const grid2 = { display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }
-  const grid3 = { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }
+  const lbl = { display: 'block', fontSize: '0.72rem', color: '#6b7280', marginBottom: '2px' }
+  const inp = { width: '100%', padding: '6px 8px', border: '1px solid #d1d5db', borderRadius: '6px', fontSize: '0.83rem', boxSizing: 'border-box' }
+  const row = { display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid #f3f4f6', fontSize: '0.83rem' }
+  const rowLast = { ...row, borderBottom: 'none' }
+  const card = { background: '#f9fafb', border: '1px solid #e5e7eb', borderRadius: '8px', padding: '14px', marginTop: '12px' }
+  const g3 = { display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px' }
+  const tabBtn = (active) => ({ flex: 1, padding: '10px 4px', fontSize: '0.78rem', fontWeight: '600', border: 'none', cursor: 'pointer', background: active ? '#1e40af' : '#f3f4f6', color: active ? 'white' : '#6b7280', borderRight: '1px solid #e5e7eb', fontFamily: 'inherit', lineHeight: 1.3 })
+  const firptaBtn = (on) => ({ padding: '6px 10px', borderRadius: '6px', border: `1px solid ${on ? '#dc2626' : '#d1d5db'}`, background: on ? '#fee2e2' : '#f9fafb', cursor: 'pointer', fontSize: '0.78rem', color: on ? '#dc2626' : '#6b7280', fontFamily: 'inherit', width: '100%' })
 
   return (
-    <div style={{ fontFamily: 'system-ui, sans-serif', maxWidth: '780px', margin: '0 auto' }}>
-      <div style={{ background: '#1e40af', color: 'white', padding: '16px', borderRadius: '8px', marginBottom: '16px' }}>
-        <div style={{ fontWeight: 'bold', fontSize: '1rem' }}>Calculadora de Análise de Negócio</div>
-        <div style={{ fontSize: '0.8rem', opacity: 0.85 }}>Construção do Zero — Para Investidores Brasileiros | Preencha os campos e os resultados atualizam automaticamente</div>
+    <div style={{ fontFamily: 'system-ui, sans-serif', maxWidth: '800px', margin: '0 auto' }}>
+
+      {/* Header */}
+      <div style={{ background: '#1e40af', color: 'white', padding: '14px 16px', borderRadius: '8px 8px 0 0' }}>
+        <div style={{ fontWeight: 'bold', fontSize: '0.95rem' }}>Calculadora de Análise de Negócio — 3 Cenários</div>
+        <div style={{ fontSize: '0.75rem', opacity: 0.85, marginTop: '2px' }}>Para investidores brasileiros | Construção do zero nos EUA | Resultados atualizam automaticamente</div>
       </div>
 
-      {/* INPUTS */}
-      <div style={cardStyle}>
-        <div style={{ fontWeight: '600', marginBottom: '12px', fontSize: '0.9rem' }}>📍 Custos do Projeto</div>
-        <div style={grid2}>
-          <div><label style={labelStyle}>Preço do Terreno (US$)</label><input style={inputStyle} type="number" value={v.landPrice} onChange={set('landPrice')} /></div>
-          <div><label style={labelStyle}>Custo de Construção (US$)</label><input style={inputStyle} type="number" value={v.constructionCost} onChange={set('constructionCost')} /></div>
-          <div><label style={labelStyle}>Custo de Financiamento (US$)</label><input style={inputStyle} type="number" value={v.financingCost} onChange={set('financingCost')} /></div>
-          <div><label style={labelStyle}>Custos de Carregamento (US$)</label><input style={inputStyle} type="number" value={v.carryingCost} onChange={set('carryingCost')} /></div>
+      {/* Tabs */}
+      <div style={{ display: 'flex', border: '1px solid #e5e7eb', borderTop: 'none' }}>
+        <button style={tabBtn(tab === 1)} onClick={() => setTab(1)}>🏷️ 1. Construir + Vender</button>
+        <button style={tabBtn(tab === 2)} onClick={() => setTab(2)}>🏠 2. Construir + Alugar</button>
+        <button style={{ ...tabBtn(tab === 3), borderRight: 'none' }} onClick={() => setTab(3)}>🔄 3. Refinanciar + Alugar</button>
+      </div>
+
+      {/* Shared inputs */}
+      <div style={{ border: '1px solid #e5e7eb', borderTop: 'none', padding: '14px', background: '#fafafa' }}>
+        <div style={{ fontWeight: '600', fontSize: '0.83rem', marginBottom: '10px', color: '#374151' }}>Custos do Projeto — compartilhados pelos 3 cenários</div>
+        <div style={g3}>
+          <div><label style={lbl}>Terreno (US$)</label><input style={inp} type="number" value={v.land} onChange={set('land')} /></div>
+          <div><label style={lbl}>Custos Indiretos / Soft Costs (US$)</label><input style={inp} type="number" value={v.soft} onChange={set('soft')} /></div>
+          <div><label style={lbl}>Custo de Carregamento (US$)</label><input style={inp} type="number" value={v.carry} onChange={set('carry')} /></div>
+          <div><label style={lbl}>Contingência (US$)</label><input style={inp} type="number" value={v.cont} onChange={set('cont')} /></div>
+          <div>
+            <label style={lbl}>Tamanho</label>
+            <div style={{ display: 'flex', gap: '4px' }}>
+              <input style={{ ...inp, flex: 1 }} type="number" value={v.size} onChange={set('size')} />
+              <select style={{ padding: '6px 4px', border: '1px solid #d1d5db', borderRadius: '6px', fontSize: '0.78rem' }} value={v.unit} onChange={setStr('unit')}>
+                <option value="sf">SF</option>
+                <option value="m2">m²</option>
+              </select>
+            </div>
+          </div>
+          <div><label style={lbl}>Custo por SF (US$)</label><input style={inp} type="number" value={v.cpersf} onChange={set('cpersf')} /></div>
+        </div>
+        <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', marginTop: '10px', padding: '8px 12px', background: '#eff6ff', borderRadius: '6px', fontSize: '0.8rem' }}>
+          <span><strong>Construção:</strong> {fmt(c.construction)}</span>
+          <span><strong>Custo Total do Projeto:</strong> {fmt(c.total)}</span>
+          <span style={{ color: '#6b7280', fontSize: '0.72rem' }}>Ref: Citrus Springs ~US$123/SF · Orlando ~US$192/SF · Tampa ~US$205/SF</span>
         </div>
       </div>
 
-      <div style={cardStyle}>
-        <div style={{ fontWeight: '600', marginBottom: '12px', fontSize: '0.9rem' }}>🏠 Cenário de Venda</div>
-        <div style={grid3}>
-          <div><label style={labelStyle}>ARV — Valor Após Conclusão (US$)</label><input style={inputStyle} type="number" value={v.arv} onChange={set('arv')} /></div>
-          <div><label style={labelStyle}>Comissão + Custos de Venda (%)</label><input style={inputStyle} type="number" step="0.5" value={v.sellCostPct} onChange={set('sellCostPct')} /></div>
-          <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'flex-end' }}>
-            <label style={labelStyle}>Retenção FIRPTA (15%)?</label>
-            <button onClick={toggle('firpta')} style={{ padding: '6px 8px', borderRadius: '6px', border: '1px solid #d1d5db', background: v.firpta ? '#dbeafe' : '#f9fafb', cursor: 'pointer', fontSize: '0.875rem', color: v.firpta ? '#1e40af' : '#6b7280' }}>
-              {v.firpta ? '✓ FIRPTA ativado' : 'FIRPTA desativado'}
+      {/* ── SCENARIO 1 ── */}
+      {tab === 1 && (
+        <div style={{ border: '1px solid #e5e7eb', borderTop: 'none', borderRadius: '0 0 8px 8px', padding: '14px' }}>
+          <div style={g3}>
+            <div><label style={lbl}>ARV — Valor de Venda Estimado (US$)</label><input style={inp} type="number" value={v.s1arv} onChange={set('s1arv')} /></div>
+            <div><label style={lbl}>Comissão + Custos de Venda (%)</label><input style={inp} type="number" step="0.5" value={v.s1comm} onChange={set('s1comm')} /></div>
+            <div><label style={lbl}>Retenção FIRPTA (15% do preço bruto)?</label><button style={firptaBtn(v.s1firpta)} onClick={tog('s1firpta')}>{v.s1firpta ? '⚠ FIRPTA ativado (15%)' : '✓ Sem FIRPTA (≤US$300K + ocupante)'}</button></div>
+          </div>
+          <div style={{ ...card, borderLeft: '4px solid #1e40af' }}>
+            <div style={{ fontWeight: '600', fontSize: '0.85rem', marginBottom: '8px' }}>📊 Resultado — Cenário 1: Construir + Vender</div>
+            <div style={row}><span>Custo total do projeto</span><span style={{ fontWeight: '600' }}>{fmt(c.total)}</span></div>
+            <div style={row}><span>Valor de venda (ARV)</span><span>{fmt(v.s1arv)}</span></div>
+            <div style={row}><span>Comissão + custos de venda</span><span>−{fmt(c.s1sellCosts)}</span></div>
+            {v.s1firpta && <div style={row}><span style={{ color: '#dc2626' }}>Retenção FIRPTA (15%)</span><span style={ok(false)}>−{fmt(c.s1firptaAmt)}</span></div>}
+            <div style={row}><span>Receita líquida</span><span>{fmt(c.s1net)}</span></div>
+            <div style={{ ...row, paddingTop: '8px', borderTop: '2px solid #e5e7eb' }}><span style={{ fontWeight: '600' }}>Lucro bruto</span><span style={ok(c.s1profit >= 0)}>{fmt(c.s1profit)}</span></div>
+            <div style={row}><span>Margem bruta (lucro ÷ ARV)</span><span style={ok(c.s1margin >= 0.20)}>{pct(c.s1margin)} {c.s1margin >= 0.20 ? '✓' : '⚠ meta: 20%'}</span></div>
+            <div style={row}><span>ROI (lucro ÷ custo total)</span><span style={ok(c.s1roi >= 0.20)}>{pct(c.s1roi)} {c.s1roi >= 0.20 ? '✓' : '⚠ meta: 20%'}</span></div>
+            <div style={rowLast}><span style={{ fontSize: '0.78rem', color: '#6b7280' }}>Preço máx. de terreno para margem 20%</span><span style={{ color: '#1e40af', fontWeight: 'bold' }}>{fmt(Math.max(0, c.s1maxLand))}</span></div>
+          </div>
+          <div style={{ fontSize: '0.72rem', color: '#6b7280', marginTop: '6px' }}>FIRPTA = 0% quando: preço ≤ US$300K + comprador é ocupante-proprietário. Acima disso, protocole Form 8288-B com 3–6 meses de antecedência.</div>
+        </div>
+      )}
+
+      {/* ── SCENARIO 2 ── */}
+      {tab === 2 && (
+        <div style={{ border: '1px solid #e5e7eb', borderTop: 'none', borderRadius: '0 0 8px 8px', padding: '14px' }}>
+          <div style={g3}>
+            <div><label style={lbl}>Aluguel Bruto Mensal (US$)</label><input style={inp} type="number" value={v.s2rent} onChange={set('s2rent')} /></div>
+            <div><label style={lbl}>IPTU Mensal (US$)</label><input style={inp} type="number" value={v.s2tax} onChange={set('s2tax')} /></div>
+            <div><label style={lbl}>Seguro Mensal (US$)</label><input style={inp} type="number" value={v.s2ins} onChange={set('s2ins')} /></div>
+            <div><label style={lbl}>HOA Mensal (US$)</label><input style={inp} type="number" value={v.s2hoa} onChange={set('s2hoa')} /></div>
+            <div><label style={lbl}>Gestão + Manutenção + Vacância (%)</label><input style={inp} type="number" step="1" value={v.s2exp} onChange={set('s2exp')} /></div>
+            <div><label style={lbl}>ARV projetado para venda futura (US$)</label><input style={inp} type="number" value={v.s2arv} onChange={set('s2arv')} /></div>
+          </div>
+          <div style={{ marginTop: '10px' }}>
+            <label style={lbl}>FIRPTA em eventual venda futura?</label>
+            <button style={{ ...firptaBtn(v.s2firpta), width: 'auto' }} onClick={tog('s2firpta')}>
+              {v.s2firpta ? `⚠ FIRPTA projetado: −${fmt(c.s2firptaAmt)} na venda` : '✓ Sem FIRPTA projetado (BRRRR + 1031 Exchange)'}
             </button>
           </div>
-        </div>
-      </div>
-
-      <div style={cardStyle}>
-        <div style={{ fontWeight: '600', marginBottom: '12px', fontSize: '0.9rem' }}>🏦 Cenário DSCR (Refinanciar e Alugar)</div>
-        <div style={grid3}>
-          <div><label style={labelStyle}>LTV do Refi DSCR (%)</label><input style={inputStyle} type="number" step="1" value={v.dscrLtv} onChange={set('dscrLtv')} /></div>
-          <div><label style={labelStyle}>Taxa de Juros DSCR (% ao ano)</label><input style={inputStyle} type="number" step="0.25" value={v.dscrRate} onChange={set('dscrRate')} /></div>
-          <div><label style={labelStyle}>Aluguel Bruto Mensal (US$)</label><input style={inputStyle} type="number" value={v.rent} onChange={set('rent')} /></div>
-          <div><label style={labelStyle}>IPTU Mensal (US$)</label><input style={inputStyle} type="number" value={v.taxes} onChange={set('taxes')} /></div>
-          <div><label style={labelStyle}>Seguro Mensal (US$)</label><input style={inputStyle} type="number" value={v.insurance} onChange={set('insurance')} /></div>
-          <div><label style={labelStyle}>HOA Mensal (US$)</label><input style={inputStyle} type="number" value={v.hoa} onChange={set('hoa')} /></div>
-        </div>
-      </div>
-
-      {/* RESULTS */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-        <div style={{ ...cardStyle, borderLeft: '4px solid #1e40af' }}>
-          <div style={{ fontWeight: '600', marginBottom: '10px', fontSize: '0.9rem' }}>📊 Cenário: VENDER</div>
-          <div style={resultRow}><span>Custo Total do Projeto</span><span style={{ fontWeight: '600' }}>{fmt(c.total)}</span></div>
-          <div style={resultRow}><span>ARV</span><span>{fmt(v.arv)}</span></div>
-          {v.firpta && <div style={resultRow}><span>Retenção FIRPTA (15%)</span><span style={{ color: '#dc2626' }}>−{fmt(c.firptaAmt)}</span></div>}
-          <div style={resultRow}><span>Receita Líquida de Venda</span><span>{fmt(c.netSale)}</span></div>
-          <div style={resultRow}><span style={{ fontWeight: '600' }}>Lucro Bruto</span><span style={ok(c.grossProfit > 0)}>{fmt(c.grossProfit)}</span></div>
-          <div style={resultRow}><span>Margem Bruta</span><span style={ok(c.grossMargin >= 0.20)}>{pct(c.grossMargin)} {c.grossMargin >= 0.20 ? '✓' : '⚠ meta: 20%'}</span></div>
-          <div style={resultRow}><span>ROI sobre Caixa (~30% entrada)</span><span style={ok(c.roi >= 0.30)}>{pct(c.roi)} {c.roi >= 0.30 ? '✓' : '⚠ meta: 30%'}</span></div>
-          <div style={{ ...resultRow, borderBottom: 'none', paddingTop: '8px', marginTop: '4px', borderTop: '2px solid #e5e7eb' }}>
-            <span style={{ fontWeight: '600' }}>Preço Máximo do Terreno*</span>
-            <span style={{ fontWeight: 'bold', color: '#1e40af' }}>{fmt(Math.max(0, c.maxLand))}</span>
+          <div style={{ ...card, borderLeft: '4px solid #16a34a' }}>
+            <div style={{ fontWeight: '600', fontSize: '0.85rem', marginBottom: '8px' }}>📊 Resultado — Cenário 2: Construir + Alugar (capital próprio)</div>
+            <div style={row}><span>Investimento total (capital imobilizado)</span><span style={{ fontWeight: '600' }}>{fmt(c.total)}</span></div>
+            <div style={row}><span>Aluguel bruto mensal</span><span>{fmt(v.s2rent)}/mês</span></div>
+            <div style={row}><span>Despesas mensais (IPTU + seguro + HOA + gestão)</span><span>−{fmt(c.s2opExp)}/mês</span></div>
+            <div style={{ ...row, paddingTop: '8px', borderTop: '2px solid #e5e7eb' }}><span style={{ fontWeight: '600' }}>Fluxo de caixa líquido</span><span style={ok(c.s2cf >= 0)}>{fmt(c.s2cf)}/mês</span></div>
+            <div style={row}><span>Renda líquida anual</span><span style={ok(c.s2cf >= 0)}>{fmt(c.s2cf * 12)}/ano</span></div>
+            <div style={rowLast}><span>Yield anual (renda ÷ investimento)</span><span style={ok(c.s2yield >= 0.06)}>{pct(c.s2yield)} {c.s2yield >= 0.06 ? '✓' : '⚠ meta: 6%'}</span></div>
           </div>
-          <div style={{ fontSize: '0.7rem', color: '#9ca3af', marginTop: '4px' }}>*com margem bruta de 20%</div>
+          <div style={{ fontSize: '0.72rem', color: '#6b7280', marginTop: '6px' }}>Sem empréstimo = sem P&I, sem risco de DSCR. O yield é a métrica central — quanto da renda anual retorna sobre o capital investido.</div>
         </div>
+      )}
 
-        <div style={{ ...cardStyle, borderLeft: '4px solid #16a34a' }}>
-          <div style={{ fontWeight: '600', marginBottom: '10px', fontSize: '0.9rem' }}>🏘 Cenário: REFINANCIAR + ALUGAR</div>
-          <div style={resultRow}><span>Valor do Empréstimo DSCR</span><span>{fmt(c.dscrLoan)}</span></div>
-          <div style={resultRow}><span>Parcela P&I Mensal</span><span>{fmt(c.pi)}</span></div>
-          <div style={resultRow}><span>PITIA Total Mensal</span><span>{fmt(c.pitia)}</span></div>
-          <div style={resultRow}><span>Aluguel Bruto Mensal</span><span>{fmt(v.rent)}</span></div>
-          <div style={resultRow}>
-            <span style={{ fontWeight: '600' }}>DSCR</span>
-            <span style={ok(c.dscr >= 1.25)}>{c.dscr.toFixed(2)} {c.dscr >= 1.25 ? '✓' : c.dscr >= 1.0 ? '⚠ abaixo de 1,25' : '✗ negativo'}</span>
+      {/* ── SCENARIO 3 ── */}
+      {tab === 3 && (
+        <div style={{ border: '1px solid #e5e7eb', borderTop: 'none', borderRadius: '0 0 8px 8px', padding: '14px' }}>
+          <div style={g3}>
+            <div><label style={lbl}>ARV para cálculo do DSCR (US$)</label><input style={inp} type="number" value={v.s3arv} onChange={set('s3arv')} /></div>
+            <div><label style={lbl}>LTV do Refi DSCR (%)</label><input style={inp} type="number" step="1" value={v.s3ltv} onChange={set('s3ltv')} /></div>
+            <div><label style={lbl}>Taxa DSCR (% ao ano)</label><input style={inp} type="number" step="0.25" value={v.s3rate} onChange={set('s3rate')} /></div>
+            <div><label style={lbl}>Aluguel Bruto Mensal (US$)</label><input style={inp} type="number" value={v.s3rent} onChange={set('s3rent')} /></div>
+            <div><label style={lbl}>IPTU Mensal (US$)</label><input style={inp} type="number" value={v.s3tax} onChange={set('s3tax')} /></div>
+            <div><label style={lbl}>Seguro Mensal (US$)</label><input style={inp} type="number" value={v.s3ins} onChange={set('s3ins')} /></div>
+            <div><label style={lbl}>HOA Mensal (US$)</label><input style={inp} type="number" value={v.s3hoa} onChange={set('s3hoa')} /></div>
+            <div><label style={lbl}>Gestão + Manutenção + Vacância (%)</label><input style={inp} type="number" step="1" value={v.s3exp} onChange={set('s3exp')} /></div>
+            <div><label style={lbl}>FIRPTA em eventual venda futura?</label><button style={firptaBtn(v.s3firpta)} onClick={tog('s3firpta')}>{v.s3firpta ? `⚠ FIRPTA: −${fmt(c.s3firptaAmt)} na venda futura` : '✓ Sem FIRPTA (diferido via BRRRR + 1031)'}</button></div>
           </div>
-          <div style={resultRow}>
-            <span style={{ fontWeight: '600' }}>Fluxo de Caixa Mensal</span>
-            <span style={ok(c.cashflow >= 0)}>{fmt(c.cashflow)}/mês</span>
+          <div style={{ ...card, borderLeft: '4px solid #7c3aed' }}>
+            <div style={{ fontWeight: '600', fontSize: '0.85rem', marginBottom: '8px' }}>📊 Resultado — Cenário 3: Refinanciar + Alugar (BRRRR / DSCR)</div>
+            <div style={row}><span>Custo total do projeto</span><span style={{ fontWeight: '600' }}>{fmt(c.total)}</span></div>
+            <div style={row}><span>Empréstimo DSCR (LTV% × ARV)</span><span>{fmt(c.s3loan)}</span></div>
+            <div style={row}><span>Capital preso no imóvel (custo − empréstimo)</span><span style={ok(c.s3equity >= 0)}>{fmt(c.s3equity)}</span></div>
+            <div style={{ ...row, paddingTop: '6px', borderTop: '2px solid #e5e7eb' }}><span>Parcela P&I mensal (30 anos)</span><span>{fmt(c.s3pi)}/mês</span></div>
+            <div style={row}><span>PITIA total mensal</span><span>{fmt(c.s3pitia)}/mês</span></div>
+            <div style={row}><span>Aluguel bruto mensal</span><span>{fmt(v.s3rent)}/mês</span></div>
+            <div style={row}><span style={{ fontWeight: '600' }}>DSCR</span><span style={ok(c.s3dscr >= 1.25)}>{c.s3dscr.toFixed(2)} {c.s3dscr >= 1.25 ? '✓' : c.s3dscr >= 1.0 ? '⚠ <1,25' : '✗ negativo'}</span></div>
+            <div style={row}><span style={{ fontWeight: '600' }}>Fluxo de caixa mensal</span><span style={ok(c.s3cf >= 0)}>{fmt(c.s3cf)}/mês</span></div>
+            <div style={rowLast}><span style={{ fontWeight: '600' }}>Fluxo de caixa anual</span><span style={ok(c.s3cf >= 0)}>{fmt(c.s3cf * 12)}/ano</span></div>
           </div>
-          <div style={{ ...resultRow, borderBottom: 'none', paddingTop: '8px', marginTop: '4px', borderTop: '2px solid #e5e7eb' }}>
-            <span style={{ fontWeight: '600' }}>Fluxo de Caixa Anual</span>
-            <span style={{ fontWeight: 'bold', color: c.cashflow >= 0 ? '#16a34a' : '#dc2626' }}>{fmt(c.cashflow * 12)}/ano</span>
-          </div>
+          <div style={{ fontSize: '0.72rem', color: '#6b7280', marginTop: '6px' }}>BRRRR: o empréstimo DSCR recupera parte do capital investido. DSCR ≥ 1,25 é o mínimo da maioria dos credores. FIRPTA é diferido — sem venda = sem evento FIRPTA.</div>
         </div>
-      </div>
+      )}
 
-      <div style={{ fontSize: '0.72rem', color: '#9ca3af', marginTop: '8px', textAlign: 'center' }}>
+      <div style={{ fontSize: '0.7rem', color: '#9ca3af', marginTop: '8px', textAlign: 'center' }}>
         Calculadora para fins educacionais. Consulte sempre um CPA e advogado imobiliário antes de tomar decisões de investimento.
       </div>
     </div>
@@ -166,10 +210,11 @@ export function CalculadoraDeal() {
 
 ## Como Usar Este Template
 
-1. Preencha as **células em azul** (suas entradas) para cada negócio
-2. O template calcula lucro, ROI e retorno sobre o caixa investido
-3. Use o cálculo de **"Preço Máximo do Terreno"** para definir o teto da sua oferta
-4. Rode os dois Cenários de Saída (Vender vs. Refinanciar) antes de se comprometer
+1. Preencha os **custos do projeto** (terreno, construção, soft costs, contingência) — esses dados alimentam os 3 cenários simultaneamente
+2. Use **tamanho × custo/SF** para calcular o custo de construção automaticamente, ou insira o valor direto
+3. Alterne entre os **3 cenários** (Vender / Alugar capital próprio / Refinanciar + Alugar) para ver o retorno em cada estratégia
+4. Use o **"Preço Máximo do Terreno"** (Cenário 1) para definir o teto da sua oferta — se o terreno pedir mais do que isso, negocie ou desista
+5. Use o **DSCR** (Cenário 3) para confirmar que o empréstimo pós-construção é viável antes de fechar o terreno
 
 ---
 
