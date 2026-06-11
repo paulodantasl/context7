@@ -60,7 +60,7 @@ Uma **LLC (Limited Liability Company — Sociedade de Responsabilidade Limitada)
 - [ ] Escolher nome da LLC (verificar disponibilidade no site do Secretário de Estado)
 - [ ] Protocolar **Articles of Organization (Contrato Social)** junto ao Secretário de Estado
 - [ ] Redigir **Operating Agreement (Acordo Operacional)** — fundamental para definir propriedade e regras
-- [ ] Obter **EIN (Employer Identification Number — CNPJ americano)** do IRS (Formulário SS-4, pode ser feito online)
+- [ ] Obter **EIN (Employer Identification Number — CNPJ americano)** do IRS (Formulário SS-4). **Atenção:** o sistema online do IRS exige que o responsável tenha SSN ou ITIN — estrangeiro sem esses números deve enviar o SS-4 por **fax (~4 dias úteis)** ou **correio (~4–5 semanas)**, escrevendo "Foreign" na linha 7b
 - [ ] Abrir **conta bancária empresarial americana** em nome da LLC
 - [ ] Registrar licenças estaduais/municipais de funcionamento, se exigidas
 
@@ -104,6 +104,7 @@ Você precisa de uma conta bancária empresarial nos EUA para:
 - Articles of Organization da LLC
 - Operating Agreement da LLC
 - Carta de confirmação do EIN (IRS CP-575)
+- **Formulário W-8BEN** (pessoa física) ou **W-8BEN-E** (entidade) — declara ao banco/pagador seu status de estrangeiro não residente; quase todo banco e credor vai pedir
 - Endereço nos EUA (usar endereço do agente registrado da LLC)
 
 ---
@@ -115,11 +116,41 @@ Você precisa de uma conta bancária empresarial nos EUA para:
 | Imposto | Quando Se Aplica | Alíquota |
 |---------|-----------------|----------|
 | Imposto federal de renda (renda de aluguel) | Anualmente sobre renda líquida de aluguel | 10%–37% (alíquotas ordinárias) |
-| Imposto sobre ganho de capital (venda) | Na venda do imóvel | 15%–20% (longo prazo) |
-| Retenção FIRPTA | No fechamento quando estrangeiro vende | 15% do preço bruto de venda |
-| Imposto estadual de renda | Depende do estado | 0%–13% |
+| Imposto sobre ganho de capital — longo prazo | Na venda de imóvel mantido **> 1 ano** | 15%–20% |
+| Imposto sobre ganho de capital — curto prazo | Na venda de imóvel mantido **≤ 1 ano** (típico em flips) | 10%–37% (alíquotas ordinárias) |
+| Retenção FIRPTA | No fechamento quando estrangeiro vende | 0%–15% do preço bruto (ver tabela abaixo) |
+| Imposto estadual de renda | Depende do estado (Flórida: 0%) | 0%–13% |
 | IPTU | Anualmente (local) | 0,5%–2,5% do valor avaliado |
-| Imposto de autonomo (self-employment) | Somente se negócio ativo | 15,3% sobre renda líquida |
+| Imposto de autônomo (self-employment) | Somente se negócio ativo | 15,3% sobre renda líquida |
+| **US Estate Tax (imposto sucessório)** | **No falecimento do proprietário estrangeiro** | **Até 40% acima de US$60.000** — ver Parte 5 |
+
+<Warning>
+**Atenção para quem faz flip:** se você vende o imóvel com menos de 1 ano da conclusão (o caso típico de construir e vender), o lucro tende a ser tributado como **ganho de curto prazo, nas alíquotas ordinárias (10%–37%)** — não nas alíquotas reduzidas de 15%–20%. Investidores que fazem flips repetidos também podem ser classificados pelo IRS como *dealer* (negociante), com tratamento de renda ordinária. Inclua isso no pro forma e confirme com seu CPA.
+</Warning>
+
+---
+
+### Renda de Aluguel: A Eleição §871(d) — Evite os 30% Sobre o Aluguel Bruto
+
+Esta é uma das regras mais importantes (e menos conhecidas) para o estrangeiro que aluga imóvel nos EUA:
+
+**O regime padrão é punitivo.** Por padrão, a renda de aluguel de um estrangeiro não residente é classificada como renda passiva (FDAP) e sofre **retenção de 30% sobre o aluguel BRUTO** — sem deduzir nenhuma despesa. Em um aluguel de US$2.000/mês, seriam US$600/mês retidos, mesmo que suas despesas consumam todo o lucro.
+
+**A solução é a eleição do IRC §871(d).** Ao fazer essa eleição (declaração anexada ao 1040-NR), sua renda de aluguel passa a ser tratada como **renda efetivamente conectada (ECI)** — tributada pelas alíquotas progressivas normais sobre a renda **LÍQUIDA**, após deduzir juros, IPTU, seguro, administradora, manutenção e **depreciação**. Com a depreciação, a renda tributável frequentemente fica em zero nos primeiros anos.
+
+| Regime | Base de Cálculo | Alíquota | Imposto em aluguel de US$2.000/mês |
+|---|---|---|---|
+| **Padrão (sem eleição)** | Aluguel **bruto** | 30% fixo | ~US$7.200/ano |
+| **Com eleição §871(d)** | Renda **líquida** (após despesas + depreciação) | 10%–37% progressivo | Frequentemente **US$0–US$1.000/ano** |
+
+**Na prática:**
+1. Seu CPA faz a eleição §871(d) na primeira declaração 1040-NR
+2. Você entrega o **Formulário W-8ECI** ao seu property manager — sem ele, o PM é legalmente obrigado a reter os 30% do bruto e repassar ao IRS
+3. A eleição vale para todos os seus imóveis de aluguel nos EUA e permanece até ser revogada
+
+<Warning>
+**Se o seu property manager pedir um formulário W-8, não ignore.** Ele é o agente de retenção legal — sem o W-8ECI em mãos, ele reterá 30% do seu aluguel bruto para se proteger. Resolva isso no primeiro mês de locação.
+</Warning>
 
 ---
 
@@ -155,15 +186,22 @@ Você precisa de uma conta bancária empresarial nos EUA para:
 
 Se você vende um imóvel por **até US$300.000 para um comprador que vai morar no imóvel** (ocupante-proprietário), a retenção é **0%**. Não é necessária nenhuma providência adicional.
 
+**O teste exato da isenção (IRS):**
+- O comprador deve ser **pessoa física** (não LLC, não empresa)
+- O comprador ou um membro da família dele deve ter planos definidos de **residir no imóvel por pelo menos 50% dos dias em que o imóvel for usado**, em cada um dos dois primeiros períodos de 12 meses após a transferência
+- Na prática, a title company coleta uma **declaração assinada do comprador (buyer's affidavit)** atestando essa intenção — peça ao seu agente de fechamento para providenciar
+
 > **Implicação estratégica:** Mercados de entrada como Citrus Springs (FL), cidades menores do Tennessee ou do Texas permitem construir, vender abaixo de US$300.000 e não sofrer qualquer retenção FIRPTA — além de ter ROIs competitivos com o capital investido.
 
 #### Caminho 2: Formulário 8288-B — Certificado de Retenção Reduzida 📄
 
 Se o seu imposto real sobre o lucro é menor que 15% do preço de venda, você pode solicitar ao IRS que retenha apenas o valor do seu imposto estimado real.
 
-- **Prazo:** Protocolar pelo menos 3–6 meses antes do fechamento (o IRS pode demorar)
+- **Prazo:** Protocolar antes do fechamento — o IRS leva **~90 dias** para decidir sobre uma aplicação completa (na prática, planeje 3–6 meses)
+- **Requisito crítico:** A aplicação exige o **TIN (ITIN/EIN) de todas as partes da transação** — vendedor sem ITIN pode anexar o W-7 à própria aplicação, mas isso adiciona tempo. Mais um motivo para ter o ITIN desde o início
+- **Como funciona no fechamento:** Se a aplicação estiver pendente na data da venda, o comprador ainda retém os 15% — mas o valor fica **em escrow com a title company** (não vai ao IRS) até o IRS decidir. Aprovado o certificado, você recebe a diferença em semanas, não em mais de um ano
 - **Quem faz:** Seu CPA americano especializado em investidores estrangeiros
-- **Resultado:** Se aprovado, a seguradora retém apenas o imposto estimado real (ex: 2%–5% em vez de 15%)
+- **Resultado:** Se aprovado, retém-se apenas o imposto estimado real (ex: 2%–5% em vez de 15%)
 - **Custo do serviço:** US$500–US$1.500 de honorários de CPA
 
 #### Caminho 3: Refinanciar e Alugar (BRRRR) — Diferimento Total 🏘️
@@ -195,9 +233,14 @@ Como estrangeiro com imóvel de investimento nos EUA, você deve declarar:
 |------------|-----------|-------|
 | **Formulário 1040-NR** | Declaração de imposto de renda para estrangeiro não residente | 15 de abril (ou 15 de outubro com prorrogação) |
 | **Anexo E (Schedule E)** | Renda e despesas de aluguel | Junto ao 1040-NR |
+| **Formulário 5472 + 1120 pro forma** | **Obrigatório para LLC de sócio único estrangeiro** — reporta aportes, distribuições e transações com o sócio | 15 de abril (com a declaração da entidade) |
 | **Formulário 8825** (se LLC declara como sociedade) | Renda de aluguel para sociedades | 15 de março |
 | **Formulário 1065** (se LLC com múltiplos sócios) | Declaração informacional de sociedade | 15 de março |
 | **FinCEN 114 (FBAR)** | Se saldo em conta bancária americana > US$10.000 | 15 de abril |
+
+<Warning>
+**Formulário 5472 — a multa de US$25.000 que pega quase todo mundo.** Toda LLC americana de sócio único estrangeiro (o modelo mais comum deste guia) deve protocolar anualmente o Formulário 5472 anexado a um 1120 pro forma — **mesmo sem nenhuma renda no ano, mesmo que a LLC só tenha um terreno parado**. Reporta aportes de capital, distribuições e qualquer transação entre você e a LLC. A multa por não entregar é de **US$25.000 por formulário, por ano**, sem teto. É a obrigação mais esquecida por investidores estrangeiros — confirme com seu CPA que ela está no calendário.
+</Warning>
 
 **Importante:** Mesmo sem renda em determinado ano, pode ser necessário declarar. Trabalhe com um CPA anualmente.
 
@@ -292,8 +335,8 @@ Holding Brasileira (Ltda. ou S.A.)
                     └──→ Imóveis de Investimento nos EUA
 ```
 
-- **Vantagens:** Pode simplificar questões de herança brasileira, potenciais benefícios de tratados
-- **Desvantagens:** Complexo, exige coordenação entre advogados e CPAs brasileiros e americanos
+- **Vantagens:** Pode funcionar como **"blocker" do US Estate Tax** (cotas de empresa estrangeira não são ativo americano para fins sucessórios — ver Parte 5) e organizar a sucessão familiar no Brasil
+- **Desvantagens:** Complexo, custos de manutenção em dois países, pode gerar tributação menos favorável sobre a renda (alíquotas corporativas, branch profits tax), exige coordenação entre advogados e CPAs brasileiros e americanos
 - **Melhor para:** Investidores com capital significativo, planejamento sucessório familiar
 
 **Atenção:** Esta estrutura requer orientação especializada. Brasil e EUA **não possuem tratado abrangente de imposto de renda** — é necessário planejamento cuidadoso para evitar dupla tributação.
@@ -304,10 +347,46 @@ Holding Brasileira (Ltda. ou S.A.)
 
 ### Ausência de Tratado Tributário Abrangente
 
-Brasil e Estados Unidos **não possuem um tratado abrangente de imposto de renda**. Isso significa:
+Brasil e Estados Unidos **não possuem um tratado abrangente de imposto de renda** (e também **não possuem tratado de imposto sucessório** — ver Parte 5). Isso significa:
 - Renda tributada nos EUA também pode ser tributável no Brasil
-- Créditos fiscais estrangeiros podem ser aplicados para reduzir a dupla tributação
+- A dupla tributação é mitigada pela **reciprocidade de tratamento** reconhecida pela Receita Federal (Ato Declaratório SRF nº 28/2000): o imposto de renda **federal** americano pago pode ser compensado com o imposto brasileiro devido sobre a mesma renda
+- **Somente o imposto federal americano é compensável** — impostos estaduais e municipais dos EUA não geram crédito no Brasil. Boa notícia: **a Flórida não tem imposto estadual de renda**, então não há imposto "perdido" nessa categoria
 - Consulte TANTO um CPA americano quanto um contador brasileiro (especializado em investimentos internacionais)
+
+---
+
+### Como o Brasil Tributa a Sua Renda Americana
+
+O tratamento brasileiro depende de **como você detém o imóvel** — diretamente em seu nome ou através da LLC. Essa escolha mudou de importância com a **Lei nº 14.754/2023 (a "Lei das Offshores")**, em vigor desde 2024.
+
+#### Cenário A: Imóvel em nome próprio (sem LLC)
+
+| Renda | Tratamento no Brasil |
+|-------|---------------------|
+| Aluguel recebido | **Carnê-leão mensal** — tabela progressiva até 27,5%, DARF código 0190 até o último dia útil do mês seguinte |
+| Ganho na venda | **GCAP** — 15% até R$5M de ganho; 17,5% (R$5–10M); 20% (R$10–30M); 22,5% (acima); DARF até o fim do mês seguinte à venda |
+| Variação cambial | Desde 2024, o ganho é apurado **inteiramente em reais** (venda convertida na data da venda − custo convertido na data da compra) — **a valorização do dólar entra no ganho tributável**, independente da origem dos recursos |
+| Crédito | Imposto federal dos EUA pago é compensado no carnê-leão/GCAP (limitado ao imposto brasileiro sobre aquela renda) |
+
+#### Cenário B: Imóvel dentro da LLC americana (o modelo deste guia)
+
+A Lei 14.754/2023 classifica a sua LLC como **entidade controlada no exterior** sujeita ao regime anti-diferimento — por **dois caminhos independentes**:
+
+1. **Renda passiva:** aluguéis estão expressamente na lista de renda passiva da lei (LLC com renda majoritariamente de aluguel é capturada)
+2. **Regime fiscal privilegiado:** em abril/2026, a Receita Federal (Solução de Consulta COSIT nº 56/2026) firmou que **LLCs americanas transparentes com sócios não residentes nos EUA são "regime fiscal privilegiado"** — o que captura a LLC **mesmo que a renda fosse ativa**
+
+Você tem duas opções de regime no IRPF:
+
+| Regime | Como funciona | Implicação prática |
+|--------|--------------|-------------------|
+| **Opaco (padrão)** | O **lucro anual da LLC** (apurado em 31/dez) é tributado em **15% fixo** no seu IRPF — **mesmo sem distribuição** | Por ser RFP, exige **balanço anual em BR GAAP** assinado por contador habilitado; lucro é líquido (deduz despesas e depreciação); **armadilha do crédito**: como a LLC transparente não paga imposto nos EUA (você paga, via 1040-NR), o aproveitamento desse imposto contra os 15% é juridicamente controverso |
+| **Transparência fiscal** (opção irrevogável por entidade) | Você declara os bens da LLC **como se fossem seus** — aluguel via carnê-leão (até 27,5%), venda via GCAP (15%+) | Sem custo de balanço BR GAAP; o crédito do imposto federal americano funciona de forma limpa via reciprocidade; **porém** o carnê-leão incide sobre base quase bruta (sem depreciação) — 27,5% do quase-bruto pode superar 15% do líquido |
+
+<Warning>
+**Esta escolha precisa ser feita com um contador brasileiro especializado — e cedo.** A opção pela transparência é exercida na declaração e é **irrevogável** enquanto você detiver aquela entidade. A comparação 15% sobre lucro líquido (opaco, com custo de balanço BR GAAP e risco no crédito) vs. até 27,5% no carnê-leão (transparente, com crédito limpo do imposto americano) depende do seu caso. O cenário regulatório ainda está se acomodando após a SC COSIT 56/2026 — não decida sem assessoria atualizada.
+</Warning>
+
+> **Quem ignora a Lei 14.754/2023 corre risco real:** o lucro da LLC é tributável no Brasil anualmente **mesmo que você nunca traga o dinheiro de volta**. O "deixo lá fora e não declaro" deixou de ser zona cinzenta — é sonegação.
 
 ### Declaração de Bens no Exterior — Receita Federal Brasileira
 
@@ -345,20 +424,22 @@ O **CBE (Capitais Brasileiros no Exterior)** é a declaração exigida pelo **Ba
 | Item | Detalhe |
 |------|---------|
 | **Data-base** | 31 de dezembro de cada ano |
-| **Prazo de entrega (declaração anual)** | Até **5 de abril** do ano seguinte |
-| **Prazo de entrega (declaração trimestral)** | Até o último dia útil do mês seguinte ao trimestre |
+| **Janela de entrega (declaração anual)** | De **15 de fevereiro até as 18h (Brasília) de 5 de abril** do ano seguinte |
+| **Prazo de entrega (declaração trimestral)** | Janelas específicas após cada trimestre (ex.: base 31/03 → entrega de 30/04 a 05/06) |
 | **Sistema** | Declaração Eletrônica de Capitais Brasileiros no Exterior (DCBE) — portal do Banco Central |
 
 #### Penalidades por Não Cumprimento
 
-O Banco Central pode aplicar multas de **R$1.500 a R$250.000** por descumprimento, dependendo da gravidade:
+Sob o marco atual (Lei nº 14.286/2021 + Resolução BCB nº 131/2021, art. 66), as multas são **percentuais sobre o valor sujeito a declaração**, com tetos:
 
-| Infração | Multa (referência) |
-|----------|-------------------|
-| Atraso na entrega | R$1.500 a R$10.000 |
-| Omissão de ativos | Até R$250.000 |
-| Declaração com informações incorretas | R$1.500 a R$250.000 |
-| Não declaração reincidente | Multa dobrada |
+| Infração | Multa | Teto |
+|----------|-------|------|
+| Entrega fora do prazo | 1% do valor | R$25.000 |
+| Informações incorretas ou incompletas | 2% do valor | R$50.000 |
+| Não entrega da declaração | 5% do valor | R$125.000 |
+| Informações falsas | 10% do valor | R$250.000 |
+
+> Atrasos curtos têm redução (1–30 dias de atraso: multa reduzida a 10% do valor; 31–60 dias: 50%) — mas não conte com isso: coloque o CBE no calendário anual.
 
 #### CBE vs. DIRPF — Qual a Diferença?
 
@@ -404,31 +485,131 @@ Se você é o único sócio, declara US$195.000 como valor da participação na 
 
 ---
 
-### Câmbio e Remessa Internacional
+### Câmbio, Remessa Internacional e IOF
 
 Ao transferir recursos do Brasil para os EUA para fins de investimento:
 - Utilize um **câmbio autorizado** — não use canais informais
 - Grandes bancos: Itaú, Bradesco, Banco do Brasil oferecem serviços de transferência internacional
-- Corretoras de câmbio (OFX, Wise Business) oferecem taxas competitivas para transferências maiores
+- Corretoras de câmbio (OFX, Wise Business, Remessa Online) oferecem taxas competitivas para transferências maiores
 - Documente todas as transferências — você precisará comprovar a origem dos recursos para credores americanos e para a Receita Federal Brasileira
+
+#### IOF — O Custo Que Depende de Como Você Classifica a Remessa
+
+O IOF sobre câmbio mudou várias vezes em 2025 (Decretos 12.466/12.499, derrubada no Congresso e reintegração pelo STF em julho/2025). O cenário vigente:
+
+| Natureza da operação | IOF |
+|----------------------|-----|
+| Transferência para **conta própria no exterior** (disponibilidade geral — inclui contas de cônjuge/parentes) | **3,5%** |
+| Remessa com **finalidade de investimento** (ex.: aporte de capital na sua LLC, compra de ativos) | **1,1%** |
+| Gastos com cartão internacional / moeda em espécie | 3,5% |
+
+> **O que decide a alíquota é o código de finalidade que o banco atribui ao contrato de câmbio** — a mesma remessa pode pagar 1,1% ou 3,5% dependendo da classificação declarada. Bancos diferem na documentação exigida para aceitar a classificação de investimento.
+
+<Info>
+**A diferença de 2,4 pontos importa.** Em uma remessa de US$200.000 (~R$1,1M), classificar como investimento direto na LLC (1,1%) em vez de transferência para conta própria (3,5%) economiza aproximadamente **R$26.000 de IOF**. A "natureza da operação" é declarada no contrato de câmbio — converse com a instituição de câmbio e seu contador ANTES de remeter, e mantenha a documentação societária (aporte de capital registrado na LLC) consistente com a classificação usada.
+</Info>
+
+> **Aviso de validade:** as alíquotas de IOF são fixadas por decreto e podem mudar a qualquer momento (2025 provou isso). Confirme a alíquota vigente com a instituição de câmbio no momento de cada remessa.
 
 ---
 
-## Parte 5: Requisitos de Seguro
+## Parte 5: Planejamento Sucessório — O US Estate Tax (O Risco Mais Subestimado)
+
+<Warning>
+**Se você morrer sendo dono de imóvel nos EUA, seus herdeiros podem perder até 40% do valor para o IRS.** Enquanto cidadãos americanos têm isenção de **US$15 milhões** (2026), estrangeiros não residentes têm isenção de apenas **US$60.000** sobre ativos americanos — valor congelado desde 1976, sem correção pela inflação. E o Brasil **não tem tratado sucessório com os EUA** para aliviar isso.
+</Warning>
+
+### O Tamanho do Problema
+
+| Situação | Isenção | Alíquota acima da isenção |
+|----------|---------|--------------------------|
+| Cidadão / residente americano | US$15.000.000 (2026) | 18%–40% |
+| **Estrangeiro não residente (você)** | **US$60.000** | **18%–40%** |
+
+**Exemplo:** Você possui um imóvel de US$500.000 nos EUA (sem dívida) e falece.
+
+```
+Patrimônio americano tributável:  US$500.000 − US$60.000 = US$440.000
+Imposto sucessório estimado:      ~US$135.000 (alíquotas progressivas 18%–34%)
+                                  ≈ 27% do valor do imóvel
+```
+
+Seus herdeiros precisam protocolar o **Form 706-NA em até 9 meses** após o falecimento e pagar o imposto — frequentemente sendo forçados a vender o imóvel às pressas para isso.
+
+### A LLC Americana NÃO Resolve
+
+A LLC de sócio único é **transparente (disregarded)** — para fins sucessórios, o IRS tende a tratar o imóvel como se fosse seu diretamente. A questão é tecnicamente "não pacificada" na jurisprudência, mas **nenhum advogado tributarista sério recomenda contar com a SMLLC como blindagem sucessória**. Planeje como se não protegesse nada.
+
+### As 4 Ferramentas de Mitigação
+
+| Ferramenta | Como funciona | Trade-off |
+|-----------|--------------|-----------|
+| **1. Seguro de vida** (o hedge mais simples) | Apólice de vida sobre a SUA vida **não é ativo americano** (IRC §2105) — o capital segurado paga o imposto sem vender o imóvel | Custo do prêmio (term life é barato); não elimina o imposto, só o financia |
+| **2. Dívida nonrecourse** | Hipoteca **sem garantia pessoal** reduz o valor tributável dólar a dólar | Dívida recourse (com garantia pessoal — o padrão em DSCR) só deduz proporcionalmente e exige revelar o patrimônio mundial |
+| **3. Corporação estrangeira ("blocker")** | Cotas de empresa não americana (ex.: BVI, Cayman ou holding brasileira) **não são ativo americano** — o estate tax não alcança | Piora o imposto sobre a renda: alíquota corporativa 21% + branch profits tax 30% (sem redução — Brasil não tem tratado), perde alíquotas favoráveis de ganho de capital |
+| **4. Trust irrevogável** | Estrutura de trust bem desenhada tira o ativo do seu espólio | Custo de estruturação alto; precisa evitar poderes retidos; exige especialista |
+
+### Quando Se Preocupar
+
+| Seu patrimônio nos EUA | Recomendação |
+|------------------------|--------------|
+| 1 projeto ≤ US$300K (ex.: Citrus Springs) | Risco moderado — um term life de US$150K–US$200K cobre a exposição por poucos dólares/mês |
+| 2–4 imóveis (US$500K–US$1,5M) | Consulte advogado tributarista internacional; seguro de vida + avaliar estrutura |
+| Portfólio US$1,5M+ | Estrutura com blocker estrangeiro ou trust antes da próxima aquisição |
+
+### Não Dá para "Doar Antes" Sem Planejamento
+
+O gift tax americano para estrangeiros também alcança **imóveis americanos doados em vida** — sem isenção vitalícia (apenas exclusão anual de ~US$19.000/ano por beneficiário). Doar o imóvel diretamente aos filhos gera imposto de doação. *(Curiosidade técnica: doação de participações intangíveis tem tratamento diferente — mais um motivo para planejar a estrutura com especialista ANTES de comprar.)*
+
+### O Lado Brasileiro: ITCMD
+
+No falecimento, os herdeiros brasileiros também enfrentam o **ITCMD estadual** (até 8%) sobre a herança. A tributação de heranças no exterior está em transição após a Reforma Tributária (EC 132/2023) — inclua o tema na conversa com seu advogado brasileiro.
+
+<Info>
+**Resumo prático:** para o primeiro projeto, a solução barata e imediata é um **seguro de vida resgatável (term life)** no valor da sua exposição estimada. Para portfólios maiores, estruture ANTES de comprar — reorganizar depois custa caro (transferir imóvel para nova estrutura pode disparar imposto de transferência, FIRPTA e reavaliação de IPTU).
+</Info>
+
+---
+
+## Parte 6: Requisitos de Seguro
 
 | Tipo de Seguro | Quando Exigido | Custo Típico |
 |----------------|---------------|--------------|
-| **Seguro do Construtor (Builder's Risk)** | Durante a construção (exigido pelo credor) | US$1.500–US$5.000/ano |
+| **Seguro do Construtor (Builder's Risk)** | Durante a construção (exigido pelo credor) | 1%–4% do custo de construção (apólice única para a obra toda) |
 | **Responsabilidade Civil Geral (do empreiteiro)** | Durante a construção (o empreiteiro contrata) | Custo do empreiteiro |
-| **Seguro Residencial (Homeowners)** | No fechamento do refi DSCR (exigido) | US$1.200–US$3.000/ano |
-| **Seguro de Imóvel para Aluguel (Landlord)** | Se for alugar (exigido pelo credor DSCR) | US$1.200–US$3.000/ano |
-| **Seguro Contra Enchentes (Flood)** | Se em zona de inundação (exigido pelo credor) | US$500–US$3.000+/ano |
+| **Seguro de Imóvel para Aluguel (Landlord / DP-3)** | Se for alugar (exigido pelo credor DSCR) | FL: US$1.500–US$3.500/ano (construção nova, interior); US$4.000–US$7.500+ (litoral) |
+| **Seguro Contra Enchentes (Flood)** | Obrigatório se o imóvel está em zona SFHA (zonas A/AE/V no mapa FEMA) e há financiamento | US$500–US$3.000+/ano |
 | **Seguro Guarda-Chuva (Umbrella)** | Recomendado para proprietários de portfólio | US$300–US$1.000/ano |
-| **Seguro de Título (Title Insurance)** | No fechamento (proprietário + credor) | 0,5%–1% do valor do imóvel (único) |
+| **Seguro de Título (Title Insurance)** | No fechamento (proprietário + credor) | Tarifa tabelada na FL: US$5,75/US$1.000 até US$100K + US$5,00/US$1.000 acima |
+
+#### O Fator Flórida: Franquia de Furacão e Custo de Seguro
+
+A Flórida tem o seguro residencial **mais caro dos EUA** (média estadual ~US$5.400–US$8.300/ano vs. ~US$2.400–US$3.000 nacional). Três fatores protegem o investidor deste guia:
+
+1. **Construção nova paga muito menos** — telhado novo, janelas de impacto e wind mitigation credits reduzem drasticamente o prêmio vs. a média estadual (que é inflada por casas antigas no litoral)
+2. **Mercados do interior são mais baratos** — Orlando/Lake County: ~US$2.200–US$3.400/ano vs. Miami-Dade: US$5.300–US$7.500/ano
+3. **O mercado estabilizou** — após as reformas de 2022–2023, 17+ novas seguradoras entraram no estado e a Citizens (estatal) reduziu tarifas em 2026
+
+<Warning>
+**A franquia de furacão é PERCENTUAL, não fixa.** Apólices na Flórida têm franquia separada para furacão de **2%, 5% ou 10% do valor de cobertura da estrutura** — em uma casa de US$300K, franquia de 5% significa que VOCÊ paga os primeiros US$15.000 de dano de furacão. Franquia maior = prêmio menor, mas exige reserva de caixa. E **cote o seguro ANTES de fechar o DSCR refi** — o prêmio entra no PITIA e pode derrubar o seu índice DSCR abaixo de 1,25.
+</Warning>
+
+> **Detalhe que anula sinistros:** o nome do segurado na apólice deve ser **exatamente o titular do imóvel** — se o imóvel está na LLC, a apólice deve estar no nome da LLC (você pode ser segurado adicional). Apólice no nome da pessoa física com imóvel da LLC pode resultar em sinistro negado.
 
 ---
 
-## Parte 6: Equipe de Profissionais para Investidores Brasileiros
+## Parte 7: Regras Recentes que Você Vai Ouvir Falar (2025–2026)
+
+| Regra | O que é | Te afeta? |
+|-------|---------|-----------|
+| **Florida SB 264** ("lei contra estrangeiros") | Restringe compra de imóveis na FL por cidadãos de 7 "países de preocupação" (China, Rússia, Irã, etc.) | ❌ **Não — o Brasil NÃO está na lista.** Brasileiros compram normalmente; você só assinará um affidavit padrão no fechamento |
+| **FinCEN — Residential Real Estate Rule** (vigente desde março/2026) | Compras de imóvel residencial **à vista (sem financiamento) via LLC ou trust** são reportadas ao Tesouro americano com identificação do beneficiário final, sem valor mínimo | ✅ Sim, se comprar terreno/imóvel à vista pela LLC — a title company faz o reporte; você fornece os dados. Não é imposto, é transparência. Não tente "esconder" estrutura |
+| **FHA — Mortgagee Letter 2025-09** | Desde maio/2025, empréstimos FHA são restritos a **cidadãos americanos e portadores de green card** | ✅ Sim, se planejava a estratégia owner-occupant com FHA — ver [Financiamento](/land-acquisition-guide/financing) |
+| **"Comprar imóvel dá visto?"** | Mito comum | ❌ **Comprar imóvel NÃO concede visto nem residência.** O único caminho de investimento → green card é o EB-5 (US$800K+ em negócio ativo gerador de empregos — aluguel passivo não qualifica) |
+
+---
+
+## Parte 8: Equipe de Profissionais para Investidores Brasileiros
 
 | Profissional | Função | Como Encontrar |
 |--------------|--------|----------------|
@@ -453,10 +634,14 @@ Ao transferir recursos do Brasil para os EUA para fins de investimento:
 | 5 | Solicitar EIN (Formulário SS-4) | Mês 2 (após constituição da LLC) |
 | 6 | Abrir conta bancária empresarial nos EUA | Meses 2–3 |
 | 7 | Consultar CPA americano para planejamento fiscal | Meses 1–2 (antes de comprar) |
-| 8 | Informar contador brasileiro sobre bens no exterior | Anualmente |
-| 9 | Declarar CBE no Banco Central (se > US$1M) | Anualmente até 5 de abril |
-| 10 | Protocolar Formulário 8288-B (se vender) | 3 a 6 meses antes da venda |
-| 11 | Declarar 1040-NR anualmente | Até 15 de abril (ou 15 de outubro com prorrogação) |
+| 8 | Definir regime fiscal da LLC no Brasil (opaco vs. transparente) com contador brasileiro | Antes da primeira DIRPF após constituir a LLC — **opção irrevogável** |
+| 9 | Fazer a eleição §871(d) + entregar W-8ECI ao property manager (se alugar) | Primeiro mês de locação |
+| 10 | Avaliar exposição ao US Estate Tax (seguro de vida / estrutura) | Antes da primeira compra; revisar a cada aquisição |
+| 11 | Informar contador brasileiro sobre bens no exterior (DIRPF + carnê-leão se aplicável) | Anualmente |
+| 12 | Declarar CBE no Banco Central (se ≥ US$1M) | Anualmente, 15/fev a 5/abr |
+| 13 | Protocolar Formulário 5472 + 1120 pro forma da LLC | Anualmente (mesmo sem renda) |
+| 14 | Protocolar Formulário 8288-B (se vender) | 3 a 6 meses antes da venda |
+| 15 | Declarar 1040-NR anualmente | Até 15 de abril (ou 15 de outubro com prorrogação) |
 
 ---
 
@@ -465,10 +650,15 @@ Ao transferir recursos do Brasil para os EUA para fins de investimento:
 | Erro | Por Que É um Problema |
 |------|----------------------|
 | Comprar imóvel em nome pessoal (sem LLC) | Responsabilidade pessoal, mais difícil de financiar, situação fiscal complicada |
-| Não ter ITIN antes de começar | Atrasa financiamento, fechamento e declarações fiscais |
+| Não ter ITIN antes de começar | Atrasa financiamento, fechamento, 8288-B e declarações fiscais |
 | Ignorar o planejamento do FIRPTA até o dia do fechamento | Retenção de 15% como surpresa; sem tempo para protocolar 8288-B |
-| Não declarar bens americanos no Brasil | Risco de multas fiscais brasileiras e problemas legais |
+| Não fazer a eleição §871(d) / não entregar o W-8ECI | Property manager retém **30% do aluguel BRUTO** por obrigação legal |
+| Esquecer o Formulário 5472 da LLC | Multa de **US$25.000 por ano**, mesmo sem renda |
+| Ignorar o US Estate Tax | Herdeiros podem perder ~27%–40% do valor do imóvel; isenção de só US$60K para estrangeiros |
+| Não definir o regime da LLC no Brasil (Lei 14.754/2023) | Lucro da LLC é tributável no Brasil anualmente mesmo sem distribuição; opção errada é irrevogável |
+| Não declarar bens americanos no Brasil (DIRPF/CBE) | Risco de multas fiscais brasileiras e problemas legais |
 | Usar transferências informais de câmbio | Não consegue comprovar origem dos recursos para credores ou Receita Federal |
+| Classificar a remessa de câmbio sem orientação | Diferença entre 1,1% e 3,5% de IOF — milhares de reais por remessa |
 | Uma LLC para múltiplos imóveis | Ação judicial sobre um imóvel pode atingir todos os outros |
 | Sem Operating Agreement | Disputas, complicações com credores, vulnerabilidade legal |
 | Não declarar imposto americano porque "não mora lá" | Você tem renda de fonte americana — é obrigado a declarar |

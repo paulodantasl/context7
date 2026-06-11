@@ -457,6 +457,16 @@
   </table></div>
 
   <hr>
+  <h2>Seasoning e Risco de Avaliação — Os 2 Detalhes que Quebram o BRRRR</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Tipo de refi</th><th>Seasoning típico (cash-out)</th><th>Observação</th></tr>
+    <tr><td class="tag-green"><strong>DSCR (caminho deste guia)</strong></td><td class="tag-green"><strong>3–6 meses</strong></td><td>Antes do prazo, o valor é limitado ao custo comprovado (guarde todas as notas da obra!)</td></tr>
+    <tr><td>Convencional (Fannie/Freddie)</td><td>12 meses</td><td>Regra endurecida em 2023</td></tr>
+    <tr><td>Refi saindo da construção do mesmo credor</td><td class="tag-green">Frequentemente zero</td><td>Pergunte isso ao escolher o credor da obra</td></tr>
+  </table></div>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Appraisal gap — o risco nº 1 do BRRRR:</strong> se a avaliação vier 10% abaixo do ARV projetado, o cash-out encolhe US$25K–US$30K num projeto típico. Proteções: ① ARV com comps reais ANTES de comprar o terreno; ② subscreva com ARV 5%–10% abaixo do que acredita; ③ conteste avaliações baixas com comps; ④ nunca dependa de recuperar 100% do capital — projete deixando US$30K–US$80K presos.</div></div>
+
+  <hr>
   <h2>LTC vs LTV — A Diferença que Importa</h2>
   <div class="callout info"><div class="icon">ℹ️</div><div class="body">Confundir LTC com LTV pode representar <strong>US$20K–US$112K de diferença</strong> no capital disponível. Sempre pergunte ao credor: <em>"O índice de 70% é sobre custo ou sobre valor avaliado?"</em></div></div>
 
@@ -499,13 +509,13 @@
   <p><strong>Melhor para:</strong> Primeiro projeto ou capital limitado — elimina GC markup, reduz risco de overrun.</p>
 
   <h3>Estrutura 3 — Owner-Occupant FHA (Menor Entrada Possível)</h3>
-  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Requer intenção genuína de moradia</strong> (mínimo 12 meses) e visto de longa duração. Fraude de ocupação é crime federal nos EUA.</div></div>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Regra mudou em 2025 (HUD ML 2025-09):</strong> desde 25/mai/2025, FHA é restrito a <strong>cidadãos americanos e portadores de green card</strong> — vistos de trabalho (H-1B, L-1, O-1, TN) e EAD não qualificam mais. FHA também sempre exigiu SSN (ITIN não é aceito) e <strong>intenção genuína de moradia</strong> (mínimo 12 meses; ocupar em até 60 dias). Fraude de ocupação é crime federal. Alternativa para quem tem visto de trabalho + SSN: empréstimo convencional (Fannie/Freddie), caso a caso.</div></div>
   <div class="table-wrap"><table>
     <tr><th>Estratégia</th><th>Entrada Necessária</th><th>Capital Poupado</th></tr>
     <tr><td>Investidor padrão (25%)</td><td>US$165.000</td><td>—</td></tr>
     <tr><td class="tag-green"><strong>Owner-Occupant FHA (3,5%)</strong></td><td class="tag-green"><strong>US$23.100</strong></td><td class="tag-green"><strong>US$118.000 disponível para próximo projeto</strong></td></tr>
   </table></div>
-  <p><strong>Melhor para:</strong> Investidor que está migrando para os EUA ou tem visto de longa duração (EB-5, L-1, O-1, H-1B, green card). Duplex/Triplex/Fourplex: more em 1 unidade, alugue as outras.</p>
+  <p><strong>Melhor para:</strong> Investidor que já obteve green card (ex.: via EB-5) ou cidadania. Duplex/Triplex/Fourplex: more em 1 unidade, alugue as outras.</p>
 
   <h3>Comparação das 3 Estruturas</h3>
   <div class="table-wrap"><table>
@@ -513,8 +523,8 @@
     <tr><td>Capital necessário</td><td>US$200K+</td><td>US$100K–US$150K</td><td class="tag-green">US$47K–US$70K</td></tr>
     <tr><td>Controle</td><td class="tag-green">Total</td><td class="tag-yellow">Compartilhado</td><td class="tag-green">Total</td></tr>
     <tr><td>Lucro no flip</td><td>100% seu</td><td>50% seu</td><td>Menor (PMI + custos FHA)</td></tr>
-    <tr><td>Aceita ITIN sem SSN</td><td class="tag-green">Sim</td><td class="tag-green">Sim</td><td class="tag-red">Limitado</td></tr>
-    <tr><td>Complexidade</td><td class="tag-yellow">Média</td><td class="tag-red">Alta (requer parceiro confiável)</td><td class="tag-red">Alta (requer visto)</td></tr>
+    <tr><td>Aceita ITIN sem SSN</td><td class="tag-green">Sim</td><td class="tag-green">Sim</td><td class="tag-red">Não (exige SSN + green card/cidadania)</td></tr>
+    <tr><td>Complexidade</td><td class="tag-yellow">Média</td><td class="tag-red">Alta (requer parceiro confiável)</td><td class="tag-red">Alta (requer green card)</td></tr>
   </table></div>
 </section>
 
@@ -677,7 +687,7 @@
             <div class="field"><label>Comissão + Custos de Venda (%)</label><input type="number" id="s1-comm" value="7" step="0.5" oninput="calcAll()"></div>
             <div class="field" style="display:flex;flex-direction:column;justify-content:flex-end">
               <label>Retenção FIRPTA (15% do preço bruto)?</label>
-              <button class="firpta-toggle off" id="f1-btn" onclick="toggleF(1)">✓ Sem FIRPTA (estrutura correta ou preço ≤ US$300K)</button>
+              <button class="firpta-toggle off" id="f1-btn" onclick="toggleF(1)">✓ Sem FIRPTA (preço ≤ US$300K + comprador ocupante)</button>
             </div>
           </div>
         </div>
@@ -893,10 +903,35 @@ Fluxo de Caixa:     ~US$1.500–US$3.000/mês</pre>
   <div class="table-wrap"><table>
     <tr><th>Imposto</th><th>Quando</th><th>Alíquota</th></tr>
     <tr><td>Renda federal (aluguel)</td><td>Anualmente sobre renda líquida</td><td>10%–37%</td></tr>
-    <tr><td>Ganho de capital (venda)</td><td>Na venda</td><td>15%–20% (longo prazo)</td></tr>
-    <tr><td>FIRPTA (retenção)</td><td>No fechamento — venda por estrangeiro</td><td class="tag-red">15% bruto</td></tr>
+    <tr><td>Ganho de capital — longo prazo (&gt;1 ano)</td><td>Na venda</td><td>15%–20%</td></tr>
+    <tr><td>Ganho de capital — curto prazo (≤1 ano, típico em flip)</td><td>Na venda</td><td class="tag-yellow">10%–37% (alíquotas ordinárias)</td></tr>
+    <tr><td>FIRPTA (retenção, não imposto final)</td><td>No fechamento — venda por estrangeiro</td><td class="tag-red">0%–15% bruto (ver Saídas)</td></tr>
     <tr><td>IPTU</td><td>Anualmente (local)</td><td>0,5%–2,5% do valor</td></tr>
+    <tr><td><strong>US Estate Tax (sucessório)</strong></td><td>No falecimento do dono estrangeiro</td><td class="tag-red">Até 40% acima de US$60.000</td></tr>
   </table></div>
+
+  <h2>Aluguel: A Eleição §871(d) — Evite 30% Sobre o Bruto</h2>
+  <div class="callout warning"><div class="icon">⚠️</div><div class="body"><strong>Sem providência, o property manager é obrigado a reter 30% do seu aluguel BRUTO.</strong> A eleição §871(d) (feita pelo CPA no 1040-NR) + o formulário <strong>W-8ECI</strong> entregue ao PM mudam a tributação para a renda <strong>líquida</strong> (após despesas e depreciação) — frequentemente perto de zero nos primeiros anos. Resolva no primeiro mês de locação.</div></div>
+
+  <h2>US Estate Tax — O Risco Mais Subestimado</h2>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Estrangeiros têm isenção de apenas US$60.000 no imposto sucessório americano</strong> (vs. US$15 milhões para cidadãos) — e a LLC de sócio único NÃO protege. Em um imóvel de US$500K, a exposição é de ~US$135.000 (≈27%). O Brasil não tem tratado sucessório com os EUA.<br><br><strong>Mitigações:</strong> ① seguro de vida term (o capital não é ativo americano e paga o imposto — solução barata para 1º projeto) · ② dívida nonrecourse reduz a base · ③ corporação estrangeira "blocker" (para portfólios; piora o imposto de renda) · ④ trust irrevogável. Estruture <strong>antes</strong> de comprar — reorganizar depois dispara impostos de transferência.</div></div>
+
+  <h2>Lei 14.754/2023 — Como o Brasil Tributa Sua LLC</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Regime</th><th>Como funciona</th><th>Implicação</th></tr>
+    <tr><td><strong>Opaco (padrão)</strong></td><td>Lucro anual da LLC tributado em <strong>15% fixo</strong> no IRPF, mesmo sem distribuição</td><td>Exige balanço anual em BR GAAP; 15% sobre lucro líquido (com depreciação)</td></tr>
+    <tr><td><strong>Transparência</strong> (opção irrevogável)</td><td>Declara os bens como se fossem seus: aluguel via carnê-leão (até 27,5%), venda via GCAP (15%+)</td><td>Sem balanço; crédito limpo do imposto federal americano; base quase bruta no carnê-leão</td></tr>
+  </table></div>
+  <div class="callout info"><div class="icon">ℹ️</div><div class="body">Em abril/2026 a Receita (SC COSIT 56/2026) confirmou que LLCs americanas transparentes de sócios não residentes nos EUA caem no regime anti-diferimento. <strong>A escolha opaco vs. transparente é irrevogável — decida com contador especializado antes da primeira DIRPF.</strong> Ignorar a lei = lucro da LLC tributável no Brasil anualmente mesmo sem trazer o dinheiro.</div></div>
+
+  <h2>IOF nas Remessas — A Classificação Vale Milhares</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Natureza da operação</th><th>IOF</th></tr>
+    <tr><td>Transferência para conta própria no exterior (disponibilidade)</td><td class="tag-red">3,5%</td></tr>
+    <tr><td class="tag-green"><strong>Remessa com finalidade de investimento (aporte na LLC)</strong></td><td class="tag-green"><strong>1,1%</strong></td></tr>
+    <tr><td>Cartão internacional / moeda em espécie</td><td>3,5%</td></tr>
+  </table></div>
+  <div class="callout info"><div class="icon">💡</div><div class="body">Em US$200K remetidos (~R$1,1M), a classificação como investimento direto economiza <strong>~R$26.000</strong>. O código de finalidade do contrato de câmbio decide — alinhe com a instituição de câmbio e o contador ANTES de remeter. Alíquotas mudam por decreto: confirme a vigente a cada remessa.</div></div>
 
   <h2>CBE — Capitais Brasileiros no Exterior</h2>
   <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Multas de R$1.500 a R$250.000</strong> por não cumprimento. Se você investe nos EUA, provavelmente tem obrigação de declarar ao Banco Central.</div></div>
@@ -936,8 +971,12 @@ Renda tributável:             US$0</pre>
   <div class="table-wrap"><table>
     <tr><th>Erro</th><th>Consequência</th></tr>
     <tr><td class="tag-red">Comprar imóvel em nome pessoal (sem LLC)</td><td>Responsabilidade pessoal, dificuldade de financiamento</td></tr>
-    <tr><td class="tag-red">Não ter ITIN antes de começar</td><td>Atrasa financiamento, fechamento e declarações fiscais</td></tr>
+    <tr><td class="tag-red">Não ter ITIN antes de começar</td><td>Atrasa financiamento, fechamento, 8288-B e declarações fiscais</td></tr>
     <tr><td class="tag-red">Ignorar FIRPTA até o fechamento</td><td>Surpresa de 15%; sem tempo para Form 8288-B</td></tr>
+    <tr><td class="tag-red">Esquecer o Formulário 5472 da LLC</td><td><strong>Multa de US$25.000/ano</strong> — obrigatório mesmo sem renda</td></tr>
+    <tr><td class="tag-red">Alugar sem a eleição §871(d) / W-8ECI</td><td>30% do aluguel BRUTO retido pelo property manager</td></tr>
+    <tr><td class="tag-red">Ignorar o US Estate Tax</td><td>Herdeiros perdem até 40% acima de US$60K de isenção</td></tr>
+    <tr><td class="tag-red">Não definir regime da LLC no Brasil (Lei 14.754)</td><td>Tributação anual de 15% pega de surpresa; opção errada é irrevogável</td></tr>
     <tr><td class="tag-red">Não declarar bens no Brasil (DIRPF/CBE)</td><td>Multas da Receita Federal e do Banco Central</td></tr>
     <tr><td class="tag-red">Transferências informais de câmbio</td><td>Não consegue comprovar origem dos recursos</td></tr>
   </table></div>
@@ -1045,6 +1084,16 @@ ARV nova construção ÷ (Compra + Demolição + Construção) ≥ 1,43
     <tr><td>Seguro</td><td>General Liability US$1M + Workers' Comp obrigatórios</td></tr>
     <tr><td>Lien releases</td><td>Exigido antes de cada pagamento</td></tr>
   </table></div>
+
+  <h2>Lei de Liens da Flórida (Cap. 713) — As 4 Peças</h2>
+  <div class="table-wrap"><table>
+    <tr><th>Documento</th><th>O que é</th><th>Sua obrigação</th></tr>
+    <tr><td><strong>NOC</strong> (Notice of Commencement)</td><td>Registro público do início da obra</td><td>VOCÊ registra no condado <strong>antes de começar</strong> (contratos &gt; US$5.000); na prática a title company/credor prepara no fechamento — confirme. Validade: 1 ano</td></tr>
+    <tr><td><strong>NTO</strong> (Notice to Owner)</td><td>Aviso de subempreiteiros em até 45 dias</td><td class="tag-green">Receber é NORMAL — não é cobrança. Guarde todos: quem enviou precisa de lien release antes de você pagar</td></tr>
+    <tr><td><strong>Lien releases</strong></td><td>Renúncia ao direito de lien</td><td>Coletar a cada draw (condicional) e no final (incondicional)</td></tr>
+    <tr><td><strong>Final Payment Affidavit</strong></td><td>Declaração do GC listando quem falta pagar</td><td class="tag-red">NÃO libere o pagamento final sem ela</td></tr>
+  </table></div>
+  <div class="callout danger"><div class="icon">🚨</div><div class="body"><strong>Risco de pagar duas vezes:</strong> se você paga o GC sem coletar lien releases de quem enviou NTO e o GC não repassa, a lei da Flórida considera "pagamento impróprio" — os subs podem registrar lien sobre o SEU imóvel (até 90 dias após o último fornecimento) e você paga de novo.</div></div>
 
   <h2>Cadência Semanal de Comunicação</h2>
   <div class="table-wrap"><table>
@@ -1967,22 +2016,36 @@ Please confirm receipt.
     <tr><th>Termo</th><th>Definição</th></tr>
     <tr><td><strong>ARV</strong></td><td>After Repair/Build Value — valor estimado do imóvel após a conclusão da obra</td></tr>
     <tr><td><strong>BRRRR</strong></td><td>Buy, Rehab/Build, Rent, Refinance, Repeat — estratégia de reciclagem de capital</td></tr>
-    <tr><td><strong>CBE</strong></td><td>Capitais Brasileiros no Exterior — declaração obrigatória ao Banco Central para ativos ≥ US$1M</td></tr>
+    <tr><td><strong>Carnê-leão</strong></td><td>Recolhimento mensal do IR brasileiro sobre renda do exterior recebida por pessoa física (até 27,5%)</td></tr>
+    <tr><td><strong>CBE</strong></td><td>Capitais Brasileiros no Exterior — declaração obrigatória ao Banco Central para ativos ≥ US$1M (janela 15/fev–5/abr)</td></tr>
     <tr><td><strong>CO</strong></td><td>Certificate of Occupancy — Certificado de Ocupação, emitido após conclusão e aprovação da obra</td></tr>
+    <tr><td><strong>Development Spread</strong></td><td>Yield on Cost − cap rate de mercado — o prêmio por assumir o risco de construir (meta: 1,5–2+ pontos)</td></tr>
     <tr><td><strong>DSCR</strong></td><td>Debt Service Coverage Ratio — aluguel ÷ parcela PITIA; deve ser ≥ 1,25 para a maioria dos credores</td></tr>
     <tr><td><strong>Draw / Desembolso</strong></td><td>Liberação parcial do empréstimo de construção vinculada a uma etapa concluída</td></tr>
-    <tr><td><strong>FIRPTA</strong></td><td>Foreign Investment in Real Property Tax Act — lei americana que exige retenção de 15% na venda por estrangeiro</td></tr>
+    <tr><td><strong>FIRPTA</strong></td><td>Retenção de 0%–15% do preço bruto na venda por estrangeiro — adiantamento recuperável, não imposto final</td></tr>
+    <tr><td><strong>Form 5472</strong></td><td>Declaração anual obrigatória da LLC de dono estrangeiro — multa de US$25.000 se esquecer, mesmo sem renda</td></tr>
+    <tr><td><strong>Form 706-NA</strong></td><td>Declaração de espólio do estrangeiro — US Estate Tax (isenção de apenas US$60K)</td></tr>
+    <tr><td><strong>Form 8288-B</strong></td><td>Pedido de certificado para reduzir a retenção FIRPTA (protocolar 3–6 meses antes da venda)</td></tr>
+    <tr><td><strong>GCAP</strong></td><td>Programa da Receita Federal para apurar ganho de capital no exterior (15%–22,5%)</td></tr>
     <tr><td><strong>Hard Money</strong></td><td>Empréstimo de curto prazo baseado no ativo (não na renda), com taxas mais altas e fechamento rápido</td></tr>
     <tr><td><strong>HOA</strong></td><td>Homeowners Association — associação de moradores com taxas e regras para o condomínio/bairro</td></tr>
+    <tr><td><strong>IOF</strong></td><td>Imposto brasileiro sobre a remessa de câmbio — 1,1% (investimento) a 3,5% (disponibilidade)</td></tr>
     <tr><td><strong>ITIN</strong></td><td>Individual Taxpayer Identification Number — número fiscal americano para estrangeiros sem SSN</td></tr>
+    <tr><td><strong>Lei 14.754/2023</strong></td><td>"Lei das Offshores" — tributação anual de 15% sobre lucros de entidades controladas no exterior (inclui sua LLC)</td></tr>
+    <tr><td><strong>Lien / Lien Waiver</strong></td><td>Gravame de construção sobre o imóvel / renúncia a esse direito — colete a cada draw</td></tr>
     <tr><td><strong>LTC</strong></td><td>Loan-to-Cost — valor do empréstimo ÷ custo total do projeto (terreno + construção)</td></tr>
     <tr><td><strong>LTV</strong></td><td>Loan-to-Value — valor do empréstimo ÷ valor de mercado avaliado do imóvel</td></tr>
     <tr><td><strong>MEP</strong></td><td>Mecânica, Elétrica e Hidráulica (Mechanical, Electrical, Plumbing)</td></tr>
+    <tr><td><strong>NOC</strong></td><td>Notice of Commencement — registro público do início da obra na Flórida (obrigação do dono; validade 1 ano)</td></tr>
     <tr><td><strong>Non-QM</strong></td><td>Non-Qualified Mortgage — hipoteca não qualificada; aceita documentação alternativa de renda</td></tr>
+    <tr><td><strong>NTO</strong></td><td>Notice to Owner — aviso de subempreiteiro preservando direito de lien (receber é normal; guarde todos)</td></tr>
     <tr><td><strong>PITIA</strong></td><td>Principal + Interest + Taxes + Insurance + HOA — parcela total mensal do imóvel</td></tr>
     <tr><td><strong>Pontos</strong></td><td>Taxa de originação do empréstimo; 1 ponto = 1% do valor do empréstimo</td></tr>
+    <tr><td><strong>Seasoning</strong></td><td>Tempo mínimo de propriedade antes do refi cash-out — 3–6 meses no DSCR; 12 meses no convencional</td></tr>
     <tr><td><strong>SFR</strong></td><td>Single Family Residence — residência unifamiliar (1 unidade)</td></tr>
     <tr><td><strong>SSN</strong></td><td>Social Security Number — número de seguro social americano (estrangeiros usam ITIN)</td></tr>
+    <tr><td><strong>W-8ECI / §871(d)</strong></td><td>Formulário + eleição fiscal que evitam a retenção de 30% sobre o aluguel BRUTO — entregue ao property manager no 1º mês</td></tr>
+    <tr><td><strong>YoC (Yield on Cost)</strong></td><td>NOI anual ÷ custo total do projeto — a "cap rate de quem constrói"</td></tr>
   </table></div>
 </section>
 
@@ -2110,7 +2173,7 @@ function toggleF(n) {
     btn.className = 'firpta-toggle ' + (on ? 'on' : 'off');
     btn.textContent = on
       ? '⚠ FIRPTA ativado (15% retenção)'
-      : '✓ Sem FIRPTA (estrutura correta ou preço ≤ US$300K)';
+      : '✓ Sem FIRPTA (preço ≤ US$300K + comprador ocupante)';
   }
   // show/hide FIRPTA rows for scenarios 2 and 3 (scenario 1 handled in calcAll)
   const row = document.getElementById('s' + n + '-firpta-row');
